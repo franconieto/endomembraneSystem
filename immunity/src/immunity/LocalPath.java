@@ -47,7 +47,7 @@ import repast.simphony.engine.environment.RunEnvironment;
       String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
       
       mypathOut=mypath+"/output/"+folderName+"/";
-      
+      System.out.println("      mypath=myDir.getCanonicalPath().replace('\\\\','/');" + mypath);
       
       Path path = Paths.get(mypathOut);
       Files.createDirectory(path);
@@ -80,7 +80,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 
 	public String getPathInputIT(){ 
 		
-		mypath3=mypath+"/data/inputIntrTransp3.csv";
+		mypath3=mypath+"/data/";
 		return this.mypath3; 
 		}
 		

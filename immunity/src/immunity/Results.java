@@ -70,7 +70,7 @@ public class Results {
 	String TotalRabs = mainpath.getPathTotalRabs();
 	String cisternsAreaPath = mainpath.getPathCisternsArea();
 	String mypathTable = mainpath.getMyPathOut();// agregado para que el output del excel no creara nuevos folders
-//	Puede ser esto la falla en batch de la generación de estos archivos?
+//	Puede ser esto la falla en batch de la generaciï¿½n de estos archivos?
 //	
 	public static Results getInstance() {
 		return instance;
@@ -88,7 +88,7 @@ public class Results {
 
 //		Copy the input file from data to folder with the Results
 	{
-	File source = new File("C:/Users/lmayo/workspace/immunity/data/"+inputFile);
+	File source = new File(LocalPath.getInstance().getPathInputIT()+inputFile);
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+inputFile);
 	System.out.println(source.toString() + dest.toString());
 	    try {
@@ -100,7 +100,7 @@ public class Results {
 	    }
 //	Copy the inputFrozenEndosomes file from data to folder with the Results
 	{
-	File source = new File("C:/Users/lmayo/workspace/immunity/data/inputFrozenEndosomes.csv");
+	File source = new File(LocalPath.getInstance().getPathInputIT()+inputFile);
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+"inputFrozenEndosomes.csv");
 	System.out.println(source.toString() + dest.toString());
 	    try {
