@@ -25,11 +25,25 @@ public class ModelProperties {
 	private static ModelProperties instance;
 	
 	public static ModelProperties getInstance() {
+		//Para no parameter, usar 
+//		Scanner scanner = new Scanner(new File(
+//				"inputIntrTransp3.csv"));
+//		scanner.useDelimiter(",");
+		
+//		PARA BATCH USAR ESTO.  DE ESTE MODO SE PUEDEN BARRER VARIOS INPUTFILE CON DIFERENTES PROPIEDADES
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		String inputFile =(String) parm.getValue("inputFile");
+		File file = new File (".//data//"+inputFile);
+
+		//		"inputIntrTransp3.csv"));
+		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO QUE SE GENERA AL CORRER EN BATCH 
+//				el folder se llama data y allí hay que meter todo lo que se lea, como el inputIntrTransp3.csv y los copasi que
+//				se necesiten
 		if( instance == null ) {
 			instance = new  ModelProperties();
 			try {
 				ModelProperties modelProperties = new ModelProperties();
-				modelProperties.loadFromCsv(instance);
+				modelProperties.loadFromCsv(instance, file);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -61,7 +75,7 @@ public class ModelProperties {
 	public HashMap<String, Double> uptakeRate = new HashMap<String, Double>();
 	public HashMap<String, Double> secretionRate = new HashMap<String, Double>();
 	public HashMap<String, String> rabOrganelle = new HashMap<String, String>();
-
+	public HashMap<Double, String> events = new HashMap<Double, String>();
 	public Set<String> solubleMet = new HashSet<String>();
 	public Set<String> membraneMet = new HashSet<String>();
 	public Set<String> rabSet = new HashSet<String>();
@@ -149,28 +163,15 @@ public class ModelProperties {
 	public HashMap<String, Double> getActionProbabilities() {
 		return actionProbabilities;
 	}
+	public HashMap<Double, String> getEvents() {
+		return events;
+	}
 
 	
-	public void loadFromCsv(ModelProperties modelProperties) throws IOException {
-//Para no parameter, usar 
-//		Scanner scanner = new Scanner(new File(
-//				"inputIntrTransp3.csv"));
-//		scanner.useDelimiter(",");
-		
-//		PARA BATCH USAR ESTO.  DE ESTE MODO SE PUEDEN BARRER VARIOS INPUTFILE CON DIFERENTES PROPIEDADES
-		Parameters parm = RunEnvironment.getInstance().getParameters();
-		String inputFile =(String) parm.getValue("inputFile");
-		Scanner scanner = new Scanner(new File(
-		//		"inputIntrTransp3.csv"));
-		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO QUE SE GENERA AL CORRER EN BATCH 
-//				el folder se llama data y allí hay que meter todo lo que se lea, como el inputIntrTransp3.csv y los copasi que
-//				se necesiten
-				
-								".//data//"+inputFile)); 
+	public void loadFromCsv(ModelProperties modelProperties, File file) throws IOException {
+
+		Scanner scanner = new Scanner(file);				
 		scanner.useDelimiter(",");
-
-
-
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		try {
 //			ModelProperties config = objectMapper.readValue(new File(ModelProperties.configFilename), ModelProperties.class);
@@ -368,6 +369,12 @@ public class ModelProperties {
 				}
 				break;
 			}
+			case "events": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					modelProperties.getEvents().put(Double.parseDouble(b[i]), b[i + 1]);
+				}
+				break;
+			}
 			
 //			case "freezeDry":
 //				{
@@ -456,10 +463,10 @@ public class ModelProperties {
 	}
 
 	public static void loadOrganellePropertiesFromCsv(ModelProperties modelProperties) throws IOException {
-
-
-		Scanner scanner = new Scanner(new File(
-				"inputIntrTransp3.csv"));
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		String inputFile =(String) parm.getValue("inputFile");
+		File scannerfile = new File (".//data//"+inputFile);
+		Scanner scanner = new Scanner(scannerfile);
 		scanner.useDelimiter(",");
 
 //		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
