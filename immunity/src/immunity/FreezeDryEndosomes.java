@@ -46,78 +46,6 @@ public class FreezeDryEndosomes {
 		}
 		return instance;
 	}
-////	FreezeDryEndosomes are loaded from a csv file and use by the CellBuilder class
-//	public HashMap<String, Double> cellK = new HashMap<String, Double>();
-//	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
-//	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
-//	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
-//	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
-//	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-//	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
-//	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
-//	public HashMap<String, Double> rabRecyProb = new HashMap<String, Double>();
-//	public HashMap<String, String> colorRab = new HashMap<String, String>();
-//	public HashMap<String, String> colorContent = new HashMap<String, String>();
-//	public HashMap<String, Double> membraneMet = new HashMap<String, Double>();
-//
-//	Set<String> solubleMet = new HashSet<String>();
-//	Set<String> rabSet = new HashSet<String>();
-	
-
-//	GETTERS
-//	
-//	public HashMap<String, Double> getCellK() {
-//		return cellK;
-//	}
-//	public HashMap<String, Double> getInitRabCell() {
-//		return initRabCell;
-//	}
-//	public HashMap<String, Double> getRabCompatibility() {
-//		return rabCompatibility;
-//	}
-//	public HashMap<String, Double> getTubuleTropism() {
-//		return tubuleTropism;
-//	}
-//	public HashMap<String, Set<String>> getRabTropism() {
-//		return rabTropism;
-//	}
-//	public HashMap<String, Double> getMtTropism() {
-//		return mtTropism;
-//	}
-//	public HashMap<String, Double> getRabRecyProb() {
-//		return rabRecyProb;
-//	}
-//	public HashMap<String, String> getColorRab() {
-//		return colorRab;
-//	}
-//	public HashMap<String, String> getColorContent() {
-//		return colorContent;
-//	}
-//	// membraneMet was originally a string set.  Now is a hashmap because
-//	// the probability of internalization from PM was added.  So, there is
-//	// two getters, one that return the keySet and another that return the hashmap
-//	public Set<String> getMembraneMet() {
-//		return membraneMet.keySet();
-//	}
-//	public HashMap<String, Double> getMembraneMetRec() {
-//		return membraneMet;
-//	}
-//	public Set<String> getSolubleMet() {
-//		return solubleMet;
-//	}
-//	public Set<String> getRabSet() {
-//		return rabSet;
-//	}
-//	public HashMap<String, Double> getSolubleCell() {
-//		return solubleCell;
-//	}
-//	public HashMap<String, Double> getInitPMmembraneRecycle() {
-//		return initPMmembraneRecycle;
-//	}
-//	public Set<String> getmembraneMet() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 	
 	public static void loadFromCsv() throws IOException {
 
@@ -129,14 +57,6 @@ public class FreezeDryEndosomes {
 
 		scanner.useDelimiter(",");
 
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		try {
-//			frozenEndosomes config = objectMapper.readValue(new File(frozenEndosomes.configFilename), frozenEndosomes.class);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-		// InitialOrganelles InOr = InitialOrganelles.getInstance();
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
@@ -177,6 +97,7 @@ public class FreezeDryEndosomes {
 				case "initSolubleContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getSolubleMet().contains(b[i]))continue;
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
@@ -185,7 +106,9 @@ public class FreezeDryEndosomes {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
-	//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
+						if (!ModelProperties.getInstance().getMembraneMet().contains(b[i]))continue;
+
+						System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitMembraneContent().put(b[0], value);
@@ -208,6 +131,8 @@ public class FreezeDryEndosomes {
 				case "initSolubleContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getInitPMsolubleRecycle().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getInitPMsolubleRecycle().get(b[i]).equals(0.0))continue;
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					PlasmaMembrane.getInstance().getSolubleRecycle().putAll(value);
@@ -216,6 +141,9 @@ public class FreezeDryEndosomes {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getInitPMmembraneRecycle().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getInitPMmembraneRecycle().get(b[i]).equals(0.0))continue;
+
 //						System.out.println("VALOR MALO PM " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
@@ -239,6 +167,9 @@ public class FreezeDryEndosomes {
 				case "initSolubleContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getInitERsolubleRecycle().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getInitERsolubleRecycle().get(b[i]).equals(0.0))continue;
+
 //						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
@@ -248,6 +179,9 @@ public class FreezeDryEndosomes {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getInitERmembraneRecycle().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getInitERmembraneRecycle().get(b[i]).equals(0.0))continue;
+
 //						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
@@ -271,6 +205,9 @@ public class FreezeDryEndosomes {
 				case "initSolubleContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getSolubleCell().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getSolubleCell().get(b[i]).equals(0.0))continue;
+
 //						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
@@ -280,6 +217,9 @@ public class FreezeDryEndosomes {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+						if (!ModelProperties.getInstance().getMembraneCell().containsKey(b[i]))continue;
+						if (!ModelProperties.getInstance().getMembraneCell().get(b[i]).equals(0.0))continue;
+
 //						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}

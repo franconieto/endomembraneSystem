@@ -100,7 +100,7 @@ public class Results {
 	    }
 //	Copy the inputFrozenEndosomes file from data to folder with the Results
 	{
-	File source = new File(LocalPath.getInstance().getPathInputIT()+inputFile);
+	File source = new File(LocalPath.getInstance().getPathInputIT()+"inputFrozenEndosomes.csv");
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+"inputFrozenEndosomes.csv");
 	System.out.println(source.toString() + dest.toString());
 	    try {

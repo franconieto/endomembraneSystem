@@ -59,6 +59,7 @@ public class ModelProperties {
 	public HashMap<String, Double> endoplasmicReticulumProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
+	public HashMap<String, Double> membraneCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMsolubleRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initERmembraneRecycle = new HashMap<String, Double>();
@@ -145,6 +146,10 @@ public class ModelProperties {
 		return rabSet;
 	}
 	public HashMap<String, Double> getSolubleCell() {
+//		System.out.println("DEVUELVE SOLUBLE CELL " + solubleCell);
+		return solubleCell;
+	}
+	public HashMap<String, Double> getMembraneCell() {
 //		System.out.println("DEVUELVE SOLUBLE CELL " + solubleCell);
 		return solubleCell;
 	}
@@ -248,8 +253,9 @@ public class ModelProperties {
 			}
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
+					System.out.println(b[i] + b[i+1]);
 				modelProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(modelProperties.getMembraneRecycle());
+
 				}
 				break;
 			}
