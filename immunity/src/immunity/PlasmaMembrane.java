@@ -58,13 +58,14 @@ public class PlasmaMembrane {
 //		plasmaMembraneTimeSeries = null;
 //		
 //		membraneRecycle.putAll(modelProperties.initPMmembraneRecycle);
-// PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
+// PM now are in the csv file as proportions of the PM area and need to be multiplied by the area	
+// 3 april 2023.  Now PM are in number of molecules		
 		for (String met : modelProperties.initPMmembraneRecycle.keySet() ){
-		membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met)*plasmaMembraneArea);
+		membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met));
 		}
 //		System.out.println("PM membraneRecycle "+ membraneRecycle);
 		for (String met : modelProperties.initPMsolubleRecycle.keySet() ){
-		solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met)*plasmaMembraneVolume);
+		solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met));
 		}
 //		System.out.println("PM solubleRecycle "+ solubleRecycle);		
 //		for (String met : modelProperties.solubleMet ){
