@@ -25,10 +25,13 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 
 	@Override
 	public VSpatial getVSpatial(Scale object, VSpatial spatial) {
-		// 15 measure the size of the grid.  Each point is 50*15X50*15
-		double scale = Cell.orgScale;
-		int scale500nm = (int) (750d*500d/1500d*scale);
-		VSpatial createRectangle = this.factory.createRectangle(scale500nm, 15);
+// World is a 50 X 50 space.  Each unit of space has a size of 15 
+// hence the world is 750 X 750 size in repast units, that correspond to 
+//	a 1500nm x 1500nm cellular space at orgScale = 1.  
+// To convert from cell units (in nm) to repast space = nm/2  *  orgSpace
+//	the scale is taking into account in the scale of the shape (see below);
+		int scale500nm = (int) (500d/2d);
+		VSpatial createRectangle = this.factory.createRectangle(scale500nm, 25);
 		return createRectangle;
 
 	}
@@ -57,7 +60,7 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 
 	@Override
 	public float getScale(Scale object) {	
-		return (float) 1;
+		return (float) Cell.orgScale;
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 	}
 	@Override
 	public Font getLabelFont(Scale object) {
-		return new Font("sansserif", Font.BOLD, 14);
+		return new Font("sansserif", Font.BOLD, (int) (28*Cell.orgScale));
 	}
 
 	@Override

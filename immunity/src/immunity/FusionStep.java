@@ -48,8 +48,7 @@ public class FusionStep {
 
 	private static void fusionNoGolgi(Endosome endosome) {
 		GridPoint pt = grid.getLocation(endosome);
-		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
-		// square
+		// The 50 x 50 grid is equivalent to a 750 x 750 space units
 		// Hence, size/15 is in grid units
 		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,

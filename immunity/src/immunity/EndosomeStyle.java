@@ -66,9 +66,11 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         VSpatial shape = null;
 //		double a1 = 2*rsphere/(1+svr);
 		//if (a>10){
-//      AT THE BEGINNING, 1 SPACE UNIT = 1 NM, NOW 1 SPACE UNIT = 3 NM
-//      BEFORE, 50X15 WERE 750 NM, NOW ARE 2250 NM. This justify the 
-//      division by 3 to pass from nm to space units
+// World is a 50 X 50 space.  Each unit of space has a size of 15 
+// hence the world is 750 X 750 size in repast units, that correspond to 
+// a 1500nm x 1500nm cellular space at orgScale = 1.  
+// To convert from cell units (in nm) to repast space = nm/2
+// the orgScale is taking into account in the scale of the shape (see below);
         double a=object.a;
         double c=object.c;
         if (a<=c){
@@ -277,7 +279,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public Font getLabelFont(Endosome object) {
-		return new Font("sansserif", Font.BOLD, 14);
+		return new Font("sansserif", Font.BOLD, (int) (28 * Cell.orgScale));
 	}
 
 	@Override

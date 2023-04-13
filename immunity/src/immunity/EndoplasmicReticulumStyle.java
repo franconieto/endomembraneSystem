@@ -23,7 +23,7 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 
 	@Override
 	public VSpatial getVSpatial(EndoplasmicReticulum object, VSpatial spatial) {
-		// 15 measure the size of the grid.  Each point is 50*15X50*15
+// 15 measure the size of the grid.  The world is 50*15 X 50*15 or 750 X 750
 		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
 		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
 //		System.out.println(areaER + "areas ER  " + initialAreaER);

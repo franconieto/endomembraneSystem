@@ -22,12 +22,12 @@ public class Cell {
 //	Cell characteristics
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
-	public static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
-	public static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//20.0; // radius tubule
+	public static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule scale
+	public static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//20.0; // radius tubule scale
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 // two radius large (almost a sphere)
-	public static double minCistern = 4E5;
-	public static double maxCistern = 1.6E6;
+	public static double minCistern = 4E5;// scale
+	public static double maxCistern = 1.6E6;//scale
 	public static double rIV = rcyl; //Internal vesicle radius similar to tubule radius 
 //	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 //	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome

@@ -18,7 +18,8 @@ public class MTStyle implements StyleOGL2D<MT> {
 		this.factory = factory;
 
 	}
-
+	// World is a 50 X 50 space.  Each unit of space has a size of 15 
+	// hence the world is 750 X 750 size in repast units
 	@Override
 	public VSpatial getVSpatial(MT object, VSpatial spatial) {
 		double h =  object.getMtheading();

@@ -198,9 +198,9 @@ public class FissionStep {
 		// of the old vesicle heading with a normal distribution
 //		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
 		double deltax = Math.cos(endosome.heading * 2d * Math.PI / 360d)
-				* (endosome.size + b.size) * Cell.orgScale/15;
+				* (endosome.size + b.size) * Cell.orgScale/30;
 		double deltay = Math.sin(endosome.heading * 2d * Math.PI / 360d)
-				* (endosome.size+ b.size)* Cell.orgScale/15;
+				* (endosome.size+ b.size)* Cell.orgScale/30;
 		
 		NdPoint myPoint = space.getLocation(endosome);
 		double x = myPoint.getX()+ deltax;

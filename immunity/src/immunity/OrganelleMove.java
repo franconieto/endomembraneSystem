@@ -23,6 +23,7 @@ public class OrganelleMove {
 				&& isGolgi(endosome))
 		{ // test if it is Golgi
 //			System.out.println(endosome.heading + " INITIAL HEADING");
+//			endosome.heading = -90;
 			moveCistern(endosome);
 		}
 		else {
@@ -46,11 +47,12 @@ public class OrganelleMove {
 
 
 	private static void moveCistern(Endosome endosome) {
+		double scale = Cell.orgScale;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();		
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
-		double between = 2;//distance between cisterna Math.random();
+		double between = 4*scale;//distance between cisterna Math.random();
 		double high = 10;//distance from the bottom
 //		endosome.setHeading(-90d);// = -90d;			
 //		System.out.println(endosome.heading + " final HEADING");
