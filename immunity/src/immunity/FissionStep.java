@@ -31,9 +31,16 @@ public class FissionStep {
 		String rabInTube = null;
 		double vo = endosome.volume;
 		double so = endosome.area;
+		double minV = 0d;//		minimal volume
+		if (endosome.getSolubleContent().containsKey("mvb")) {
+			minV = endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * Cell.rIV * Cell.rIV * Cell.rIV;
+		}
+		if (endosome.getSolubleContent().containsKey("solubleMarker")) {
+			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		}
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
-		if (vo < 2 * volMincyl)
-			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
+		if (vo - minV < 2 * volMincyl)
+			return; // if available volume too small to form two mincyl do not split. Volume of a cylinder of 2
 					// cylinder radius long (almost a sphere)
 		if (so < 2 * Cell.mincyl)
 			return; // if the surface is less than two minimus tubules, abort
@@ -365,6 +372,13 @@ public class FissionStep {
 		}
 		else // following rules are for an organelle that is not a tubule
 		{
+			double minV = 0d;
+			if (endosome.getSolubleContent().containsKey("mvb")) {
+				minV = endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * Cell.rIV * Cell.rIV * Cell.rIV;
+			}
+			if (endosome.getSolubleContent().containsKey("solubleMarker")) {
+				minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+			}
 			while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
 					// organelle area should be enough to cover the volume (ssphere)
 					// to cover the cylinder already formed (scylinder) and to
@@ -375,7 +389,9 @@ public class FissionStep {
 					&& (scylinder < 0.5 * so) // the area of the cylinder must not
 					// be larger than 50% of the total
 					// area
-					&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+					&& ((vo - minV - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+//					The volume left (vo - volume of the formed cylinder - volume of an additional cylinder unit) must be larger
+//					than 2 x minimal cylinders
 					&& Math.random()< 0.9 //cut the tubule with a 10% probability in each step.  Prevent too long tubules
 					) {
 				//			/ ((so - scylinder - 4 * Math.PI
