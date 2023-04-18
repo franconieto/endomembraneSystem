@@ -49,10 +49,10 @@ public class EndoplasmicReticulum {
 // contents.	tMembranes, membrane and soluble content recycling
 
 		ModelProperties modelProperties = ModelProperties.getInstance();
-		endoplasmicReticulumArea = ModelProperties.getInstance().getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 
-		initialendoplasmicReticulumArea = ModelProperties.getInstance().getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
-		endoplasmicReticulumVolume = ModelProperties.getInstance().getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
-		initialendoplasmicReticulumVolume = ModelProperties.getInstance().getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
+		endoplasmicReticulumArea = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 
+		initialendoplasmicReticulumArea = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
+		endoplasmicReticulumVolume = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
+		initialendoplasmicReticulumVolume = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
 
 //		endoplasmicReticulumTimeSeries = null;
 //		

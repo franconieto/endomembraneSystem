@@ -112,8 +112,8 @@ public class Results {
 	    }
 	}
 	
-//	@ScheduledMethod(start = 1)
-//	public void header(){
+	@ScheduledMethod(start = 1)
+	public void header(){
 //		TreeMap<String, Double> header = new TreeMap<String, Double>(String.CASE_INSENSITIVE_ORDER);
 //		header.putAll(content());
 //		try {
@@ -122,14 +122,14 @@ public class Results {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		TreeMap<String, Double> singleEndosomeHeader = new TreeMap<String, Double>(endosomeContent());
-//		try {
-//			writeToCsvHeadSingleEndosomeHeader(singleEndosomeHeader);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+		TreeMap<String, Double> singleEndosomeHeader = new TreeMap<String, Double>(endosomeContent());
+		try {
+			writeToCsvHeadSingleEndosomeHeader(singleEndosomeHeader);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {

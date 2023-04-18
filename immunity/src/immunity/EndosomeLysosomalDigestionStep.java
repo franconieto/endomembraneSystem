@@ -22,17 +22,25 @@ public class EndosomeLysosomalDigestionStep {
 				&& endosome.volume > 2*4/3*Math.PI*Cell.rcyl*Cell.rcyl*Cell.rcyl)// it is big enough
 			{			
 			squeezeOrganelle(endosome);
+			Endosome.endosomeShape(endosome);
 //			System.out.println(so/vo+" INICIAL "+so*so*so/(vo*vo)/(36*Math.PI) +" FINAL"+so/endosome.volume+endosome);
 			}
 
 	}
 
 	private static void squeezeOrganelle(Endosome endosome) {		
-//The Organelle volume is decreased.  If it contains internal vesicles, controls that it has enough volume
+//The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
 		double r = Cell.rcyl;		
 		double newVolume = endosome.volume * 0.999;	//era 0.99	
-		if(!endosome.solubleContent.containsKey("mvb")
-				|| newVolume > endosome.solubleContent.get("mvb")*4/3*Math.PI*r*r*r)
+		double minV = Cell.mincyl;//		minimal volume
+		if (endosome.getSolubleContent().containsKey("mvb")) {
+			minV = minV + endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * r * r * r;
+		}
+		if (endosome.getSolubleContent().containsKey("solubleMarker")
+				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
+			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		}
+		if(newVolume > minV)
 		{
 		endosome.volume = newVolume;
 		Endosome.endosomeShape(endosome);		
@@ -97,19 +105,19 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.membraneContent.put("membraneMarker", 1d);}
 //		endosome.membraneContent.put("vATPase", finalvATPase);
 		
-// volume is decreased
-		if (endosome.solubleContent.containsKey("mvb")) {
-				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
-						* rabDratio;
-			} else {
-				deltaV = endosome.volume * 0.001 * rabDratio;
-			}
-		endosome.volume = endosome.volume - deltaV;
-		if (endosome.volume < Math.PI*Cell.rcyl*Cell.rcyl*endosome.c) {
-			endosome.volume =Math.PI*Cell.rcyl*Cell.rcyl*endosome.c;
-		}
-//		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
-		Endosome.endosomeShape(endosome);
+//// volume is decreased
+//		if (endosome.solubleContent.containsKey("mvb")) {
+//				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
+//						* rabDratio;
+//			} else {
+//				deltaV = endosome.volume * 0.001 * rabDratio;
+//			}
+//		endosome.volume = endosome.volume - deltaV;
+//		if (endosome.volume < Math.PI*Cell.rcyl*Cell.rcyl*endosome.c) {
+//			endosome.volume =Math.PI*Cell.rcyl*Cell.rcyl*endosome.c;
+//		}
+////		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
+//		Endosome.endosomeShape(endosome);
 		
 	}
 }

@@ -43,11 +43,18 @@ public class EndosomeInternalVesicleStep {
 		double vp = vo + vIV;
 		double sp = so - sIV;
 //		not enough membrane to contain the already present internal vesicles plus the new one
+		double minV = 0d;//		minimal volume = volume bead + volume mvb
+		double mvbVolume = 0d; // volume of the mvb
+		if (endosome.getSolubleContent().containsKey("solubleMarker")
+				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
+			minV = ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		}
 		if (endosome.solubleContent.containsKey("mvb")) {
-			double mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;
-			if (sp * sp * sp / (mvbVolume * mvbVolume) <= 36 * Math.PI) return;
+			mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;
+		}
+		minV = minV + mvbVolume;
+		if (sp * sp * sp / (minV * minV) <= 36 * Math.PI) return;
 
-		} 
 
 //	if after the formation of a new vesicles is a sphere (no extra membrane for the volume) stop
 		if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) return;

@@ -79,7 +79,7 @@ public class OrganelleMove {
 
 
 	public static void moveNormal(Endosome endosome) {
-		if (endosome.area > 200000) return;
+//		if (endosome.area > 200000) return;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		/*
