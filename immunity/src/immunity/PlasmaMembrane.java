@@ -30,10 +30,10 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-	private double plasmaMembraneVolume;
-	private double plasmaMembraneArea;
-	private double initialPlasmaMembraneVolume;
-	private double initialPlasmaMembraneArea;
+	private static double plasmaMembraneVolume;
+	private static double plasmaMembraneArea;
+	private static double initialPlasmaMembraneVolume;
+	private static double initialPlasmaMembraneArea;
 //	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
 //	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 	TreeMap<Integer, HashMap<String, Double>> plasmaMembraneTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
@@ -118,7 +118,7 @@ public class PlasmaMembrane {
 		
 		if (membraneRecycle.containsKey("pepMHCIEn")) c1 = membraneRecycle.get("pepMHCIEn");
 		c1 = c1/plasmaMembraneArea;
-		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
+//		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
 		if (c1>1) c1=1;
 		pmcolor = (int) (c1*255);
 		

@@ -18,30 +18,35 @@ public class EndoplasmicReticulum {
 
 	// a single Cell is created
 	private static EndoplasmicReticulum instance;
-	static {
-		instance = new EndoplasmicReticulum(space, grid);
+	public static EndoplasmicReticulum getInstance() {
+		if (instance == null) {
+			instance = new EndoplasmicReticulum(space, grid);
+		}
+		return instance;
 	}
+	
+	
+//	static {
+//		instance = new EndoplasmicReticulum(space, grid);
+//	}
 	
 
 	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(ModelProperties.getInstance().getInitERmembraneRecycle()); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
-	public int ercolor = 0;
-	public int red = 0;
-	public int green = 0;	
-	public int blue = 0;
-	private double endoplasmicReticulumVolume;
-	private double endoplasmicReticulumArea;
-	private double initialendoplasmicReticulumVolume;
-	private double initialendoplasmicReticulumArea;
+	public static int ercolor = 0;
+	public static int red = 0;
+	public static int green = 0;	
+	public static int blue = 0;
+	private static double endoplasmicReticulumVolume;
+	private static double endoplasmicReticulumArea;
+	private static double initialendoplasmicReticulumVolume;
+	private static double initialendoplasmicReticulumArea;
 //	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getendoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 
 //	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getendoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
 	TreeMap<Integer, HashMap<String, Double>> endoplasmicReticulumTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 	public String endoplasmicReticulumCopasi = ModelProperties.getInstance().getCopasiFiles().get("endoplasmicReticulumCopasi");
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
-
-
-
 
 	// Constructor
 	public EndoplasmicReticulum(ContinuousSpace<Object> space, Grid<Object> grid) {
@@ -91,14 +96,17 @@ public class EndoplasmicReticulum {
 	if(Math.random()>0.005)return;
 //	int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	double growth = 1.005;
-//	if (tick < 120000) growth = 1.005;
+//	EndoplasmicReticulum.getInstance();
+	//	if (tick < 120000) growth = 1.005;
 //	else if (tick >= 120000 && tick < 300000)growth = 1.0025;
 //	else growth = 1.01;
 //	System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 //	As set here, it growth at 0.005(probability)*0.005(from 1.005)*1000(ticks per min) = 0.025 of ER 
 //	area per 1000 tick (1 min) = 2.5%/min
-	double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+	double areaER = EndoplasmicReticulum.getendoplasmicReticulumArea();
+	System.out.println("INITIAL AREA ER  " + areaER);
 	EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
+	System.out.println("FINAL AREA ER  " + EndoplasmicReticulum.getendoplasmicReticulumArea());
 	}
 	public void changeColor() {
 		double c1 = 0d;
@@ -114,9 +122,9 @@ public class EndoplasmicReticulum {
 	
 
 	// GETTERS AND SETTERS (to get and set Cell contents)
-	public static EndoplasmicReticulum getInstance() {
-		return instance;
-	}
+//	public static EndoplasmicReticulum getInstance() {
+//		return instance;
+//	}
 		public HashMap<String, Double> getMembraneRecycle() {
 		return membraneRecycle;
 	}
@@ -129,17 +137,17 @@ public class EndoplasmicReticulum {
 		return ercolor;
 	}
 
-	public double getendoplasmicReticulumArea() {
+	public static double getendoplasmicReticulumArea() {
 		return endoplasmicReticulumArea;
 	}
 	
 	public void setEndoplasmicReticulumArea(double endoplasmicReticulumArea) {
-		this.endoplasmicReticulumArea = endoplasmicReticulumArea;
+		EndoplasmicReticulum.endoplasmicReticulumArea = endoplasmicReticulumArea;
 		
 	}
 	
 	public void setEndoplasmicReticulumVolume(double endoplasmicReticulumVolume) {
-		this.endoplasmicReticulumVolume = endoplasmicReticulumVolume;
+		EndoplasmicReticulum.endoplasmicReticulumVolume = endoplasmicReticulumVolume;
 		
 	}
 
@@ -152,7 +160,7 @@ public class EndoplasmicReticulum {
 	}
 	
 	public final void setendoplasmicReticulumArea(double endoplasmicReticulumArea) {
-		this.endoplasmicReticulumArea = endoplasmicReticulumArea;
+		EndoplasmicReticulum.endoplasmicReticulumArea = endoplasmicReticulumArea;
 	}
 
 	public final double getInitialendoplasmicReticulumVolume() {

@@ -24,8 +24,8 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 	@Override
 	public VSpatial getVSpatial(EndoplasmicReticulum object, VSpatial spatial) {
 // 15 measure the size of the grid.  The world is 50*15 X 50*15 or 750 X 750
-		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
-		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+		double initialAreaER = object.getInitialendoplasmicReticulumArea();
+		double areaER = object.getendoplasmicReticulumArea();
 //		System.out.println(areaER + "areas ER  " + initialAreaER);
 		VSpatial createRectangle = this.factory.createRectangle((int) (areaER/initialAreaER*750), (int) (20d*Cell.orgScale));
 		return createRectangle;
