@@ -47,13 +47,16 @@ public class PlasmaMembrane {
 	// Constructor
 	public PlasmaMembrane(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains the contents that are in the plasma membrane.  It is modified by Endosome that uses and changes the PM
-// contents.	tMembranes, membrane and soluble content recycling
+// contents.
+//		initial area and volume correspond to the world size (1500*400) and (1500*400*1000) corrected by the orgScale
+
 
 		ModelProperties modelProperties = ModelProperties.getInstance();
+		double orgScale = modelProperties.getCellK().get("orgScale");
 		plasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
-		initialPlasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 	
+		initialPlasmaMembraneArea = 1500*400/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 	
 		plasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
-		initialPlasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+		initialPlasmaMembraneVolume = 1500*400*1000/orgScale/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 
 //		plasmaMembraneTimeSeries = null;
 //		

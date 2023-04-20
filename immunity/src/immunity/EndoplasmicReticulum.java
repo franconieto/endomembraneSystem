@@ -46,13 +46,15 @@ public class EndoplasmicReticulum {
 	// Constructor
 	public EndoplasmicReticulum(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains the contents that are in the plasma membrane.  It is modified by Endosome that uses and changes the ER
-// contents.	tMembranes, membrane and soluble content recycling
+// contents.	
+//		initial area and volume correspond to the world size (1500*400) and (1500*400*1000) corrected by the orgScale
 
 		ModelProperties modelProperties = ModelProperties.getInstance();
+		double orgScale = modelProperties.getCellK().get("orgScale");
 		endoplasmicReticulumArea = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 
-		initialendoplasmicReticulumArea = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
+		initialendoplasmicReticulumArea = 1500*400/orgScale/orgScale;// modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
 		endoplasmicReticulumVolume = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
-		initialendoplasmicReticulumVolume = modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
+		initialendoplasmicReticulumVolume = 1500*400*1000/orgScale/orgScale/orgScale;// modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
 
 //		endoplasmicReticulumTimeSeries = null;
 //		
@@ -76,6 +78,8 @@ public class EndoplasmicReticulum {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		changeColor();
+		growth();
+		
 //		this.membraneRecycle = endoplasmicReticulum.getInstance().getMembraneRecycle();
 //		this.solubleRecycle = endoplasmicReticulum.getInstance().getSolubleRecycle();
 //		this.endoplasmicReticulumTimeSeries=endoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries();
@@ -83,7 +87,19 @@ public class EndoplasmicReticulum {
 //		this.changeColor();
 
 		}
-	
+	public void growth() {
+	if(Math.random()>0.005)return;
+//	int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	double growth = 1.005;
+//	if (tick < 120000) growth = 1.005;
+//	else if (tick >= 120000 && tick < 300000)growth = 1.0025;
+//	else growth = 1.01;
+//	System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+//	As set here, it growth at 0.005(probability)*0.005(from 1.005)*1000(ticks per min) = 0.025 of ER 
+//	area per 1000 tick (1 min) = 2.5%/min
+	double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+	EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
+	}
 	public void changeColor() {
 		double c1 = 0d;
 		{

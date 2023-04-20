@@ -94,17 +94,7 @@ public class Cell {
 	public void uptake() {
 		if (Math.random() <ModelProperties.getInstance().getActionProbabilities().get("p_ERUptake"))
 		{
-//			int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-			double growth = 1.005;
-//			if (tick < 120000) growth = 1.005;
-//			else if (tick >= 120000 && tick < 300000)growth = 1.0025;
-//			else growth = 1.01;
-//			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
-//			ER growth here, but should be in ER and not depending on ER uptake probability.
-//			As set here, it growth ar 0.005(uptake prob set in the input)*0.005*1000 = 0.025 of ER 
-//			area per 1000 tick (1 min) = 2.5%/min
-			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
+
 			UptakeStep2.uptake(this);
 			}
 			

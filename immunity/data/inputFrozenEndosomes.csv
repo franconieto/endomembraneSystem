@@ -1177,6 +1177,6 @@ endosome293i,initSolubleContent,ovaEn,0.0,protonEn,24.960414570049267,TfaEn,0.03
 plasmaMembrane,initOrgProp,area,2395692.8555452446,volume,4.8E9,
 plasmaMembrane,initMembraneContent,exCxEn,256.95243291436077,R-TfaEn,8.591709539356651E-35,oMHCIEn,4.9551100709981276E-5,membraneMarker,0.0,cMHCIEn,4843.659729198462,R-TfEn,2.0756363336110932E-35,pepMHCIEn,0.0,REn,17.614882729753187,imCxEn,256.95243291436077
 plasmaMembrane,initSolubleContent,ovaEn,4.8E8,mvb,5.7985529813632635,protonEn,191040.00000000003,pepEn,0.0,TfaEn,2881.4064
-EReticulum,initOrgProp,area,2364121.6283370946,volume,4.8E9,
+EReticulum,initOrgProp,area,8364121.6283370946,volume,4.8E9,
 EReticulum,initMembraneContent,cMHCIEn,195352.8546939383,REn,19535.28546939387,exCxEn,19535.28546939387,imCxEn,19535.28546939387
 EReticulum,initSolubleContent,
