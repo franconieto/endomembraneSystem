@@ -201,20 +201,20 @@ public class Endosome {
 //		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 //		System.out.println("actionProbabilities " + ModelProperties.getInstance().getActionProbabilities());
-	
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeTetherStep"))EndosomeTetherStep.tether(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeInternalVesicleStep"))EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_FusionStep"))FusionStep.fusion(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_FissionStep"))FissionStep.split(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeLysosomalDigestionStep"))EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+		ModelProperties modelProperties = ModelProperties.getInstance();
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeTetherStep"))EndosomeTetherStep.tether(this);
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeInternalVesicleStep"))EndosomeInternalVesicleStep.internalVesicle(this);
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_FusionStep"))FusionStep.fusion(this);
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_FissionStep"))FissionStep.split(this);
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeLysosomalDigestionStep"))EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
 		//if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+		String name =  modelProperties .getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeRecycleStep"))RecycleStep.recycle(this);
-		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeMaturationStep"))EndosomeMaturationStep.matureCheck(this); //	
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeRecycleStep"))RecycleStep.recycle(this);
+		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeMaturationStep"))EndosomeMaturationStep.matureCheck(this); //	
 	}
 //	public List<Endosome> getAllEndosomes(){
 //		List<Endosome> allEndosomes = new ArrayList<Endosome>();
@@ -233,8 +233,7 @@ public class Endosome {
 		double rsphere = Math.pow((v * 3d) / (4d * Math.PI), (1d / 3d));
 		double p =  1.6075;
 //		double svratio = s / v; // ratio surface volume
-		double aa = rsphere; // initial a from the radius of a sphere of volume
-								// v
+		double aa = rsphere; // initial a from the radius of a sphere of volume v
 		double cc = aa;// initially, c=a
 //		NOT USED
 		// calculation from s/v for a cylinder that it is more or less the same than for an
@@ -244,9 +243,10 @@ public class Endosome {
 //		Surface ellipsoid (tubule or disk) = 4*PI*(  ((a^2p + 2 a^p * c^p)/3)^(1/p)  )
 //		where p =  1.6075
 		double golgiArea = 0;
+		ModelProperties modelProperties = ModelProperties.getInstance();
 		for (String rab : end.rabContent.keySet())
 		{
-			if (ModelProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
+			if (modelProperties.getRabOrganelle().get(rab).contains("Golgi"))
 			{
 				golgiArea = golgiArea + end.rabContent.get(rab);
 			}
@@ -256,7 +256,7 @@ public class Endosome {
 			double[] radiusHeight = radiusHeightCistern(end.area, end.volume);
 			end.a = radiusHeight[0];
 			end.c = radiusHeight[1];
-		if (end.a <=0) System.out.println("FLAT FLAT  a    " + end.a +" c " + end.c);
+//		if (end.a <=0) System.out.println("FLAT FLAT  a    " + end.a +" c " + end.c);
 		}
 		else 	
 		{
@@ -403,12 +403,6 @@ public class Endosome {
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double blue = solubleContent.get(contentPlot) / volume;
-//			if (blue > 1.1)
-//				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
-//						+ solubleContent.get(contentPlot) + "  " + area);
-//			if (blue > 1)
-//				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
-//			// System.out.println("mHCI content" + red);
 			return blue;
 		} else
 			return 0;
@@ -445,60 +439,7 @@ public class Endosome {
 			return 0;
 	}
 
-	/*
-	 * enum RabCont { RABA, RABB, RABC, RABD, RABE } public RabCont rabCont;
-	 * 
-	 * enum MemCont { TF, EGF, MHCI, PROT1, PROT2 } public MemCont memCont;
-	 * 
-	 * enum SolCont { OVA, DEXTRAN } public SolCont solCont;
-	 */
-//	public double getSolContRab() { // (String solCont, String rab){
-//		Parameters params = RunEnvironment.getInstance().getParameters();
-//		String rab = (String) params.getValue("Rab");
-//		String solCont = (String) params.getValue("soluble");
-//		Double sc = null;
-//		Double rc = null;
-//		if (solCont != null && rab != null) {
-//			if (solubleContent.containsKey(solCont)) {
-//				sc = solubleContent.get(solCont);
-//			} else
-//				return 0;
-//			if (rabContent.containsKey(rab)) {
-//				rc = rabContent.get(rab);
-//			} else
-//				return 0;
-//			if (sc != null && rc != null) {
-//				double solContRab = sc * rc / this.area;
-//				return solContRab;
-//			}
-//		}
-//		return 0;
-//	}
-
-//	public double getSolContRab2() { // (String solCont, String rab){
-//		Parameters params = RunEnvironment.getInstance().getParameters();
-//		String rab = (String) params.getValue("Rab2");
-//		String solCont = (String) params.getValue("soluble");
-//		Double sc = null;
-//		Double rc = null;
-//		if (solCont != null && rab != null) {
-//			if (solubleContent.containsKey(solCont)) {
 	
-//				sc = solubleContent.get(solCont);
-//			} else
-//				return 0;
-//			if (rabContent.containsKey(rab)) {
-//				rc = rabContent.get(rab);
-//			} else
-//				return 0;
-//			if (sc != null && rc != null) {
-//				double solContRab = sc * rc / this.area;
-//				return solContRab;
-//			}
-//		}
-//		return 0;
-//	}
-
 	public double getMemContRab(String memCont, String rab) {
 		double memContRab = membraneContent.get(memCont) * rabContent.get(rab)
 				/ this.area;
@@ -536,6 +477,7 @@ public class Endosome {
 		double s = area;
 		double v = volume;
 		double p = 1.6075;
+		double PI = Math.PI;
 //		double s1 = s0;
 
 //		double r = 0;
@@ -546,11 +488,11 @@ public class Endosome {
 //			double s2 = 2*Math.PI*r*r+ 2*Math.PI*r*h;
 //			s1 = s1-(s2-s0);	
 ////			System.out.println("FLAT pasos  c  a  " + r +" " + h);
-		double aa = Math.pow(s/Math.PI/4d, (1d/2d));
+		double aa = Math.pow(s/PI/4d, (1d/2d));
 		double cc = aa;
 		for (int i = 0; i < 4; i++) {
 //			System.out.println("initial  " + aa +" c " + cc);
-			cc = v*3/4/Math.PI/aa/aa;	
+			cc = v*3/4/PI/aa/aa;	
 //			form ellipsoid area s = 4*PI*[(ap*bp+ap*cp+bp*cp)/3]^1/p where ap = a^p ....
 //			Since in the spheroid a = b
 //			s = 4*PI*[(ap^2+2ap*cp)/3]^1/p where ap = a^p ....
@@ -559,7 +501,7 @@ public class Endosome {
 
 			double aq = 1;
 			double bq = 2*Math.pow(cc, 1/p);
-			double cq = -Math.pow(s/4/Math.PI, p)*3d;
+			double cq = -Math.pow(s/4/PI, p)*3d;
 			double dq =  bq * bq - 4 * aq * cq;
 			double root1 = (- bq + Math.sqrt(dq))/(2*aq);
 			//			    root2 = (-b - Math.sqrt(d))/(2*a);			
@@ -569,7 +511,7 @@ public class Endosome {
 //			System.out.println("LONG LONG  c  a  " + aa +" c " + cc);
 		}
 
-		if (aa<=0)System.out.println("PROBLEMA FORMA cistern" + s +" "+v+"");
+//		if (aa<=0)System.out.println("PROBLEMA FORMA cistern" + s +" "+v+"");
 		return new double[] {aa, cc};
 		
 	}
@@ -577,14 +519,15 @@ public class Endosome {
 		double s = area;
 		double v = volume;
 		double p = 1.6075;
-		double aa = Math.pow(s/Math.PI/4d, (1d/2d));
+		double PI = Math.PI;
+		double aa = Math.pow(s/PI/4d, (1d/2d));
 		double cc = aa;
 		for (int i = 0; i < 4; i++) {
-			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+			cc=Math.pow((Math.pow((s/4/PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+			aa = Math.sqrt(v*3d/(4d*PI*cc));			
 		}
 //		System.out.println("LONG LONG  c  a  " + cc +" " + aa);
-		if (aa<=0)System.out.println("PROBLEMA FORMA tube " + s +" "+v+"");
+//		if (aa<=0)System.out.println("PROBLEMA FORMA tube " + s +" "+v+"");
 		return new double[] {aa, cc};
 	}
 	

@@ -17,6 +17,8 @@ import repast.simphony.util.ContextUtils;
 public class FusionStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
+	static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
+	private static double minEn = 4 * Math.PI*Math.pow(rendo, 2);
 	
 	public static void fusion (Endosome endosome) {
 // Select an organelle and decide is is large enough to recruit other proximal organelles that
@@ -35,8 +37,8 @@ public class FusionStep {
 		
 // The organelle selected must be larger than a vesicles
 // rendo is the radius of a new endosome from PM and also of a new ERGIC from ER 
-		double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
-		if ((endosome.area <= 4 * Math.PI*Math.pow(rendo, 2))){return;};
+//		double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
+		if (endosome.area <= minEn){return;};
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 // assesses if the organelle selected is a Golgi structure.  For this it sum all the Golgi domains			
@@ -109,11 +111,11 @@ public class FusionStep {
 			// include all endosomes
 			for (Endosome end : gr.items()) {
 				if (end.equals(endosome)) continue;// if it is itself 
-				double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
+//				double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
 				boolean isGolgi2 = isGolgi(end);				
 //If the second organelle is Golgi and it is large (cistern) only fuse if it is homotypic fusion
 				if (isGolgi2 // it is a Golgi structure
-						&& (end.area > 4 * Math.PI*Math.pow(rendo, 2))// it is larger than a vesicle
+						&& (end.area > minEn)// it is larger than a vesicle.  If it is small, it can fuse homotypically
 						&& // and they DO NOT share the same maximal Rab domain
   	 				    !(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey().equals
 						(Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
@@ -147,8 +149,6 @@ public class FusionStep {
 		endosome.getEndosomeTimeSeries().clear();
 		endosome.getRabTimeSeries().clear();
 //		The time series will be re-calculated by COPASI call in the next tick
-//		
-
 	}
 
 
@@ -220,8 +220,9 @@ public class FusionStep {
 	
 	private static boolean isGolgi(Endosome endosome) {
 		double areaGolgi = 0d;
+		ModelProperties modelProperties = ModelProperties.getInstance();
 		for (String rab : endosome.getRabContent().keySet()){
-			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
+			String name = modelProperties.rabOrganelle.get(rab);
 			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.getRabContent().get(rab);} 
 		}
 		boolean isGolgi = false;
