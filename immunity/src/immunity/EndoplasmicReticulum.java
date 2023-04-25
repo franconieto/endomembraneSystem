@@ -104,9 +104,9 @@ public class EndoplasmicReticulum {
 //	As set here, it growth at 0.005(probability)*0.005(from 1.005)*1000(ticks per min) = 0.025 of ER 
 //	area per 1000 tick (1 min) = 2.5%/min
 	double areaER = EndoplasmicReticulum.getendoplasmicReticulumArea();
-	System.out.println("INITIAL AREA ER  " + areaER);
+//	System.out.println("INITIAL AREA ER  " + areaER);
 	EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
-	System.out.println("FINAL AREA ER  " + EndoplasmicReticulum.getendoplasmicReticulumArea());
+//	System.out.println("FINAL AREA ER  " + EndoplasmicReticulum.getendoplasmicReticulumArea());
 	}
 	public void changeColor() {
 		double c1 = 0d;

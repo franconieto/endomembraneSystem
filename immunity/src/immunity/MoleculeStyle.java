@@ -21,7 +21,11 @@ import repast.simphony.visualizationOGL2D.StyleOGL2D;
 import saf.v3d.ShapeFactory2D;
 import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
-
+/*
+ * This class was created to model molecules at the PM. PM is a plane and the
+ * molecules can move in this plane.
+ * It is not used at present
+ */
 
 public class MoleculeStyle implements StyleOGL2D<MoleculePM> {
 

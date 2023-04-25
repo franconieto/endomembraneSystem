@@ -1,4 +1,5 @@
 package immunity;
+/*This class is a test and is not used now*/
 
 import org.junit.Before;
 import org.junit.Test;

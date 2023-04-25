@@ -13,6 +13,11 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 
 public class MoleculePM {
+	/*
+	 * This class was created to model molecules at the PM. PM is a plane and the
+	 * molecules can move in this plane.
+	 * It is not used at present
+	 */
 	
 	// globals
 	private ContinuousSpace<Object> spacePM;

@@ -17,12 +17,12 @@ public class EndosomeTetherStep {
 		private static Grid<Object> grid;
 		
 		public static void tether (Endosome endosome) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
+//			HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
+//			HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
+//			HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
 			space = endosome.getSpace();
 			grid = endosome.getGrid();
-			double cellLimit = 3 * Cell.orgScale;
+//			double cellLimit = 3 * Cell.orgScale;
 
 		GridPoint pt = grid.getLocation(endosome);
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
@@ -59,7 +59,7 @@ public class EndosomeTetherStep {
 
 		for (Endosome end : endosomesToTether) {
 
-			Random r = new Random();
+			Random r = new Random();		
 			double rr = r.nextGaussian();
 			end.heading = rr * 30d + largest.heading;
 	//		OrganelleMove.moveTowards(end);

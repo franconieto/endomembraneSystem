@@ -11,21 +11,22 @@ import repast.simphony.space.grid.Grid;
 
 public class EndosomeInternalVesicleStep {
 
-	
+	static double PI = Math.PI;
+	static double rcyl = ModelProperties.getInstance().cellK.get("rcyl");
+	static double beadVolume = ModelProperties.getInstance().getCellK().get("beadVolume");
 
 	public static void internalVesicle(Endosome endosome) {
 		// if it is a sphere do not for  internal vesicles. Not enough membrane
-//		if (1>0) return;
 		double so = endosome.area;
 		double vo = endosome.volume;
-		boolean isSphere = (so * so * so / (vo * vo) <= 36.001 * Math.PI); 
+		boolean isSphere = (so * so * so / (vo * vo) <= 36.001 * PI); 
 		if (isSphere) return;
 		// if it is a tubule do not for  internal vesicles
-		boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
+		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);
 		if (isTubule) return;
-		double rIV = ModelProperties.getInstance().cellK.get("rcyl"); // Internal vesicle radius
-		double vIV = 4 / 3 * Math.PI * Math.pow(rIV, 3); // volume 33510
-		double sIV = 4 * Math.PI * Math.pow(rIV, 2);// surface 5026
+		double rIV = rcyl; // Internal vesicle radius
+		double vIV = 4 / 3 * PI * Math.pow(rIV, 3); // volume 33510
+		double sIV = 4 * PI * Math.pow(rIV, 2);// surface 5026
 		if (vo < 2 * vIV) // too small
 			return;
 		if (so < 2 * sIV)// too small
@@ -42,53 +43,26 @@ public class EndosomeInternalVesicleStep {
 		}
 		double vp = vo + vIV;
 		double sp = so - sIV;
-//		not enough membrane to contain the already present internal vesicles plus the new one
+//		if after the formation of a new vesicles it is a sphere (no extra membrane for the volume) stop
+			if (sp * sp * sp / (vp * vp) <= 36 * PI) return;
+//		Control if there is enough membrane to contain the already present internal vesicles 
+//		plus the new one. Control if there is a bead (soluble marker with a volume)
 		double minV = 0d;//		minimal volume = volume bead + volume mvb
 		double mvbVolume = 0d; // volume of the mvb
 		if (endosome.getSolubleContent().containsKey("solubleMarker")
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
-			minV = ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+			minV = beadVolume; // 5E8 bead volume. Need to be introduced in Model Properties
 		}
 		if (endosome.solubleContent.containsKey("mvb")) {
 			mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;
 		}
 		minV = minV + mvbVolume;
-		if (sp * sp * sp / (minV * minV) <= 36 * Math.PI) return;
-
-
-//	if after the formation of a new vesicles is a sphere (no extra membrane for the volume) stop
-		if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) return;
+		if (sp * sp * sp / (minV * minV) <= 36 * PI) return;
 
 		//		System.out.println("INTERNAL VESICLE ORGANELLE" + organelle);
-		/*
-		 * if (endosome.getRabContent().containsKey("RabE") &&
-		 * endosome.getRabContent().get("RabE")/endosome.area>0.5){ return; } //
-		 * Organelles with pure RabC (Endosome Recycling Compartment) do not form
-		 * internal vesicles if (endosome.getRabContent().containsKey("RabC") &&
-		 * endosome.getRabContent().get("RabC")/endosome.area>0.95){ return; } // if
-		 * (endosome.getRabContent().containsKey("RabB") // &&
-		 * endosome.getRabContent().get("RabB")/endosome.area>0.95){ // return; // }
-		 */
-		//	lysSurface will allow large structures to form several internal vesicles
-		// Other organelles form a single vesicle (notice that the for loop run at least once)
+//	After all this control, a single vesicle is formed.
 
 		int nroVesicles = 1;
-//		if (organelle.equals("LE"))
-//		//for LE, several vesicles can form in a single tick. For EE and SE only one vesicle
-//		{
-//			int lysSurface = (int) (endosome.getRabContent().get(maxRab)/sIV);
-//			// about 1 times the area of and internal vesicle
-//			for (int i = 1; i<=lysSurface ; i++)
-//			{
-//				if (Math.random()<0.5) continue; // in each loop there is a 50% chance of forming an internal vesicle 
-//				vp = vp + vIV;
-//				sp = sp - sIV;
-//				//	if after the formation of the vesicles is a sphere (no extra membrane for the volume) stop
-//				if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) break;// if the resulting surface cannot embrance the resulting
-//				else nroVesicles = nroVesicles + 1;
-//				// volume
-//			}
-//		}
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 				ModelProperties.getInstance().getRabTropism());
 		endosome.area = endosome.area - nroVesicles * sIV;
@@ -130,8 +104,7 @@ public class EndosomeInternalVesicleStep {
 		// Membrane content with mvb tropism is degraded (e.g. EGF)
 		//this can be established in RabTropism adding in the EGF tropisms "mvb",
 		for (String content : endosome.membraneContent.keySet()) {
-			System.out.println(endosome.membraneContent+"\n"+ content + "\n" + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
-
+//			System.out.println(endosome.membraneContent+"\n"+ content + "\n" + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
 			if(content.equals("membraneMarker")) {
 				if (endosome.membraneContent.get("membraneMarker")>0.9){
 					endosome.membraneContent.put("membraneMarker", 1d);
@@ -147,8 +120,8 @@ public class EndosomeInternalVesicleStep {
 
 				if (mem <= 0) mem = 0d;
 				endosome.membraneContent.put(content, mem);
-				//			If not special tropism, the membrane content is incorporated 
-				//			into the internal vesicle proportional to the surface and degraded
+//			If not special tropism, the membrane content is incorporated 
+//			into the internal vesicle proportional to the surface and degraded
 			} 
 			else 
 			{

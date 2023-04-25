@@ -130,7 +130,7 @@ public class PlasmaMembraneCopasiStep {
 			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneVolume());
 		else 
 			receptorDynamics.getModel().getCompartment(i).setInitialValue(1);
-		System.out.println("compartimiento volumen \t" + receptorDynamics.getModel().getCompartment(i).getObjectName() + receptorDynamics.getModel().getCompartment(i).getInitialValue());
+//		System.out.println("compartimiento volumen \t" + receptorDynamics.getModel().getCompartment(i).getObjectName() + receptorDynamics.getModel().getCompartment(i).getInitialValue());
         }
 
 		Set<String> metabolites = receptorDynamics.getMetabolites();
@@ -201,7 +201,7 @@ public class PlasmaMembraneCopasiStep {
 		int stepNro = (int) timeSeries.getRecordedSteps();
 		int metNro = metabolites.size();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		System.out.println("steps "+stepNro+"metNro " + metNro  + " tick " + tick);
+//		System.out.println("steps "+stepNro+"metNro " + metNro  + " tick " + tick);
 		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){

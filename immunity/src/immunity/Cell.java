@@ -70,7 +70,7 @@ public class Cell {
 		Cell.getInstance().getSolubleCell().put("protonCy", 1E-4);
 //		Cytosol digestion
 		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
-		System.out.println("soluble Cell  wwwww  " + soluble);
+//		System.out.println("soluble Cell  wwwww  " + soluble);
 		if (soluble.containsKey("pepCy")) {
 		double cyto = soluble.get("pepCy")*0.9995;
 		Cell.getInstance().getSolubleCell().put("pepCy", cyto);
@@ -83,7 +83,7 @@ public class Cell {
 //		this.changeColor();
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
 		if (Math.random() < 0.0 && name.endsWith(".cps")){
-			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+//			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
 		}
 			

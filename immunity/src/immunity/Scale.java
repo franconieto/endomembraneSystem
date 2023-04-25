@@ -37,7 +37,8 @@ public class Scale {
 //		At time scale 1 and Organelle scale = 1, I move the endosome 1/50th of the space equivalent to
 //		1500 nm (50 ticks to travel 1500 nm).  Since the velocity of an  organelle in a MT is 1000 nm/sec, one step are 30 nm  and hence
 //		ONE TICKIS 0.03 SEC.
-//		At time scale 0.5, I move the endosome 60 nm. Hence, one tick is 0.06 sec.
+//		At scale 0.5 one tick 0.06 sec.  Hence 1000 ticks = 60 sec = 1 min
+
 		int totalSecs = (int)(tick*0.03/Cell.timeScale);
 		int hours = totalSecs / 3600;
 		int minutes = (totalSecs % 3600) / 60;

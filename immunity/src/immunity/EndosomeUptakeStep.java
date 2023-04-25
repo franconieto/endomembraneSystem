@@ -17,6 +17,9 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class EndosomeUptakeStep {
+	/*
+	 * this class is not used.  Now uptake is managed from Cell class using UptakeStep2 class
+	 */
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static Object membreneMet;

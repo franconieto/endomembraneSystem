@@ -346,7 +346,7 @@ public class FissionStep {
 				vcylinder = endosome.volume/2;
 				scylinder = endosome.area/2;
 
-				System.out.println("tubule cut in two");
+//				System.out.println("tubule cut in two");
 				return new double[] {scylinder, vcylinder};
 			}
 			else {
@@ -688,7 +688,7 @@ public class FissionStep {
 		if (copyMap.size() < 2) {
 
 			for (String rab1 : copyMap.keySet()) {
-				System.out.println("UNICO RAB " + copyMap);
+//				System.out.println("UNICO RAB " + copyMap);
 				return rab1;
 			}
 		}
@@ -715,7 +715,7 @@ public class FissionStep {
 				for (String rab1 : keys){
 				tubuleTropism = tubuleTropism + ModelProperties.getInstance().getTubuleTropism().get(rab1);
 					if (rnd <= tubuleTropism){
-						System.out.println(copyMap + " RabInTubeSelected " + rab1);
+//						System.out.println(copyMap + " RabInTubeSelected " + rab1);
 						return rab1;
 					}
 				}

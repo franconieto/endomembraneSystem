@@ -17,15 +17,16 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class UptakeStep2 {
-	private static ContinuousSpace<Object> space;
-	private static Grid<Object> grid;
-	private static Object membreneMet;
+//	private static ContinuousSpace<Object> space;
+//	private static Grid<Object> grid;
+//	private static Object membreneMet;
 	public static 	double uptakeArea = 0d;
+	private static double PI = Math.PI;
 	public static void uptake(Cell cell) {
 		//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		//		if (tick < 100) return;
-		space = cell.getSpace();
-		grid = cell.getGrid();
+//		space = cell.getSpace();
+//		grid = cell.getGrid();
 
 		/* ?
 		 * Old logic.  The amount of domains of each Rab is compared with the initial value
@@ -63,7 +64,7 @@ public class UptakeStep2 {
 		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
 
 		if(areaPM > initialAreaPM) {
-		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
+//		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
 		newUptake(cell,"RabA");
 	//	System.out.println(" 	NEW NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
 		}
@@ -72,7 +73,7 @@ public class UptakeStep2 {
 		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
 
 		if (areaER > initialAreaER) {
-			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
+//			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
 		
 		newSecretion(cell,"RabI");
 		}
@@ -100,7 +101,7 @@ public class UptakeStep2 {
 		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<450000000) return;
 		//if the selected Rab correspond to Early Endosomes, new uptake
 		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
-		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
+//		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
 		if (selectedOrganelle.equals("EE")){ 
 			newUptake(cell,selectedRab);}
 		else if (selectedOrganelle.equals("ERGIC")){ 
@@ -113,7 +114,7 @@ public class UptakeStep2 {
 		
 	private static void newSecretion(Cell cell, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
-		System.out.println("secretion " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
+//		System.out.println("secretion " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
 		HashMap<String, Double> rabCell = cell.getRabCell();
@@ -138,11 +139,11 @@ public class UptakeStep2 {
 		double f = 1.6075;
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
-		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double area = 4d* PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
 		double endoplasmicReticulum = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea() - area;
-		System.out.println("LUEGO DE UPTAKE  "+ endoplasmicReticulum);
+//		System.out.println("LUEGO DE UPTAKE  "+ endoplasmicReticulum);
 		EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(endoplasmicReticulum);
-		double volume = 4d/3d*Math.PI*a*a*c;
+		double volume = 4d/3d*PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabI");
 		value = value + area;
@@ -244,7 +245,7 @@ public class UptakeStep2 {
 
 	private static void newUptake(Cell cell, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
-		System.out.println("UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
+//		System.out.println("UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		
@@ -272,15 +273,15 @@ public class UptakeStep2 {
 		double f = 1.6075;
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
-		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double area = 4d* PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
 		double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() - area;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick == 1) uptakeArea = 0d;
 		uptakeArea = uptakeArea + area;
-		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
+//		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		
-		double volume = 4d/3d*Math.PI*a*a*c;
+		double volume = 4d/3d*PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabA");
 		value = value + area;
@@ -430,8 +431,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			double minRadius = Cell.rcyl*1.1;
 			double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);// radius cylinder Gogli cisterna				
 			double c = minRadius; //cylinder height
-			double area = 2* Math.PI*Math.pow(a, 2)+ 2*Math.PI*a*c;
-			double volume =Math.PI*Math.pow(a, 2)* c;
+			double area = 2* PI*Math.pow(a, 2)+ 2*PI*a*c;
+			double volume =PI*Math.pow(a, 2)* c;
 			initOrgProp.put("area", area);
 			initOrgProp.put("volume", volume);
 			double value = Results.instance.getTotalRabs().get(selectedRab);
@@ -448,7 +449,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			// membrane content associated to this rab/total area of the rab.  This is an average of the membrane content associated to the specific
 			// Rab.  Marker is set to zero.
 					for (String mem : membraneMet){
-						//				System.out.println(mem + "  MMEEMM " + selectedRab + "\n " + Results.getInstance().getContentDist());
+//						//				System.out.println(mem + "  MMEEMM " + selectedRab + "\n " + Results.getInstance().getContentDist());
 						value = Results.getInstance().getContentDist().get(mem+selectedRab)
 								/Results.getInstance().getTotalRabs().get(selectedRab);
 						membraneContent.put(mem, value * area);
@@ -486,7 +487,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 	
 		}
 		else {// new non Golgi organelles
-		System.out.println(kind + " UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+//		System.out.println(kind + " UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get(kind));
@@ -500,8 +501,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double f = 1.6075;
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
-		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-		double volume = 4d/3d*Math.PI*a*a*c;
+		double area = 4d* PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double volume = 4d/3d*PI*a*a*c;
 		double value = Results.instance.getTotalRabs().get(selectedRab);
 		value = value + area;
 		Results.instance.getTotalRabs().put(selectedRab, value);

@@ -5,7 +5,9 @@ import cern.jet.random.engine.DRand;
 import cern.jet.random.engine.RandomEngine;
 
 public class EndosomeLysosomalDigestionStep {
-
+	static double PI = Math.PI;
+	static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
+	
 	
 	public static void lysosomalDigestion(Endosome endosome) {
 		double so = endosome.area;
@@ -18,8 +20,8 @@ public class EndosomeLysosomalDigestionStep {
 			digestLysosome(endosome);
 			}
 		// All organelles with a s/v similar to the sphere undergoes a loss of volume
-		else if (so*so*so/(vo*vo) < 1.1*36*Math.PI// small surface/volume ration
-				&& endosome.volume > 2*4/3*Math.PI*Cell.rcyl*Cell.rcyl*Cell.rcyl)// it is big enough
+		else if (so*so*so/(vo*vo) < 1.1*36*PI// small surface/volume ration
+				&& endosome.volume > 2*4/3*PI*rcyl*rcyl*rcyl)// it is big enough
 			{			
 			squeezeOrganelle(endosome);
 			Endosome.endosomeShape(endosome);
@@ -30,7 +32,7 @@ public class EndosomeLysosomalDigestionStep {
 
 	private static void squeezeOrganelle(Endosome endosome) {		
 //The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
-		double r = Cell.rcyl;		
+		double r = rcyl;		
 		double newVolume = endosome.volume * 0.999;	//era 0.99	
 		double minV = Cell.mincyl;//		minimal volume
 		if (endosome.getSolubleContent().containsKey("mvb")) {
@@ -42,8 +44,7 @@ public class EndosomeLysosomalDigestionStep {
 		}
 		if(newVolume > minV)
 		{
-		endosome.volume = newVolume;
-		Endosome.endosomeShape(endosome);		
+		endosome.volume = newVolume;		
 		}
 	}
 
@@ -71,21 +72,12 @@ public class EndosomeLysosomalDigestionStep {
 			initialMvb = endosome.solubleContent.get("mvb");
 			if (Math.random() < 0.1 * rabDratio) {// was 0.01
 				finalMvb = Math.round(initialMvb*0.99);
-//				Area of the internal area digested is added to the plasma membrane (synthesis is assumed)
-//				double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() + (initialMvb-finalMvb)*areaIV;//OJO
-//				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 			} else {
 				finalMvb = initialMvb;
 			}
 		}
-//		if (endosome.solubleContent.containsKey("solubleMarker")) {
-//				finalSolMark = 1d;
-//			}
-//		if (endosome.membraneContent.containsKey("membraneMarker")) {
-//			finalMemMark = 1d;
-//		}
-//		finalvATPase = endosome.membraneContent.get("vATPase");
-//		Soluble component are digested proportional to the RabD content
+
+//		Soluble component are digested proportional to the RabD content, except the soluble marker
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		for (String sol : endosome.solubleContent.keySet()) {
@@ -104,20 +96,7 @@ public class EndosomeLysosomalDigestionStep {
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){
 			endosome.membraneContent.put("membraneMarker", 1d);}
 //		endosome.membraneContent.put("vATPase", finalvATPase);
-		
-//// volume is decreased
-//		if (endosome.solubleContent.containsKey("mvb")) {
-//				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
-//						* rabDratio;
-//			} else {
-//				deltaV = endosome.volume * 0.001 * rabDratio;
-//			}
-//		endosome.volume = endosome.volume - deltaV;
-//		if (endosome.volume < Math.PI*Cell.rcyl*Cell.rcyl*endosome.c) {
-//			endosome.volume =Math.PI*Cell.rcyl*Cell.rcyl*endosome.c;
-//		}
-////		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
-//		Endosome.endosomeShape(endosome);
+
 		
 	}
 }

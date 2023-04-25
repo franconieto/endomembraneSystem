@@ -27,7 +27,7 @@ public class RecycleStep {
 //NEW RULES
 //			if near the PM and larger domain is EE and is a tubule, recycle
 //			So, I am assuming a fast recycling cycle probably with Rab4 tubules 
-/* I will test the posibility of recycling of the membrane and having a balance of EE
+/* I will test the possibility of recycling of the membrane and having a balance of EE
  * and PM membrane.
  */		
 			else if (y >= 50-2*cellLimit)
@@ -49,55 +49,7 @@ public class RecycleStep {
 			if (organelle.equals("ERGIC")) recycleERGIC(endosome, maxRab);
 			else return;
 		}
-		
-		
-		/*
-		 * if (endosome.rabContent.containsKey("RabA") && Math.random() <=
-		 * endosome.rabContent.get("RabA")/endosome.area &&
-		 * endosome.membraneContent.containsKey("Tf")){
-		 * 
-		 * 
-		 * double tfValue = endosome.membraneContent.get("Tf"); HashMap<String, Double>
-		 * membraneRecycle = PlasmaMembrane.getInstance() .getMembraneRecycle(); if
-		 * (membraneRecycle.containsKey("Tf")) { double sum = membraneRecycle.get("Tf")
-		 * + tfValue; membraneRecycle.put("Tf", sum); } else { membraneRecycle.put("Tf",
-		 * tfValue);}
-		 * 
-		 * endosome.membraneContent.put("Tf", 0d); return; } double recyProb = 0.0; for
-		 * (String rab: endosome.rabContent.keySet()){ recyProb = recyProb +
-		 * endosome.rabContent.get(rab) / endosome.area
-		 * ModelProperties.getInstance().rabRecyProb.get(rab); } if (Math.random() >=
-		 * recyProb){ return;} // if not near the PM // or without a recycling Rab
-		 * return // recycling Rabs are RabA and RabC (Rab11) else { // RECYCLE //
-		 * Recycle membrane content HashMap<String, Double> membraneRecycle =
-		 * PlasmaMembrane.getInstance() .getMembraneRecycle(); for (String key1 :
-		 * endosome.membraneContent.keySet()) { if (membraneRecycle.containsKey(key1)) {
-		 * double sum = membraneRecycle.get(key1) + membraneContent.get(key1);
-		 * membraneRecycle.put(key1, sum); } else { membraneRecycle.put(key1,
-		 * membraneContent.get(key1)); } }
-		 * 
-		 * endosome.membraneContent.clear();
-		 * 
-		 * HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
-		 * .getSolubleRecycle(); double endopH = endosome.solubleContent.get("proton");
-		 * for (String key1 : endosome.solubleContent.keySet()) { if
-		 * (solubleRecycle.containsKey(key1)) { double sum = solubleRecycle.get(key1) +
-		 * solubleContent.get(key1); solubleRecycle.put(key1, sum); } else {
-		 * solubleRecycle.put(key1, solubleContent.get(key1)); } }
-		 * 
-		 * endosome.solubleContent.clear(); endosome.solubleContent.put("proton",
-		 * endopH); endosome.getEndosomeTimeSeries().clear();
-		 * PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear(); double
-		 * rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule
-		 * double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of
-		 * a tubule with the area of the recycled endosome endosome.volume =
-		 * Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a
-		 * tubule. endosome.heading = -90; //moving in the nucleus direction // to
-		 * delete the recycled endosome. // Context<Object> context =
-		 * ContextUtils.getContext(endosome); // context.remove(endosome);
-		 * 
-		 * }
-		 */		
+	
 		}
 
 	private static void recycleERGIC(Endosome endosome, String maxRab) {
@@ -141,14 +93,7 @@ public class RecycleStep {
 			EndoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries().clear();
 			double endoplasmicReticulum = endosome.area + EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
 			EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(endoplasmicReticulum);
-			System.out.println("RECYCLING OF ER  " + endoplasmicReticulum);
-			/*
-			 * double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius
-			 * tubule double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);//
-			 * length of a tubule with the area of the recycled endosome endosome.volume =
-			 * Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a
-			 * tubule. endosome.heading = -90; //moving in the nucleus direction
-			 */
+//			System.out.println("RECYCLING OF ER  " + endoplasmicReticulum);
 //			to delete the recycled endosome.
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
@@ -159,7 +104,11 @@ public class RecycleStep {
 
 	private static void recycleRE(Endosome endosome, String maxRab) {
 		//NEW RULES
-//		if near the PM and it is a Recycling Endosome, kiss and run exocytosis (recycle all but the endosome is preserved
+		/*
+		 * If near the PM and it is a Recycling Endosome, kiss and run exocytosis
+		 * (recycle all but the endosome is preserved 4% the endosome is eliminated
+		 * (full fusion)
+		 */
 		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area; 
 		if (Math.random() >= recyProb){
 			return;}
@@ -195,7 +144,7 @@ public class RecycleStep {
 				PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
-				System.out.println("SECRETION TGN OR RE" + plasmaMembrane);
+//				System.out.println("SECRETION TGN OR RE" + plasmaMembrane);
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 			}
@@ -258,21 +207,13 @@ public class RecycleStep {
 				}
 			}
 
-//			endosome.solubleContent.clear();
-//			endosome.solubleContent.put("proton", endopH);
-//			endosome.getEndosomeTimeSeries().clear();
+
 			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 			double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 			PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
-			System.out.println("RECYCLING OF EE  " + plasmaMembrane);
-			/*
-			 * double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius
-			 * tubule double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);//
-			 * length of a tubule with the area of the recycled endosome endosome.volume =
-			 * Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a
-			 * tubule. endosome.heading = -90; //moving in the nucleus direction
-			 */
-//			to delete the recycled endosome.
+//			System.out.println("RECYCLING OF EE  " + plasmaMembrane);
+
+//			to delete the recycled EE endosome.
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 

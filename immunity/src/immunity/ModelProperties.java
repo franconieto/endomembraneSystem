@@ -452,20 +452,7 @@ public class ModelProperties {
 
 		}
 		scanner.close();
-//		System.out.println("CP INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
-//		System.out.println("CP CELL PROPERITES CARGADO");
-//		System.out.println("CP VALOR "+ modelProperties.cellK);
-//		System.out.println(modelProperties.initRabCell);
-//		System.out.println(modelProperties.initPMmembraneRecycle);
-//		System.out.println(modelProperties.rabCompatibility);
-//		System.out.println(modelProperties.membraneMet);
-//		System.out.println(modelProperties.solubleMet);
-//		System.out.println(modelProperties.tubuleTropism);
-//		System.out.println(modelProperties.rabTropism);
-//		System.out.println("CP VALOR cellProp" + modelProperties.mtTropism);
-//		System.out.println("CP PARA RAB A UPTAKE" +InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
-		
-		///////////////////////////////////////////////////////
+
 	}
 
 	public static void loadOrganellePropertiesFromCsv(ModelProperties modelProperties) throws IOException {

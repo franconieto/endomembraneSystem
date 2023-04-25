@@ -324,7 +324,7 @@ public class PlasmaMembraneCopasi {
             assert metab != null;  
   //          if (((Double) metab.getConcentration()).isNaN())
             
-            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
+ //           System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
         }
 
 	}

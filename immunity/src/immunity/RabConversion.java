@@ -1,5 +1,8 @@
 package immunity;
 
+/*
+ * This class is used when Rab maturarion  is handled by COPASI.  
+*/
 import java.util.HashMap;
 import java.util.Set;
 

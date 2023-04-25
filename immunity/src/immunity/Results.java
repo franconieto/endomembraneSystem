@@ -70,7 +70,6 @@ public class Results {
 	String TotalRabs = mainpath.getPathTotalRabs();
 	String cisternsAreaPath = mainpath.getPathCisternsArea();
 	String mypathTable = mainpath.getMyPathOut();// agregado para que el output del excel no creara nuevos folders
-//	Puede ser esto la falla en batch de la generaci�n de estos archivos?
 //	
 	public static Results getInstance() {
 		return instance;
@@ -480,7 +479,7 @@ public class Results {
 			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
 		}
 		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
-		System.out.println(" CISTERNA AREA      " + cisternsArea);
+//		System.out.println(" CISTERNA AREA      " + cisternsArea);
 
 
 		double entropy = 0d;
@@ -499,7 +498,7 @@ public class Results {
 		
 		
 //		sum in cytosol
-		System.out.println(" TOTAL INDIVIDUAL ENTROPY      " + cisternsArea.get("entropyInd"));
+//		System.out.println(" TOTAL INDIVIDUAL ENTROPY      " + cisternsArea.get("entropyInd"));
 
 
 	}
