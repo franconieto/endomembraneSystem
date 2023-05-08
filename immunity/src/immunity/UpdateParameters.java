@@ -146,6 +146,14 @@ public class UpdateParameters {
 		
 	}
 	private void testEvent() {
+		/*
+		 * The procedure tests if in the ModelProperties (loaded from the csv input file)
+		 * there is an event corresponding to a specific tick (100, 200,...).  In that case,
+		 * the file specified by that event is read and parameters of the model can be
+		 * changed.
+		 * Each event consist of a tick number and the name of a file associated with the event
+		 * The file is read from the data folder
+		*/
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount() - 1.0;
 // the schedule goes from 1 to 101, 201.  To fit the event tick, I subtract "1"
 //		System.out.println(tick + " EVENTOS " + ModelProperties.getInstance().getEvents());

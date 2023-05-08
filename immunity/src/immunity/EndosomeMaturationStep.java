@@ -14,6 +14,7 @@ public class EndosomeMaturationStep {
 //		Maturation according to the maxRab. First argument (oldRab) is the Rab that matures to the second argument (newRab)
 //		The third argument is the proportion of the total domain that matures.  Most for Rab5-Rab7 and the Golgi domains.  Only
 //		10% for Rab5-Rab22).5% for RabB-RabC
+		if (endosome.area > 2E6) System.out.println("MATURE " + maxRab + endosome.getRabContent());
 		switch (maxRab)
 		{
 		case "RabA":
@@ -66,7 +67,7 @@ public class EndosomeMaturationStep {
 //		maturation of the major domain.  This prevent that a small area maturation will reset the
 //		tickCount to zero
 		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
-//		System.out.println(endosome.getRabContent());
+		if (endosome.area > 2E6) System.out.println("MATURE " + endosome.getRabContent());
 	}
 	
 }

@@ -122,6 +122,18 @@ public class FreezeDryEndosomes {
 			}
 			case "pl":
 			{
+				/*Conflict between values in the initial organelles (PM, ER, Cy)in the 
+				 * input file and the frozenEndosomes.  To solve this, the following
+				 * logic is applied
+				 * For PM, ER and Cyt
+				 * If in the input file a cargo is not present, it will not be present in the initial organelles, 
+				 * no matter what is present in the frozenEndosomes
+				 * If in the input file a cargo is given value = 0, the value in the frozenEndosomes will be
+				 * included in the initial organelles
+				 * If in the input file a cargo is given a value different from 0, this value
+				 * will be loaded in the initial organelles, no matter what is present in the
+				 * frozenEndosomes
+				*/
 				switch (b[1]) {
 				case "initOrgProp": {
 					PlasmaMembrane.getInstance().setPlasmaMembraneArea(Double.parseDouble(b[3]));
