@@ -30,7 +30,6 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.essentials.RepastEssentials;
-import repast.simphony.parameter.Parameter;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
@@ -146,15 +145,15 @@ public class Endosome {
 		double mvb = 0; // number of internal vesicles
 	}
 
-	public double getXcoor() {
+	public final double getXcoor() {
 		return xcoor;
 	}
 
-	public void setXcoor(double xcoor) {
+	public final void setXcoor(double xcoor) {
 		this.xcoor = xcoor;
 	}
 	
-	public double getYcoor() {
+	public final double getYcoor() {
 		return ycoor;
 	}
 	public void setYcoor(double ycoor) {

@@ -512,17 +512,7 @@ public class FissionStep {
 	
 
 	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle){
-		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropi
-		double rIV = ModelProperties.getInstance().cellK.get("rcyl");
-		double vBead = ModelProperties.getInstance().cellK.get("beadVolume");
-		double vIV = 4 / 3 * PI * Math.pow(rIV, 3);
-		double freeVolume = 0;
-		if (endosome.getSolubleContent().containsKey("mvb")){
-			freeVolume = vo - endosome.getSolubleContent().get("mvb")* vIV;
-		}
-		if (endosome.getSolubleContent().containsKey("solubleContent")){
-			freeVolume = freeVolume - vBead;
-		}
+		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 						endosome.solubleContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
@@ -534,23 +524,23 @@ public class FissionStep {
 				// specified tropism or no tropism for the rabInTube,
 				// hence, distribute according to
 				// the volume ratio
-				SolSplitPropVolume(endosome, content, vo, freeVolume);
+				SolSplitPropVolume(endosome, content, vo, vVesicle);
 			}
 
 			else if (rabTropism.get(content).contains("tub")) 
 			{
-				SolSplitToTubule(endosome, content, vo, freeVolume);
+				SolSplitToTubule(endosome, content, vo, vVesicle);
 
 			}
 			else if (rabTropism.get(content).contains("sph")) { // if the tropism
 				// is "0" goes
 				// to the sphere
 
-				SolSplitToSphere(endosome, content, vo, freeVolume);	
+				SolSplitToSphere(endosome, content, vo, vVesicle);	
 
 			}
 			else{// rabtropism for the content is not "tub" or "sph", then distribute according to volume 
-				SolSplitPropVolume(endosome, content, vo, freeVolume);
+				SolSplitPropVolume(endosome, content, vo, vVesicle);
 			}
 		}
 

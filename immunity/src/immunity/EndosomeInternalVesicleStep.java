@@ -12,7 +12,7 @@ import repast.simphony.space.grid.Grid;
 public class EndosomeInternalVesicleStep {
 
 	static double PI = Math.PI;
-	static double rIV = ModelProperties.getInstance().cellK.get("rcyl");
+	static double rcyl = ModelProperties.getInstance().cellK.get("rcyl");
 	static double beadVolume = ModelProperties.getInstance().getCellK().get("beadVolume");
 
 	public static void internalVesicle(Endosome endosome) {
@@ -22,8 +22,9 @@ public class EndosomeInternalVesicleStep {
 		boolean isSphere = (so * so * so / (vo * vo) <= 36.001 * PI); 
 		if (isSphere) return;
 		// if it is a tubule do not for  internal vesicles
-		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rIV*rIV) <=rIV/2);
+		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);
 		if (isTubule) return;
+		double rIV = rcyl; // Internal vesicle radius
 		double vIV = 4 / 3 * PI * Math.pow(rIV, 3); // volume 33510
 		double sIV = 4 * PI * Math.pow(rIV, 2);// surface 5026
 		if (vo < 2 * vIV) // too small

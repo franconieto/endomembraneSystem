@@ -64,16 +64,16 @@ public class UptakeStep2 {
 		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
 
 		if(areaPM > initialAreaPM) {
-		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
+//		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
 		newUptake(cell,"RabA");
-//		System.out.println(" 	NEW NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);
+	//	System.out.println(" 	NEW NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
 		}
 		//		NEW SECRETORY EVENT
 		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
 		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
 
 		if (areaER > initialAreaER) {
-			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
+//			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
 		
 		newSecretion(cell,"RabI");
 		}

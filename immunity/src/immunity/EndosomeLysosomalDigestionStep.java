@@ -33,7 +33,7 @@ public class EndosomeLysosomalDigestionStep {
 	private static void squeezeOrganelle(Endosome endosome) {		
 //The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
 		double r = rcyl;		
-		double newVolume = endosome.volume * 0.99;	//era 0.99 luego 0.999 4-5-23 vuelvo a 0.99
+		double newVolume = endosome.volume * 0.999;	//era 0.99	
 		double minV = Cell.mincyl;//		minimal volume
 		if (endosome.getSolubleContent().containsKey("mvb")) {
 			minV = minV + endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * r * r * r;
@@ -70,7 +70,7 @@ public class EndosomeLysosomalDigestionStep {
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.1 * rabDratio) {// was 0.01 0.1
+			if (Math.random() < 0.1 * rabDratio) {// was 0.01
 				finalMvb = Math.round(initialMvb*0.99);
 			} else {
 				finalMvb = initialMvb;
