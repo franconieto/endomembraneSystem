@@ -85,7 +85,7 @@ public class FusionStep {
 		double rsphere = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 		double size = rsphere;
 		endosome.speed = 1d/ size;
-		Endosome.endosomeShape(endosome);
+		//Endosome.endosomeShape(endosome);
 		endosome.getEndosomeTimeSeries().clear();
 		endosome.getRabTimeSeries().clear();
 		endosomes_to_delete.clear();

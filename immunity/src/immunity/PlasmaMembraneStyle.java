@@ -2,6 +2,8 @@ package immunity;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 
 //import javax.media.opengl.GL2;
 
@@ -29,8 +31,14 @@ public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
 		double initialAreaPM = object.getInitialPlasmaMembraneArea();
 		double areaPM = object.getPlasmaMembraneArea();		
 //		System.out.println(areaPM + "areas PM  " + initialAreaPM);
-		VSpatial createRectangle = this.factory.createRectangle((int) (areaPM/initialAreaPM*750), (int) (20d*Cell.orgScale));
-		return createRectangle;
+		double angle1 = Math.random()* 40 + 40;
+		double angle2 = Math.random()* 40 + 40;		
+        Shape rec = new RoundRectangle2D.Double(-750/2, -750/2, areaPM/initialAreaPM*750, areaPM/initialAreaPM*750,  angle1, angle2);
+//      arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
+        VSpatial shape = this.factory.createShape(rec);
+        return shape;
+//		VSpatial createRectangle = this.factory.createRectangle((int) (areaPM/initialAreaPM*750), (int) (areaPM/initialAreaPM*750));
+//		return createRectangle;
 	}
 
 	@Override

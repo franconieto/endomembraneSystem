@@ -71,15 +71,16 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 // a 1500nm x 1500nm cellular space at orgScale = 1.  
 // To convert from cell units (in nm) to repast space = nm/2
 // the orgScale is taking into account in the scale of the shape (see below);
-        double a=object.a;
-        double c=object.c;
+        Endosome.endosomeShape(object);
+        double a=object.getA();
+        double c=object.getC();
         if (a<=c){
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
         }
         else{
 //        	object.heading = -90;
-//  		System.out.println("a  "+a+"  c  "+ c);
+//  		System.out.println(object.toString()+ "a  "+a+"  c  "+ c);
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         shape = this.factory.createShape(rec);

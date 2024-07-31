@@ -24,10 +24,20 @@ public class OrganelleMove {
 		{ // test if it is Golgi
 //			System.out.println(endosome.heading + " INITIAL HEADING");
 //			endosome.heading = -90;
-			moveCistern(endosome);
+			moveCistern(endosome);		
+			NdPoint myPoint = space.getLocation(endosome);
+			double x = myPoint.getX();
+			endosome.setXcoor(x);
+			double y = myPoint.getY();
+			endosome.setYcoor(y);
 		}
 		else {
 			moveNormal(endosome);
+			NdPoint myPoint = space.getLocation(endosome);
+			double x = myPoint.getX();
+			endosome.setXcoor(x);
+			double y = myPoint.getY();
+			endosome.setYcoor(y);
 		}
 	}
 	
@@ -53,7 +63,7 @@ public class OrganelleMove {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
 		double between = 4*scale;//distance between cisterna Math.random();
-		double high = 10;//distance from the bottom
+		double high = 29;//distance from the bottom
 //		endosome.setHeading(-90d);// = -90d;			
 //		System.out.println(endosome.heading + " final HEADING");
 		
@@ -70,11 +80,6 @@ public class OrganelleMove {
 			grid.moveTo(endosome, 25, (int)(between*3+high));
 		}
 		
-		NdPoint myPoint = space.getLocation(endosome);
-		double x = myPoint.getX();
-		endosome.setXcoor(x);
-		double y = myPoint.getY();
-		endosome.setYcoor(y);		
 	}
 
 
@@ -97,17 +102,35 @@ public class OrganelleMove {
 //		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
 		
 		double x = myPoint.getX();
-		endosome.setXcoor(x);
+//		endosome.setXcoor(x);
 		double y = myPoint.getY();
-		endosome.setYcoor(y);
+//		endosome.setYcoor(y);
 		
 
-//	If near the borders, move random (only with 10% probability)
-		if (y > 50-2*cellLimit || y < 5*cellLimit) { // near the nucleus non random
+//	If near the borders, move only with 10% probability MT independent
+		double cellSize = 50;
+		double cellCenterX = 25;
+		double cellCenterY = 25;		
+		double nucleusSize = 5;
+		double nucleusCenterX = 25;
+		double nucleusCenterY = 21;	
+//		If near the border, change heading randomly (100%) and stop move with 10% probability
+		if (!isPointInSquare(x, y, cellCenterX, cellCenterY, cellSize- 5 * cellLimit)) { // near the cell border  LARGECELL
+			endosome.heading = Math.random()*360;
+//	    	System.out.println(" en el borde  " + x+"  " + y);
 			changeDirectionRnd(endosome);
+//		return;	
 		}
+//		If near the nucleus, change heading randomly (5%) and stop move with 10% probability
+
+	
+		else if (isPointInCircle(x, y, nucleusCenterX, nucleusCenterY, nucleusSize)) { // near the nucleus
+				if (Math.random() < 0.05) endosome.heading = Math.random()*360;
+				changeDirectionRnd(endosome);
+				
+			}
 		else
-//			if not near the borders.  Notice less random near the nucleous
+//			if not near the borders
 		{
 //			boolean onMt = false;
 			changeDirectionMt(endosome);
@@ -117,17 +140,21 @@ public class OrganelleMove {
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
 			if (endosome.speed == 0) return;// random movement 90% of the time return speed=0
-			myPoint = space.getLocation(endosome);
-			x = myPoint.getX();
-			y = myPoint.getY();
 		    double xx = x + Math.cos(endosome.heading * Math.PI / 180d)
 			* endosome.speed*Cell.orgScale/Cell.timeScale;
 		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
 			* endosome.speed * Cell.orgScale/Cell.timeScale;	
-//		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
-//			if (yy <= 0+cellLimit) yy = cellLimit;
-//		    if move near the botom or top, do not move
-		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
+
+//		    if move out the cell, goes to the center of the cell and change heading randomly
+		    if (!isPointInSquare(xx, yy, cellCenterX, cellCenterY, cellSize-2*cellLimit)) {
+//		    	System.out.println("FUERA DE CELULA  " + xx+"  " + yy);
+		    	double[] newPoint = movePointToward(xx, yy, cellCenterX, cellCenterY, 2*cellLimit);
+			    xx = newPoint[0];
+			    yy = newPoint[1];
+			    endosome.heading = Math.random()*360;
+
+		    	}
+	//    	System.out.println("FUERA DE CELULA  " + xx+"  " + yy);
 		space.moveTo(endosome, xx, yy);
 		grid.moveTo(endosome, (int) xx, (int) yy);
 	}
@@ -192,34 +219,22 @@ public class OrganelleMove {
 				dist = ndist; 
 				mt = mmt;
 			}
-		}	
-		if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
-// Each domain has a moving rule specified by a number (mtDir) that goes from -1 to +1
-// This number is used in the following way
-// FOR TUBULES
-// -move to the PM if mtDir is positive with a probability equal to mtDir (sign not considered); else random
-// -move to the NUCLEUS if mtDir is negative with a probability equal to mtDir (sign not considered); else random
-// NON-TUBULE ORGANELLES
-// -move to the NUCLEUS if mtDir is positive with a probability equal to 1-mtDir (sign not considered); else random
-// -move to the PM if mtDir is negative with a probability equal to 1-mtDir (sign not considered); else random
+		}
 
-// The behavior achieved is  
-//					-1			-0.5		-0.00		+0.00		0.5			+1
-//tubules			N		0.5N 0.5rnd		rnd			rnd		0.5PM 0.5rnd	PM
-//non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
-				
-// tubules and non-tubules goes to opposite directions
+		if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
+
 				if (endosome.a >endosome.c) {moveGolgiVesicles(endosome);}
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 				rabDir = mtDirection(endosome);
+//				System.out.println (dist +" distancia " + rabDir);
 				if (isTubule)
 					{
 //					System.out.println("IS TUBULE"+ rabDir);
 					mtDir = ModelProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
-//+1 means to plus endo of MT (to PM); -1 means to the minus end of MT (to nucleus)
+//+1 means to plus end of MT (to PM); -1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 						}
 						else {
@@ -232,7 +247,7 @@ public class OrganelleMove {
 					mtDir = ModelProperties.getInstance().mtTropismRest.get(rabDir);
 //					System.out.println("IS NOT TUBULE"+ mtDir);
 					if (Math.random()< Math.abs(mtDir)) {
-// 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)
+//+1 means to plus end of MT (to PM); -1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 						}
 						else {
@@ -252,10 +267,11 @@ public class OrganelleMove {
 				if (ypt <= 0+cellLimit) ypt = cellLimit;
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
-				dist = distance(endosome, mt);
+//				dist = distance(endosome, mt);
 //				Changes the speed to a standard speed in MT independet of size
 				endosome.speed = 1d*Cell.orgScale/Cell.timeScale;
-				endosome.heading = -(mtDir * 180f + mt.getMtheading());
+				endosome.heading = -(mtDir * 180f + mt.getMtheading()+270f);
+//				System.out.println(endosome.speed +" speed heading "+ endosome.heading+" MTheading" + mt.getMtheading());
 				return;
 			}
 		
@@ -320,6 +336,22 @@ public class OrganelleMove {
 		double ymin = (double) ((MT) obj).getYorigin();
 		double xmax = (double) ((MT) obj).getXend();
 		double xmin = (double) ((MT) obj).getXorigin();
+		
+        // Calculate the projection of C onto the line containing AB
+        Point A = new Point(xmin, ymin);
+        Point B = new Point(xmax, ymax);
+        Point C = new Point(xpt, ypt);
+        LineSegment segment = new LineSegment(A, B);
+        double ACx = C.x - segment.A.x;
+        double ACy = C.y - segment.A.y;
+        double ABx = segment.B.x - segment.A.x;
+        double ABy = segment.B.y - segment.A.y;
+        double dotProduct = ACx * ABx + ACy * ABy;
+        double t = dotProduct / (ABx * ABx + ABy * ABy);
+
+        // Check if the projection point lies within the segment bounds
+        if (!(t >= 0 && t <= 1)) return 2000;
+		
 		double a = (xmax - xmin) * (ymin - ypt) - (ymax - ymin)
 				* (xmin - xpt);
 		double b = Math.sqrt((ymax - ymin) * (ymax - ymin) + (xmax - xmin)
@@ -328,4 +360,43 @@ public class OrganelleMove {
 //		The distance has a sign that it is used to move the organelle to the position in the Mt
 		return distance;
 	}
+	
+    public static boolean isPointInCircle(double x, double y, double x0, double y0, double r) {
+        double distanceSquared = Math.pow(x - x0, 2) + Math.pow(y - y0, 2);
+        double radiusSquared = Math.pow(r, 2);
+        return distanceSquared <= radiusSquared;
+    }
+    
+    public static boolean isPointInSquare(double x, double y, double x0, double y0, double ll) {
+        double halfSide = ll / 2.0;
+        // Calculate the boundaries of the square
+        double left = x0 - halfSide;
+        double right = x0 + halfSide;
+        double top = y0 + halfSide;
+        double bottom = y0 - halfSide;
+
+        // Check if the point is within the boundaries
+        return (x >= left && x <= right && y >= bottom && y <= top);
+    }
+    public static double[] movePointToward(double x, double y, double x0, double y0, double d) {
+        double dx = x0 - x;
+        double dy = y0 - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance == 0) {
+            // The starting point and target point are the same
+            return new double[] { x, y };
+        }
+
+        // Calculate the ratio to scale the direction vector
+        double ratio = d / distance;
+
+        // Calculate the new coordinates
+        double newX = x + ratio * dx;
+        double newY = y + ratio * dy;
+
+        return new double[] { newX, newY };
+    }
+
 }
+

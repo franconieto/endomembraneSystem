@@ -121,13 +121,15 @@ public class EndosomeCopasiStep {
 		EndosomeCopasi lipidMetabolism = EndosomeCopasi.getInstance();
 // to set the size of the compartments in copasi.  Soluble = volume ; membrane = area		
 		int iMax = (int) lipidMetabolism.getModel().getCompartments().size();
+//		lipidMetabolism.getModel().setModelType(20);
+//		System.out.println("Model type  " + lipidMetabolism.getModel().getModelType());
 		for (int i = 0;i < iMax;++i)
         {
 		if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("membrane"))
-			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.area);
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.area*1E-21);
 //      
 		else if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("soluble"))
-			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume);
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume*1E-21);
 		else 
 			lipidMetabolism.getModel().getCompartment(i).setInitialValue(1);
 //		System.out.println("compartimiento volumen \t" + lipidMetabolism.getModel().getCompartment(i).getObjectName() + lipidMetabolism.getModel().getCompartment(i).getInitialValue());
@@ -202,7 +204,7 @@ public class EndosomeCopasiStep {
 //		lipidMetabolism.setInitialConcentration("protonEn", 1e-04); // pH 7
 		localM.put("protonCy", 1e-04);
 //		localM.put("protonEn", 1e-04);
-//		System.out.println(endosome.membraneContent.get("pepMHCIEn")+" METABOLITES IN "+ localM);
+//		System.out.println(endosome.membraneContent.get("pepMHCIEn")+" METABOLITES COPASI "+ localM);
 //for (String met:localM.keySet()) {if (localM.get(met).isNaN()) localM.put(met,0.0);}
 //		System.out.println(endosome.membraneContent.get("pepMHCIEn")+" METABOLITES IN "+ localM);
 
@@ -221,6 +223,8 @@ public class EndosomeCopasiStep {
 		double initpepMHC = 0d;
 		double finalpepMHC = 0d;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		System.out.println("Serie de tiempo "+timeSeries.getRecordedSteps());
+
 		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){

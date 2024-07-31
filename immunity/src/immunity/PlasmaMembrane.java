@@ -30,8 +30,8 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-	private static double plasmaMembraneVolume;
-	private static double plasmaMembraneArea;
+	private double plasmaMembraneVolume;
+	private double plasmaMembraneArea;
 	private static double initialPlasmaMembraneVolume;
 	private static double initialPlasmaMembraneArea;
 //	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
@@ -49,14 +49,22 @@ public class PlasmaMembrane {
 // Contains the contents that are in the plasma membrane.  It is modified by Endosome that uses and changes the PM
 // contents.
 //		initial area and volume correspond to the world size (1500*400) and (1500*400*1000) corrected by the orgScale
-
+		// World is a 50 X 50 space.  Each unit of space has a size of 15 
+		// hence the world is 750 X 750 size in repast units, that correspond to 
+		// a 1500nm x 1500nm cellular space at orgScale = 1.  
+		// To convert from cell units (in nm) to repast space = nm/2
+		// the orgScale is taking into account in the scale of the shape
 
 		ModelProperties modelProperties = ModelProperties.getInstance();
 		double orgScale = modelProperties.getCellK().get("orgScale");
 		plasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
-		initialPlasmaMembraneArea = 1500*400/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 	
+		initialPlasmaMembraneArea = 1500*100*4/orgScale/orgScale;
+		//1500 y 400 es lado y el alto de la membrana considerada en escala original. 4 son cuatro lados.
+	//	System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ initialPlasmaMembraneArea);
+		
+		//400, 1500 y 1500 es el cubo en nm en escala original	
 		plasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
-		initialPlasmaMembraneVolume = 1500*400*1000/orgScale/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+		initialPlasmaMembraneVolume = 1500*400*1500/orgScale/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 
 //		plasmaMembraneTimeSeries = null;
 //		

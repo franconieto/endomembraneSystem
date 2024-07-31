@@ -7,7 +7,7 @@ public class EndosomeMaturationStep {
 	
 	public static void matureCheck (Endosome endosome) {
 //		if too young return
-		if (Math.random() > endosome.tickCount / 3000) {return;}
+//		if (Math.random() > endosome.tickCount / 3000) {return;}
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 //		if the maxRab is not prevalent, return
 		if (endosome.rabContent.get(maxRab)/endosome.area < 0.5) return; //LUIS ERA 0.9
@@ -17,24 +17,37 @@ public class EndosomeMaturationStep {
 		switch (maxRab)
 		{
 		case "RabA":
-			if (Math.random()<0.9)
-			mature(endosome, "RabA", "RabB", 0.05);// EE to SE era 0.1
+			if (Math.random()<0.9) {
+//				if too young return
+				if (Math.random() > endosome.tickCount / 3000) {return;}
+			mature(endosome, "RabA", "RabB", 0.1);// EE to SE era 0.1// 12/7/24 vuelvo a 0.1
+			}
 			else
-			mature(endosome, "RabA", "RabD", 0.9);// EE to LE
+//				if too young return
+				if (Math.random() > endosome.tickCount / 3000) {return;}
+			mature(endosome, "RabA", "RabD", 0.8);// EE to LE era 0.9
 			break;
 		case "RabI":
+//			if too young return
+			if (Math.random() > endosome.tickCount / 3000) {return;}
 			mature(endosome, "RabI", "RabH", 0.8);//ERGIC to cisG was 0.9 for all Golgi
 			break;
 		case "RabH":
+//			if too young return
+			if (Math.random() > endosome.tickCount / 3000) {return;}
 			mature(endosome, "RabH", "RabG", 0.8);//cisG to medialG
 			break;
 		case "RabG":
+//			if too young return
+			if (Math.random() > endosome.tickCount / 3000) {return;}
 			mature(endosome, "RabG", "RabF", 0.8);//medialG to transG
 			break;
 		case "RabF":
 			mature(endosome, "RabF", "RabE", 0.8);//transG to TGN
 			break;
 		case "RabB":
+//			if too young return
+			if (Math.random() > endosome.tickCount / 3000) {return;}
 			mature(endosome, "RabB", "RabC", 0.04);//SE to RE era 0.05// luego 0.015 que anda bien
 			break;			
 			

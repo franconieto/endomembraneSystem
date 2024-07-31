@@ -232,7 +232,7 @@ public class PlasmaMembraneCopasi {
 	
 	public void setInitialConcentration(String name, double value) {
 		if (!nameMetabs.containsKey(name)) {
-			System.out.println(name + "\t does not exist as a metab");
+//			System.out.println(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			m.setInitialConcentration(value);
@@ -260,7 +260,7 @@ public class PlasmaMembraneCopasi {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process AchReceptor");
+   //     	System.out.println("trajectoryTask.process AchReceptor");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();

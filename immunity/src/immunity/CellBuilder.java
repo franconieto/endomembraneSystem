@@ -32,9 +32,13 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 
 	public static IndexedIterable collection = null;
 	private static Collection context;
-
 	public static final IndexedIterable getCollection() {
 		return collection;
+	}
+	public static IndexedIterable collectionER = null;
+//	private static Collection context;
+	public static final IndexedIterable getCollectionER() {
+		return collectionER;
 	}
 
 // Create two spaces, one for PM where Agents are molecules and other for the Intracellular transport.  
@@ -50,7 +54,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 											.createContinuousSpaceFactory(null);
 		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace(
 										"space", context, new RandomCartesianAdder<Object>(),
-										new repast.simphony.space.continuous.WrapAroundBorders(), 
+										new repast.simphony.space.continuous.BouncyBorders(), 
 										50,50);
 
 		GridFactory gridFactory = GridFactoryFinder.createGridFactory(null);
@@ -78,16 +82,18 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			context.add(ModelProperties);	
 		//Cell cell = Cell.getInstance();
 		context.add(new Cell(space, grid));
-		context.add(new EndoplasmicReticulum(space, grid));
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 		context.add(new PlasmaMembrane(space, grid));	
+		context.add(new EndoplasmicReticulum(space, grid));
 		context.add(new Scale(space, grid));
 		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
-		context.add(initialOrganelles);		
+		context.add(initialOrganelles);	
+		
+		
 		// Microtubules
-
-		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+		for (int i = 0; i < (int)6* 1/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+//			for (int i = 0; i < 10; i++) {// change the number of MT 3 for 6 MT
 			context.add(new MT(space, grid));
 		}
 
@@ -108,7 +114,24 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			spacePM.moveTo(molecule, x, y);
 //			gridPM.moveTo(molecule,(int) x, (int)y);
 //		}
-//		
+//	
+//// 		ENDOPLASMIC RETICULUM
+//		for (int i = 0; i < 4; i=i+1)
+//		{
+//			EndoplasmicReticulum endoplasmicReticulum = new EndoplasmicReticulum(space, grid, null, null, null);
+//			endoplasmicReticulum.heading = 45 + 90 * i;
+//			System.out.println("heading   " + endoplasmicReticulum.heading);
+//			endoplasmicReticulum.ycoor = 28 + 18*Math.cos(-endoplasmicReticulum.heading*Math.PI/180);
+//			endoplasmicReticulum.xcoor = 25 + 18*Math.sin(-endoplasmicReticulum.heading*Math.PI/180);
+//			ModelProperties modelProperties = ModelProperties.getInstance();
+////			System.out.println("Properties  " + modelProperties.getInitERProperties());
+////			endoplasmicReticulum.area = modelProperties.getInitERProperties().get("endoplasmicReticulumAreaInit");// 
+//	//		initialendoplasmicReticulumArea = 1500*400/orgScale/orgScale;// modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
+////			endoplasmicReticulum.volume = modelProperties.getInitERProperties().get("endoplasmicReticulumVolumeInit");;//
+//	//		initialendoplasmicReticulumVolume = 1500*400*1000/orgScale/orgScale/orgScale;// modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
+//
+//			context.add(endoplasmicReticulum);
+//		}
 		// ENDOSOMES
 		ModelProperties modelProperties = ModelProperties.getInstance();
 		Set<String> diffOrganelles = initialOrganelles.getDiffOrganelles();
@@ -184,7 +207,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //						ite+=1;
 //						end.setName(kind+" "+Integer.toString(ite)) ;
 						context.add(end);
-						Endosome.endosomeShape(end);
+						//Endosome.endosomeShape(end);
 						//System.out.println(end.getName()+ " " +membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);				
 				}
 			}
@@ -195,7 +218,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
 			for (String kind : diffOrganelles){
 				if (kind.substring(0,2).equals("ki")) continue;
-				
+				else if (kind.substring(0,2).equals("en")) {
 				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
@@ -208,8 +231,26 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 						double y = initOrgProp.get("ycoor");
 						space.moveTo(end, x, y);
 						grid.moveTo(end, (int) x, (int) y);	
-						Endosome.endosomeShape(end);
+						//Endosome.endosomeShape(end);
 
+			}
+//				else if (kind.substring(0,2).equals("ER")) {
+//				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+//				HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+//				HashMap<String, Double> solubleRecycle = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+//				System.out.println(kind + membraneRecycle + " " + solubleRecycle + " " + initOrgProp);
+//						EndoplasmicReticulum ER = new EndoplasmicReticulum(space, grid, membraneRecycle,
+//													solubleRecycle, initOrgProp);
+//						context.add(ER);
+//						ER.area = initOrgProp.get("area");
+//						ER.volume = initOrgProp.get("volume");
+//						double x = ER.xcoor;
+//						double y = ER.ycoor;
+//						space.moveTo(ER, x, y);
+//						grid.moveTo(ER, (int) x, (int) y);	
+//
+//			}
+				
 			}
 //			After loading the frozen organelles, the properties of KIND... organelles need to be loaded to generate
 //			new organelles during UPTAKE  or SECRETION .....
@@ -243,22 +284,32 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				space.moveTo(obj, xcoor, ycoor);
 				grid.moveTo(obj, (int) xcoor, (int) ycoor);
 			}
-			if (obj instanceof PlasmaMembrane) {
-				space.moveTo(obj, 24.5, 49.5);
-				grid.moveTo(obj, (int) 24, (int) 49);
+			else if (obj instanceof PlasmaMembrane) {
+				space.moveTo(obj, 25, 25);
+				grid.moveTo(obj, (int) 25, (int) 25);
 			}
-			if (obj instanceof EndoplasmicReticulum) {
-				space.moveTo(obj, 24.5, .5);
-				grid.moveTo(obj, (int) 24, (int) 0);
-			}
-			if (obj instanceof Scale) {
+//			else if (obj instanceof EndoplasmicReticulum) {
+//				space.moveTo(obj, 24.5, .5);
+//				grid.moveTo(obj, (int) 24, (int) 0);
+//			}
+			else if (obj instanceof Scale) {
 				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4), 49.9);
 //				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);
 				grid.moveTo(obj, (int) (Scale.getScale500nm()/2d), (int) 49);
 			}
-			if (obj instanceof MT) {
+			else if (obj instanceof MT) {
 				((MT) obj).changePosition((MT)obj);
 			} 
+			
+			else if (obj instanceof EndoplasmicReticulum) {
+				double x = 25;//((EndoplasmicReticulum) obj).getXcoor();
+				double y = 25;// ((EndoplasmicReticulum) obj).getYcoor();
+				space.moveTo(obj, x, y);
+				grid.moveTo(obj, (int) x, (int) y);					
+//				System.out.println(((EndoplasmicReticulum) obj).area + "  " +
+//						((EndoplasmicReticulum) obj).getMembraneRecycle());
+			} 
+			
 // Find new position for endosomes unless they are coming from a freezeDry file
 			if (obj instanceof Endosome && ModelProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
 			double position = ((Endosome) obj).getInitOrgProp().get("position");
@@ -280,11 +331,11 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 
 		
 		if (RunEnvironment.getInstance().isBatch()) {
-			RunEnvironment.getInstance().endAt(12100);
+			RunEnvironment.getInstance().endAt(60100);
 		}
 
 		collection = context.getObjects(Endosome.class);// se guardan los objetos de la clase endosoma, supongo que seran endosomas
-	
+		collectionER = context.getObjects(EndoplasmicReticulum.class);
 		return context;	
 		
 	}

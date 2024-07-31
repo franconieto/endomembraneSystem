@@ -31,7 +31,7 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 // To convert from cell units (in nm) to repast space = nm/2  *  orgSpace
 //	the scale is taking into account in the scale of the shape (see below);
 		int scale500nm = (int) (500d/2d);
-		VSpatial createRectangle = this.factory.createRectangle(scale500nm, 25);
+		VSpatial createRectangle = this.factory.createRectangle(scale500nm*10, (int) (25/Cell.orgScale));
 		return createRectangle;
 
 	}
@@ -65,20 +65,20 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 
 	@Override
 	public String getLabel(Scale object) {
-		String time = "500 nm   " + Scale.getTimeString();
+		String time = "5000 nm   " + Scale.getTimeString();
 		
 		
 		return time; 
 	}
 	@Override
 	public Font getLabelFont(Scale object) {
-		return new Font("sansserif", Font.BOLD, (int) (28*Cell.orgScale));
+		return new Font("sansserif", Font.BOLD, (int) (2/Cell.orgScale));
 	}
 
 	@Override
 	public float getLabelXOffset(Scale object) {
 		// TODO Auto-generated method stub
-		return 0;
+		return (float) (2/Cell.orgScale);
 	}
 
 	@Override

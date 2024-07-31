@@ -15,19 +15,22 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 	ShapeFactory2D factory;
 	private double String;
 	
+	
 	@Override
 	public void init(ShapeFactory2D factory) {
 		this.factory = factory;
 
 	}
-
+	
 	@Override
 	public VSpatial getVSpatial(EndoplasmicReticulum object, VSpatial spatial) {
 // 15 measure the size of the grid.  The world is 50*15 X 50*15 or 750 X 750
 		double initialAreaER = object.getInitialendoplasmicReticulumArea();
-		double areaER = object.getendoplasmicReticulumArea();
-//		System.out.println(areaER + "areas ER  " + initialAreaER);
-		VSpatial createRectangle = this.factory.createRectangle((int) (areaER/initialAreaER*750), (int) (20d*Cell.orgScale));
+		double areaER = object.getEndoplasmicReticulumArea();
+		double ratio = areaER/initialAreaER;
+	//	System.out.println(areaER + "areas ER  " + ratio);
+		double shape = Math.random()*5 + 15;
+		VSpatial createRectangle = this.factory.createCircle((int) (0.4*750*ratio), (int) (shape));
 		return createRectangle;
 	}
 
@@ -41,17 +44,18 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 	@Override
 	public int getBorderSize(EndoplasmicReticulum object) {
 		//if larger than 0, form a nice grid
-		return 10;
+		return 5;
 	}
 
 	@Override
 	public Color getBorderColor(EndoplasmicReticulum object) {
-		return new Color(159,0,159);
+		return new Color(159,255,159);
 	}
 
 	@Override
 	public float getRotation(EndoplasmicReticulum object) {
-		return 0;
+		
+		return (float) 0;
 	}
 
 	@Override
@@ -91,6 +95,8 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 }
 
 	

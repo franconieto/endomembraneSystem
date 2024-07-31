@@ -472,7 +472,7 @@ public class Results {
 		}
 		}
 		totalRabs.put("xPM", PlasmaMembrane.getInstance().getPlasmaMembraneArea());
-		totalRabs.put("xER", EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea());
+		totalRabs.put("xER", EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea());
 		cisternsArea.putAll(totalRabs);
 		double totalCisternsArea = 0d;
 		for (String rab : cisternsArea.keySet()) {

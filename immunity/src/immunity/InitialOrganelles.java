@@ -46,10 +46,11 @@ public class InitialOrganelles {
 		return initMembraneContent;
 //		return new HashMap<String, HashMap<String, Double>>(initMembraneContent);
 	}
+//
+//	public String getInitialSolubleContent() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
-	public String getInitialSolubleContent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

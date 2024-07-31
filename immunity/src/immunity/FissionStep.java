@@ -219,8 +219,7 @@ public class FissionStep {
 		double x = myPoint.getX()+ deltax;
 
 		double y = myPoint.getY()+ deltay;
-		if (y < cellLimit){
-			y= cellLimit;
+
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
 //			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
 //			if (rabInTube.equals("RabE")){
@@ -229,12 +228,21 @@ public class FissionStep {
 //				double deltaVol = maxVol-b.volume;
 //				b.volume = b.volume + deltaVol;
 //			}
-		}
-		
+	
+		if (y < cellLimit)y= cellLimit;		
 		if (y > 50 - cellLimit)y = 50-cellLimit;
+		if (x < cellLimit) x = cellLimit;
+		else if (x > 50 -cellLimit) x = 50 - cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
-
+//		if (b.c>100/Cell.orgScale) {
+//			System.out.println(b.c+"  bbbbbbbbbbbbbbccccccccccccccccccccorta de nuevo  " );
+//			split(b);
+//		}
+		if (endosome.c>150/Cell.orgScale) {
+			System.out.println(endosome.c+"  ccccccccccccccccccccccccccccccccccorta de nuevo  " );
+			split(endosome);
+		}
 	}
 	
 	private static double[] areaVolumeCistern(Endosome endosome, String rabInTube)
@@ -681,7 +689,7 @@ public class FissionStep {
 			}
 		}
 		if (copyMap.isEmpty()) {
-			System.out.println("NINGUN RAB " + copyMap);
+//		System.out.println(aminCyl + "NINGUN RAB " + endosome.rabContent);
 			return null;
 		}
 

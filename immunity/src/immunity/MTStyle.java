@@ -24,8 +24,10 @@ public class MTStyle implements StyleOGL2D<MT> {
 	public VSpatial getVSpatial(MT object, VSpatial spatial) {
 		double h =  object.getMtheading();
 		double hh = h * Math.PI /180;
-		int length = (int)(- 750 / (Math.sin(hh)));
+		int length = (int) object.getLength()*750/50;
+
 		int diameterMT = (int) (12*Cell.orgScale);
+//		System.out.println(diameterMT + " di le " + length);
 		VSpatial createRectangle = this.factory.createRectangle(diameterMT, length);
 		return createRectangle;
 
@@ -49,7 +51,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 
 	@Override
 	public float getRotation(MT object) {
-		float h = (float) object.getMtheading()+ 90f;
+		float h = (float) (object.getMtheading());
 		return h;
 	}
 
@@ -61,7 +63,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 
 	@Override
 	public String getLabel(MT object) {
-		return ""; 
+		return "";//object.getXend()+" "+object.getYend()+" "+object.getMtheading(); 
 	}
 	@Override
 	public Font getLabelFont(MT object) {

@@ -17,6 +17,7 @@ public class EndosomeLysosomalDigestionStep {
 				&& Math.random() < endosome.rabContent.get("RabD") / endosome.area//)
 				&& endosome.area > 4* Cell.mincyl)
 			{
+			squeezeOrganelle(endosome);//New para que no crezcan los lisosomas
 			digestLysosome(endosome);
 			}
 		// All organelles with a s/v similar to the sphere undergoes a loss of volume
@@ -24,7 +25,7 @@ public class EndosomeLysosomalDigestionStep {
 				&& endosome.volume > 2*4/3*PI*rcyl*rcyl*rcyl)// it is big enough
 			{			
 			squeezeOrganelle(endosome);
-			Endosome.endosomeShape(endosome);
+			//Endosome.endosomeShape(endosome);
 //			System.out.println(so/vo+" INICIAL "+so*so*so/(vo*vo)/(36*Math.PI) +" FINAL"+so/endosome.volume+endosome);
 			}
 
@@ -33,7 +34,7 @@ public class EndosomeLysosomalDigestionStep {
 	private static void squeezeOrganelle(Endosome endosome) {		
 //The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
 		double r = rcyl;		
-		double newVolume = endosome.volume * 0.999;	//era 0.99	
+		double newVolume = endosome.volume * 0.999;	//era 0.99	//
 		double minV = Cell.mincyl;//		minimal volume
 		if (endosome.getSolubleContent().containsKey("mvb")) {
 			minV = minV + endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * r * r * r;
@@ -70,8 +71,8 @@ public class EndosomeLysosomalDigestionStep {
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.1 * rabDratio) {// was 0.01
-				finalMvb = Math.round(initialMvb*0.99);
+			if (Math.random() < 0.01 * rabDratio) {// was 0.01/
+				finalMvb = Math.round(initialMvb*0.99);//was 0.99, 
 			} else {
 				finalMvb = initialMvb;
 			}

@@ -261,7 +261,7 @@ public class RabConversion {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process RABS_CONVERSION"+ dataModel.getObjectDisplayName());
+ //       	System.out.println("trajectoryTask.process RABS_CONVERSION"+ dataModel.getObjectDisplayName());
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();

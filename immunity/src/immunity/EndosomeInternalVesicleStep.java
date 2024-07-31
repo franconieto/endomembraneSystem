@@ -68,7 +68,7 @@ public class EndosomeInternalVesicleStep {
 		endosome.area = endosome.area - nroVesicles * sIV;
 		endosome.volume = endosome.volume + nroVesicles * vIV;
 //		System.out.println("Nro Vesicles " + nroVesicles +"  "+ endosome.area +"  "+ endosome.volume);
-		Endosome.endosomeShape(endosome);
+		//Endosome.endosomeShape(endosome);
 		if (endosome.solubleContent.containsKey("mvb")) {
 			double content = endosome.solubleContent.get("mvb") + nroVesicles;
 			endosome.solubleContent.put("mvb", content);
@@ -115,13 +115,20 @@ public class EndosomeInternalVesicleStep {
 
 			}
 			else if (rabTropism.get(content).contains("mvb")){				
-
+// if "mvb" tropism, the cargo is incorporated into internal vesicles and digested
 				double mem = endosome.membraneContent.get(content) - nroVesicles * sIV;
 
 				if (mem <= 0) mem = 0d;
 				endosome.membraneContent.put(content, mem);
-//			If not special tropism, the membrane content is incorporated 
-//			into the internal vesicle proportional to the surface and degraded
+			} 
+			else if (rabTropism.get(content).contains("noMvb")){				
+// if "noMvb" tropism, the cargo is excluded from the internal vesicles
+				double mem = endosome.membraneContent.get(content);
+
+		//		if (mem > endosome.area) mem = endosome.area;
+				endosome.membraneContent.put(content, mem);
+//If not special tropism, the membrane content is incorporated 
+//into the internal vesicle proportional to the surface and degraded
 			} 
 			else 
 			{

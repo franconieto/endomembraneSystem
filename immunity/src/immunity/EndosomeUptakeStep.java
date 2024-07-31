@@ -228,19 +228,44 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		// cylinder
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
-		// NdPoint myPoint = space.getLocation(bud);
-		double rnd = Math.random();
-		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
-		endosome.getSpace().moveTo(bud, rnd * 50, upPosition);
-		endosome.getGrid().moveTo(bud, (int) rnd * 50, (int) upPosition);
+		double xend=0;
+		double yend=0;
+//		To place the endosome near the plasma membrane and heading to the center of the cell
+		int randomSide = (int) Math.floor(Math.random()*4);
+		switch (randomSide) {
+		case 0 : {
+			xend = 2*cellLimit;
+			yend = Math.random()*50-2*cellLimit;
+			break;
+		}
+		case 1 : {
+			xend = 50-2*cellLimit;
+			yend = Math.random()*50-2*cellLimit;
+			break;
+		}
+		case 2 : {
+			xend = Math.random()*50-2*cellLimit;
+			yend = 2*cellLimit;
+			break;
+		}
+		case 3 : {
+			xend = Math.random()*50-2*cellLimit;
+			yend = 50-2*cellLimit;
+			break;
+		}
+		}		
+		bud.heading = Math.atan2(xend-25, yend-25)*180/Math.PI; //;
+
+		endosome.getSpace().moveTo(bud, xend, yend);
+		endosome.getGrid().moveTo(bud, (int) xend, (int) yend);
 		
-		//			System.out.println(area + "NEW UPTAKE" + bud.membraneContent);
-		//			try {
-		//			TimeUnit.SECONDS.sleep(5);
-		//		} catch (InterruptedException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
+		System.out.println(xend + " EEEEEEEEEE NEW UPTAKE " + yend);
+//					try {
+//					TimeUnit.SECONDS.sleep(5);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 	PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 		
 	}

@@ -22,7 +22,7 @@ import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.Logger;
 import org.opengis.filter.identity.ObjectId;
 
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
+//import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import gov.nasa.worldwind.formats.json.JSONDoc;
 import repast.simphony.context.Context;
@@ -175,6 +175,7 @@ public class Endosome {
 		if (this.solubleContent.containsKey("protonEn"))
 		{
 			return (-Math.log10((this.solubleContent.get("protonEn")+1)/this.volume * 1E-3));// concentration in mM
+// entiendo que el +1 es solo para evitar división por cero		
 		}
 		else return 10;
 	}
@@ -278,6 +279,7 @@ public class Endosome {
 //			end.c = cc;
 		}
 	}
+	
 	public int getTickCount() {       //FRANCO
 		return tickCount;			//FRANCO	
 	}

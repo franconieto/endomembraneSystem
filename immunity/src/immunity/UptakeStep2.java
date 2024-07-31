@@ -63,19 +63,26 @@ public class UptakeStep2 {
 		double areaPM = PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
 
-		if(areaPM > initialAreaPM) {
-//		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
+		while(areaPM > initialAreaPM) {
+		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
 		newUptake(cell,"RabA");
+		if (Math.random()< 0) {
+			break; // to prevent too many continuous uptakes
+		}
 	//	System.out.println(" 	NEW NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
+		areaPM = PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 		}
 		//		NEW SECRETORY EVENT
-		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+		double areaER = EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();
 		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
-
-		if (areaER > initialAreaER) {
-//			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
+		while (areaER > initialAreaER) {
+			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
 		
 		newSecretion(cell,"RabI");
+		if (Math.random()< 0.5) {
+			break; // to prevent too many continuous new ERGICs
+		}
+		areaER = EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();	
 		}
 //		COMPENSATORY NEW ORGANELLE
 		if (3>1) return;
@@ -114,7 +121,7 @@ public class UptakeStep2 {
 		
 	private static void newSecretion(Cell cell, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
-//		System.out.println("secretion " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
+//		System.out.println("NEW ERGIC FORMED  " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
 		HashMap<String, Double> rabCell = cell.getRabCell();
@@ -140,9 +147,9 @@ public class UptakeStep2 {
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
 		double area = 4d* PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-		double endoplasmicReticulum = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea() - area;
+		double areaER = EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();
 //		System.out.println("LUEGO DE UPTAKE  "+ endoplasmicReticulum);
-		EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(endoplasmicReticulum);
+		EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(areaER-area);
 		double volume = 4d/3d*PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabI");
@@ -165,21 +172,20 @@ public class UptakeStep2 {
 		
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
 		Set<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
+		System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle() + "   secretion 1111  ");
+
 		for (String mem : membraneMet){
-//			double valueInEn = 0d;
-			double valueInER =0d;
-//			double valueInTotal = 0d;
-//		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   secretion 1111  " + valueInER+membraneContent);
+//			double valueInER =0d;
 			if (EndoplasmicReticulum.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valueER = EndoplasmicReticulum.getInstance().getMembraneRecycle().get(mem);
-				valueInER = valueER * ModelProperties.getInstance().getSecretionRate().get(mem) * area/ EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();	
+				double secreted = valueER * ModelProperties.getInstance().getSecretionRate().get(mem) * area/ EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();	
 
-				if (valueInER >= area) valueInER = area; // cannot incorporate more metabolite than its area
-				membraneContent.put(mem, valueInER);
+				if (secreted >= area) secreted = area; // cannot incorporate more metabolite than its area
+				membraneContent.put(mem, secreted);
 				//	System.out.println(mem + valueER + "   UPTAKE DECREASE 1111  " + valueInER);
 				// decrease ER content
-				EndoplasmicReticulum.getInstance().getMembraneRecycle().put(mem, valueER-valueInER);
+				EndoplasmicReticulum.getInstance().getMembraneRecycle().put(mem, valueER - secreted);
 			}
 			
 			/* FOR UPTAKE LOADING IN NEW ENDOSOMES
@@ -193,17 +199,17 @@ public class UptakeStep2 {
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
 		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){
-			double valueInER =0d;
 			
 			if (EndoplasmicReticulum.getInstance().getSolubleRecycle().containsKey(sol))
 			{
 				double valueER = EndoplasmicReticulum.getInstance().getSolubleRecycle().get(sol);
-				valueInER = valueER * volume/ EndoplasmicReticulum.getInstance().getendoplasmicReticulumVolume();	
+				double secreted = valueER * volume/ EndoplasmicReticulum.getInstance().getEndoplasmicReticulumVolume();	
 
-				if (valueInER >= volume) valueInER = volume;
-				solubleContent.put(sol, valueInER);
+				if (secreted >= volume) secreted = volume; // cannot incorporate more metabolite than its area
+				solubleContent.put(sol, secreted);
+				//	System.out.println(mem + valueER + "   UPTAKE DECREASE 1111  " + valueInER);
 				// decrease ER content
-				EndoplasmicReticulum.getInstance().getSolubleRecycle().put(sol, valueER - valueInER);
+				EndoplasmicReticulum.getInstance().getSolubleRecycle().put(sol, valueER - secreted);
 			}
 			/*
 			 * if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").
@@ -225,22 +231,24 @@ public class UptakeStep2 {
 				solubleContent, initOrgProp);
 		context.add(bud);
 		bud.speed = 1d / bud.size;
-		bud.heading = 90;// heading up
+		bud.heading = Math.random()*360;// heading random
 		bud.tickCount = 1;
-		Endosome.endosomeShape(bud);
-		double rnd = Math.random();
-		double upPosition = rnd* (4 * cellLimit);
-		space.moveTo(bud, rnd * 50, upPosition);
-		grid.moveTo(bud, (int) rnd * 50, (int) upPosition);
+//		Endosome.endosomeShape(bud);
+//		The new ERGIC can be anywhere in the cell
+		double x = Math.random()* (50 - 8 * cellLimit);
+		double y = Math.random()* (50 - 8 * cellLimit);
+
+		space.moveTo(bud, x,y);
+		grid.moveTo(bud, (int) x, (int) y);
 		
-		//			System.out.println(area + "NEW UPTAKE" + bud.membraneContent);
+//					System.out.println(area + "  NEW ERGIC " + bud.membraneContent);
 		//			try {
 		//			TimeUnit.SECONDS.sleep(5);
 		//		} catch (InterruptedException e) {
 		//			// TODO Auto-generated catch block
 		//			e.printStackTrace();
 		//		}
-	EndoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries().clear();
+//	EndoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries().clear();
 	}
 
 	private static void newUptake(Cell cell, String selectedRab) {
@@ -252,6 +260,7 @@ public class UptakeStep2 {
 //		System.out.println("PROPIEDADES RAB A  "+initOrgProp);
 //		System.out.println("A VER?" + InitialOrganelles.getInstance().getInitOrgProp().get("kind2"));
 		HashMap<String, Double> rabCell = cell.getRabCell();
+//		System.out.println("RabA PM  " + rabCell.get("RabA"));
 
 		if (!rabCell.containsKey("RabA") || Math.random()>rabCell.get("RabA")){
 			return;}
@@ -277,8 +286,8 @@ public class UptakeStep2 {
 		double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() - area;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick == 1) uptakeArea = 0d;
-		uptakeArea = uptakeArea + area;
-//		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
+		uptakeArea = uptakeArea + 4d/3d*PI*a*a*c;// should area
+		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		
 		double volume = 4d/3d*PI*a*a*c;
@@ -399,14 +408,46 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		context.add(bud);
-		bud.speed = 1d / bud.size;
-		bud.heading = -90;// heading down
+		bud.speed = 0;//1d / bud.size;
+		bud.heading = Math.random()*360;// heading random
 		bud.tickCount =1;
-		Endosome.endosomeShape(bud);
-		double rnd = Math.random();
-		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
-		space.moveTo(bud, rnd * 50, upPosition);
-		grid.moveTo(bud, (int) rnd * 50, (int) upPosition);
+		//Endosome.endosomeShape(bud);
+////		Position random in a circle around the center of the cell
+//		double where = Math.random()*360;
+//		double xposition = 25 + (25-2*cellLimit)* Math.sin(where*Math.PI/180);
+//		double yposition = 25 + (25-2*cellLimit)* Math.cos(where*Math.PI/180);
+		double xend =0;
+		double yend =0;
+		int randomSide = (int) Math.floor(Math.random()*4);
+		switch (randomSide) {
+		case 0 : {
+			xend = 2*cellLimit;
+			yend = Math.random()*(50-2*cellLimit);
+			break;
+		}
+		case 1 : {
+			xend = 50-2*cellLimit;
+			yend = Math.random()*(50-2*cellLimit);
+			break;
+		}
+		case 2 : {
+			xend = Math.random()*(50-2*cellLimit);
+			yend = 2*cellLimit;
+			break;
+		}
+		case 3 : {
+			xend = Math.random()*(50-2*cellLimit);
+			yend = 50-2*cellLimit;
+			break;
+		}
+		}		
+		bud.heading = Math.atan2(xend-25, yend-25)*180/Math.PI; //;
+//		System.out.println(xend + " donde lo pongo " + yend);
+		bud.getSpace().moveTo(bud, xend, yend);
+		bud.getGrid().moveTo(bud, (int) xend, (int) yend);
+
+//		space.moveTo(bud, xposition, yposition);
+//		grid.moveTo(bud, (int) xposition, (int) yposition);
 
 	PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 	
@@ -475,7 +516,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 					bud.volume = volume; 
 					bud.speed = 1d / bud.size;
 					bud.heading = -90;// heading down
-					Endosome.endosomeShape(bud);
+					//Endosome.endosomeShape(bud);
 					bud.tickCount = 1;
 					// NdPoint myPoint = space.getLocation(bud);
 					double rnd = Math.random();
@@ -545,7 +586,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		bud.area = area; 
 		bud.volume = volume;
 		bud.tickCount = 1;
-		Endosome.endosomeShape(bud);
+		//Endosome.endosomeShape(bud);
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);

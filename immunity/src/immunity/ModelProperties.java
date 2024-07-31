@@ -62,6 +62,7 @@ public class ModelProperties {
 	public HashMap<String, Double> membraneCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMsolubleRecycle = new HashMap<String, Double>();
+	public HashMap<String, Double> initERProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> initERmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initERsolubleRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
@@ -171,7 +172,9 @@ public class ModelProperties {
 	public HashMap<Double, String> getEvents() {
 		return events;
 	}
-
+	public HashMap<String, Double> getInitERProperties() {
+		return initERProperties;
+	}
 	
 	public void loadFromCsv(ModelProperties modelProperties, File file) throws IOException {
 
@@ -185,7 +188,7 @@ public class ModelProperties {
 //		}
 		
 		// InitialOrganelles InOr = InitialOrganelles.getInstance();
-		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
+//		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
 			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
@@ -219,17 +222,15 @@ public class ModelProperties {
 			case "plasmaMembraneProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				modelProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(modelProperties.getCellK());
-				}
-				
+//				System.out.println("plasma membrane propertiesSSSSSSSSSS "+modelProperties.getCellK());
+				}			
 				break;
 			}
-			case "endoplasmicReticulumProperties": {
+			case "initERProperties": {				
 				for (int i = 1; i < b.length; i = i + 2) {
-				modelProperties.getEndoplasmicReticulumProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(modelProperties.getEndoplasmicReticulumProperties());
-				}
-				
+				modelProperties.getInitERProperties().put(b[i], Double.parseDouble(b[i+1]));
+				System.out.println("QUE ES LO QUE NO ANDA!!!!!!!!!!! " + modelProperties.getInitERProperties());
+				}	
 				break;
 			}
 			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
@@ -253,7 +254,7 @@ public class ModelProperties {
 			}
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					System.out.println(b[i] + b[i+1]);
+				System.out.println("initPMsolubleRecycle   "+b[i] + b[i+1]);
 				modelProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
 
 				}
@@ -418,7 +419,7 @@ public class ModelProperties {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
-					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
+//					System.out.println("Proton is there?" + inOr.getInitSolubleContent());
 					break;
 				}
 				case "initMembraneContent": {
@@ -454,6 +455,7 @@ public class ModelProperties {
 		scanner.close();
 
 	}
+
 
 	public static void loadOrganellePropertiesFromCsv(ModelProperties modelProperties) throws IOException {
 		Parameters parm = RunEnvironment.getInstance().getParameters();
@@ -530,6 +532,9 @@ public class ModelProperties {
 
 				}
 			}
-			System.out.println("  FREEZE DRY INITIAL ORGANELLES FOR UPTAKE " + InitialOrganelles.getInstance().initOrgProp);
+//			System.out.println("  FREEZE DRY INITIAL ORGANELLES FOR UPTAKE " + InitialOrganelles.getInstance().initOrgProp);
 	}
+
+	
+
 }
