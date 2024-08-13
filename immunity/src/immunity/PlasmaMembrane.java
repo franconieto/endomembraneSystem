@@ -118,6 +118,10 @@ public class PlasmaMembrane {
 //		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
 //		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
 //		};
+//		to generate a 30 min pulse of TfEn with wash		
+//		if (tick > 30000 && tick < 30010 ) {
+//		PlasmaMembrane.getInstance().getSolubleRecycle().put("TfEn", 0.0);
+//		};
 
 	}
 	

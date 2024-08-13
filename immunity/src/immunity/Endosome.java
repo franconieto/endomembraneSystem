@@ -206,6 +206,11 @@ public class Endosome {
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeTetherStep"))EndosomeTetherStep.tether(this);
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeInternalVesicleStep"))EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_FusionStep"))FusionStep.fusion(this);
+//		if (this.c > 1500) {
+//			System.out.println("Large endosome " + this.c + this.getRabContent());
+//			FissionStep.split(this);
+//			System.out.println("Large endosome luego" + this.c + this.getRabContent());
+//		}
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_FissionStep"))FissionStep.split(this);
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeLysosomalDigestionStep"))EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();

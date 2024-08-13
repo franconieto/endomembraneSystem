@@ -74,6 +74,12 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         Endosome.endosomeShape(object);
         double a=object.getA();
         double c=object.getC();
+        if (Double.isNaN(a)) {
+//        	volume too large for the area.  Calculate a new volume that fit in a sphere of this area
+        object.volume = Math.pow(object.area,3/2)/6/Math.pow(Math.PI, 1/2);
+        Endosome.endosomeShape(object);
+		System.out.println("area "+ object.area +" volume "+object.volume);
+        }
         if (a<=c){
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);

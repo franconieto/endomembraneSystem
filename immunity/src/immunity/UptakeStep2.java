@@ -344,9 +344,15 @@ public class UptakeStep2 {
 			if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
 			membraneContent.put(mem, valueInTotal);
 //			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
-
-
 		}
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("membraneMarker")
+				&& PlasmaMembrane.getInstance().getMembraneRecycle().get("membraneMarker") > 0) 
+		{
+			membraneContent.put("membraneMarker", 1.0);
+			PlasmaMembrane.getInstance().getMembraneRecycle().remove("membraneMarker"); 			
+		}
+
+		
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
 		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){

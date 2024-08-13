@@ -119,17 +119,17 @@ public class PlasmaMembraneCopasiStep {
 //            model.getCompartment(i).setInitialValue(1.2e9);
 //            System.out.println("compartimiento volumen \t" + compartment.getObjectName() + model.getCompartment(i).getInitialValue());
 //        }
-//		Volume is now in ml 1 nm3 = 1e-21 ml
+//		Volume is now in ml 1 nm3 = 1e-21 ml MESS UP COPASI CALCULATIONS
 		
 		
 		int iMax = (int) receptorDynamics.getModel().getCompartments().size();
 		for (int i = 0;i < iMax;++i)
         {
 		if (receptorDynamics.getModel().getCompartment(i).getObjectName().equals("membrane"))
-			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneArea()*1E-21);
+			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneArea());
 //      
 		else if (receptorDynamics.getModel().getCompartment(i).getObjectName().equals("soluble"))
-			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneVolume()*1E-21);
+			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneVolume());
 		else 
 			receptorDynamics.getModel().getCompartment(i).setInitialValue(1);
 //		System.out.println("compartimiento volumen \t" + receptorDynamics.getModel().getCompartment(i).getObjectName() + receptorDynamics.getModel().getCompartment(i).getInitialValue());

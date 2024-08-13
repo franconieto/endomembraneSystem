@@ -126,10 +126,10 @@ public class EndosomeCopasiStep {
 		for (int i = 0;i < iMax;++i)
         {
 		if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("membrane"))
-			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.area*1E-21);
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.area);
 //      
 		else if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("soluble"))
-			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume*1E-21);
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume);
 		else 
 			lipidMetabolism.getModel().getCompartment(i).setInitialValue(1);
 //		System.out.println("compartimiento volumen \t" + lipidMetabolism.getModel().getCompartment(i).getObjectName() + lipidMetabolism.getModel().getCompartment(i).getInitialValue());

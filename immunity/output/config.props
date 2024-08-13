@@ -5,5 +5,5 @@ poll.frequency = 60.0
 model.output = C:/Users/lmayo/gitlocal/endomembraneSystem/immunity/output
 
 vm.arguments = 
-local.0.instances = 3
+local.0.instances = 6
 local.0.working_directory = C:/Users/lmayo/AppData/Local/Temp/

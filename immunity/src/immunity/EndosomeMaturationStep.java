@@ -17,15 +17,17 @@ public class EndosomeMaturationStep {
 		switch (maxRab)
 		{
 		case "RabA":
-			if (Math.random()<0.9) {
+			if (Math.random()<0.85) {//0.9 change 13/8/24 to 0.80
 //				if too young return
 				if (Math.random() > endosome.tickCount / 3000) {return;}
-			mature(endosome, "RabA", "RabB", 0.1);// EE to SE era 0.1// 12/7/24 vuelvo a 0.1
+				mature(endosome, "RabA", "RabB", 0.1);// EE to SE era 0.1// 12/7/24 vuelvo a 0.1
 			}
 			else
+			{
 //				if too young return
 				if (Math.random() > endosome.tickCount / 3000) {return;}
 			mature(endosome, "RabA", "RabD", 0.8);// EE to LE era 0.9
+			}
 			break;
 		case "RabI":
 //			if too young return
@@ -48,7 +50,7 @@ public class EndosomeMaturationStep {
 		case "RabB":
 //			if too young return
 			if (Math.random() > endosome.tickCount / 3000) {return;}
-			mature(endosome, "RabB", "RabC", 0.04);//SE to RE era 0.05// luego 0.015 que anda bien
+			mature(endosome, "RabB", "RabC", 0.08);//SE to RE era 0.04//12/8/24 0.08
 			break;			
 			
 		 default: return;

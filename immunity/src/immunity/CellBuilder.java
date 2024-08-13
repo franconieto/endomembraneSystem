@@ -293,7 +293,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //				grid.moveTo(obj, (int) 24, (int) 0);
 //			}
 			else if (obj instanceof Scale) {
-				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4), 49.9);
+				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4)+7.5, 49.65);
 //				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);
 				grid.moveTo(obj, (int) (Scale.getScale500nm()/2d), (int) 49);
 			}

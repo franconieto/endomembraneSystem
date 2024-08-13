@@ -463,6 +463,7 @@ public class Results {
 			(endosome.getSolubleContent().containsKey("solubleMarker") && 
 				endosome.getSolubleContent().get("solubleMarker") > 0.9))
 		{
+
 			try {
 				printEndosome(endosome);
 			} catch (IOException e) {
@@ -506,22 +507,39 @@ public class Results {
 	private void printEndosome(Endosome endosome) throws IOException {
 		singleEndosomeContent.put("area", endosome.getArea());
 		singleEndosomeContent.put("volume", endosome.getVolume());
-		for (String rab : rabSet)
+		singleEndosomeContent.put("tick", (double) endosome.getTickCount());
+		singleEndosomeContent.put("pH", endosome.getpH());
+//		String hexPart = endosome.toString();
+//		hexPart= hexPart.substring(hexPart.length() - 7);
+//		double decimalNumber = (double) (Integer.parseInt(hexPart, 16));
+////		System.out.println(hexPart + "        "+ endosome.toString() +"  "+ decimalNumber);
+//		singleEndosomeContent.put("endosome", decimalNumber);
+		for (String rab : rabSet) 
+		{
+			singleEndosomeContent.put(rab, 0d);
 			if (endosome.getRabContent().containsKey(rab)){
 				singleEndosomeContent.put(rab, endosome.getRabContent().get(rab));
 			}
+		}
 		for (String sol : solubleMet)
+		{
+			singleEndosomeContent.put(sol,0d); 
 			if (endosome.getSolubleContent().containsKey(sol)){
 				singleEndosomeContent.put(sol, endosome.getSolubleContent().get(sol));
 			}
+		}
 		for (String mem : membraneMet)
+		{
+			singleEndosomeContent.put(mem,0d); 
+		
 			if (endosome.getMembraneContent().containsKey(mem)){
 				singleEndosomeContent.put(mem, endosome.getMembraneContent().get(mem));
 			}
+		}
 		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		String line = "";
 		for (String key : orderSingleEndosome.keySet()) {
-            line = line+ sigFigs(orderSingleEndosome.get(key),2) + ",";
+            line = line+ sigFigs(orderSingleEndosome.get(key),6) + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -567,6 +585,9 @@ public class Results {
 	public HashMap<String, Double> endosomeContent() {
 		singleEndosomeContent.put("area", 0d);
 		singleEndosomeContent.put("volume", 0d);
+		singleEndosomeContent.put("tick", 0d);
+		singleEndosomeContent.put("pH", 0d);
+
 		
 		for (String sol : rabSet) {
 			singleEndosomeContent.put(sol, 0d);

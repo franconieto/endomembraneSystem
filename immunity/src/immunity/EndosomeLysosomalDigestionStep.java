@@ -33,19 +33,27 @@ public class EndosomeLysosomalDigestionStep {
 
 	private static void squeezeOrganelle(Endosome endosome) {		
 //The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
+		
+//		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);	
+//		if (isTubule) return;
 		double r = rcyl;		
 		double newVolume = endosome.volume * 0.999;	//era 0.99	//
-		double minV = Cell.mincyl;//		minimal volume
+		double minV = 2*Math.PI*r*r*r;//minimal volume cylinder = volume of an internal vesicle
+//		if it contains internal vesicles, the volume need to be enough
+		double IVvol = 4/3*Math.PI*r*r*r;
 		if (endosome.getSolubleContent().containsKey("mvb")) {
-			minV = minV + endosome.getSolubleContent().get("mvb")* 4/3 * Math.PI * r * r * r;
+			minV = minV + endosome.getSolubleContent().get("mvb")* IVvol;//minimal volume + volume of all internal vesicles
 		}
+//		if it has a bead, the volume must be enough to contain it
 		if (endosome.getSolubleContent().containsKey("solubleMarker")
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
 			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
 		}
 		if(newVolume > minV)
 		{
-		endosome.volume = newVolume;		
+		endosome.volume = newVolume;	//squeeze only if there is enough volume	
+		}
+		else {endosome.volume = minV;
 		}
 	}
 
