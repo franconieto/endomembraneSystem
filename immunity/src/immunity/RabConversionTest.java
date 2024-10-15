@@ -21,8 +21,8 @@ public class RabConversionTest {
     	
     	double rabA = rabConversion.getConcentration("RabA");
     	double rabB = rabConversion.getConcentration("RabB");
-    	System.out.println(rabA);
-    	System.out.println(rabB);
+    	//System.out.println(rabA);
+    	//System.out.println(rabB);
 
 	}
 

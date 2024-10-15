@@ -46,7 +46,7 @@ public class PlasmaMembraneCopasi {
 	
 	protected PlasmaMembraneCopasi() {
 
-		System.out.println("Instantiation Once");
+		//System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -69,12 +69,12 @@ public class PlasmaMembraneCopasi {
         
         model = dataModel.getModel();
         assert model != null;
-        System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
+        //System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
         
      // output number and names of all compartments
         int i, iMax = (int)model.getCompartments().size();
-        System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
-        System.out.println("Compartments: ");
+        //System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
+        //System.out.println("Compartments: ");
         for (i = 0;i < iMax;++i)
         {
             CCompartment compartment = model.getCompartment(i);
@@ -85,14 +85,14 @@ public class PlasmaMembraneCopasi {
 
         // output number and names of all metabolites
         iMax = (int)model.getMetabolites().size();
-        System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
-        System.out.println("Metabolites: ");
+        // System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
+        //System.out.println("Metabolites: ");
         for (i = 0;i < iMax;++i)
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;
             nameMetabs.put(metab.getObjectName(), metab);
-            System.out.println(metab.getObjectName());
+            // System.out.println(metab.getObjectName());
         }
         // SET INITIAL CONCENTRATIONS
         // SET INITIAL CONCENTRATIONS
@@ -104,18 +104,18 @@ public class PlasmaMembraneCopasi {
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
-        	System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
+        	//System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
         }
 
         // output number and names of all reactions
         iMax = (int)model.getReactions().size();
-        System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
-        System.out.println("Reactions: ");
+        //System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
+        //System.out.println("Reactions: ");
         for (i = 0;i < iMax;++i)
         {
             CReaction reaction = model.getReaction(i);
             assert reaction != null;
-            System.out.println("\t" + reaction.getObjectName());
+            // System.out.println("\t" + reaction.getObjectName());
         }
         
         setUpReport();
@@ -232,7 +232,7 @@ public class PlasmaMembraneCopasi {
 	
 	public void setInitialConcentration(String name, double value) {
 		if (!nameMetabs.containsKey(name)) {
-			System.out.println(name + "\t does not exist as a metab");
+			//System.out.println(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			m.setInitialConcentration(value);
@@ -260,7 +260,7 @@ public class PlasmaMembraneCopasi {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process AchReceptor");
+        	//System.out.println("trajectoryTask.process AchReceptor");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();

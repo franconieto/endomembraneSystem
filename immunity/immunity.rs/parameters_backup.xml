@@ -4,20 +4,23 @@
 						defaultValue="__NULL__"
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
+											/>
 				<parameter name="inputFile" displayName="inputFile" type="java.lang.String" 
 						defaultValue="InputIntrTransp3.csv" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
+											/>
 				<parameter name="repeat" displayName="repeat" type="int" 
 						defaultValue="1" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
+											/>
+				<parameter name="PRUEBA" displayName="prueba" type="java.lang.String" 
+						defaultValue="1" 
+						isReadOnly="true" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+												values="1 2 3 4 "
+											/>
 		</parameters>
 
 

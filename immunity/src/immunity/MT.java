@@ -40,8 +40,8 @@ public class MT {
 		if (xorigin <= 25) {xend = xorigin -RandomHelper.nextDoubleFromTo(0, xorigin);}
 		else {xend = xorigin + RandomHelper.nextDoubleFromTo(0, 50-xorigin);}
 		double mth = Math.atan((50) / (xend - xorigin));
-		System.out.println("a-tang");
-		System.out.println(mth * 180 / Math.PI);
+		//System.out.println("a-tang");
+		//System.out.println(mth * 180 / Math.PI);
 		if (mth < 0) {
 			mth = 180 + (mth * 180 / Math.PI);
 		} else

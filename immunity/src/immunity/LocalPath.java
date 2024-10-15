@@ -41,14 +41,14 @@ import repast.simphony.engine.environment.RunEnvironment;
 //      SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
 		if (RunEnvironment.getInstance().isBatch()) {
 //		 mypath="C:/Users/lmayo/Workspace-crossPresentation/immunity/";	
-		 mypath = "C:/Users/lmayo/gitlocal/endomembraneSystem/immunity/";
+		mypath = "C:/Users/Luis/Documents/Repast/endomembraneSystem/immunity/";
 		}
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
-      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-SSS").format(new Date());
+      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-SSSSS").format(new Date());
       
       mypathOut=mypath+"/output/"+folderName+"/";
-      System.out.println("      mypath=myDir.getCanonicalPath().replace('\\\\','/');" + mypath);
+      //System.out.println("      mypath=myDir.getCanonicalPath().replace('\\\\','/');" + mypath);
       
       Path path = Paths.get(mypathOut);
       Files.createDirectory(path);

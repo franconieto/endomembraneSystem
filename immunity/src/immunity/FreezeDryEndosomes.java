@@ -1,5 +1,6 @@
 package immunity;
 
+import java.util.Collections;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -248,6 +249,8 @@ public class FreezeDryEndosomes {
 	public void writeToCsv() throws IOException {
 		
 		IndexedIterable<Endosome> collection = CellBuilder.getCollection();
+		
+		
 //		System.out.println("ALL ENDOSOMES"+collection);
 		int index = 0;
 		Writer output;	
@@ -266,6 +269,8 @@ public class FreezeDryEndosomes {
             line = line + "volume" + "," + endosome.getVolume() + ",";
             line = line + "xcoor" + "," + endosome.getXcoor() + ",";
             line = line + "ycoor" + "," + endosome.getYcoor() + ",";
+            line = line + "ph" + "," + endosome.getpH() + ",";
+            line = line + "maxRAB" + "," + Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() + ",";
 		line = line + "\n";	
 		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));

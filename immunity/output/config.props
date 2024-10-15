@@ -1,9 +1,9 @@
-model.archive = C:/Users/lmayo/gitlocal/endomembraneSystem/immunity/output/complete_model.jar
+model.archive = C:/Users/Luis/Documents/Repast/endomembraneSystem/immunity/output/complete_model.jar
 batch.params.file = scenario.rs/batch_params.xml
-ssh.key_dir = C:/Users/lmayo/.ssh
+ssh.key_dir = C:/Users/Luis/.ssh
 poll.frequency = 60.0
-model.output = C:/Users/lmayo/gitlocal/endomembraneSystem/immunity/output
+model.output = C:/Users/Luis/Documents/Repast/endomembraneSystem/immunity/output
 
 vm.arguments = 
 local.0.instances = 2
-local.0.working_directory = C:/Users/lmayo/AppData/Local/Temp/
+local.0.working_directory = C:/Users/Luis/AppData/Local/Temp/

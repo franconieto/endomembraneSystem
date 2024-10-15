@@ -681,7 +681,7 @@ public class FissionStep {
 			}
 		}
 		if (copyMap.isEmpty()) {
-			System.out.println("NINGUN RAB " + copyMap);
+			//System.out.println("NINGUN RAB " + copyMap);
 			return null;
 		}
 

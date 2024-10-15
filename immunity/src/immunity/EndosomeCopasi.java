@@ -46,7 +46,7 @@ public class EndosomeCopasi {
 	
 	protected EndosomeCopasi() {
 
-		System.out.println("Instantiation Once " + ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi"));
+		//System.out.println("Instantiation Once " + ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi"));
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -69,12 +69,12 @@ public class EndosomeCopasi {
         
         model = dataModel.getModel();
         assert model != null;
-        System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
+        //System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
         
      // output number and names of all compartments
         int i, iMax = (int)model.getCompartments().size();
-        System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
-        System.out.println("Compartments: ");
+        //System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
+        //System.out.println("Compartments: ");
         for (i = 0;i < iMax;++i)
         {
             CCompartment compartment = model.getCompartment(i);
@@ -84,8 +84,8 @@ public class EndosomeCopasi {
 
         // output number and names of all metabolites
         iMax = (int)model.getMetabolites().size();
-        System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
-        System.out.println("Metabolites: ");
+        //System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
+        // System.out.println("Metabolites: ");
         for (i = 0;i < iMax;++i)
         {
             CMetab metab = model.getMetabolite(i);
@@ -103,18 +103,18 @@ public class EndosomeCopasi {
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
-        	System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
+        	//System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
         }
 
         // output number and names of all reactions
         iMax = (int)model.getReactions().size();
-        System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
-        System.out.println("Reactions: ");
+        //System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
+        //System.out.println("Reactions: ");
         for (i = 0;i < iMax;++i)
         {
             CReaction reaction = model.getReaction(i);
             assert reaction != null;
-            System.out.println("\t" + reaction.getObjectName());
+            //System.out.println("\t" + reaction.getObjectName());
         }
         
         setUpReport();

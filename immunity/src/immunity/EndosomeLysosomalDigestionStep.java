@@ -12,6 +12,23 @@ public class EndosomeLysosomalDigestionStep {
 	public static void lysosomalDigestion(Endosome endosome) {
 		double so = endosome.area;
 		double vo = endosome.volume;
+		
+		if (endosome.solubleContent.containsKey("pOVAEn")) {   //deja disponible la OVAEn mas alla de su contenido de RabD
+			double initialpOVAEn =endosome.solubleContent.get("pOVAEn");
+			double initialOVAEn =endosome.solubleContent.get("ovaEn");
+			double finalpOVAEn = initialpOVAEn * 0.999 ;
+			
+			//double X= initialpOVAEn ;
+			//double SpanFast=(100-(-1634))*2.596*.01 ;
+			//double SpanSlow=(100-(-1634))*(100-2.596)*.01 ;
+			//double finalpOVAEn=(-1634) + SpanFast*Math.exp(-0.06166*X) + SpanSlow*Math.exp(-7.34e-5*X) ;
+			//pOVAEn =(-1634) +((100-(-1634))*2.596*.01)*Math.exp(-0.06166*X) + ((100-(-1634))*(100-2.596)*.01)*Math.exp(-7.34e-5*X)
+			
+			endosome.solubleContent.put("pOVAEn", finalpOVAEn);
+			endosome.solubleContent.put("ovaEn", initialOVAEn+initialpOVAEn-finalpOVAEn);
+			
+		}
+		
 		// if high percentage of the membrane is RabD (LateEndosome) digest lysosome
 		if (endosome.rabContent.containsKey("RabD")
 				&& Math.random() < endosome.rabContent.get("RabD") / endosome.area//)
@@ -80,15 +97,28 @@ public class EndosomeLysosomalDigestionStep {
 //		Soluble component are digested proportional to the RabD content, except the soluble marker
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
+		
+		double ph = endosome.getpH();
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
-				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+				//double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
+				//endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+				
+				if (ph>=5 && ph<6.5){
+					double solDigested = endosome.solubleContent.get(sol) * 0.0001 * (6.5-ph);
+					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+				}else if(ph<5){
+					double solDigested = endosome.solubleContent.get(sol) * 0.0003 * (6.5-ph);
+					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+				}
+				 
 			}
+		
 		if (endosome.solubleContent.containsKey("mvb"))
 			endosome.solubleContent.put("mvb", finalMvb);
 		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)
 			endosome.solubleContent.put("solubleMarker", 1d);
 
+		
 		for (String mem : endosome.membraneContent.keySet()) {
 				double memDigested = endosome.membraneContent.get(mem) * 0.0000001 * rabDratio;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
