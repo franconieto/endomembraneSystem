@@ -518,6 +518,7 @@ public class Results {
 			if (endosome.getMembraneContent().containsKey(mem)){
 				singleEndosomeContent.put(mem, endosome.getMembraneContent().get(mem));
 			}
+		singleEndosomeContent.put("pH", endosome.getpH() );
 		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		String line = "";
 		for (String key : orderSingleEndosome.keySet()) {
@@ -577,6 +578,7 @@ public class Results {
 		for (String mem : membraneMet) {
 			singleEndosomeContent.put(mem, 0d);
 		}	
+		singleEndosomeContent.put("pH", 0d);
 		return singleEndosomeContent;
 	}
 	

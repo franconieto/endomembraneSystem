@@ -121,7 +121,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		double green = object.getGreen()*0.068*1E9/3;
 //		System.out.println("GREEN FUERA ESCALA "+green);
 		if (green>1) {
-		System.out.println("GREEN FUERA ESCALA "+green);
+		//System.out.println("GREEN FUERA ESCALA "+green);
 			green=1; 
 		}
 		double blue = object.getBlue();
