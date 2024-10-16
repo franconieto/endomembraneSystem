@@ -18,12 +18,7 @@ public class EndosomeLysosomalDigestionStep {
 			double initialOVAEn =endosome.solubleContent.get("ovaEn");
 			double finalpOVAEn = initialpOVAEn * 0.999 ;
 			
-			//double X= initialpOVAEn ;
-			//double SpanFast=(100-(-1634))*2.596*.01 ;
-			//double SpanSlow=(100-(-1634))*(100-2.596)*.01 ;
-			//double finalpOVAEn=(-1634) + SpanFast*Math.exp(-0.06166*X) + SpanSlow*Math.exp(-7.34e-5*X) ;
-			//pOVAEn =(-1634) +((100-(-1634))*2.596*.01)*Math.exp(-0.06166*X) + ((100-(-1634))*(100-2.596)*.01)*Math.exp(-7.34e-5*X)
-			
+		
 			endosome.solubleContent.put("pOVAEn", finalpOVAEn);
 			endosome.solubleContent.put("ovaEn", initialOVAEn+initialpOVAEn-finalpOVAEn);
 			
