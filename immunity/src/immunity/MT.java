@@ -3,7 +3,7 @@ package immunity;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.thoughtworks.xstream.XStream;
+//import com.thoughtworks.xstream.XStream;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;

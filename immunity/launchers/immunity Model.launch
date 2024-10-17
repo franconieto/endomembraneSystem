@@ -25,5 +25,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="immunity"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;${workspace_loc:immunity}/immunity.rs&quot;"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="immunity"/>
-    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xss10M -Xmx600M -Djava.library.path=${workspace_loc:immunity}/lib"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xss10M -Xmx600M -Djava.library.path=${workspace_loc:immunity}/lib --add-opens java.base/java.util=ALL-UNNAMED"/>
 </launchConfiguration>
