@@ -71,25 +71,41 @@ public class Results {
 	String cisternsAreaPath = mainpath.getPathCisternsArea();
 	String mypathTable = mainpath.getMyPathOut();// agregado para que el output del excel no creara nuevos folders
 //	
+	String modelFileName = ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+	
 	public static Results getInstance() {
 		return instance;
 	}
 	
 	//Constructor.  It is called once from CellBuilder
 	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs)
-	{
+	{   System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		this.space = sp;
 		this.grid = gr;
 		// Generate a file with the header of the variables that are going to be followed
 		//along the simulation.  Up to now= content distribution according to rabs contents.
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		String inputFile =(String) parm.getValue("inputFile");
-
+		
+//		Copy the input copasi file from data to folder with the Results
+		{
+			File source = new File(LocalPath.getInstance().getPathInputIT()+modelFileName);
+			File dest = new File(LocalPath.getInstance().getMyPathOut()+modelFileName);
+			System.out.println(source.toString() + dest.toString());
+			    try {
+					FileUtils.copyFile(source, dest);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    }
+		
+		
 //		Copy the input file from data to folder with the Results
 	{
 	File source = new File(LocalPath.getInstance().getPathInputIT()+inputFile);
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+inputFile);
-//System.out.println(source.toString() + dest.toString());
+System.out.println(source.toString() + dest.toString());
 	    try {
 			FileUtils.copyFile(source, dest);
 		} catch (IOException e) {
@@ -101,7 +117,7 @@ public class Results {
 	{
 	File source = new File(LocalPath.getInstance().getPathInputIT()+"inputFrozenEndosomes.csv");
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+"inputFrozenEndosomes.csv");
-	//System.out.println(source.toString() + dest.toString());
+	System.out.println(source.toString() + dest.toString());
 	    try {
 			FileUtils.copyFile(source, dest);
 		} catch (IOException e) {

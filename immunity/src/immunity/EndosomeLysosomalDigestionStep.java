@@ -16,7 +16,7 @@ public class EndosomeLysosomalDigestionStep {
 		if (endosome.solubleContent.containsKey("pOVAEn")) {   //deja disponible la OVAEn mas alla de su contenido de RabD
 			double initialpOVAEn =endosome.solubleContent.get("pOVAEn");
 			double initialOVAEn =endosome.solubleContent.get("ovaEn");
-			double finalpOVAEn = initialpOVAEn * 0.999 ;
+			double finalpOVAEn = initialpOVAEn * 0.9999 ;
 			
 		
 			endosome.solubleContent.put("pOVAEn", finalpOVAEn);
@@ -97,14 +97,16 @@ public class EndosomeLysosomalDigestionStep {
 		for (String sol : endosome.solubleContent.keySet()) {
 				//double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
 				//endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+			if (endosome.solubleContent.containsKey("pOVAEn")) {
 				
-				if (ph>=5 && ph<6.5){
+			}else {
+				if (ph>=5.5 && ph<7){
 					double solDigested = endosome.solubleContent.get(sol) * 0.0001 * (6.5-ph);
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
-				}else if(ph<5){
+				}else if(ph<5.5){
 					double solDigested = endosome.solubleContent.get(sol) * 0.0003 * (6.5-ph);
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
-				}
+				}}
 				 
 			}
 		

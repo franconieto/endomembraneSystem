@@ -77,6 +77,8 @@ import repast.simphony.engine.environment.RunEnvironment;
 		mypath2=mypathOut+"/ResultsMarker.csv";
 		return this.mypath2; 
 		} 
+	
+	
 //	not used in BATCH
 
 	public String getPathInputIT(){ 

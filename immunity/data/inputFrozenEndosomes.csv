@@ -959,9 +959,9 @@ endosome239z,initRabContent,RabA,7539.822369,,,,,,,,,,,,,,,,
 endosome239z,initMembraneContent,exCxEn,3.74E-04,R-TfaEn,6.32E-39,oMHCIEn,3.45E-05,membraneMarker,0,cMHCIEn,0.00133488,R-TfEn,2.08E-40,pepMHCIEn,0,REn,2.80E-04,imCxEn,3.74E-04
 endosome239z,initSolubleContent,ovaEn,0,protonEn,40.85653812,TfaEn,0.020367021,mvb,0,pepEn,0,,,,,,,,
 endosome240Q,initOrgProp,area,3.20E+06,volume,5.00E+08,xcoor,12.05522694,ycoor,17.692769,,,,,,,,,,
-endosome240Q,initRabContent,RabA,3.20E+06,,,,,,,,,,,,,,,,
+endosome240Q,initRabContent,RabD,3.20E+06,,,,,,,,,,,,,,,,
 endosome240Q,initMembraneContent,exCxEn,0,R-TfaEn,3.66E-36,oMHCIEn,0.004283137,membraneMarker,0,cMHCIEn,36.29727513,R-TfEn,3.40E-36,pepMHCIEn,0,REn,2.740318274,imCxEn,0
-endosome240Q,initSolubleContent,pOVAEn,4E8,protonEn,267.3065113,TfaEn,0.473139689,mvb,1,pepEn,0,solubleMarker,1,,,,,,
+endosome240Q,initSolubleContent,pOVAEn,50,protonEn,267.3065113,TfaEn,0.473139689,mvb,1,pepEn,0,solubleMarker,1,,,,,,
 endosome241F,initOrgProp,area,21362.83004,volume,175929.1886,xcoor,16.1682546,ycoor,48.3711107,,,,,,,,,,
 endosome241F,initRabContent,RabA,21362.83004,,,,,,,,,,,,,,,,
 endosome241F,initMembraneContent,exCxEn,0.002544676,R-TfaEn,7.27E-38,oMHCIEn,4.74E-05,membraneMarker,0,cMHCIEn,0.026872731,R-TfEn,3.25E-39,pepMHCIEn,0,REn,0.00219204,imCxEn,0.002544676
