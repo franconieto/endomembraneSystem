@@ -120,18 +120,19 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getColor(Endosome object) {
 		// color code for contents
-		double red = object.getRed();
+		double red = object.getMembraneContent().getOrDefault("R-TfEn",0.0);
 		if (red>1) {
 	//		System.out.println("RED FUERA ESCALA "+red);
 			red=1; 
 		}
-		double green = object.getGreen()*0.068*1E9/3;
+		double green = object.getMembraneContent().getOrDefault("R-TfaEn",0.0)/5;
+				//object.getGreen()*0.068*1E9/3;
 //		System.out.println("GREEN FUERA ESCALA "+green);
 		if (green>1) {
 		System.out.println("GREEN FUERA ESCALA "+green);
 			green=1; 
 		}
-		double blue = object.getBlue();
+		double blue = object.getSolubleContent().getOrDefault("FeEn",0.0)*5;
 		if (blue>1) {
 		//	System.out.println("BLUE FUERA ESCALA "+blue);
 			blue=1; 
@@ -152,10 +153,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public int getBorderSize(Endosome object) {
-//		if (!object.getSolubleContent().containsKey("solubleMarker")
-//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
-//			return 0;				
-//		}
+//		if (object.getMembraneContent().containsKey("membraneMarker")
+//				&& object.getMembraneContent().get("membraneMarker")> 0.99) {
+//			return 100;				
+//
 //		if (((object.getSolubleContent().containsKey("solubleMarker")
 //				&& object.getSolubleContent().get("solubleMarker")<0.5))
 //			&& 
@@ -267,6 +268,11 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public String getLabel(Endosome object) {
 		// the label is the number of internal vesicles (Multi Vesicular Body)
 		// in the endosome
+
+		if(2<3) {
+			return null;		// to eliminate the labels
+		}
+		else {
 		String label = "";
 		if (object.getSolubleContent().containsKey("solubleMarker")
 				&& object.getSolubleContent().get("solubleMarker")> 0.9){
@@ -282,11 +288,12 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 			return label;
 		}
 		else return label + object.getMvb();
+		}
 	}
 
 	@Override
 	public Font getLabelFont(Endosome object) {
-		return new Font("sansserif", Font.BOLD, (int) (28 * Cell.orgScale));
+		return new Font("arialblack", Font.BOLD, (int) (28 * Cell.orgScale));
 	}
 
 	@Override

@@ -37,14 +37,14 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 	@Override
 	public Color getColor(EndoplasmicReticulum object) {
 		// eventually the color will reflect some local EndoplasmicReticulum characteristics
-		int red = (int)object.getErcolor();
-		return new Color(255, 255-red, 255-red);
+		int red = 0;//(int)object.getErcolor();
+		return  new Color(255-red, 255-red, 255-red);
 	}
 
 	@Override
 	public int getBorderSize(EndoplasmicReticulum object) {
 		//if larger than 0, form a nice grid
-		return 5;
+		return 0;
 	}
 
 	@Override

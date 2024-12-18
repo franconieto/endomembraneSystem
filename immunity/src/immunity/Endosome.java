@@ -45,6 +45,9 @@ import repast.simphony.util.ContextUtils;
 import java.util.Random;
 
 import repast.simphony.valueLayer.GridValueLayer;
+//import repast.simphony.ui.probe.ProbeID;
+//import repast.simphony.ui.probe.ProbeInfo;
+
 
 /**
  * @author lmayorga
@@ -144,7 +147,7 @@ public class Endosome {
 		heading = Math.random() * 360d - 180; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 	}
-
+//    @ProbeID
 	public final double getXcoor() {
 		return xcoor;
 	}
@@ -279,7 +282,10 @@ public class Endosome {
 //				//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
 //			}
 ////			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
-			if (end.a <=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+			if (end.a <1) {
+				end.a = 1;
+				System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+			}
 //			end.a = aa;
 //			end.c = cc;
 		}

@@ -507,7 +507,8 @@ public class Results {
 	private void printEndosome(Endosome endosome) throws IOException {
 		singleEndosomeContent.put("area", endosome.getArea());
 		singleEndosomeContent.put("volume", endosome.getVolume());
-		singleEndosomeContent.put("tick", (double) endosome.getTickCount());
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		singleEndosomeContent.put("tick", (double) tick);
 		singleEndosomeContent.put("pH", endosome.getpH());
 //		String hexPart = endosome.toString();
 //		hexPart= hexPart.substring(hexPart.length() - 7);

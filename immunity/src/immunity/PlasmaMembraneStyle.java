@@ -31,8 +31,8 @@ public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
 		double initialAreaPM = object.getInitialPlasmaMembraneArea();
 		double areaPM = object.getPlasmaMembraneArea();		
 //		System.out.println(areaPM + "areas PM  " + initialAreaPM);
-		double angle1 = Math.random()* 40 + 40;
-		double angle2 = Math.random()* 40 + 40;		
+		double angle1 = 40;//Math.random()* 40 + 40;
+		double angle2 = 40;//Math.random()* 40 + 40;		
         Shape rec = new RoundRectangle2D.Double(-750/2, -750/2, areaPM/initialAreaPM*750, areaPM/initialAreaPM*750,  angle1, angle2);
 //      arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         VSpatial shape = this.factory.createShape(rec);
