@@ -40,7 +40,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 	public static final IndexedIterable getCollectionER() {
 		return collectionER;
 	}
-
+//CHANGES HERE
 // Create two spaces, one for PM where Agents are molecules and other for the Intracellular transport.  
 	@Override
 	public Context build(Context<Object> context) {
