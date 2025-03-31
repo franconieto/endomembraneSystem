@@ -86,7 +86,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         }
         else{
 //        	object.heading = -90;
-  		System.out.println(object.toString()+ "a  "+a+"  c  "+ c);
+//  		System.out.println(object.toString()+ "a  "+a+"  c  "+ c);
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         shape = this.factory.createShape(rec);
@@ -231,7 +231,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 				}
 			}
-			//			System.out.println(rabColor+rabContent);
+//			System.out.println(rabColor+rabContent);
 			if (rabColor.equals("RabA"))	return new Color (0,0,255);//EE
 			else if (rabColor.equals("RabB"))	return new Color (0,255,255);//SE
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);//RE

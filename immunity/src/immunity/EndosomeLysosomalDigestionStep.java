@@ -36,8 +36,9 @@ public class EndosomeLysosomalDigestionStep {
 		
 //		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);	
 //		if (isTubule) return;
-		double r = rcyl;		
-		double newVolume = endosome.volume * 0.999;	//era 0.99	//
+		double r = rcyl;	
+		double squeeze = ModelProperties.getInstance().getCellK().get("squeezeFactor");
+		double newVolume = endosome.volume * squeeze;//0.999;	//era 0.99	//
 		double minV = 2*Math.PI*r*r*r;//minimal volume cylinder = volume of an internal vesicle
 //		if it contains internal vesicles, the volume need to be enough
 		double IVvol = 4/3*Math.PI*r*r*r;
@@ -79,27 +80,26 @@ public class EndosomeLysosomalDigestionStep {
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.01 * rabDratio) {// was 0.01/
-				finalMvb = Math.round(initialMvb*0.99);//was 0.99, 
-			} else {
-				finalMvb = initialMvb;
-			}
+			double digMVB = ModelProperties.getInstance().getCellK().get("digMVB");
+			digMVB = initialMvb * (1-digMVB) * rabDratio;// MVB digested
+			finalMvb = initialMvb - digMVB;					
 		}
 
 //		Soluble component are digested proportional to the RabD content, except the soluble marker
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
+		double digSol = ModelProperties.getInstance().getCellK().get("digSol");
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
+				double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
 		if (endosome.solubleContent.containsKey("mvb"))
 			endosome.solubleContent.put("mvb", finalMvb);
 		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)
 			endosome.solubleContent.put("solubleMarker", 1d);
-
+		double digMem = ModelProperties.getInstance().getCellK().get("digMem");
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.0000001 * rabDratio;
+				double memDigested = endosome.membraneContent.get(mem)*(1-digMem)* rabDratio;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){

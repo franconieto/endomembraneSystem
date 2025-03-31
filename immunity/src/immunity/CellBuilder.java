@@ -45,6 +45,8 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 	@Override
 	public Context build(Context<Object> context) {
 		context.setId("immunity");
+		int spaceWidth = ModelProperties.getInstance().getCellK().get("spaceWidth").intValue();
+		int spaceLength = ModelProperties.getInstance().getCellK().get("spaceLength").intValue();
 
 		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
 											"infection network", context, true);
@@ -55,14 +57,14 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		ContinuousSpace<Object> space = spaceFactory.createContinuousSpace(
 										"space", context, new RandomCartesianAdder<Object>(),
 										new repast.simphony.space.continuous.BouncyBorders(), 
-										50,50);
+										spaceWidth,spaceLength);
 
 		GridFactory gridFactory = GridFactoryFinder.createGridFactory(null);
 		Grid<Object> grid = gridFactory.createGrid("grid", context,
 							new GridBuilderParameters<Object>(new WrapAroundBorders(),
 							new SimpleGridAdder<Object>(), true,
-							50, 50));
-		
+							spaceWidth, spaceLength));
+	
 // PM space
 //		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
 //										"spacePM", context, new RandomCartesianAdder<Object>(),

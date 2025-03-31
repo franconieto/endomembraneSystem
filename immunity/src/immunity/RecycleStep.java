@@ -154,9 +154,10 @@ public class RecycleStep {
 					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
 				}
 			}
-//			to delete the 100% of the TGN and 2% of the RE fusing with PM
+//			to delete the 100% of the TGN and 2% of the RE fusing with PM.  Now is a parameter in the csv file
+			double prob = ModelProperties.getInstance().getCellK().get("fullFusionREprob");
 			if (maxRab.equals("RabE")
-					|| (maxRab.equals("RabC") && Math.random()<0.04)// era 0.02
+					|| (maxRab.equals("RabC") && Math.random()<prob)// era 0.02
 					) {
 				PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();

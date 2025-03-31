@@ -67,8 +67,8 @@ public class Endosome {
 	ModelProperties cellProperties = ModelProperties.getInstance();
 	HashMap<String, Double> cellK = cellProperties.getCellK();
 
-	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
-	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
+	double area; //= 4d * Math.PI * 30d * 30d; // initial value, but should change
+	double volume; //= 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
 	double a = 0; // width of the ellipsoid representing the endosome
 	double c = 0; // length;
@@ -77,11 +77,9 @@ public class Endosome {
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
 						// change
 	
-	double cellLimit = 3 * Cell.orgScale;
+//	double cellLimit = 3 * Cell.orgScale;
 	double mvb;// = 0; // number of internal vesices
-	double complexMHC = 0d;
-	double assembleMHC= 0d;
-	double pH = 11;
+	double pH ;// = 11;
 //	double cellMembrane;// = 0;
 //	Set<String> membraneMet = cellProperties.getMembraneMet();
 //	Set<String> solubleMet = cellProperties.getSolubleMet();
@@ -168,12 +166,7 @@ public class Endosome {
 	public void setSpace(ContinuousSpace<Object> value) {
 		space = value;
 	}
-	public final double getComplexMHC() {
-		return complexMHC;
-	}
-	public final double getAssemleMHC() {
-		return assembleMHC;
-	}
+
 	public final double getpH() {
 		if (this.solubleContent.containsKey("protonEn"))
 		{

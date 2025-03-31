@@ -76,7 +76,7 @@ public class EndoplasmicReticulum {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		changeColor();
+//		changeColor();
 		growth();
 		
 //		this.membraneRecycle = endoplasmicReticulum.getInstance().getMembraneRecycle();
@@ -87,9 +87,10 @@ public class EndoplasmicReticulum {
 
 		}
 	public void growth() {
-	if(Math.random()>0.05)return;//aumento a 0.05 para crear mas organelas
+//	if(Math.random()>0.05)return;//aumento a 0.05 para crear mas organelas
 //	int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-	double growth = 1.0005; // Bajo 1.001
+	
+	double growth = ModelProperties.getInstance().getCellK().get("growthER");//1.0005; // Bajo 1.001
 //	EndoplasmicReticulum.getInstance();
 	//	if (tick < 120000) growth = 1.005;
 //	else if (tick >= 120000 && tick < 300000)growth = 1.0025;

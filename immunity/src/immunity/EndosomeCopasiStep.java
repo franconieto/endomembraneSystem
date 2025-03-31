@@ -230,18 +230,18 @@ public class EndosomeCopasiStep {
 			for (int met = 1; met < metNro +1; met = met +1){
 //				if (timeSeries.getTitle(met).equals("protonEn")) 
 //				System.out.println(met + " EndosomeEn "+timeSeries.getTitle(met));
-				if (timeSeries.getTitle(met).equals("pepMHCIEn")){
-						if (time == 1 ) initpepMHC = timeSeries.getConcentrationData(time, met);
-						else if (time == stepNro - 1 ) finalpepMHC = timeSeries.getConcentrationData(time, met);
-				}
+//				if (timeSeries.getTitle(met).equals("pepMHCIEn")){
+//						if (time == 1 ) initpepMHC = timeSeries.getConcentrationData(time, met);
+//						else if (time == stepNro - 1 ) finalpepMHC = timeSeries.getConcentrationData(time, met);
+//				}
 				value.put(timeSeries.getTitle(met), sigFigs(timeSeries.getConcentrationData(time, met),6));
 				endosome.getEndosomeTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
 		if(initpepMHC > 0 || finalpepMHC > 0) {
 //		System.out.println(initpepMHC +" ENDOSOME WITH pepMHC "+ finalpepMHC + endosome.toString());
-		endosome.complexMHC = finalpepMHC;
-		endosome.assembleMHC = finalpepMHC - initpepMHC;
+//		endosome.complexMHC = finalpepMHC;
+//		endosome.assembleMHC = finalpepMHC - initpepMHC;
 		}	
 		
 //		delta = delta + (localM.get("cMHCIEn")+localM.get("oMHCIEn")+localM.get("pepMHCIEn"))-

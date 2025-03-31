@@ -85,36 +85,36 @@ public class UptakeStep2 {
 		areaER = EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();	
 		}
 //		COMPENSATORY NEW ORGANELLE
-		if (3>1) return;
-
-		for (String rab : totalRabs.keySet()){
-			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
-			double value = initialTotalRabs.get(rab) - totalRabs.get(rab);
-			deltaRabs.put(rab, value);
-		}
-
-		//	System.out.println("Initial Rabs  "+ initialTotalRabs + " \n delta Rabs"+ deltaRabs);
-		double largeDelta = 0d;
-		String selectedRab = "";
-		for (String rab : deltaRabs.keySet()){
-			if (deltaRabs.get(rab)>largeDelta) {
-				selectedRab=rab;
-				largeDelta=deltaRabs.get(rab);
-			}	
-		}
-		//		System.out.println("selected Rab for uptake "+ selectedRab);
-		//		If no rab was selected or the surface required is small (less than a sphere of 60 nm radius, 
-		//		no uptake is required
-		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<450000000) return;
-		//if the selected Rab correspond to Early Endosomes, new uptake
-		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
-//		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
-		if (selectedOrganelle.equals("EE")){ 
-			newUptake(cell,selectedRab);}
-		else if (selectedOrganelle.equals("ERGIC")){ 
-			newSecretion(cell,selectedRab);}
-		else {newOrganelle(cell, selectedRab, rabCode);
-		}
+//		if (3>1) return;
+//
+//		for (String rab : totalRabs.keySet()){
+//			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
+//			double value = initialTotalRabs.get(rab) - totalRabs.get(rab);
+//			deltaRabs.put(rab, value);
+//		}
+//
+//		//	System.out.println("Initial Rabs  "+ initialTotalRabs + " \n delta Rabs"+ deltaRabs);
+//		double largeDelta = 0d;
+//		String selectedRab = "";
+//		for (String rab : deltaRabs.keySet()){
+//			if (deltaRabs.get(rab)>largeDelta) {
+//				selectedRab=rab;
+//				largeDelta=deltaRabs.get(rab);
+//			}	
+//		}
+//		//		System.out.println("selected Rab for uptake "+ selectedRab);
+//		//		If no rab was selected or the surface required is small (less than a sphere of 60 nm radius, 
+//		//		no uptake is required
+//		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<450000000) return;
+//		//if the selected Rab correspond to Early Endosomes, new uptake
+//		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
+////		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
+//		if (selectedOrganelle.equals("EE")){ 
+//			newUptake(cell,selectedRab);}
+//		else if (selectedOrganelle.equals("ERGIC")){ 
+//			newSecretion(cell,selectedRab);}
+//		else {newOrganelle(cell, selectedRab, rabCode);
+//		}
 		}
 
 	

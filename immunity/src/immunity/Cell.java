@@ -66,35 +66,20 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-//		Cytosol pH = 7
-		Cell.getInstance().getSolubleCell().put("protonCy", 1E-4);
-//		Cytosol digestion
-		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
-//		System.out.println("soluble Cell  wwwww  " + soluble);
-		if (soluble.containsKey("pepCy")) {
-		double cyto = soluble.get("pepCy")*0.9995;
-		Cell.getInstance().getSolubleCell().put("pepCy", cyto);
-		}
-		if (soluble.containsKey("ovaCy")) {
-		double cyto = soluble.get("ovaCy")*0.9995;
-		Cell.getInstance().getSolubleCell().put("ovaCy", cyto);
-		}
-
 //		this.changeColor();
+		cellDigestion(this);
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
 		if (Math.random() < 0.0 && name.endsWith(".cps")){
-//			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
-		}
-			
+		}		
 // eventual use for cell metabolism
+
+		
 	}
 	@ScheduledMethod(start = 1, interval = 1)
-//	0.01/2d)// era /3 y luego /1, pero demasiado uptake desde PM
 	public void uptake() {
 		if (Math.random() <ModelProperties.getInstance().getActionProbabilities().get("p_ERUptake"))
 		{
-
 			UptakeStep2.uptake(this);
 			}
 			
@@ -102,7 +87,16 @@ public class Cell {
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 
+	private void cellDigestion(Cell cell) {
+		//	Cytosol digestion
+		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
+		for (String s : soluble.keySet()){
+			double cyto = soluble.get(s)*0.9995;
+			Cell.getInstance().getSolubleCell().put(s, cyto);
+		}
+	}
 
+	
 	public double gettMembrane() {
 		return tMembrane;
 	}
@@ -121,37 +115,23 @@ public class Cell {
 	public void settMembrane(double tMembrane) {
 		this.tMembrane = tMembrane;
 	}
-	
 	public HashMap<String, Double> getRabCell() {
 		return rabCell;
 	}
-	
 	public HashMap<String, Double> getMembraneCell() {
 		return membraneCell;
 	}
 	public HashMap<String, Double> getSolubleCell() {
-//		System.out.println("ACTUALIZA SOLUBLE CELL " + solubleCell);
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		return solubleCell;
 	}
 	public final TreeMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
 		return cellTimeSeries;
 	}
-//	public HashMap<String, Double> getcellTimeSeries() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 	public ContinuousSpace<Object> getSpace() {
-		// TODO Auto-generated method stub
 		return space;
 	}
 	public Grid<Object> getGrid() {
-		// TODO Auto-generated method stub
 		return grid;
 	}
 

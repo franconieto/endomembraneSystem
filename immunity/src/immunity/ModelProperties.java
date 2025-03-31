@@ -66,6 +66,7 @@ public class ModelProperties {
 	public HashMap<String, Double> initERmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initERsolubleRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
+	public HashMap<String, Double> rabMaturation = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
 	public HashMap<String, Double> mtTropismTubule = new HashMap<String, Double>();
@@ -105,6 +106,9 @@ public class ModelProperties {
 	}
 	public HashMap<String, Double> getRabCompatibility() {
 		return rabCompatibility;
+	}
+	public HashMap<String, Double> getRabMaturation() {
+		return rabMaturation;
 	}
 	public HashMap<String, Double> getTubuleTropism() {
 		return tubuleTropism;
@@ -284,6 +288,13 @@ public class ModelProperties {
 			case "rabCompatibility": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					modelProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(modelProperties.getRabCompatibility());
+					}
+				break;
+			}
+			case "rabMaturation": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					modelProperties.getRabMaturation().put(b[i], Double.parseDouble(b[i+1]));
 					//System.out.println(modelProperties.getRabCompatibility());
 					}
 				break;
