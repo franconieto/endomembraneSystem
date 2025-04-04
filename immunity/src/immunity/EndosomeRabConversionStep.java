@@ -15,7 +15,7 @@ public class EndosomeRabConversionStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 /*
- * This class is used only que the dynamic of Rabs is managed by COPASI.  At present maturation is 
+ * This class is used only when the dynamic of Rabs is managed by COPASI.  At present maturation is 
  * managed by the EndosomeMaturation class
  */
 

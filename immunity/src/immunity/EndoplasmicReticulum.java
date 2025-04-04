@@ -31,33 +31,24 @@ public class EndoplasmicReticulum {
 	public static int blue = 0;	
 	public double endoplasmicReticulumArea = 0;
 	public double endoplasmicReticulumVolume = 0;
-//	public double endoplasmicReticulumVolume;
-//	public double endoplasmicReticulumArea;
-//	public static double initialendoplasmicReticulumVolume;
-//	public static double initialendoplasmicReticulumArea;
-//	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getendoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 
-//	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getendoplasmicReticulumProperties().get("endoplasmicReticulumVolume");//
 	TreeMap<Integer, HashMap<String, Double>> endoplasmicReticulumTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 	public String endoplasmicReticulumCopasi = ModelProperties.getInstance().getCopasiFiles().get("endoplasmicReticulumCopasi");
-// nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
-//	in 2D
+
 
 	// Constructor
 	public EndoplasmicReticulum(ContinuousSpace<Object> sp, Grid<Object> gr){
-// Contains the contents that are in the ER.  It is modified by Endosome that uses and changes the ER
+// Contains the cargoes that are in the ER.  It is modified by Endosome that uses and changes the ER
 // contents.	
-//		Initial values from the InputIntrTransport2
-//		These values changes with data from frozenEndosomes.csv and by fusion and fission of ER.
+//		The ER growth at some specific rate to mantain a flux of membrane through the Golgi
+//		Initial values from the InputIntrTransport3
+//		These values changes with data from frozenEndosomes.csv and by fusion of ERGIC vesicles and budding of ERGIC vesicles.
 		ModelProperties modelProperties = ModelProperties.getInstance();
 		double orgScale = modelProperties.getCellK().get("orgScale");
 		
 		initialERProperties = modelProperties.getInitERProperties();
 		endoplasmicReticulumArea = initialERProperties.get("endoplasmicReticulumArea");// 
-
-		//1500 y 400 es lado y el alto de la membrana considerada en escala original. 4 son cuatro lados.
 //		System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ endoplasmicReticulumArea);
-		
-		//400, 1500 y 1500 es el cubo en nm en escala original	
+
 		endoplasmicReticulumVolume = initialERProperties.get("endoplasmicReticulumVolume");//
 
 		for (String met : modelProperties.getInitERmembraneRecycle().keySet()){
@@ -76,9 +67,10 @@ public class EndoplasmicReticulum {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-//		changeColor();
+//		changeColor(); The color may change with the presence of some cargoes
 		growth();
 		
+//		Eventually, reactions may occurr within the ER.
 //		this.membraneRecycle = endoplasmicReticulum.getInstance().getMembraneRecycle();
 //		this.solubleRecycle = endoplasmicReticulum.getInstance().getSolubleRecycle();
 //		this.endoplasmicReticulumTimeSeries=endoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries();
@@ -87,33 +79,17 @@ public class EndoplasmicReticulum {
 
 		}
 	public void growth() {
-//	if(Math.random()>0.05)return;//aumento a 0.05 para crear mas organelas
-//	int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-	
-	double growth = ModelProperties.getInstance().getCellK().get("growthER");//1.0005; // Bajo 1.001
-//	EndoplasmicReticulum.getInstance();
-	//	if (tick < 120000) growth = 1.005;
-//	else if (tick >= 120000 && tick < 300000)growth = 1.0025;
-//	else growth = 1.01;
-//	System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
-//	As set here, it growth at 0.005(probability)*0.005(from 1.005)*1000(ticks per min) = 0.025 of ER 
-//	area per 1000 tick (1 min) = 2.5%/min
-	EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(endoplasmicReticulumArea * growth);
-//	System.out.println("INITIAL AREA ER  " + areaER);
-//	EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
-//	System.out.println("FINAL AREA ER  " + EndoplasmicReticulum.getendoplasmicReticulumArea());
+		double growth = ModelProperties.getInstance().getCellK().get("growthER");//1.0005; // Bajo 1.001
+		EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(endoplasmicReticulumArea * growth);
 	}
-	
+
 	public void changeColor() {
 		double c1 = 0d;
 		{
-//		c1 = membraneRecycle.get("Tf");
 		c1 = 20*c1/endoplasmicReticulumArea;
 		if (c1>1) c1=1;
 		ercolor = (int) (c1*255);
 		}
-
-//		System.out.println(endoplasmicReticulum.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + ERcolor+" " + ercolor);
 	}
 	
 
@@ -146,9 +122,6 @@ public class EndoplasmicReticulum {
 		return endoplasmicReticulumTimeSeries;
 	}
 	
-//	public final void setendoplasmicReticulumArea(double endoplasmicReticulumArea) {
-//		EndoplasmicReticulum.endoplasmicReticulumArea = endoplasmicReticulumArea;
-//	}
 
 	public final double getInitialendoplasmicReticulumVolume() {
 		return initialERProperties.get("endoplasmicReticulumVolume");

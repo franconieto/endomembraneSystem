@@ -42,20 +42,6 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		 * sphere the s^3/v^2 is 113. For a cylinder is larger than this. For
 		 * the minimum cylinder is 169.6
 		 */
-//		double s = object.getArea();
-//		double v = object.getVolume();
-//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-//		double svratio = s/v; // ratio surface volume
-//		double a = rsphere; //initial a from the radius of a sphere of volume v
-//		double c = a;// initially, c=a
-		// calculation from s/v for a cilinder that it is the same than for an ellypsoid
-		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c  hence s/v =(1/c)+(2/a)
-//		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
-//		a=2/(svratio-1/c);//from s/v ratio
-//		c= v*3/(4*Math.PI*a*a);//from v ellypsoid
-//		}
-//		System.out.println("area  "+ s+" volume   " + v);
-//		System.out.println("a "+a+ " c "+c+" areaE  "+ (2*Math.PI*a*a+2*a*Math.PI*2*c)*.666+" volumeE   " + 4d/3d*Math.PI*a*a*c);
 //		PLOT as ellipses with a length/wide ratio depending on the area/volume
 //		ratio of the endosome.  It is 1 (sphere) when the area is what you need to
 //		cover a sphere with the volume of the endosome
@@ -64,8 +50,6 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //		SCALE: I MEASURE THAT THE 50 GRID CORRESPOND TO A RECTANGLE OF 750 OF LENGTH
 //		IF THE ORGANELLES ARE IN nm, HENCE THE AREA REPRESENT A 750 nm X 750 nm
         VSpatial shape = null;
-//		double a1 = 2*rsphere/(1+svr);
-		//if (a>10){
 // World is a 50 X 50 space.  Each unit of space has a size of 15 
 // hence the world is 750 X 750 size in repast units, that correspond to 
 // a 1500nm x 1500nm cellular space at orgScale = 1.  
@@ -91,28 +75,6 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         shape = this.factory.createShape(rec);
 		}
-//		else{
-//		shape = this.factory.createRectangle((int) (v/Math.PI/100),5);	
-//		}
-//		System.out.println("a  "+a1+"svr  "+svr);
-/*//       PLOT as a sphere plus a tubule
-		Shape sphere = new Ellipse2D.Double(0, 0, rsphere, rsphere);
-		double areaTubule = s - 4*Math.PI*rsphere*rsphere;
-		//		length of a one-cap cylinder with the extra membrane.
-//		h = (area-PI*r2)/2*PI*r.  Where r is the radius of a tubule (10 nm)
-		
-		double tubLength = (areaTubule-Math.PI*100d)/(2*Math.PI*10);
-        Shape tubule = new Rectangle.Double(rsphere-2,rsphere/2-5,tubLength,10);
-		System.out.println("SPHERE"+rsphere+"TUBULE"+tubLength);
-	    Area area = new Area(sphere);
-	    Area a2 = new Area(tubule);
-	    area.add(a2);
-	    VSpatial spPlusTub = this.factory.createShape(area);*/
-
-//		VSpatial createRectangle = this.factory.createRectangle(5 * svr, 5);
-
-//       Stroke stroke = new BasicStroke((float) 0.2);
-
 
 		return shape;//createRectangle;
 	}
@@ -153,18 +115,6 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public int getBorderSize(Endosome object) {
-//		if (object.getMembraneContent().containsKey("membraneMarker")
-//				&& object.getMembraneContent().get("membraneMarker")> 0.99) {
-//			return 100;				
-//
-//		if (((object.getSolubleContent().containsKey("solubleMarker")
-//				&& object.getSolubleContent().get("solubleMarker")<0.5))
-//			&& 
-//			((object.getMembraneContent().containsKey("membraneMarker")
-//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
-//		{
-//			return 0;				
-//		}
 			return 10;
 	}
 
@@ -173,26 +123,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		int colorCode = 1;
 //		As a routine, border color represents the rab content.  It may be a mix (colorCode = 0) or just to select the more
 //		aboundant Rab (colorCode = 1)
-		//		if (!object.getSolubleContent().containsKey("solubleMarker")
-		//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
-		//			return new Color(255, 255, 255);				
-		//		}
-		//		if (((object.getSolubleContent().containsKey("solubleMarker")
-		//				&& object.getSolubleContent().get("solubleMarker")<0.5))
-		//			&& 
-		//			((object.getMembraneContent().containsKey("membraneMarker")
-		//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
-		//		{
-		//			return new Color(255, 255, 255);				
-		//		}
-
-
-
-
-
-
 		if (colorCode ==0)
-
 		{
 			// color code for rab contents
 			double red = object.getEdgeRed();
@@ -249,8 +180,6 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public float getRotation(Endosome endosome) {
 		// set in a way that object move along its large axis
-//		if(endosome.heading > 0 && endosome.heading <180) {return (float) -(180+endosome.heading);}		
-//		else {	
 		if(endosome.area >= Cell.minCistern/20 && endosome.a > endosome.c) return (float) 90;
 		else return (float) -(endosome.getHeading());
 
@@ -270,7 +199,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		// in the endosome
 
 		if(2<3) {
-			return null;		// to eliminate the labels
+			return null;		// to eliminate the labels. Not enough resolution to see the numbers
 		}
 		else {
 		String label = "";

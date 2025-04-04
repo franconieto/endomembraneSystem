@@ -1,6 +1,6 @@
 MODEL PROPERTIES,,,,,,,,,,,,,,,,,,,,
-cellK,rcyl,20,rendo,35,orgScale,0.1,timeScale,0.5,freezeDry,1,beadVolume,5.00E+08,fullFusionREprob,0.04,,,,,,
-cellK,kineticsArea,1,spaceWidth,50,spaceLength,50,growthER,1.0001,squeezeFactor,0.9999,digMVB,0.99,digSol,0.9995,digMem,0.99995,,,,
+cellK,rcyl,20,rendo,35,orgScale,0.1,timeScale,0.5,freezeDry,1,beadVolume,5.00E+08,fullFusionREprob,0.04,minCistern,4E5,maxCistern,1.6E6,,
+cellK,kineticsArea,1,spaceWidth,50,spaceLength,50,growthER,1.0001,squeezeFactor,0.9999,digMVB,0.99,digSol,0.9995,digMem,0.99995,digCell,0.9995,,
 actionProbabilities,p_EndosomeRecycleStep,0.003,p_EndosomeUptakeStep,0.0005,p_EndosomeInternalVesicleStep,0.012,p_FusionStep,1.50E-03,p_FissionStep,0.6,p_EndosomeTetherStep,0.06,p_EndosomeLysosomalDigestionStep,0.06,p_EndosomeMaturationStep,0.0002,p_ERUptake,0.005,,
 CELL,,,,,,,,,,,,,,,,,,,,
 cellAgentProperties,cellArea,6.00E+07,cellVolume,2.25E+11,,,,,,,,,,,,,,,,

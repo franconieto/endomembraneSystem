@@ -5,6 +5,12 @@ import cern.jet.random.engine.DRand;
 import cern.jet.random.engine.RandomEngine;
 
 public class EndosomeLysosomalDigestionStep {
+	/*	
+		This class is responsible for the digestion of lysosomes. And also to squeeze the endosome.
+		It is called when the endosome is RabD positive and has a high percentage of RabD in the membrane.
+		It also is called when the endosome has a small surface/volume ratio and it is big enough.
+		
+		*/
 	static double PI = Math.PI;
 	static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
 	
@@ -32,10 +38,9 @@ public class EndosomeLysosomalDigestionStep {
 	}
 
 	private static void squeezeOrganelle(Endosome endosome) {		
-//The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead
-		
-//		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);	
-//		if (isTubule) return;
+//The Organelle volume is decreased.  Controls that it has enough volume to allocate the mvb and a bead		
+		boolean isTubule = (endosome.volume/(endosome.area - 2*PI*rcyl*rcyl) <=rcyl/2);	
+		if (isTubule) return;
 		double r = rcyl;	
 		double squeeze = ModelProperties.getInstance().getCellK().get("squeezeFactor");
 		double newVolume = endosome.volume * squeeze;//0.999;	//era 0.99	//

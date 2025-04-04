@@ -12,7 +12,13 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 
 public class EndosomeTetherStep {
-
+	/*	
+		This class is responsible for the tethering of endosomes.  
+		It is a process that occurs when two endosomes are close to each other
+		Like fusion only compatible endosomes can tether.
+		When they tether, they move together following the largest endosome
+		
+	*/
 		private static ContinuousSpace<Object> space;
 		private static Grid<Object> grid;
 		

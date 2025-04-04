@@ -202,8 +202,7 @@ public class ModelProperties {
 				for (int i = 1; i < b.length; i = i + 2) {
 				modelProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(modelProperties.getCellK());
-				}
-				
+				}				
 				break;
 			}
 			case "actionProbabilities": {

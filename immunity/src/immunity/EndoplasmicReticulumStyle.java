@@ -11,6 +11,7 @@ import saf.v3d.scene.Position;
 import saf.v3d.scene.VShape;
 import saf.v3d.scene.VSpatial;
 public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulum> {
+//	At present the ER is a diffuse organelle in the cell.  No display
 
 	ShapeFactory2D factory;
 	private double String;

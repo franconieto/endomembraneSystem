@@ -11,6 +11,7 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 public class Cytosol {
+	// This class is not been used.  Cytosol would be a grid of the cell cytosol where solube cell components will diffuse
 
 		private ContinuousSpace<Object> space;
 		private Grid<Object> grid;

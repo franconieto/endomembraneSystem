@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import java.util.Set;
 
-
+import com.jidesoft.icons.IconSet.File;
 
 //import immunity.Element;
 import repast.simphony.context.Context;
@@ -29,6 +29,8 @@ import repast.simphony.space.grid.WrapAroundBorders;
 import repast.simphony.util.collections.IndexedIterable;
 
 public class CellBuilder implements ContextBuilder<Object> { // contextbuilder es una interfaz, debe tener una clase context que se sobrescribe mas abajo
+// This is the main class for Repast where the model is built.  It creates the context and the space
+//	It also load the agents in the space and grid.
 
 	public static IndexedIterable collection = null;
 	private static Collection context;
@@ -65,7 +67,9 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 							new SimpleGridAdder<Object>(), true,
 							spaceWidth, spaceLength));
 	
-// PM space
+//Create new space for PM where Agents are molecules
+// Not used in the present model		
+//PM space
 //		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
 //										"spacePM", context, new RandomCartesianAdder<Object>(),
 //										new repast.simphony.space.continuous.WrapAroundBorders(), 
@@ -82,7 +86,8 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		
 //		System.out.println(" builder CellProperties cargado");
 //			context.add(ModelProperties);	
-		//Cell cell = Cell.getInstance();
+//Cell cell = Cell.getInstance();
+//		Introduce
 		context.add(new Cell(space, grid));
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
@@ -99,7 +104,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 			context.add(new MT(space, grid));
 		}
 
-////		MOLECULES IN THE PLASMA MEMBRANE SPACE
+//NOT USED		MOLECULES IN THE PLASMA MEMBRANE SPACE
 //		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
 //			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "receptor");
 //			context.add(molecule);
@@ -116,8 +121,10 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			spacePM.moveTo(molecule, x, y);
 //			gridPM.moveTo(molecule,(int) x, (int)y);
 //		}
-//	
-//// 		ENDOPLASMIC RETICULUM
+
+		
+// 		In the complete cell, the ER is a difused agent on all the cell
+//		ENDOPLASMIC RETICULUM
 //		for (int i = 0; i < 4; i=i+1)
 //		{
 //			EndoplasmicReticulum endoplasmicReticulum = new EndoplasmicReticulum(space, grid, null, null, null);
@@ -140,6 +147,9 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		String name;
 		int ite=0;
 		if (modelProperties.getCellK().get("freezeDry").equals(0d)) {
+//			freezeDry = 0d; // if the organelles are generated from scratch.  Parameter from the input file
+//			I prefer to load the organelles from the input file inputFrozenEndosomes.csv
+//			ORGANELLES GENERATED FROM SCRATCH
 		// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
 		// total surface.  These values were obtained of simulations that progressed by 40000 steps
 			for (String kind : diffOrganelles){
@@ -214,7 +224,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				}
 			}
 		}
-		else {
+		else { //ORGANELLES LOADED FROM A CSV File. inputFrozenEndosomes.csv
 //			if endosomes are loadaed from a freezeDry csv file
 //			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
 //			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
@@ -320,14 +330,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				double x = RandomHelper.nextDoubleFromTo(5d, 45d);
 				space.moveTo(obj, x, y);
 				grid.moveTo(obj, (int) x, (int) y);					
-//			to position endosomes in a specific way
-//				if(((Endosome) obj).getRabContent().containsKey("RabB")){
-////					NdPoint pt = space.getLocation(obj);
-//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-//					double y = RandomHelper.nextDoubleFromTo(25d, 45d);
-//					space.moveTo(obj, x, y);
-//					grid.moveTo(obj, (int) x, (int) y);					
-//					}
+
 			}
 		}
 
@@ -342,7 +345,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		
 	}
 	
-	
+//	Check if the domains in the organelle are mostly Golgi
 	
 	private static boolean isGolgi(HashMap<String, Double> rabContent) {
 		double areaGolgi = 0d;
@@ -358,36 +361,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 	}	
 	
 
-/*	private void loadFromExcel(Context<Endosome> context, ContinuousSpace<Object> space, Grid<Object> grid)
 
-			throws IOException {
-		// open the excel file
-		Workbook book = new XSSFWorkbook(new FileInputStream("./data/agent_input.xlsx"));
-		// get the first worksheet
-		Sheet sheet = book.getSheetAt(0);
-
-		// iterate over the rows, skipping the first one
-
-		for (Row row : sheet) {
-
-			if (row.getRowNum() > 0) {
-
-				String id = row.getCell(1).getStringCellValue();
-				int age = (int) row.getCell(2).getNumericCellValue();
-				double energy = row.getCell(3).getNumericCellValue();
-				Endosome endosome = new Endosome(space, grid, null, null, null, null);
-				context.add(endosome);
-
-				double x = row.getCell(5).getNumericCellValue();
-				double y = row.getCell(6).getNumericCellValue();
-				space.moveTo(endosome, x, y);
-			}
-
-		}
-
-
-
-	}*/
 
 
 	

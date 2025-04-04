@@ -1,7 +1,11 @@
 package immunity;
 
 public class EndosomeAssessCompatibility {
-	
+	/*	
+		According to the membrane domains, organelles are more or less compatibles
+		for fusion and tethering. This class assess the combatibility between two organelles
+		rabCompatibility are specified in the inputIntrTrans3.csv file		
+		*/
 	public static boolean compatibles(Endosome endosome1, Endosome endosome2) {
 		double sum = 0;
 		for (String key1 : endosome1.rabContent.keySet()) {
