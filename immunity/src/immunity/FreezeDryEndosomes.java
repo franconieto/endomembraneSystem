@@ -22,14 +22,15 @@ import repast.simphony.context.space.grid.ContextGrid;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.collections.IndexedIterable;
-// This class contains the properties of the cell.  It is loaded with the same
-// CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class FreezeDryEndosomes {
 
-//	public static final String configFilename = "config.json";
 	
 	private static FreezeDryEndosomes instance;
-	//CAMBIO
+	/*
+	This class is used store the values of the endosomes in the model every 5000 ticks in 
+a file called outputFrozenEndosomes.csv in the 'data' folder.  This file is used to restart the model from a given
+tick.  This class also restores the endosomes reading the inputFrozenEndosomes.csv file in the "data" folder		
+		*/
 	LocalPath mainpath=LocalPath.getInstance(); 
 	String FreezeOutputPath = mainpath.getPathOutputFE(); 	
 	
@@ -50,7 +51,6 @@ public class FreezeDryEndosomes {
 	public static void loadFromCsv() throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-//				"inputFrozenEndosomes.csv")); esto es cuando no es en Batch
 //		ESTO ES PARA BATCH.  LEE LOS ENDOSOMAS DE UN FOLDER DATA RELATIVO.  El folder se llama "data" y allí está 
 //				también el file de input inputIntrTransp3.csv
 				".//data//inputFrozenEndosomes.csv"));
@@ -121,6 +121,8 @@ public class FreezeDryEndosomes {
 				}
 				break;
 			}
+			
+			// if the first two letters are "pl", load data for the plasma membrane
 			case "pl":
 			{
 				switch (b[1]) {
@@ -157,6 +159,7 @@ public class FreezeDryEndosomes {
 				}
 				break;
 			}
+			// if the first two letters are "ER", load data for the endoplasmic reticulum
 			case "ER":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
@@ -199,44 +202,8 @@ public class FreezeDryEndosomes {
 				}
 				}
 				break;
-			//			case "ER":
-//			{
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(Double.parseDouble(b[3]));
-//					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumVolume(Double.parseDouble(b[5]));
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						if (!ModelProperties.getInstance().getInitERsolubleRecycle().containsKey(b[i]))continue;
-//						if (!ModelProperties.getInstance().getInitERsolubleRecycle().get(b[i]).equals(0.0))continue;
-//
-////						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						if (!ModelProperties.getInstance().getInitERmembraneRecycle().containsKey(b[i]))continue;
-//						if (!ModelProperties.getInstance().getInitERmembraneRecycle().get(b[i]).equals(0.0))continue;
-//
-////						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
 			}
+			// if the first two letters are "Cy", load data for the cell cytosol
 			case "Cy":
 			{
 				switch (b[1]) {
@@ -287,7 +254,7 @@ public class FreezeDryEndosomes {
 	}
 	
 	
-	
+//	Take all organelles in the model and write soome of their properties to a file
 	public void writeToCsv() throws IOException {
 		
 		IndexedIterable<Endosome> collection = CellBuilder.getCollection();
@@ -313,6 +280,10 @@ public class FreezeDryEndosomes {
 		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 		output.append(line);
+		/*	
+		 * The HashMap of Rab content is written in the following format: RabA, value, RabB, value, RabC, value	
+				*/
+		
 		line = "";
         line = line + "endosome"+index + ch + ",";
         String rabContent = endosome.getRabContent().toString().replace("=",",");
@@ -321,10 +292,10 @@ public class FreezeDryEndosomes {
         rabContent = rabContent.replace(" ","");
         line = line + "initRabContent" + "," + rabContent;
         line = line + "\n";
-//		Writer output;
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
-		
+		/*	
+		 * 	The HashMap of Membrane content is written in the following format: cargo1, value, ...
+		 * 	*/
 		line = "";  
         line = line + "endosome"+index + ch + ",";
 		String membraneContent = endosome.getMembraneContent().toString().replaceAll("=",","); 
@@ -333,9 +304,10 @@ public class FreezeDryEndosomes {
         membraneContent = membraneContent.replace(" ","");
         line = line + "initMembraneContent" + "," + membraneContent;
         line = line + "\n";
-//		Writer output;
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
+		/*	
+		 * 	The HashMap of Soluble content is written in the following format: cargo1, value, ...
+		 * 	*/
 		
 		line = "";  
         line = line + "endosome"+index + ch + ",";        
@@ -345,45 +317,27 @@ public class FreezeDryEndosomes {
         solubleContent = solubleContent.replace(" ","");
         line = line + "initSolubleContent" + "," + solubleContent;
         line = line + "\n";
-//		Writer output;
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		index = index + 1;
 		output.close();
 	}
 	}
 		public void writeToCsvPM() throws IOException {
-			
+			/*			
+			The information for PM is written in the same format as for the endosome and added to the file
+			*/
 			PlasmaMembrane plasmaMembrane = PlasmaMembrane.getInstance();
-//			System.out.println("ALL ENDOSOMES"+collection);
 			Writer output;	
-//		    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//			String line ="tick " + tick + "\n";
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-//			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output.append(line);
-//			output.close();
 				String	line = "";
 //				String ch = RandomStringUtils.randomAlphabetic(1);
 	            line = line + "plasmaMembrane" + ",";
 	            line = line + "initOrgProp" + ",";
 	            line = line + "area" + "," + plasmaMembrane.getPlasmaMembraneArea() + ",";
 	            line = line + "volume" + "," + plasmaMembrane.getPlasmaMembraneVolume() + ",";
+	            
 			line = line + "\n";	
 			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-			output.append(line);
-//			line = "";
-//	        line = line + "plasmaMembrane"+index + ch + ",";
-//	        String rabContent = endosome.getRabContent().toString().replace("=",",");
-//	        rabContent = rabContent.replace("{","");
-//	        rabContent = rabContent.replace("}","");
-//	        rabContent = rabContent.replace(" ","");
-//	        line = line + "initRabContent" + "," + rabContent;
-//	        line = line + "\n";
-////			Writer output;
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//			output.append(line);
+			output.append(line);	
 			
 			line = "";  
 	        line = line + "plasmaMembrane"+ ",";
@@ -393,8 +347,6 @@ public class FreezeDryEndosomes {
 	        membraneContent = membraneContent.replace(" ","");
 	        line = line + "initMembraneContent" + "," + membraneContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			
 			line = "";  
@@ -405,109 +357,27 @@ public class FreezeDryEndosomes {
 	        solubleContent = solubleContent.replace(" ","");
 	        line = line + "initSolubleContent" + "," + solubleContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			output.close();
 		}	
 		
-		
-//		public void writeToCsvER2() throws IOException {
-//			
-//			IndexedIterable<EndoplasmicReticulum> collectionER = CellBuilder.getCollectionER();
-////			System.out.println("ALL ENDOSOMES"+collection);
-//			int index = 0;
-//			Writer output;	
-//		    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//			String line ="tick " + tick + "\n";
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-//			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output.append(line);
-//			output.close();
-//			for (EndoplasmicReticulum ER : collectionER) {
-//				line = "";
-//				String ch = RandomStringUtils.randomAlphabetic(1);
-//	            line = line + "ER"+index + ch + ",";
-//	            line = line + "initOrgProp" + ",";
-//	            line = line + "area" + "," + ER.area  + ",";
-//	            line = line + "volume" + "," + ER.volume + ",";
-//	            line = line + "xcoor" + "," + ER.xcoor + ",";
-//	            line = line + "ycoor" + "," + ER.ycoor + ",";
-//			line = line + "\n";	
-//			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-//			output.append(line);
-//			line = "";
-//	        line = line + "ER"+index + ch + ",";
-//	//        String rabContent = endosome.getRabContent().toString().replace("=",",");
-////	        rabContent = rabContent.replace("{","");
-////	        rabContent = rabContent.replace("}","");
-////	        rabContent = rabContent.replace(" ","");
-////	        line = line + "initRabContent" + "," + rabContent;
-////	        line = line + "\n";
-////			Writer output;
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//			output.append(line);
-//			
-//			line = "";  
-//	        line = line + "endosome"+index + ch + ",";
-//			String membraneContent = ER.getMembraneRecycle().toString().replaceAll("=",","); 
-//			membraneContent = membraneContent.replace("{","");
-//			membraneContent = membraneContent.replace("}","");
-//	        membraneContent = membraneContent.replace(" ","");
-//	        line = line + "initMembraneContent" + "," + membraneContent;
-//	        line = line + "\n";
-////			Writer output;
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//			output.append(line);
-//			
-//			line = "";  
-//	        line = line + "ER"+index + ch + ",";        
-//	        String solubleContent = ER.getSolubleRecycle().toString().replaceAll("=",",");        
-//			solubleContent = solubleContent.replace("{","");
-//			solubleContent = solubleContent.replace("}","");
-//	        solubleContent = solubleContent.replace(" ","");
-//	        line = line + "initSolubleContent" + "," + solubleContent;
-//	        line = line + "\n";
-////			Writer output;
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//			output.append(line);
-//			index = index + 1;
-//			output.close();
-//		}
-//		}
+
 		public void writeToCsvER() throws IOException {
 			
+			/*
+			 * The information for ER is written in the same format as for the endosome and added to the file
+			 */
+			
 			EndoplasmicReticulum endoplasmicReticulum = EndoplasmicReticulum.getInstance();
-//			System.out.println("ALL ENDOSOMES"+collection);
 			Writer output;	
-//		    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//			String line ="tick " + tick + "\n";
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-//			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output.append(line);
-//			output.close();
 				String	line = "";
-//				String ch = RandomStringUtils.randomAlphabetic(1);
 	            line = line + "EReticulum" + ",";
 	            line = line + "initOrgProp" + ",";
 	            line = line + "area" + "," + endoplasmicReticulum.getEndoplasmicReticulumArea() + ",";
 	            line = line + "volume" + "," + endoplasmicReticulum.getEndoplasmicReticulumVolume() + ",";
 			line = line + "\n";	
 			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 			output.append(line);
-//			line = "";
-//	        line = line + "EndoplasmicReticulum"+index + ch + ",";
-//	        String rabContent = endosome.getRabContent().toString().replace("=",",");
-//	        rabContent = rabContent.replace("{","");
-//	        rabContent = rabContent.replace("}","");
-//	        rabContent = rabContent.replace(" ","");
-//	        line = line + "initRabContent" + "," + rabContent;
-//	        line = line + "\n";
-////			Writer output;
-////			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//			output.append(line);
 			
 			line = "";  
 	        line = line + "EReticulum"+ ",";
@@ -517,8 +387,6 @@ public class FreezeDryEndosomes {
 	        membraneContent = membraneContent.replace(" ","");
 	        line = line + "initMembraneContent" + "," + membraneContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			
 			line = "";  
@@ -529,12 +397,13 @@ public class FreezeDryEndosomes {
 	        solubleContent = solubleContent.replace(" ","");
 	        line = line + "initSolubleContent" + "," + solubleContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			output.close();
 		}
 		public void writeToCsvCy() throws IOException {
+			/*
+			 * The information for Cell cytosol is written in the same format as for the endosome and added to the file
+			 */
 			
 			Cell cell = Cell.getInstance();
 
@@ -547,7 +416,6 @@ public class FreezeDryEndosomes {
 	            line = line + "volume" + "," + cell.getCellVolume() + ",";
 			line = line + "\n";	
 			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 			output.append(line);
 			
 			line = "";  
@@ -558,8 +426,6 @@ public class FreezeDryEndosomes {
 	        membraneContent = membraneContent.replace(" ","");
 	        line = line + "initMembraneContent" + "," + membraneContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			
 			line = "";  
@@ -570,8 +436,6 @@ public class FreezeDryEndosomes {
 	        solubleContent = solubleContent.replace(" ","");
 	        line = line + "initSolubleContent" + "," + solubleContent;
 	        line = line + "\n";
-//			Writer output;
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			output.close();
 		}

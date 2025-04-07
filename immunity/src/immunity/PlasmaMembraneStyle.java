@@ -15,6 +15,9 @@ import saf.v3d.scene.VShape;
 import saf.v3d.scene.VSpatial;
 
 public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
+//	Class to draw the PM.  The PM is a rectangle with rounded corners.
+//	It should change with the shape of the cell
+	
 
 	ShapeFactory2D factory;
 	private double String;

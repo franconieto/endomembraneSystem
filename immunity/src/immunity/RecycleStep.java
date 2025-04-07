@@ -16,6 +16,14 @@ public class RecycleStep {
 	private static Grid<Object> grid;
 	
 	public static void recycle(Endosome endosome) {
+		/*
+		This class is used to recycle organelles. Near the PM some membrane domains can recycle.
+		Near the ER some membrane domains can recycle.  At present since the ER is everywhere, there is always a
+		possibility of recycling. The probability of recycling is defined in the csv file.
+		At present, EE, RE and TGN can recycle to the PM. and ERGIC can recycle to the ER.
+		To recycling are possible.  Full fusion or kiss and run. At present EE, TGN and ERGIC full fusion.
+		During kiss and run, the endosome is preserved and the soluble and membrane content is recycled.
+		*/
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -188,12 +196,7 @@ public class RecycleStep {
 		//NEW RULES
 //		if near the PM and larger domain is EE and is a tubule, recycle
 //		So, I am assuming a fast recycling cycle probably with Rab4 tubules 
-/* I will test the posibility of recycling of the membrane and having a balance of EE
-* and PM membrane.
-* firt tests if it is a tubule (return) then higher probabilities to tubules with high proportion of EE domain
-*/
-		//boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
-		//if (!isTubule) return;// if it is not a tubule no recycling
+
 		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab)*endosome.rabContent.get(maxRab) / endosome.area; 
 		if (Math.random() >= recyProb
 				|| endosome.tickCount<1000){
@@ -253,21 +256,7 @@ public class RecycleStep {
         return (x >= left && x <= right && y >= bottom && y <= top);
     }
 
-////	Collections.shuffle(mts); 19-7-21 No need to shuffle because the closest MT will be selected
-//	double dist = 1000;
-//	MT mt = null;
-////NEW		RULE 19-7-2021.  The organelle will sense the MT around it and select the closest one (minimal absolute distance)
-//	for (MT mmt : mts) {
-//		double ndist = distance(endosome, mmt);
-////		The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
-////		scale 0.5 it is 3000 nm.
-////		Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
-////		at a distance less than its size.
-//		if (Math.abs(ndist) <= Math.abs(dist)) {
-//			dist = ndist; 
-//			mt = mmt;
-//		}
-//	}
+
     
 	private static double distanceErgicEr(Endosome endosome, Object eR) {
 		space = endosome.getSpace();

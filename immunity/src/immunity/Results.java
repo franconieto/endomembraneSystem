@@ -34,7 +34,18 @@ import repast.simphony.ui.table.TablePanel;
 import repast.simphony.util.FileUtils;
 
 public class Results {
-
+	/*	
+	 * This class is used to generate the results of the simulation.  It generates
+	 * a file with the content distribution of all the organelles in the system
+	 * and the total amount of each membrane domain in the system every 100 ticks
+	 * It also generates a file with the content of each endosome
+	 * that contains a marker (soluble or membrane).
+	 * Every 1000 ticks it store the organelles, PM, ER, and cytosol content to be used for future simulation
+	 *  (freeze and dry
+	 * 
+	 * 
+		
+	*/
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 
@@ -45,12 +56,6 @@ public class Results {
 	public Set<String> solubleMet = cellProperties.getSolubleMet();
 	public Set<String> membraneMet = cellProperties.getMembraneMet();
 	public Set<String> rabSet = cellProperties.getRabSet();
-//	public List<String> allMet = new ArrayList<String>();
-//	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
-//	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
-//	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-//	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
-//	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
 	static TreeMap<String, Double> contentDist = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
 
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
@@ -224,21 +229,7 @@ public class Results {
 		output.append(line);
 		output.close();
 	}
-	// to generate the file and add the headers in the first row
-//	private void writeToCsvHeader(TreeMap<String, Double> orderContDist) throws IOException {
-//		
-//		String line = "";
-//		for (String key : orderContDist.keySet()) {
-//            line = line+ key + ",";
-//		}
-//		line = line + "\n";
-//		Writer output;
-//		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
-////		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
-//		output.append(line);
-//		output.close();	
-//	}
+
 	private void writeToCsvHeadSingleEndosomeHeader (TreeMap<String, Double> orderSingleEndHead) throws IOException {
 		
 		String line = "";
@@ -321,28 +312,7 @@ public class Results {
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) {
-//			for (String mem : ModelProperties.getInstance().getMembraneMet()) {
-//			initialTotalMembraneCargo.put(mem, 0d);	
-//			}
-//			for (String sol : ModelProperties.getInstance().getSolubleMet()) {
-//			initialTotalSolubleCargo.put(sol, 0d);	
-//			}
-//			for (Object obj : grid.getObjects()) {
-//				if (obj instanceof Endosome) {
-//					allEndosomes.add((Endosome) obj);
-//				}
-//			}
-//			for (Endosome end : allEndosomes) {
-//				for (String mem : end.membraneContent.keySet()) {
-//					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
-//					initialTotalMembraneCargo.put(mem, value);
-//				}
-//				for (String sol : end.solubleContent.keySet()) {
-////					System.out.println(sol +" soluble");
-//					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
-//					initialTotalSolubleCargo.put(sol, value);
-//				}
-//			}
+
 		}
 		content();// initialize all contents to zero
 // include in the contentDistribution all the recycled components, soluble and membrane

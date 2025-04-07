@@ -8,6 +8,7 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class Scale {
+//	shows a scale of 500 nm in the GUI and the time in the simulation
 	
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;

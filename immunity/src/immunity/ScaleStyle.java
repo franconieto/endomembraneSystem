@@ -13,6 +13,7 @@ import saf.v3d.scene.VShape;
 import saf.v3d.scene.VSpatial;
 
 public class ScaleStyle implements StyleOGL2D<Scale> {
+	//	Class to draw the scale.  The scale is a rectangle with rounded corners.
 
 	ShapeFactory2D factory;
 	private double String;

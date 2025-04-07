@@ -9,6 +9,7 @@ import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
 
 public class MTStyle implements StyleOGL2D<MT> {
+//	This class is used to draw the MT in the simulation
 
 	ShapeFactory2D factory;
 	private double String;

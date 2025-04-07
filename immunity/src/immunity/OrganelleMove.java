@@ -11,7 +11,21 @@ import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 
 public class OrganelleMove {
-
+	
+	/*	
+		This class is used to move the organelles in the cell.
+		Large Golgi cisternae are static and small Golgi vesicles move
+		Two types of movement are considered: On MT and without MT
+		On MT, the organelle moves to the direction of the MT at a fixed speed
+		They may move to the plus end (to PM) or to the minus end (to nucleus)
+		The direction depends on the membrane domains present in the organelle and
+		it may be different for tubules and non tubules.  This is defined in the
+		inputIntrTransp3.csv file.
+		Far from MT, near the plasma membrane or the nucleus, the organelle moves
+		with a speed inversely proportional to the size of the organelle and changing
+		direction randomly and sporadically. They move more of the time in a straight line
+		
+	*/
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static List<MT> mts;
@@ -97,17 +111,9 @@ public class OrganelleMove {
 		2- Away of microtubules is the same than near borders
 		3- Near MT, the speed is fixed and the heading is in the direction of the Mt or 180 that of the Mt
 		 */
-
 		NdPoint myPoint = space.getLocation(endosome);
-//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
-		
 		double x = myPoint.getX();
-//		endosome.setXcoor(x);
 		double y = myPoint.getY();
-//		endosome.setYcoor(y);
-		
-
-//	If near the borders, move only with 10% probability MT independent
 		double cellSize = 50;
 		double cellCenterX = 25;
 		double cellCenterY = 25;		
@@ -132,7 +138,7 @@ public class OrganelleMove {
 		else
 //			if not near the borders
 		{
-//			boolean onMt = false;
+
 			changeDirectionMt(endosome);
 
 		}
@@ -165,27 +171,7 @@ public class OrganelleMove {
 			endosome.speed = 0;
 			return;
 		}
-//		double initialh = endosome.heading;
-//		Endosome.endosomeShape(endosome);
 
-// when near the borders or no MT is nearby, the organelle rotates randomly
-// according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
-//	As unit momentum I take that of a sphere of radius 20.
-//	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
-//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651.
-//		To prevent the tubules to move, I did not consider the volume in the calculation
-//		then a 20 nm sphere has a "pseudo" momentum of 800
-//NEW RULE FOR RANDOM CHANGE OF HEADING
-//A free rnd movement 360.  The probability decrease with size
-//An inertial movement.  Gaussian arround 0 with an angle that decreases with size
-//An inertial movement depending on the momentum.  Gaussian around 0 or 180
-
-//			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
-//			Random fRandom = new Random();
-//			double finalh = 0;
-//			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
-////			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
-//			finalh = initialh + finalh;
 
 // The speed is random between 0 and a value inversely proportional to the endosome size
 			endosome.speed = 20d/endosome.size*Math.random()* Cell.orgScale/Cell.timeScale;

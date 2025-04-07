@@ -15,6 +15,11 @@ import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
 
 public class FusionStep {
+	/*
+	This class is used to fuse compatible organelles
+	Fusion implies that the resulting organelle will have the sum of 
+	the volume, area and the soluble and membrane content of the fused organelles
+	*/
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
@@ -23,7 +28,7 @@ public class FusionStep {
 	public static void fusion (Endosome endosome) {
 // Select an organelle and decide is is large enough to recruit other proximal organelles that
 // will fuse and be deleted. 
-// Notice then that two vesicles will not fuse.  They only fuse with larger organelles.
+// Notice then that two small vesicles will not fuse.  They only fuse with larger organelles.
 // Then it assess if the organelle is a Golgi structure.
 // GOLGI
 // Golgi cisternae do not fuse among them unless they have the same maximal Rab domain (homotypic fusion)
@@ -31,10 +36,7 @@ public class FusionStep {
 // non Golgi structures. 
 // NON GOLGI
 // Non Gogli organelles will fuse with other Golgi or nonGolgi structures depending only in 
-// membrane compatibility.
-		
-		
-		
+// membrane compatibility.		
 // The organelle selected must be larger than a vesicles
 // rendo is the radius of a new endosome from PM and also of a new ERGIC from ER 
 //		double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804

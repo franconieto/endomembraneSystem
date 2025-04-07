@@ -16,10 +16,7 @@ import repast.simphony.parameter.Parameters;
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class ModelProperties {
 	
-//	public ModelProperties() {
-//		super();
-//		// TODO Auto-generated constructor stub
-//	}
+
 	public static final String configFilename = "config.json";
 	
 	private static ModelProperties instance;
@@ -184,12 +181,7 @@ public class ModelProperties {
 
 		Scanner scanner = new Scanner(file);				
 		scanner.useDelimiter(",");
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		try {
-//			ModelProperties config = objectMapper.readValue(new File(ModelProperties.configFilename), ModelProperties.class);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+
 		
 		// InitialOrganelles InOr = InitialOrganelles.getInstance();
 //		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  

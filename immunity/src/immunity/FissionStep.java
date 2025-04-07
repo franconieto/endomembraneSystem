@@ -25,7 +25,8 @@ public class FissionStep {
 	 * The rab in-tubule is selected from the rab content of the endosome at random.  However, some rabs
 	 * are selected preferentially (tubuleTropism from inputIntrTransp3.csv)
 	 *  The rab-in-tubule is substracted from the rest of the organelle, which is a round-larger structure, with 
-	 *  the remaining rab content. 
+	 *  the remaining rab content. For fission to occur, the tubule must have a minimum size and the organelle left, 
+	 *  enough membrane to contain the internal vesicles and particulated cargoes  
 	 *  Golgi forms mostly vesicles.
 	 *  Golgi vesicles are formed from Golgi organelles with a probability
 	 *  proportional to the area of the Golgi organelle.
