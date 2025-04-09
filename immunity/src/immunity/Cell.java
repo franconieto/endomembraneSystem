@@ -130,6 +130,81 @@ public class Cell {
 	public Grid<Object> getGrid() {
 		return grid;
 	}
+	public static double getRcyl() {
+		return rcyl;
+	}
+	public static void setRcyl(double rcyl) {
+		Cell.rcyl = rcyl;
+	}
+	public static double getRendo() {
+		return rendo;
+	}
+	public static void setRendo(double rendo) {
+		Cell.rendo = rendo;
+	}
+	public static double getMincyl() {
+		return mincyl;
+	}
+	public static void setMincyl(double mincyl) {
+		Cell.mincyl = mincyl;
+	}
+	public static double getMinCistern() {
+		return minCistern;
+	}
+	public static void setMinCistern(double minCistern) {
+		Cell.minCistern = minCistern;
+	}
+	public static double getMaxCistern() {
+		return maxCistern;
+	}
+	public static void setMaxCistern(double maxCistern) {
+		Cell.maxCistern = maxCistern;
+	}
+	public static double getrIV() {
+		return rIV;
+	}
+	public static void setrIV(double rIV) {
+		Cell.rIV = rIV;
+	}
+	public static double getOrgScale() {
+		return orgScale;
+	}
+	public static void setOrgScale(double orgScale) {
+		Cell.orgScale = orgScale;
+	}
+	public static double getTimeScale() {
+		return timeScale;
+	}
+	public static void setTimeScale(double timeScale) {
+		Cell.timeScale = timeScale;
+	}
+	public static void setInstance(Cell instance) {
+		Cell.instance = instance;
+	}
+	public static void setSpace(ContinuousSpace<Object> space) {
+		Cell.space = space;
+	}
+	public static void setGrid(Grid<Object> grid) {
+		Cell.grid = grid;
+	}
+	public void setRabCell(HashMap<String, Double> rabCell) {
+		this.rabCell = rabCell;
+	}
+	public void setMembraneCell(HashMap<String, Double> membraneCell) {
+		this.membraneCell = membraneCell;
+	}
+	public void setSolubleCell(HashMap<String, Double> solubleCell) {
+		this.solubleCell = solubleCell;
+	}
+	public void setCellTimeSeries(TreeMap<Integer, HashMap<String, Double>> cellTimeSeries) {
+		this.cellTimeSeries = cellTimeSeries;
+	}
+	public void setCellVolume(double cellVolume) {
+		this.cellVolume = cellVolume;
+	}
+	public void setCellArea(double cellArea) {
+		this.cellArea = cellArea;
+	}
 
 
 }

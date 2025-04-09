@@ -232,6 +232,10 @@ public class Endosome {
 		return area;
 	}
 
+	public double getSize() {
+		return this.size;
+	}
+
 	public double getVolume() {
 		if (volume < 1.0) {
 			return volume;
@@ -443,6 +447,64 @@ public class Endosome {
 //		if (aa<=0)System.out.println("PROBLEMA FORMA tube " + s +" "+v+"");
 		return new double[] {aa, cc};
 	}
+	public ModelProperties getCellProperties() {
+		return cellProperties;
+	}
+	public void setCellProperties(ModelProperties cellProperties) {
+		this.cellProperties = cellProperties;
+	}
+	public HashMap<String, Double> getCellK() {
+		return cellK;
+	}
+	public void setCellK(HashMap<String, Double> cellK) {
+		this.cellK = cellK;
+	}
+	public void setGrid(Grid<Object> grid) {
+		this.grid = grid;
+	}
+	public void setArea(double area) {
+		this.area = area;
+	}
+	public void setVolume(double volume) {
+		this.volume = volume;
+	}
+	public void setA(double a) {
+		this.a = a;
+	}
+	public void setC(double c) {
+		this.c = c;
+	}
+	public void setSize(double size) {
+		this.size = size;
+	}
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	public void setMvb(double mvb) {
+		this.mvb = mvb;
+	}
+	public void setpH(double pH) {
+		this.pH = pH;
+	}
+	public void setRabContent(HashMap<String, Double> rabContent) {
+		this.rabContent = rabContent;
+	}
+	public void setMembraneContent(HashMap<String, Double> membraneContent) {
+		this.membraneContent = membraneContent;
+	}
+	public void setSolubleContent(HashMap<String, Double> solubleContent) {
+		this.solubleContent = solubleContent;
+	}
+	public void setInitOrgProp(HashMap<String, Double> initOrgProp) {
+		this.initOrgProp = initOrgProp;
+	}
+	public void setEndosomeTimeSeries(TreeMap<Integer, HashMap<String, Double>> endosomeTimeSeries) {
+		this.endosomeTimeSeries = endosomeTimeSeries;
+	}
+	public void setRabTimeSeries(TreeMap<Integer, HashMap<String, Double>> rabTimeSeries) {
+		this.rabTimeSeries = rabTimeSeries;
+	}
+
 	
 }
 	
