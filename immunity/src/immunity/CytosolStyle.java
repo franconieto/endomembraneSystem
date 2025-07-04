@@ -9,6 +9,7 @@ import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
 
 public class CytosolStyle implements StyleOGL2D<Cytosol> {
+//	Class for the style of the cytosol grid
 
 	ShapeFactory2D factory;
 	private double String;

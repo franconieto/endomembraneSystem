@@ -12,320 +12,283 @@ import repast.simphony.space.grid.Grid;
 
 public class OrganelleMove {
 
-	private static ContinuousSpace<Object> space;
-	private static Grid<Object> grid;
-	private static List<MT> mts;
-	public static double cellLimit = 3 * Cell.orgScale;
-	
-	public static void moveTowards(Endosome endosome) {
+    /*
+        This class is used to move the organelles in the cell.
+        Large Golgi cisternae are static and small Golgi vesicles move
+        Two types of movement are considered: On MT and without MT
+        On MT, the organelle moves to the direction of the MT at a fixed speed
+        They may move to the plus end (to PM) or to the minus end (to nucleus)
+        The direction depends on the membrane domains present in the organelle and
+        it may be different for tubules and non-tubules. This is defined in the
+        inputIntrTransp3.csv file.
+        Far from MT, near the plasma membrane or the nucleus, the organelle moves
+        with a speed inversely proportional to the size of the organelle and changing
+        direction randomly and sporadically. They move more of the time in a straight line
+    */
+    private static ContinuousSpace<Object> space;
+    private static Grid<Object> grid;
+    private static List<MT> mts;
+    public static double cellLimit = 3 * Cell.orgScale;
 
-		if ( endosome.area >= Cell.minCistern/20// minimal cistern Golgi absolute Scale hacer constante
-				&& isGolgi(endosome))
-		{ // test if it is Golgi
-//			System.out.println(endosome.heading + " INITIAL HEADING");
-//			endosome.heading = -90;
-			moveCistern(endosome);
-		}
-		else {
-			moveNormal(endosome);
-		}
-	}
-	
-	
-	private static boolean isGolgi(Endosome endosome) {
-		double areaGolgi = 0d;
-		for (String rab : endosome.rabContent.keySet()){
-			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
-			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.rabContent.get(rab);} 
-		}
-		boolean isGolgi = false;
-		if (areaGolgi/endosome.area >= 0.5) {
-			isGolgi = true;
-		}
-		return isGolgi;
-	}
+    // Method to move the endosome towards a target
+    public static void moveTowards(Endosome endosome) {
+        if (endosome.area >= Cell.minCistern / 20 && isGolgi(endosome)) {
+            // If it is a large Golgi cisternae, move it to a fixed position
+            moveCistern(endosome);
+        } else {
+            // Otherwise, move it normally
+            moveNormal(endosome);
+        }
+        updateCoordinates(endosome);
+    }
 
+    // Method to check if the endosome is a Golgi
+    private static boolean isGolgi(Endosome endosome) {
+        double areaGolgi = 0d;
+        for (String rab : endosome.rabContent.keySet()) {
+            String name = ModelProperties.getInstance().rabOrganelle.get(rab);
+            if (name.contains("Golgi")) {
+                areaGolgi += endosome.rabContent.get(rab);
+            }
+        }
+        return areaGolgi / endosome.area >= 0.5;
+    }
 
-	private static void moveCistern(Endosome endosome) {
-		double scale = Cell.orgScale;
-		space = endosome.getSpace();
-		grid = endosome.getGrid();		
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
-		double between = 4*scale;//distance between cisterna Math.random();
-		double high = 10;//distance from the bottom
-//		endosome.setHeading(-90d);// = -90d;			
-//		System.out.println(endosome.heading + " final HEADING");
-		
-		if (organelleName.contains("cisGolgi")) {
-			space.moveTo(endosome, 25, between*1+high);
-			grid.moveTo(endosome, 25, (int)(between*1+high));
-		}
-		if (organelleName.contains("medialGolgi")) {
-			space.moveTo(endosome, 25, between*2+high);
-			grid.moveTo(endosome, 25, (int)(between*2+high));
-		}
-		if (organelleName.contains("transGolgi")) {
-			space.moveTo(endosome, 25, between*3+high);
-			grid.moveTo(endosome, 25, (int)(between*3+high));
-		}
-		
-		NdPoint myPoint = space.getLocation(endosome);
-		double x = myPoint.getX();
-		endosome.setXcoor(x);
-		double y = myPoint.getY();
-		endosome.setYcoor(y);		
-	}
+    // Method to move a large Golgi cisternae to a fixed position
+    private static void moveCistern(Endosome endosome) {
+        double scale = Cell.orgScale;
+        space = endosome.getSpace();
+        grid = endosome.getGrid();
+        String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+        String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
+        double between = 4 * scale; // Distance between cisternae
+        double high = 29; // Distance from the bottom
 
+        if (organelleName.contains("cisGolgi")) {
+            moveToPosition(endosome, 25, between * 1 + high);
+        } else if (organelleName.contains("medialGolgi")) {
+            moveToPosition(endosome, 25, between * 2 + high);
+        } else if (organelleName.contains("transGolgi")) {
+            moveToPosition(endosome, 25, between * 3 + high);
+        }
+    }
 
-	public static void moveNormal(Endosome endosome) {
-//		if (endosome.area > 200000) return;
-		space = endosome.getSpace();
-		grid = endosome.getGrid();
-		/*
-		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
-		 * Move with random speed inversely proportional to the radius of an sphere with the endosome
-		 * volume.  The speed of a small organelle of radius 20 nm is taken as unit.  
-		To move, three situations are considered
-		1- Near the borders, the movement is: speed random between 0 and a value that depends on the endosome size
-		heading, the original heading plus a random number that depends on the momentum
-		2- Away of microtubules is the same than near borders
-		3- Near MT, the speed is fixed and the heading is in the direction of the Mt or 180 that of the Mt
-		 */
+    // Helper method to move the endosome to a specific position
+    private static void moveToPosition(Endosome endosome, double x, double y) {
+        space.moveTo(endosome, x, y);
+        grid.moveTo(endosome, (int) x, (int) y);
+    }
 
-		NdPoint myPoint = space.getLocation(endosome);
-//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
-		
-		double x = myPoint.getX();
-		endosome.setXcoor(x);
-		double y = myPoint.getY();
-		endosome.setYcoor(y);
-		
+    // Method to move the endosome normally
+    public static void moveNormal(Endosome endosome) {
+        space = endosome.getSpace();
+        grid = endosome.getGrid();
+        NdPoint myPoint = space.getLocation(endosome);
+        double x = myPoint.getX();
+        double y = myPoint.getY();
+        double cellSize = 50;
+        double cellCenterX = 25;
+        double cellCenterY = 25;
+        double nucleusSize = 5;
+        double nucleusCenterX = 25;
+        double nucleusCenterY = 21;
 
-//	If near the borders, move random (only with 10% probability)
-		if (y > 50-2*cellLimit || y < 5*cellLimit) { // near the nucleus non random
-			changeDirectionRnd(endosome);
-		}
-		else
-//			if not near the borders.  Notice less random near the nucleous
-		{
-//			boolean onMt = false;
-			changeDirectionMt(endosome);
+        // If near the border, change heading randomly and stop move with 10% probability
+        if (!isPointInSquare(x, y, cellCenterX, cellCenterY, cellSize - 5 * cellLimit)) {
+            endosome.heading = Math.random() * 360;
+            changeDirectionRnd(endosome);
+        } else if (isPointInCircle(x, y, nucleusCenterX, nucleusCenterY, nucleusSize)) {
+            // If near the nucleus, change heading randomly and stop move with 10% probability
+            if (Math.random() < 0.05) endosome.heading = Math.random() * 360;
+            changeDirectionRnd(endosome);
+        } else {
+            // If not near the borders, change direction based on MT
+            changeDirectionMt(endosome);
+        }
 
-		}
-		
-//		Having the heading and speed, make the movement.  If out of the space, limit
-//		the movement
-			if (endosome.speed == 0) return;// random movement 90% of the time return speed=0
-			myPoint = space.getLocation(endosome);
-			x = myPoint.getX();
-			y = myPoint.getY();
-		    double xx = x + Math.cos(endosome.heading * Math.PI / 180d)
-			* endosome.speed*Cell.orgScale/Cell.timeScale;
-		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
-			* endosome.speed * Cell.orgScale/Cell.timeScale;	
-//		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
-//			if (yy <= 0+cellLimit) yy = cellLimit;
-//		    if move near the botom or top, do not move
-		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
-		space.moveTo(endosome, xx, yy);
-		grid.moveTo(endosome, (int) xx, (int) yy);
-	}
-	
-	public static void changeDirectionRnd(Endosome endosome) {
-//		90% of the time, the speed is 0 and the endosome does not move
-		if (Math.random()<0.9) {
-			endosome.speed = 0;
-			return;
-		}
-//		double initialh = endosome.heading;
-//		Endosome.endosomeShape(endosome);
+        // Move the endosome based on the heading and speed
+        moveEndosome(endosome, x, y, cellCenterX, cellCenterY, cellSize);
+    }
 
-// when near the borders or no MT is nearby, the organelle rotates randomly
-// according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
-//	As unit momentum I take that of a sphere of radius 20.
-//	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
-//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651.
-//		To prevent the tubules to move, I did not consider the volume in the calculation
-//		then a 20 nm sphere has a "pseudo" momentum of 800
-//NEW RULE FOR RANDOM CHANGE OF HEADING
-//A free rnd movement 360.  The probability decrease with size
-//An inertial movement.  Gaussian arround 0 with an angle that decreases with size
-//An inertial movement depending on the momentum.  Gaussian around 0 or 180
+    // Method to move the endosome based on the heading and speed
+    private static void moveEndosome(Endosome endosome, double x, double y, double cellCenterX, double cellCenterY, double cellSize) {
+        if (endosome.speed == 0) return;
 
-//			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
-//			Random fRandom = new Random();
-//			double finalh = 0;
-//			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
-////			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
-//			finalh = initialh + finalh;
+        double xx = x + Math.cos(endosome.heading * Math.PI / 180d) * endosome.speed * Cell.orgScale / Cell.timeScale;
+        double yy = y + Math.sin(endosome.heading * Math.PI / 180d) * endosome.speed * Cell.orgScale / Cell.timeScale;
 
-// The speed is random between 0 and a value inversely proportional to the endosome size
-			endosome.speed = 20d/endosome.size*Math.random()* Cell.orgScale/Cell.timeScale;
-			return;
-		}
-	
-	public static void changeDirectionMt(Endosome endosome){
-		if (mts == null) {
-			mts = associateMt();
-		}
-		double mtDir = 0;
-		String rabDir = "";
-/*
- * mtDirection decides if the endosome is going to move to the (-) end
- * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
- * to the nucleus, 1 to the PM
- * 
- */
+        // If move out of the cell, move towards the center and change heading randomly
+        if (!isPointInSquare(xx, yy, cellCenterX, cellCenterY, cellSize - 2 * cellLimit)) {
+            double[] newPoint = movePointToward(xx, yy, cellCenterX, cellCenterY, 2 * cellLimit);
+            xx = newPoint[0];
+            yy = newPoint[1];
+            endosome.heading = Math.random() * 360;
+        }
 
-//		Collections.shuffle(mts); 19-7-21 No need to shuffle because the closest MT will be selected
-		double dist = 1000;
-		MT mt = null;
-//NEW		RULE 19-7-2021.  The organelle will sense the MT around it and select the closest one (minimal absolute distance)
-		for (MT mmt : mts) {
-			double ndist = distance(endosome, mmt);
-//			The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
-//			scale 0.5 it is 3000 nm.
-//			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
-//			at a distance less than its size.
-			if (Math.abs(ndist) <= Math.abs(dist)) {
-				dist = ndist; 
-				mt = mmt;
-			}
-		}	
-		if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
-// Each domain has a moving rule specified by a number (mtDir) that goes from -1 to +1
-// This number is used in the following way
-// FOR TUBULES
-// -move to the PM if mtDir is positive with a probability equal to mtDir (sign not considered); else random
-// -move to the NUCLEUS if mtDir is negative with a probability equal to mtDir (sign not considered); else random
-// NON-TUBULE ORGANELLES
-// -move to the NUCLEUS if mtDir is positive with a probability equal to 1-mtDir (sign not considered); else random
-// -move to the PM if mtDir is negative with a probability equal to 1-mtDir (sign not considered); else random
+        space.moveTo(endosome, xx, yy);
+        grid.moveTo(endosome, (int) xx, (int) yy);
+    }
 
-// The behavior achieved is  
-//					-1			-0.5		-0.00		+0.00		0.5			+1
-//tubules			N		0.5N 0.5rnd		rnd			rnd		0.5PM 0.5rnd	PM
-//non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
-				
-// tubules and non-tubules goes to opposite directions
-				if (endosome.a >endosome.c) {moveGolgiVesicles(endosome);}
-				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
-// select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
-// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
-				rabDir = mtDirection(endosome);
-				if (isTubule)
-					{
-//					System.out.println("IS TUBULE"+ rabDir);
-					mtDir = ModelProperties.getInstance().mtTropismTubule.get(rabDir);
-					if (Math.random()<Math.abs(mtDir)) {
-//+1 means to plus endo of MT (to PM); -1 means to the minus end of MT (to nucleus)
-						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
-						}
-						else {
-						changeDirectionRnd(endosome);
-						return;
-						}
-					} // if no a tubule
-				else
-					{
-					mtDir = ModelProperties.getInstance().mtTropismRest.get(rabDir);
-//					System.out.println("IS NOT TUBULE"+ mtDir);
-					if (Math.random()< Math.abs(mtDir)) {
-// 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)
-						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
-						}
-						else {
-						changeDirectionRnd(endosome);
-						return;
-						}
-					}
-//				Changes the heading to the heading of the MT
-//				Moves the endosome to the MT position
-				double mth = mt.getMtheading();
-				double yy = dist * Math.sin((mth+90)* Math.PI/180);
-				double xx = dist * Math.cos((mth+90)* Math.PI/180);
-				NdPoint pt = space.getLocation(endosome);
-				double xpt = pt.getX()-xx;
-				double ypt = pt.getY()-yy;
-			    if (ypt >= 50-cellLimit) ypt = 50 -cellLimit;
-				if (ypt <= 0+cellLimit) ypt = cellLimit;
-				space.moveTo(endosome, xpt, ypt);
-				grid.moveTo(endosome, (int) xpt, (int) ypt);
-				dist = distance(endosome, mt);
-//				Changes the speed to a standard speed in MT independet of size
-				endosome.speed = 1d*Cell.orgScale/Cell.timeScale;
-				endosome.heading = -(mtDir * 180f + mt.getMtheading());
-				return;
-			}
-		
-//		If no Mts, then random
-		else 
-		{changeDirectionRnd(endosome);
-		return;
-		}
-	}
-	private static void moveGolgiVesicles(Endosome endosome) {
-		space = endosome.getSpace();
-		grid = endosome.getGrid();		
-		double deltaX = Math.random()*10-5;//when near MT rnd en zona Golgi
-		double deltaY = Math.random()*6-3;//when near MT rnd en zona Golgi
+    // Method to change the direction randomly
+    public static void changeDirectionRnd(Endosome endosome) {
+        // 90% of the time, the speed is 0 and the endosome does not move
+        if (Math.random() < 0.9) {
+            endosome.speed = 0;
+            return;
+        }
+        // The speed is random between 0 and a value inversely proportional to the endosome size
+        endosome.speed = 20d / endosome.size * Math.random() * Cell.orgScale / Cell.timeScale;
+    }
 
-			space.moveTo(endosome, 25 + deltaX, 14 + deltaY);
-			grid.moveTo(endosome, (int) (25 + deltaX), (int)(14 + deltaY));
-			
-		NdPoint myPoint = space.getLocation(endosome);
-		double x = myPoint.getX();
-		endosome.setXcoor(x);
-		double y = myPoint.getY();
-		endosome.setYcoor(y);
-		
-	}
+    // Method to change the direction based on the closest MT
+    public static void changeDirectionMt(Endosome endosome) {
+        if (mts == null) {
+            mts = associateMt();
+        }
+        double dist = 1000;
+        MT mt = null;
 
+        // Find the closest MT
+        for (MT mmt : mts) {
+            double ndist = distance(endosome, mmt);
+            if (Math.abs(ndist) <= Math.abs(dist)) {
+                dist = ndist;
+                mt = mmt;
+            }
+        }
 
-	public static String mtDirection(Endosome endosome) {
-//		Picks a Rab domain according to the relative area of the domains in the organelle
-//		More abundant Rabs have more probability of being selected
-//		Returns the moving properties on MT of this domain 
-		double rnd = Math.random();// select a random number
-		double mtd = 0d;
-//		Start adding the rabs domains present in the organelle until the value is larger than the random number selected
-		for (String rab : endosome.rabContent.keySet()) {
-			mtd = mtd + endosome.rabContent.get(rab) / endosome.area;
-			if (rnd <= mtd) {
-				return rab;
-			}
-		}
-		String rab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		return rab;// never used
-	}
-	public static List<MT> associateMt() {
-		List<MT> mts = new ArrayList<MT>();
-		for (Object obj : grid.getObjects()) {
-			if (obj instanceof MT) {
-				mts.add((MT) obj);
-			}
-		}
-		return mts;
-	}
+        if (Math.abs(dist * 30d / Cell.orgScale) < endosome.size) {
+            if (endosome.a > endosome.c) {
+                moveGolgiVesicles(endosome);
+            }
+            boolean isTubule = (endosome.volume / (endosome.area - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2);
+            String rabDir = mtDirection(endosome);
+            double mtDir = isTubule ? ModelProperties.getInstance().mtTropismTubule.get(rabDir) : ModelProperties.getInstance().mtTropismRest.get(rabDir);
 
-	private static double distance(Endosome endosome, MT obj) {
+            if (Math.random() < Math.abs(mtDir)) {
+                mtDir = Math.signum(mtDir) >= 0 ? 0 : 1;
+            } else {
+                changeDirectionRnd(endosome);
+                return;
+            }
 
-		// If the line passes through two points P1=(x1,y1) and P2=(x2,y2) then
-		// the distance of (x0,y0) from the line is calculate from wiki
-		NdPoint pt = space.getLocation(endosome);
-		double xpt = pt.getX();
-		double ypt = pt.getY();
-		double ymax = (double) ((MT) obj).getYend();
-		double ymin = (double) ((MT) obj).getYorigin();
-		double xmax = (double) ((MT) obj).getXend();
-		double xmin = (double) ((MT) obj).getXorigin();
-		double a = (xmax - xmin) * (ymin - ypt) - (ymax - ymin)
-				* (xmin - xpt);
-		double b = Math.sqrt((ymax - ymin) * (ymax - ymin) + (xmax - xmin)
-				* (xmax - xmin));
-		double distance = a / b;
-//		The distance has a sign that it is used to move the organelle to the position in the Mt
-		return distance;
-	}
+            double mth = mt.getMtheading();
+            double yy = dist * Math.sin((mth + 90) * Math.PI / 180);
+            double xx = dist * Math.cos((mth + 90) * Math.PI / 180);
+            NdPoint pt = space.getLocation(endosome);
+            double xpt = pt.getX() - xx;
+            double ypt = pt.getY() - yy;
+            if (ypt >= 50 - cellLimit) ypt = 50 - cellLimit;
+            if (ypt <= 0 + cellLimit) ypt = cellLimit;
+            space.moveTo(endosome, xpt, ypt);
+            grid.moveTo(endosome, (int) xpt, (int) ypt);
+            endosome.speed = 1d * Cell.orgScale / Cell.timeScale;
+            endosome.heading = -(mtDir * 180f + mt.getMtheading() + 270f);
+        } else {
+            changeDirectionRnd(endosome);
+        }
+    }
+
+    // Method to move Golgi vesicles to a random position near the Golgi
+    private static void moveGolgiVesicles(Endosome endosome) {
+        space = endosome.getSpace();
+        grid = endosome.getGrid();
+        double deltaX = Math.random() * 10 - 5;
+        double deltaY = Math.random() * 6 - 3;
+        moveToPosition(endosome, 25 + deltaX, 14 + deltaY);
+        updateCoordinates(endosome);
+    }
+
+    // Method to determine the direction of the MT based on the rab content
+    public static String mtDirection(Endosome endosome) {
+        double rnd = Math.random();
+        double mtd = 0d;
+        for (String rab : endosome.rabContent.keySet()) {
+            mtd += endosome.rabContent.get(rab) / endosome.area;
+            if (rnd <= mtd) {
+                return rab;
+            }
+        }
+        return Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+    }
+
+    // Method to associate MTs with the grid
+    public static List<MT> associateMt() {
+        List<MT> mts = new ArrayList<>();
+        for (Object obj : grid.getObjects()) {
+            if (obj instanceof MT) {
+                mts.add((MT) obj);
+            }
+        }
+        return mts;
+    }
+
+    // Method to calculate the distance between the endosome and the MT
+    private static double distance(Endosome endosome, MT obj) {
+        NdPoint pt = space.getLocation(endosome);
+        double xpt = pt.getX();
+        double ypt = pt.getY();
+        double ymax = obj.getYend();
+        double ymin = obj.getYorigin();
+        double xmax = obj.getXend();
+        double xmin = obj.getXorigin();
+
+        Point A = new Point(xmin, ymin);
+        Point B = new Point(xmax, ymax);
+        Point C = new Point(xpt, ypt);
+        LineSegment segment = new LineSegment(A, B);
+        double ACx = C.x - segment.A.x;
+        double ACy = C.y - segment.A.y;
+        double ABx = segment.B.x - segment.A.x;
+        double ABy = segment.B.y - segment.A.y;
+        double dotProduct = ACx * ABx + ACy * ABy;
+        double t = dotProduct / (ABx * ABx + ABy * ABy);
+
+        if (!(t >= 0 && t <= 1)) return 2000;
+
+        double a = (xmax - xmin) * (ymin - ypt) - (ymax - ymin) * (xmin - xpt);
+        double b = Math.sqrt((ymax - ymin) * (ymax - ymin) + (xmax - xmin) * (xmax - xmin));
+        return a / b;
+    }
+
+    // Method to check if a point is inside a circle
+    public static boolean isPointInCircle(double x, double y, double x0, double y0, double r) {
+        double distanceSquared = Math.pow(x - x0, 2) + Math.pow(y - y0, 2);
+        double radiusSquared = Math.pow(r, 2);
+        return distanceSquared <= radiusSquared;
+    }
+
+    // Method to check if a point is inside a square
+    public static boolean isPointInSquare(double x, double y, double x0, double y0, double ll) {
+        double halfSide = ll / 2.0;
+        double left = x0 - halfSide;
+        double right = x0 + halfSide;
+        double top = y0 + halfSide;
+        double bottom = y0 - halfSide;
+        return (x >= left && x <= right && y >= bottom && y <= top);
+    }
+
+    // Method to move a point towards a target point by a certain distance
+    public static double[] movePointToward(double x, double y, double x0, double y0, double d) {
+        double dx = x0 - x;
+        double dy = y0 - y;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance == 0) {
+            return new double[]{x, y};
+        }
+
+        double ratio = d / distance;
+        double newX = x + ratio * dx;
+        double newY = y + ratio * dy;
+
+        return new double[]{newX, newY};
+    }
+
+    // Method to update the coordinates of the endosome
+    private static void updateCoordinates(Endosome endosome) {
+        NdPoint myPoint = space.getLocation(endosome);
+        endosome.setXcoor(myPoint.getX());
+        endosome.setYcoor(myPoint.getY());
+    }
 }

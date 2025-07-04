@@ -3,7 +3,7 @@ package immunity;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.thoughtworks.xstream.XStream;
+//import com.thoughtworks.xstream.XStream;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
@@ -11,7 +11,15 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class MT {
-	// globals
+//	This class define the origin and end of the MT.  It is used to
+	//		1. define the direction of the MT
+	//		2. define the length of the MT
+	//		3. define the position of the MT
+	//		4. define the position of the MT in the grid
+	//		5. define the position of the MT in the space
+//	In a square cell, the origin is at (25,25) and the end at the PM on the four sides of the cell
+//	this should be changed for other shapes of cells
+	
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	double xorigin = 40d;
@@ -20,6 +28,7 @@ public class MT {
 	double yend = 50d;
 	double mth = Math.atan((yend - yorigin) / (xend - xorigin));
 	public double mtheading = -mth * 180 / Math.PI;
+	public double length = 0.0;
 
 	// constructor
 	public MT(ContinuousSpace<Object> sp, Grid<Object> gr) {
@@ -34,32 +43,42 @@ public class MT {
 	}
 
 	public void changePosition(MT mt) {
-		//if (Math.random() < 0.1) return;
-		// move the origin and the end of the MT
-		xorigin = RandomHelper.nextDoubleFromTo(15, 35);
-		if (xorigin <= 25) {xend = xorigin -RandomHelper.nextDoubleFromTo(0, xorigin);}
-		else {xend = xorigin + RandomHelper.nextDoubleFromTo(0, 50-xorigin);}
-		double mth = Math.atan((50) / (xend - xorigin));
-		System.out.println("a-tang");
-		System.out.println(mth * 180 / Math.PI);
-		if (mth < 0) {
-			mth = 180 + (mth * 180 / Math.PI);
-		} else
-			mth = mth * 180 / Math.PI;
-		mtheading = -mth;
-		double y = 24.5;
-		double x = xorigin + 25 * Math.cos(mtheading * Math.PI / 180);
+
+
+		xorigin= 25;
+		yorigin = 25;
+		int randomSide = (int) Math.floor(Math.random()*4);
+		switch (randomSide) {
+		case 0 : {
+			xend = 0;
+			yend = Math.random()*50;
+			break;
+		}
+		case 1 : {
+			xend = 50;
+			yend = Math.random()*50;
+			break;
+		}
+		case 2 : {
+			xend = Math.random()*50;
+			yend = 0;
+			break;
+		}
+		case 3 : {
+			xend = Math.random()*50;
+			yend = 50;
+			break;
+		}
+		}
+		
+		mtheading = Math.atan2(xend-25, yend-25)*180/Math.PI; //-mth;
+		double x = (xend + xorigin)/2 ;//25 * Math.cos(mtheading*Math.PI / 180);
+		double y = (yend + yorigin)/2 ;//25 * Math.sin(mtheading*Math.PI / 180);
+
 		space.moveTo(mt, x, y);
 		grid.moveTo(mt, (int) x, (int) y);
-//		writing to a xml file.  It works, but I will not be able to use to strart a simulation
-//		XStream xstream = new XStream();
-//		String file = "C:/Users/lmayo/Desktop/pruebaXML.xml";
-//		try {
-//			xstream.toXML(mt, new FileWriter(file));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		length = Math.sqrt((xend-xorigin)*(xend-xorigin)+(yend-yorigin)*(yend-yorigin));
+
 		
 	}
 	// GETTERS AND SETTERS
@@ -81,6 +100,10 @@ public class MT {
 
 	public double getMtheading() {
 		return mtheading;
+	}
+
+	public double getLength() {
+		return length;
 	}
 
 }

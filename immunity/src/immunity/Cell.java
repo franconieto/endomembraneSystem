@@ -1,5 +1,4 @@
 package immunity;
-
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -9,7 +8,11 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class Cell {
-	// a single Cell is created
+	// a single Cell is created and used by all the agents in the simulation.  The cell will perform actions like
+	// the formation of new organelles using the class UptakeStep2. 
+	//	At present, that cytosol is a single compartment, metabolic transformation of metabolites is handdle
+	//	by COPASI in Cell. 
+	
 	private static Cell instance;
 	public static Cell getInstance() {
 		if (instance == null) {
@@ -24,36 +27,27 @@ public class Cell {
 	private static Grid<Object> grid;
 	public static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule scale
 	public static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//20.0; // radius tubule scale
-	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
-// two radius large (almost a sphere)
-	public static double minCistern = 4E5;// scale
-	public static double maxCistern = 1.6E6;//scale
+	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder: two radius large (almost a sphere)
+	public static double minCistern = ModelProperties.getInstance().getCellK().get("minCistern");//4E5;// scale
+	public static double maxCistern = ModelProperties.getInstance().getCellK().get("maxCistern");//1.6E6;//scale
 	public static double rIV = rcyl; //Internal vesicle radius similar to tubule radius 
-//	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
-//	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
-// mincyl surface (20 nm rcy= 6*PI*rcyl^2) = 7539.82 volume (2*PI*rcyl^3)= 50265.48
 	public static double orgScale = ModelProperties.getInstance().getCellK().get("orgScale");
 	public static double timeScale = ModelProperties.getInstance().getCellK().get("timeScale");
-//	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getCellAgentProperties().get("cellArea");// 
-//	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getCellAgentProperties().get("cellVolume");//
-//	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));//900*10^6, scale 1; 7200 *10^6, scale 0.5
-//	public static double area = 1500*1500/(Math.pow(orgScale,2));//2.25 *10^6, scale 1
-//  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out.
-//	volume of the repast space  (1500 nm x 1500 nm) 400 nm deep (arbitrary heigth of the projection in 2D)
-//	global cell and non-cell quantities
 	public double tMembrane = 0;// membrane that is not used in endosomes
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 	public HashMap<String, Double> membraneCell = new HashMap<String, Double>(); // contains membrane factors within the cell 
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();// contains soluble factors within the cell
 	TreeMap<Integer, HashMap<String, Double>> cellTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
-	private double cellVolume;
-	private double cellArea;
+	private double cellVolume;//from inputIntrTransp3.csv
+	private double cellArea;//from inputIntrTransp3.csv
 
 	// Constructor
 	public Cell(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains factors that are in the cell without specifying organelle or position.
-// It is modified by Endosome that uses and changes cytosolic Rabs
-// contents.	tMembranes, membrane and soluble content recycling,
+// It is modified by Endosome that release soluble cargoes into the cytososl. Rab content may be modified to simulate Knock down protocols	
+//				Initial values from the InputIntrTransport3
+//				These values changes with data from frozenEndosomes.csv 
+
 		this.space = space;
 		this.grid = grid;
 		cellArea = ModelProperties.getInstance().getCellAgentProperties().get("cellArea");// 
@@ -66,35 +60,21 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-//		Cytosol pH = 7
-		Cell.getInstance().getSolubleCell().put("protonCy", 1E-4);
-//		Cytosol digestion
-		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
-//		System.out.println("soluble Cell  wwwww  " + soluble);
-		if (soluble.containsKey("pepCy")) {
-		double cyto = soluble.get("pepCy")*0.9995;
-		Cell.getInstance().getSolubleCell().put("pepCy", cyto);
-		}
-		if (soluble.containsKey("ovaCy")) {
-		double cyto = soluble.get("ovaCy")*0.9995;
-		Cell.getInstance().getSolubleCell().put("ovaCy", cyto);
-		}
-
 //		this.changeColor();
+		cellDigestion(this);
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
-		if (Math.random() < 0.0 && name.endsWith(".cps")){
-//			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+		if (Math.random() < 0.0 && name.endsWith(".cps")){// not used yet
 			CellCopasiStep.antPresTimeSeriesLoad(this);
-		}
-			
+		}		
 // eventual use for cell metabolism
+
+		
 	}
 	@ScheduledMethod(start = 1, interval = 1)
-//	0.01/2d)// era /3 y luego /1, pero demasiado uptake desde PM
 	public void uptake() {
+//		Two uptakes are triggered by calling UptakeStep2:  new EE and new ERGIC. The use of p_ERUptake is arbitrary. 
 		if (Math.random() <ModelProperties.getInstance().getActionProbabilities().get("p_ERUptake"))
 		{
-
 			UptakeStep2.uptake(this);
 			}
 			
@@ -102,7 +82,17 @@ public class Cell {
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 
+	private void cellDigestion(Cell cell) {
+		//	Cytosol digestion of metabolites.  Now is a single parameter from inputIntrTransp3.csv.
+		//	Arbitrary:only soluble factors are digested.  Rab and membrane factors are not digested.
+		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
+		for (String s : soluble.keySet()){
+			double cyto = soluble.get(s)*ModelProperties.getInstance().getCellK().get("digCell");//0.9995;
+			Cell.getInstance().getSolubleCell().put(s, cyto);
+		}
+	}
 
+	
 	public double gettMembrane() {
 		return tMembrane;
 	}
@@ -121,38 +111,99 @@ public class Cell {
 	public void settMembrane(double tMembrane) {
 		this.tMembrane = tMembrane;
 	}
-	
 	public HashMap<String, Double> getRabCell() {
 		return rabCell;
 	}
-	
 	public HashMap<String, Double> getMembraneCell() {
 		return membraneCell;
 	}
 	public HashMap<String, Double> getSolubleCell() {
-//		System.out.println("ACTUALIZA SOLUBLE CELL " + solubleCell);
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		return solubleCell;
 	}
 	public final TreeMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
 		return cellTimeSeries;
 	}
-//	public HashMap<String, Double> getcellTimeSeries() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 	public ContinuousSpace<Object> getSpace() {
-		// TODO Auto-generated method stub
 		return space;
 	}
 	public Grid<Object> getGrid() {
-		// TODO Auto-generated method stub
 		return grid;
+	}
+	public static double getRcyl() {
+		return rcyl;
+	}
+	public static void setRcyl(double rcyl) {
+		Cell.rcyl = rcyl;
+	}
+	public static double getRendo() {
+		return rendo;
+	}
+	public static void setRendo(double rendo) {
+		Cell.rendo = rendo;
+	}
+	public static double getMincyl() {
+		return mincyl;
+	}
+	public static void setMincyl(double mincyl) {
+		Cell.mincyl = mincyl;
+	}
+	public static double getMinCistern() {
+		return minCistern;
+	}
+	public static void setMinCistern(double minCistern) {
+		Cell.minCistern = minCistern;
+	}
+	public static double getMaxCistern() {
+		return maxCistern;
+	}
+	public static void setMaxCistern(double maxCistern) {
+		Cell.maxCistern = maxCistern;
+	}
+	public static double getrIV() {
+		return rIV;
+	}
+	public static void setrIV(double rIV) {
+		Cell.rIV = rIV;
+	}
+	public static double getOrgScale() {
+		return orgScale;
+	}
+	public static void setOrgScale(double orgScale) {
+		Cell.orgScale = orgScale;
+	}
+	public static double getTimeScale() {
+		return timeScale;
+	}
+	public static void setTimeScale(double timeScale) {
+		Cell.timeScale = timeScale;
+	}
+	public static void setInstance(Cell instance) {
+		Cell.instance = instance;
+	}
+	public static void setSpace(ContinuousSpace<Object> space) {
+		Cell.space = space;
+	}
+	public static void setGrid(Grid<Object> grid) {
+		Cell.grid = grid;
+	}
+	public void setRabCell(HashMap<String, Double> rabCell) {
+		this.rabCell = rabCell;
+	}
+	public void setMembraneCell(HashMap<String, Double> membraneCell) {
+		this.membraneCell = membraneCell;
+	}
+	public void setSolubleCell(HashMap<String, Double> solubleCell) {
+		this.solubleCell = solubleCell;
+	}
+	public void setCellTimeSeries(TreeMap<Integer, HashMap<String, Double>> cellTimeSeries) {
+		this.cellTimeSeries = cellTimeSeries;
+	}
+	public void setCellVolume(double cellVolume) {
+		this.cellVolume = cellVolume;
+	}
+	public void setCellArea(double cellArea) {
+		this.cellArea = cellArea;
 	}
 
 

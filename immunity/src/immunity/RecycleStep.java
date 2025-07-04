@@ -3,7 +3,6 @@ package immunity;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -12,215 +11,165 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class RecycleStep {
-	private static ContinuousSpace<Object> space;
-	private static Grid<Object> grid;
-	
-	public static void recycle(Endosome endosome) {
-		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
-		double cellLimit = 3 * Cell.orgScale;
-		NdPoint myPoint = endosome.getSpace().getLocation(endosome);
-			double y = myPoint.getY();
-//			if far from the PM no recycling
-			if (y < 50-2*cellLimit && y > 2*cellLimit) return;
-//NEW RULES
-//			if near the PM and larger domain is EE and is a tubule, recycle
-//			So, I am assuming a fast recycling cycle probably with Rab4 tubules 
-/* I will test the possibility of recycling of the membrane and having a balance of EE
- * and PM membrane.
- */		
-			else if (y >= 50-2*cellLimit)
-		{
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
-			if (organelle.equals("EE")) recycleEE(endosome, maxRab);
-			else if (organelle.equals("RE")) recycleRE(endosome, maxRab);
-			else if (organelle.equals("TGN")) recycleRE(endosome, maxRab); //same rules than for RE
-			else return;
-		}
-		
-//		if near the Nucleus and larger domain is ERGIC and it is a tubule, fuse back with ER 
+    private static ContinuousSpace<Object> space;
+    private static Grid<Object> grid;
 
-			else if (y <= 2*cellLimit)
-		{
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
-			if (organelle.equals("ERGIC")) recycleERGIC(endosome, maxRab);
-			else return;
-		}
-	
-		}
+    /**
+     * Recycles the given endosome based on its location and dominant Rab content.
+     * Handles recycling near the plasma membrane (PM) or endoplasmic reticulum (ER).
+     */
+    public static void recycle(Endosome endosome) {
+        HashMap<String, Double> rabContent = new HashMap<>(endosome.getRabContent());
+        double cellLimit = 3 * Cell.orgScale;
+        NdPoint myPoint = endosome.getSpace().getLocation(endosome);
+        double x = myPoint.getX();
+        double y = myPoint.getY();
 
-	private static void recycleERGIC(Endosome endosome, String maxRab) {
-//		if near the PM and larger domain is ERGIC and is a tubule, fuse back with ER
-		
-		boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
-		if (!isTubule) return;// if it is not a tubule no recycling
-		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area; 
-		if (Math.random() >= recyProb
-				|| endosome.tickCount < 3000){
-			return;}
-		else {
-// ER back transport
-// Back membrane content
-			HashMap<String, Double> membraneRecycle = EndoplasmicReticulum.getInstance()
-					.getMembraneRecycle();
-			for (String key1 : endosome.membraneContent.keySet()) {
-				if (membraneRecycle.containsKey(key1)) {
-					double sum = membraneRecycle.get(key1)
-							+ endosome.membraneContent.get(key1);
-					membraneRecycle.put(key1, sum);
-				} else {
-					membraneRecycle.put(key1, endosome.membraneContent.get(key1));
-				}
-			}
-			endosome.membraneContent.clear();
+        // Check if the endosome is near the PM
+        if (!isPointInSquare(x, y, 25, 25, 50 - 5 * cellLimit)) {
+            handleRecyclingNearPM(endosome);
+        } else {
+            handleRecyclingNearER(endosome);
+        }
+    }
 
-			HashMap<String, Double> solubleRecycle = EndoplasmicReticulum.getInstance()
-					.getSolubleRecycle();
-//			double endopH = endosome.solubleContent.get("proton");
-			for (String key1 : endosome.solubleContent.keySet()) {
-				if (solubleRecycle.containsKey(key1)) {
-					double sum = solubleRecycle.get(key1)
-							+ endosome.solubleContent.get(key1);
-					solubleRecycle.put(key1, sum);
-				} else {
-					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
-				}
-			}
+    /**
+     * Handles recycling when the endosome is near the plasma membrane (PM).
+     */
+    private static void handleRecyclingNearPM(Endosome endosome) {
+        String maxRab = getMaxRab(endosome);
+        String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);
 
-			EndoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries().clear();
-			double endoplasmicReticulum = endosome.area + EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-			EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(endoplasmicReticulum);
-//			System.out.println("RECYCLING OF ER  " + endoplasmicReticulum);
-//			to delete the recycled endosome.
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
+        switch (organelle) {
+            case "EE":
+                recycleEE(endosome, maxRab);
+                break;
+            case "RE":
+            case "SE":
+            case "TGN":
+                recycleRE(endosome, maxRab);
+                break;
+            default:
+                // No recycling for other organelles near the PM
+                break;
+        }
+    }
 
-		}
-		
-	}
+    /**
+     * Handles recycling when the endosome is near the endoplasmic reticulum (ER).
+     */
+    private static void handleRecyclingNearER(Endosome endosome) {
+        String maxRab = getMaxRab(endosome);
+        String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);
 
-	private static void recycleRE(Endosome endosome, String maxRab) {
-		//NEW RULES
-		/*
-		 * If near the PM and it is a Recycling Endosome, kiss and run exocytosis
-		 * (recycle all but the endosome is preserved 4% the endosome is eliminated
-		 * (full fusion)
-		 */
-		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area; 
-		if (Math.random() >= recyProb){
-			return;}
-		else {
-			// Recycle membrane content
-			HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
-					.getMembraneRecycle();
-			for (String key1 : endosome.membraneContent.keySet()) {
-				if (membraneRecycle.containsKey(key1)) {
-					double sum = membraneRecycle.get(key1)
-							+ endosome.membraneContent.get(key1);
-					membraneRecycle.put(key1, sum);
-				} else {
-					membraneRecycle.put(key1, endosome.membraneContent.get(key1));
-				}
-			}
+        if ("ERGIC".equals(organelle)) {
+            recycleERGIC(endosome, maxRab);
+        }
+    }
 
-			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
-					.getSolubleRecycle();
-			for (String key1 : endosome.solubleContent.keySet()) {
-				if (solubleRecycle.containsKey(key1)) {
-					double sum = solubleRecycle.get(key1)
-							+ endosome.solubleContent.get(key1);
-					solubleRecycle.put(key1, sum);
-				} else {
-					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
-				}
-			}
-//			to delete the 100% of the TGN and 2% of the RE fusing with PM
-			if (maxRab.equals("RabE")
-					|| (maxRab.equals("RabC") && Math.random()<0.04)// era 0.02
-					) {
-				PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
-				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
-				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
-//				System.out.println("SECRETION TGN OR RE" + plasmaMembrane);
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
-			}
-			else {// if it is not deleted, it forms an empty tubule
-			endosome.membraneContent.clear();
-			endosome.solubleContent.clear();		
-			endosome.getEndosomeTimeSeries().clear();
-			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
-			double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule
-			double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of a tubule with the area of the recycled endosome
-			endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
-			endosome.solubleContent.put("protonEn", 3.98e-5*endosome.volume); //pH 7.4
-			endosome.heading = -90; //moving in the nucleus direction
-			}
-		}
+    /**
+     * Recycles an ERGIC endosome back to the ER if it meets the conditions.
+     */
+    private static void recycleERGIC(Endosome endosome, String maxRab) {
+        boolean isTubule = (endosome.volume / (endosome.area - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2);
+        if (!isTubule) return;
 
-		
-	}
+        double recyProb = calculateRecyclingProbability(endosome, maxRab);
+        if (Math.random() >= recyProb || endosome.tickCount < 3000) return;
 
-	private static void recycleEE(Endosome endosome, String maxRab) {
-//NEW RULES
-//		if near the PM and larger domain is EE and is a tubule, recycle
-//		So, I am assuming a fast recycling cycle probably with Rab4 tubules 
-/* I will test the posibility of recycling of the membrane and having a balance of EE
-* and PM membrane.
-* firt tests if it is a tubule (return) then higher probabilities to tubules with high proportion of EE domain
-*/
-		boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
-		if (!isTubule) return;// if it is not a tubule no recycling
-		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab)*endosome.rabContent.get(maxRab) / endosome.area; 
-		if (Math.random() >= recyProb
-				|| endosome.tickCount>3000){
-			return;}
-		else {
-// EE RECYCLING
-// Recycle membrane content
-			HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
-					.getMembraneRecycle();
-			for (String key1 : endosome.membraneContent.keySet()) {
-				if (membraneRecycle.containsKey(key1)) {
-					double sum = membraneRecycle.get(key1)
-							+ endosome.membraneContent.get(key1);
-					membraneRecycle.put(key1, sum);
-				} else {
-					membraneRecycle.put(key1, endosome.membraneContent.get(key1));
-				}
-			}
-			endosome.membraneContent.clear();
+        EndoplasmicReticulum ER = EndoplasmicReticulum.getInstance();
+        recycleContent(endosome, ER.getMembraneRecycle(), ER.getSolubleRecycle());
+        ER.setEndoplasmicReticulumArea(endosome.area + ER.getEndoplasmicReticulumArea());
 
-			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
-					.getSolubleRecycle();
-//			double endopH = endosome.solubleContent.get("proton");
-			for (String key1 : endosome.solubleContent.keySet()) {
-				if (solubleRecycle.containsKey(key1)) {
-					double sum = solubleRecycle.get(key1)
-							+ endosome.solubleContent.get(key1);
-					solubleRecycle.put(key1, sum);
-				} else {
-					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
-				}
-			}
+        removeEndosome(endosome);
+    }
 
+    /**
+     * Recycles a Recycling Endosome (RE) or TGN endosome near the PM.
+     */
+    private static void recycleRE(Endosome endosome, String maxRab) {
+        double recyProb = calculateRecyclingProbability(endosome, maxRab);
+        if (Math.random() >= recyProb) return;
 
-			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
-			double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
-			PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
-//			System.out.println("RECYCLING OF EE  " + plasmaMembrane);
+        PlasmaMembrane pm = PlasmaMembrane.getInstance();
+        recycleContent(endosome, pm.getMembraneRecycle(), pm.getSolubleRecycle());
 
-//			to delete the recycled EE endosome.
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
+        double prob = ModelProperties.getInstance().getCellK().get("fullFusionREprob");
+        if ("RabE".equals(maxRab) || ("RabC".equals(maxRab) && Math.random() < prob)) {
+            pm.setPlasmaMembraneArea(endosome.area + pm.getPlasmaMembraneArea());
+            removeEndosome(endosome);
+        } else {
+            convertToTubule(endosome);
+        }
+    }
 
-		}
+    /**
+     * Recycles an Early Endosome (EE) near the PM.
+     */
+    private static void recycleEE(Endosome endosome, String maxRab) {
+        double recyProb = calculateRecyclingProbability(endosome, maxRab);
+        if (Math.random() >= recyProb || endosome.tickCount < 1000) return;
 
-		
-	}
+        PlasmaMembrane pm = PlasmaMembrane.getInstance();
+        recycleContent(endosome, pm.getMembraneRecycle(), pm.getSolubleRecycle());
+        pm.setPlasmaMembraneArea(endosome.area + pm.getPlasmaMembraneArea());
 
-	}
+        removeEndosome(endosome);
+    }
 
+    /**
+     * Checks if a point is within a square defined by its center and side length.
+     */
+    public static boolean isPointInSquare(double x, double y, double x0, double y0, double ll) {
+        double halfSide = ll / 2.0;
+        return (x >= x0 - halfSide && x <= x0 + halfSide && y >= y0 - halfSide && y <= y0 + halfSide);
+    }
+
+    /**
+     * Calculates the recycling probability for the given endosome and Rab content.
+     */
+    private static double calculateRecyclingProbability(Endosome endosome, String maxRab) {
+        return ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area;
+    }
+
+    /**
+     * Recycles the membrane and soluble content of the endosome into the target organelle.
+     */
+    private static void recycleContent(Endosome endosome, HashMap<String, Double> membraneRecycle, HashMap<String, Double> solubleRecycle) {
+        for (String key : endosome.membraneContent.keySet()) {
+            membraneRecycle.merge(key, endosome.membraneContent.get(key), Double::sum);
+        }
+        endosome.membraneContent.clear();
+
+        for (String key : endosome.solubleContent.keySet()) {
+            solubleRecycle.merge(key, endosome.solubleContent.get(key), Double::sum);
+        }
+        endosome.solubleContent.clear();
+    }
+
+    /**
+     * Converts the endosome into a tubule with updated properties.
+     */
+    private static void convertToTubule(Endosome endosome) {
+        double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
+        double h = (endosome.area - 2 * Math.PI * rcyl * rcyl) / (2 * Math.PI * rcyl);
+        endosome.volume = Math.PI * rcyl * rcyl * h;
+        endosome.solubleContent.put("protonEn", 3.98e-5 * endosome.volume);
+        endosome.heading = -90;
+    }
+
+    /**
+     * Removes the endosome from the simulation context.
+     */
+    private static void removeEndosome(Endosome endosome) {
+        Context<Object> context = ContextUtils.getContext(endosome);
+        context.remove(endosome);
+    }
+
+    /**
+     * Retrieves the Rab with the highest content in the endosome.
+     */
+    private static String getMaxRab(Endosome endosome) {
+        return Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+    }
+}

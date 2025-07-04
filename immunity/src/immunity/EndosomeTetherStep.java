@@ -1,7 +1,6 @@
 package immunity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -12,58 +11,88 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 
 public class EndosomeTetherStep {
+    /*
+        This class is responsible for the tethering of endosomes.  
+        It is a process that occurs when two endosomes are close to each other.
+        Like fusion, only compatible endosomes can tether.
+        When they tether, they move together following the largest endosome.
+    */
 
-		private static ContinuousSpace<Object> space;
-		private static Grid<Object> grid;
-		
-		public static void tether (Endosome endosome) {
-//			HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
-//			HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
-//			HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
-			space = endosome.getSpace();
-			grid = endosome.getGrid();
-//			double cellLimit = 3 * Cell.orgScale;
+    private static ContinuousSpace<Object> space;
+    private static Grid<Object> grid;
 
-		GridPoint pt = grid.getLocation(endosome);
-		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
-		// square
-		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);
-		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
-				Endosome.class, gridSize, gridSize);
-		// System.out.println("SIZE           "+gridSize);
+    /**
+     * Tethers compatible endosomes that are within a certain proximity.
+     * The largest endosome in the group determines the movement direction.
+     */
+    public static void tether(Endosome endosome) {
+        // Initialize space and grid references
+        space = endosome.getSpace();
+        grid = endosome.getGrid();
 
-		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
-		if (cellList.size()<2)return;//if only one return
-		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
-		for (GridCell<Endosome> gr : cellList) {
-			// include all endosomes
-			for (Endosome end : gr.items()) {
-				if (EndosomeAssessCompatibility.compatibles(endosome, (Endosome) end)) {
-					endosomesToTether.add(end);
-				}
-			}
-		}
-		
-		// new list with just the compatible endosomes (same or compatible rabs)
-		if (endosomesToTether.size()<2)return; //if only one, return
-		// select the largest endosome
-		Endosome largest = endosome;
-		for (Endosome end : endosomesToTether) {
-//			System.out.println(endosome.size+" "+end.size);
-			if (end.size > largest.size) {
-				largest = end;
-			}
-		}
-		// assign the speed and heading of the largest endosome to the gropu
+        // Get the grid location of the current endosome
+        GridPoint pt = grid.getLocation(endosome);
 
-		for (Endosome end : endosomesToTether) {
+        // Calculate the neighborhood size based on the endosome's size
+        int gridSize = (int) Math.round(endosome.getSize() * Cell.orgScale / 15d);
 
-			Random r = new Random();		
-			double rr = r.nextGaussian();
-			end.heading = rr * 30d + largest.heading;
-	//		OrganelleMove.moveTowards(end);
-		}
-	}
-	
+        // Create a neighborhood of grid cells around the endosome
+        GridCellNgh<Endosome> nghCreator = new GridCellNgh<>(grid, pt, Endosome.class, gridSize, gridSize);
+        List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
+
+        // If there is only one cell in the neighborhood, return (no tethering possible)
+        if (cellList.size() < 2) return;
+
+        // Collect compatible endosomes from the neighborhood
+        List<Endosome> endosomesToTether = findCompatibleEndosomes(cellList, endosome);
+
+        // If there are fewer than two compatible endosomes, return
+        if (endosomesToTether.size() < 2) return;
+
+        // Find the largest endosome in the group
+        Endosome largest = findLargestEndosome(endosome, endosomesToTether);
+
+        // Assign the speed and heading of the largest endosome to the group
+        updateEndosomeMovement(endosomesToTether, largest);
+    }
+
+    /**
+     * Finds compatible endosomes in the neighborhood based on Rab compatibility.
+     */
+    private static List<Endosome> findCompatibleEndosomes(List<GridCell<Endosome>> cellList, Endosome endosome) {
+        List<Endosome> compatibleEndosomes = new ArrayList<>();
+        for (GridCell<Endosome> cell : cellList) {
+            for (Endosome neighbor : cell.items()) {
+                if (EndosomeAssessCompatibility.compatibles(endosome, neighbor)) {
+                    compatibleEndosomes.add(neighbor);
+                }
+            }
+        }
+        return compatibleEndosomes;
+    }
+
+    /**
+     * Identifies the largest endosome in a group of endosomes.
+     */
+    private static Endosome findLargestEndosome(Endosome reference, List<Endosome> endosomes) {
+        Endosome largest = reference;
+        for (Endosome end : endosomes) {
+            if (end.getSize() > largest.getSize()) {
+                largest = end;
+            }
+        }
+        return largest;
+    }
+
+    /**
+     * Updates the movement properties (heading) of the tethered endosomes
+     * to follow the largest endosome in the group.
+     */
+    private static void updateEndosomeMovement(List<Endosome> endosomes, Endosome largest) {
+        Random random = new Random();
+        for (Endosome end : endosomes) {
+            double randomHeadingAdjustment = random.nextGaussian() * 30d;
+            end.setHeading(randomHeadingAdjustment + largest.getHeading());
+        }
+    }
 }

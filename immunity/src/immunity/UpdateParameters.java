@@ -21,6 +21,10 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class UpdateParameters {
+//	This class is used to update the parameters of the model.  It is used to read the input file and the events file
+//	It allows to change the parameters of the model during the simulation and to set different events, such as 
+//	make an uptake and a chase, etc.
+	
 
 	private static UpdateParameters instance;
 	//CAMBIO
@@ -69,14 +73,7 @@ public class UpdateParameters {
 		String newFile = attr.lastModifiedTime().toString();
 		if (newFile.equals(oldFile)){return;}
 		else{
-//			System.out.println("newFile " + newFile+ "oldFile "+ oldFile);
-//			System.out.println("creationTime: " + attr.creationTime());
-//			System.out.println("lastAccessTime: " + attr.lastAccessTime());
-//			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
-			//Para no parameter, usar 
-//			Scanner scanner = new Scanner(new File(
-//					"inputIntrTransp3.csv"));
-//			scanner.useDelimiter(",");
+
 			
 //			PARA BATCH USAR ESTO.  DE ESTE MODO SE PUEDEN BARRER VARIOS INPUTFILE CON DIFERENTES PROPIEDADES
 			Parameters parm = RunEnvironment.getInstance().getParameters();
@@ -91,50 +88,6 @@ public class UpdateParameters {
 			try {
 				ModelProperties modelProperties = ModelProperties.getInstance();
 				ModelProperties.getInstance().loadFromCsv(modelProperties, scannerfile);
-//				loadFromCsv();
-				
-//				ModelProperties modelProperties = ModelProperties.getInstance();
-				
-// The ModelProperties are changed, but for parameters that are actualized only at the  				
-//	beginning, I need to re-load values.  This is the case of initial rabs content in the 
-//	Cell. This might be useful for knocking down a Rab in the middle of an experiment
-//	Also for uptake chase simulations changing the .csv file			
-//				Cell.getInstance().getRabCell().putAll(modelProperties.getInitRabCell());
-//				CORRECCION para esto hay que multiplicar por volumen/area 
-//				PlasmaMembrane.getInstance().getMembraneRecycle().putAll(modelProperties.getInitPMmembraneRecycle());
-//				PlasmaMembrane.getInstance().getSolubleRecycle().putAll(modelProperties.getInitPMsolubleRecycle());				
-//				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
-//				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
-
-//				System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle());
-//				System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle());
-//				System.out.println(modelProperties.rabCompatibility);
-//				System.out.println(modelProperties.membraneMet);
-//				System.out.println(modelProperties.solubleMet);
-//				System.out.println(modelProperties.tubuleTropism);
-//				System.out.println(modelProperties.rabTropism);
-//				System.out.println(modelProperties.mtTropism);
-				
-				
-
-////				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				System.out
-//						.println("A VER?" +  InitialOrganelles.getInstance().getInitOrgProp());
-//				
-//				try {
-//					Thread.sleep(4000);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				
-////				System.out.println(InitialOrganelles.getInstance()
-////						.getInitRabContent());
-////				System.out.println(InitialOrganelles.getInstance()
-////						.getInitMembraneContent());
-////				System.out.println(InitialOrganelles.getInstance()
-////						.getInitSolubleContent());
-//
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -151,7 +104,6 @@ public class UpdateParameters {
 //		System.out.println(tick + " EVENTOS " + ModelProperties.getInstance().getEvents());
 		if (ModelProperties.getInstance().getEvents().containsKey(tick)) {
 		File inputFile = new File(ModelProperties.getInstance().getEvents().get(tick));
-//		File file = new File("C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv");
 			File scannerfile = new File (".//data//"+inputFile);
 			try {
 				ModelProperties modelProperties = ModelProperties.getInstance();

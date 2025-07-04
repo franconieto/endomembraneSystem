@@ -29,9 +29,10 @@ import repast.simphony.engine.environment.RunEnvironment;
 		return instance;
 	}
 	
-		
+	// Local paths to save the results and the input files	
 	
 	File myDir = new File (".");
+	
 	{
     try {
       

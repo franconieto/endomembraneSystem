@@ -1,4 +1,4 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.9.1">
   <name>Space Display</name>
   <type>2D</type>
   <styles>
@@ -68,12 +68,12 @@
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
-    <interval>1.0</interval>
+    <interval>100.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1252606413</hashCode>
+    <hashCode>1408779555</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -81,7 +81,7 @@
   <layerOrder>
     <entry>
       <string>immunity.PlasmaMembrane</string>
-      <int>2</int>
+      <int>1</int>
     </entry>
     <entry>
       <string>immunity.Cytosol</string>
@@ -93,7 +93,7 @@
     </entry>
     <entry>
       <string>immunity.EndoplasmicReticulum</string>
-      <int>1</int>
+      <int>2</int>
     </entry>
     <entry>
       <string>immunity.MT</string>
