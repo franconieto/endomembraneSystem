@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.UUID;
 import repast.simphony.engine.environment.RunEnvironment;
 
 	public class LocalPath {
@@ -35,28 +35,43 @@ import repast.simphony.engine.environment.RunEnvironment;
 	
 	{
     try {
-      
-      mypath=myDir.getCanonicalPath().replace('\\','/');// for input
-//      FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
-//      TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
-//      SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
+    	String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-SSS").format(new Date());
 		if (RunEnvironment.getInstance().isBatch()) {
-//		 mypath="C:/Users/lmayo/Workspace-crossPresentation/immunity/";	
-		 mypath = "C:/Users/lmayo/gitlocal/endomembraneSystem/immunity/";
-		}
+			String os = System.getProperty("os.name").toLowerCase();
+	        if (os.contains("win")) {
+	        	// for input
+//	          FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
+//	          TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
+//	          SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
+	            mypath = "C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystemTf/immunity/";
+	            mypathOut=mypath+"/output/"+folderName+"-" + UUID.randomUUID().toString().substring(0, 3)+"/";        
+	        } else {
+	            mypath = myDir.getCanonicalPath().replace('\\','/');
+	            mypathOut=mypath+"/";
+	        }
+	        }else {
+	        	mypath=myDir.getCanonicalPath().replace('\\','/');
+	        	mypathOut=mypath+"/output/"+folderName+"/";
+	        }
+		
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
-      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-SSS").format(new Date());
       
-      mypathOut=mypath+"/output/"+folderName+"/";
-      System.out.println("      mypath=myDir.getCanonicalPath().replace('\\\\','/');" + mypath);
+      System.out.println("mypath = " + mypath);
+      System.out.println("mypath out= " + mypathOut);
       
-      Path path = Paths.get(mypathOut);
-      Files.createDirectory(path);
+      //Path path = Paths.get(mypathOut);
+      //Files.createDirectory(path);
+      
+      File outputDir = new File(mypathOut);
+      if (!outputDir.exists()) {
+          outputDir.mkdirs();
       }
+      }
+    
     catch(Exception e) {
       e.printStackTrace();
-      }
+     }
 
 	}
 //	NOT USED BATCH
