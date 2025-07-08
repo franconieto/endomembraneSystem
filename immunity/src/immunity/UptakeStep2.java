@@ -30,7 +30,7 @@ public class UptakeStep2 {
         double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
 
         while (areaPM > initialAreaPM) {
-            System.out.println("NEW UPTAKE PM " + areaPM + " " + initialAreaPM);
+            //System.out.print*ln("NEW UPTAKE PM " + areaPM + " " + initialAreaPM);
             newUptake(cell, "RabA");
             if (Math.random() < 0) {
                 break; // to prevent too many continuous uptakes
@@ -44,7 +44,7 @@ public class UptakeStep2 {
         double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
 
         while (areaER > initialAreaER) {
-            System.out.println("NEW UPTAKE ER " + areaER + " " + initialAreaER);
+            //System.out.print*ln("NEW UPTAKE ER " + areaER + " " + initialAreaER);
             newSecretion(cell, "RabI");
             if (Math.random() < 0.5) {
                 break; // to prevent too many continuous new ERGICs

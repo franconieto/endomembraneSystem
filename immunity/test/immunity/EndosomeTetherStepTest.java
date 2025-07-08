@@ -41,7 +41,7 @@ public class EndosomeTetherStepTest {
 	@Test
 	public void testTether() {
 //		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
-//		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
+//		//System.out.print*ln("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
 
 		for (int i = 0; i<10; i++){
@@ -54,10 +54,10 @@ public class EndosomeTetherStepTest {
 //			this.endosome.getSpace().moveTo(this.endosome, 25, 25);
 			this.endosome.getSpace().moveTo(this.endosome, (int)Math.random()*50, (int)Math.random()*50);
 
-			System.out.println("\nTEST   antes  "+this.endosome.heading+"  ");
+			//System.out.print*ln("\nTEST   antes  "+this.endosome.heading+"  ");
 			EndosomeTetherStep.tether(endosome);
 //			EndosomeTetherStep.tether(endosome2);
-			System.out.println("TEST   despues "+this.endosome.heading+"  ");
+			//System.out.print*ln("TEST   despues "+this.endosome.heading+"  ");
 //			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 

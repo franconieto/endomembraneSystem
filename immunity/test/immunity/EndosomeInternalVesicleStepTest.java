@@ -43,11 +43,11 @@ public class EndosomeInternalVesicleStepTest {
 		this.endosome.membraneContent.put("Tf", 10000d);
 			
 			for (int i = 0; i<5; i++){
-				System.out.println("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
-				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent());
+				//System.out.print*ln("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
+				//"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent());
 				EndosomeInternalVesicleStep.internalVesicle(this.endosome);
-				System.out.println("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
-				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent());
+				//System.out.print*ln("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
+				//"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent());
 				//		assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);
 		}

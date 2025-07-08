@@ -24,13 +24,16 @@ public class RecycleStep {
         NdPoint myPoint = endosome.getSpace().getLocation(endosome);
         double x = myPoint.getX();
         double y = myPoint.getY();
-
+        
+        if (endosome.getSolubleContent().containsKey("bead") && endosome.getSolubleContent().get("bead")>0.9) {
+        	
+        }else {
         // Check if the endosome is near the PM
         if (!isPointInSquare(x, y, 25, 25, 50 - 5 * cellLimit)) {
             handleRecyclingNearPM(endosome);
         } else {
             handleRecyclingNearER(endosome);
-        }
+        }}
     }
 
     /**

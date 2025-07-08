@@ -46,10 +46,10 @@ public class MoleculePM {
 //		Space space = moleculePM.spacePM;
 //		grid = moleculePM.gridPM;
 		GridPoint pt = moleculePM.gridPM.getLocation(moleculePM);
-//		System.out.println("point "+pt);
+//		//System.out.print*ln("point "+pt);
 		GridCellNgh<MoleculePM> nghCreator = new GridCellNgh<MoleculePM>(this.gridPM, pt,
 			MoleculePM.class, 3, 3);
-		// System.out.println("SIZE           "+gridSize);
+		// //System.out.print*ln("SIZE           "+gridSize);
 
 		List<GridCell<MoleculePM>> moleculeList = nghCreator.getNeighborhood(true);
 		if (moleculeList.size()<2) {
@@ -72,7 +72,7 @@ public class MoleculePM {
 		// select the largest endosome
 		MoleculePM largest = moleculePM;
 		for (MoleculePM mol : moleculeToTether) {
-//			System.out.println(endosome.size+" "+end.size);
+//			//System.out.print*ln(endosome.size+" "+end.size);
 			if (mol.cluster > largest.cluster) {
 				largest = mol;
 			}

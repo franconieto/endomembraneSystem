@@ -116,7 +116,7 @@ public class Endosome {
 		this.initOrgProp = initOrgProp;
 		this.pH = this.getpH();
 		area = initOrgProp.get("area");
-//		System.out.println("area" + area + " "+initOrgProp);
+//		//System.out.print*ln("area" + area + " "+initOrgProp);
 		volume = initOrgProp.get("volume");
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 		speed = Cell.orgScale / size; // initial value, but should change
@@ -201,7 +201,7 @@ public class Endosome {
 			double[] radiusHeight = radiusHeightCistern(end.area, end.volume);
 			end.a = radiusHeight[0];
 			end.c = radiusHeight[1];
-//		if (end.a <=0) System.out.println("FLAT FLAT  a    " + end.a +" c " + end.c);
+//		if (end.a <=0) //System.out.print*ln("FLAT FLAT  a    " + end.a +" c " + end.c);
 		}
 		else 	
 		{
@@ -209,10 +209,10 @@ public class Endosome {
 			end.a = radiusHeight[0];
 			end.c = radiusHeight[1];
 
-//			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
+//			//System.out.print*ln("LONG LONG  c  a  " + cc +" " + aa);
 			if (end.a <1) {
 				end.a = 1;
-				System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+				//System.out.print*ln("PROBLEMA FORMA " + s +" "+v+"");
 			}
 //			end.a = aa;
 //			end.c = cc;
@@ -288,16 +288,16 @@ public class Endosome {
 		if (membraneContent.containsKey(contentPlot)) {
 			double red = membraneContent.get(contentPlot) / area;
 //			if (red > 1)
-//				System.out.println("RED FUERA ESCALA " + " " + red + " "
+//				//System.out.print*ln("RED FUERA ESCALA " + " " + red + " "
 //						+ membraneContent.get(contentPlot) + "  " + area);
 //			if (red > 1)
-//				System.out.println("RED FUERA ESCALA " + " " + contentPlot);
-//			// System.out.println("mHCI content" + red);
+//				//System.out.print*ln("RED FUERA ESCALA " + " " + contentPlot);
+//			// //System.out.print*ln("mHCI content" + red);
 			return red;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double red = solubleContent.get(contentPlot) / volume;
-			// System.out.println("mHCI content" + red);
+			// //System.out.print*ln("mHCI content" + red);
 			return red;
 		} else
 			return 0;
@@ -310,12 +310,12 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double green = membraneContent.get(contentPlot) / area;
-			// System.out.println("mHCI content" + red);
+			// //System.out.print*ln("mHCI content" + red);
 			return green;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double green = solubleContent.get(contentPlot) / volume;
-			// System.out.println("mHCI content" + red);
+			// //System.out.print*ln("mHCI content" + red);
 			return green;
 		} else
 			return 0;
@@ -410,7 +410,7 @@ public class Endosome {
 		double aa = Math.pow(s/PI/4d, (1d/2d));
 		double cc = aa;
 		for (int i = 0; i < 4; i++) {
-//			System.out.println("initial  " + aa +" c " + cc);
+//			//System.out.print*ln("initial  " + aa +" c " + cc);
 			cc = v*3/4/PI/aa/aa;	
 //			form ellipsoid area s = 4*PI*[(ap*bp+ap*cp+bp*cp)/3]^1/p where ap = a^p ....
 //			Since in the spheroid a = b
@@ -428,7 +428,7 @@ public class Endosome {
 
 		}
 
-//		if (aa<=0)System.out.println("PROBLEMA FORMA cistern" + s +" "+v+"");
+//		if (aa<=0)//System.out.print*ln("PROBLEMA FORMA cistern" + s +" "+v+"");
 		return new double[] {aa, cc};	
 	}
 	// To get the axis of the organelle according to the area and volume for not-Golgi (prolates)
@@ -443,8 +443,8 @@ public class Endosome {
 			cc=Math.pow((Math.pow((s/4/PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
 			aa = Math.sqrt(v*3d/(4d*PI*cc));			
 		}
-//		System.out.println("LONG LONG  c  a  " + cc +" " + aa);
-//		if (aa<=0)System.out.println("PROBLEMA FORMA tube " + s +" "+v+"");
+//		//System.out.print*ln("LONG LONG  c  a  " + cc +" " + aa);
+//		if (aa<=0)//System.out.print*ln("PROBLEMA FORMA tube " + s +" "+v+"");
 		return new double[] {aa, cc};
 	}
 	public ModelProperties getCellProperties() {

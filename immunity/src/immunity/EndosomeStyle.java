@@ -62,7 +62,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //        	volume too large for the area.  Calculate a new volume that fit in a sphere of this area
         object.volume = Math.pow(object.area,3/2)/6/Math.pow(Math.PI, 1/2);
         Endosome.endosomeShape(object);
-		System.out.println("area "+ object.area +" volume "+object.volume);
+		//System.out.print*ln("area "+ object.area +" volume "+object.volume);
         }
         if (a<=c){
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
@@ -70,7 +70,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         }
         else{
 //        	object.heading = -90;
-//  		System.out.println(object.toString()+ "a  "+a+"  c  "+ c);
+//  		//System.out.print*ln(object.toString()+ "a  "+a+"  c  "+ c);
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         shape = this.factory.createShape(rec);
@@ -84,19 +84,19 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		// color code for contents
 		double red = object.getMembraneContent().getOrDefault("R-TfEn",0.0);
 		if (red>1) {
-	//		System.out.println("RED FUERA ESCALA "+red);
+	//		//System.out.print*ln("RED FUERA ESCALA "+red);
 			red=1; 
 		}
 		double green = object.getMembraneContent().getOrDefault("R-TfaEn",0.0)/5;
 				//object.getGreen()*0.068*1E9/3;
-//		System.out.println("GREEN FUERA ESCALA "+green);
+//		//System.out.print*ln("GREEN FUERA ESCALA "+green);
 		if (green>1) {
-		System.out.println("GREEN FUERA ESCALA "+green);
+		//System.out.print*ln("GREEN FUERA ESCALA "+green);
 			green=1; 
 		}
 		double blue = object.getSolubleContent().getOrDefault("FeEn",0.0)*5;
 		if (blue>1) {
-		//	System.out.println("BLUE FUERA ESCALA "+blue);
+		//	//System.out.print*ln("BLUE FUERA ESCALA "+blue);
 			blue=1; 
 		}
 		ArrayList<Double> colors = new ArrayList<Double>();
@@ -105,7 +105,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(blue);
 		// (1 - max (list g r b)) ;
 		Double corr = 1 - Collections.max(colors);
-//		if (Collections.max(colors)>1.1) 			System.out.println("COLOR FUERA ESCALA "+red+"  "+green+"  "+blue);
+//		if (Collections.max(colors)>1.1) 			//System.out.print*ln("COLOR FUERA ESCALA "+red+"  "+green+"  "+blue);
 //		if the content in the organelle is not represented, then light gray
 		if (corr > 0.95) corr = 0.95;
 		return new Color((int) ((red + corr) * 255),
@@ -137,7 +137,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 			// 		(1 - max (list g r b)) ;
 			Double corr = 1d - Collections.max(colors);
 			if (corr <0) {
-				System.out.println("BORDER COLOR" + colors);
+				//System.out.print*ln("BORDER COLOR" + colors);
 			}
 
 			//		if the rab in the organelle is not represented, then dark gray
@@ -162,7 +162,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 				}
 			}
-//			System.out.println(rabColor+rabContent);
+//			//System.out.print*ln(rabColor+rabContent);
 			if (rabColor.equals("RabA"))	return new Color (0,0,255);//EE
 			else if (rabColor.equals("RabB"))	return new Color (0,255,255);//SE
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);//RE
@@ -207,6 +207,11 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 				&& object.getSolubleContent().get("solubleMarker")> 0.9){
 		//String marker = object.getSolubleContent().get("solubleMarker").toString();
 		label = label + "S ";
+		}
+		if (object.getSolubleContent().containsKey("bead")
+				&& object.getSolubleContent().get("bead")> 0.9){
+		//String marker = object.getSolubleContent().get("solubleMarker").toString();
+		label = label + "B ";
 		}
 		if (object.getMembraneContent().containsKey("membraneMarker")
 				&& object.getMembraneContent().get("membraneMarker")> 0.9){

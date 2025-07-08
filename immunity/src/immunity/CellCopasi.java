@@ -49,7 +49,7 @@ public class CellCopasi {
 	
 	protected CellCopasi() {
 
-		System.out.println("Instantiation Once");
+		//System.out.print*ln("Instantiation Once");
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -82,7 +82,7 @@ public class CellCopasi {
         {
             CCompartment compartment = model.getCompartment(i);
             assert compartment != null;
-            System.out.println("\t" + compartment.getObjectName());
+            //System.out.print*ln("\t" + compartment.getObjectName());
         }
 
         // output number and names of all metabolites
@@ -246,7 +246,7 @@ public class CellCopasi {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process AchReceptor");
+        	//System.out.print*ln("trajectoryTask.process AchReceptor");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
@@ -254,8 +254,8 @@ public class CellCopasi {
         catch (java.lang.Exception ex)
         {
             System.err.println( "Error. Running the time course simulation failed." );
-            System.out.println(processError);
-            System.out.println(processWarning);
+            //System.out.print*ln(processError);
+            //System.out.print*ln(processWarning);
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
@@ -267,8 +267,8 @@ public class CellCopasi {
         if(result==false)
         {
             System.err.println( "An error occured while running the time course simulation." );
-            System.out.println(processError);
-            System.out.println(processWarning);
+            //System.out.print*ln(processError);
+            //System.out.print*ln(processWarning);
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
@@ -283,10 +283,10 @@ public class CellCopasi {
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
         assert timeSeries.getRecordedSteps() == stepNumber + 1;
-//        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
-//        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
-//        System.out.println( "The final state is: " );
-//        System.out.println( "time series"+ timeSeries.toString());
+//        //System.out.print*ln( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
+//        //System.out.print*ln( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
+//        //System.out.print*ln( "The final state is: " );
+//        //System.out.print*ln( "time series"+ timeSeries.toString());
         
         int iMax = (int)timeSeries.getNumVariables();
         int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
@@ -295,20 +295,20 @@ public class CellCopasi {
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
-//            System.out.println("\n"+ timeSeries.getTitle(i) + ": ");
+//            //System.out.print*ln("\n"+ timeSeries.getTitle(i) + ": ");
 //        	for (int j =0; j <= lastIndex; j = j +1 ){
 //        	
-//            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
+//            //System.out.print*(timeSeries.getConcentrationData(j, i)+ " ");
 //        	}
         }
         
-//        System.out.println("Ending ...");
+//        //System.out.print*ln("Ending ...");
         
         for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;            
-//            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
+//            //System.out.print*ln(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
         }
 
 	}
@@ -319,12 +319,12 @@ public class CellCopasi {
 		double d = 0.0;
 		
 		if (!nameMetabs.containsKey(name)) {
-			System.out.println(name + "\t does not exist as a metab");
+			//System.out.print*ln(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		//System.out.println("FINAL ANTPR       "+ name + d);
+		////System.out.print*ln("FINAL ANTPR       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

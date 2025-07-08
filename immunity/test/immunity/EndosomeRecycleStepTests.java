@@ -54,7 +54,7 @@ public class EndosomeRecycleStepTests {
 	@Test
 	public void testRecycle() {
 //		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
-//		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
+//		//System.out.print*ln("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
 
 		for (int i = 0; i<5; i++){
@@ -66,11 +66,11 @@ public class EndosomeRecycleStepTests {
 			double yPosition = 49.999-i;
 			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);
 			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
-			System.out.println("\nTEST   antes  "+this.endosome.rabContent
-					+this.endosome.membraneContent+this.endosome.solubleContent);
+			//System.out.print*ln("\nTEST   antes  "+this.endosome.rabContent
+			//		+this.endosome.membraneContent+this.endosome.solubleContent);
 			RecycleStep.recycle(this.endosome);
-			System.out.println("TEST   despues "+this.endosome.rabContent
-					+this.endosome.membraneContent+this.endosome.solubleContent);
+			//System.out.print*ln("TEST   despues "+this.endosome.rabContent
+			//		+this.endosome.membraneContent+this.endosome.solubleContent);
 			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 	}
@@ -82,10 +82,10 @@ public class EndosomeRecycleStepTests {
 //			double yPosition = 49.999-i;
 //			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);
 //			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
-//			System.out.println("\nTEST   antes  "+this.endosome.rabContent
+//			//System.out.print*ln("\nTEST   antes  "+this.endosome.rabContent
 //					+this.endosome.membraneContent+this.endosome.solubleContent);
 //			RecycleStep.recycle(this.endosome);
-//			System.out.println("TEST   despues "+this.endosome.rabContent
+//			//System.out.print*ln("TEST   despues "+this.endosome.rabContent
 //					+this.endosome.membraneContent+this.endosome.solubleContent);
 //			 assertNull("el soluble deberia cambiar", this.endosome.solubleContent.get("ova"));
 //		}

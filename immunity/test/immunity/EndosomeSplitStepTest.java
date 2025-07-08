@@ -52,13 +52,13 @@ public class EndosomeSplitStepTest {
 		this.endosome.solubleContent.put("ova", 500000d);
 			
 			for (int i = 0; i<10; i++){
-				System.out.println("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
-				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
-				+"\n "+this.endosome.getRabContent());
+				//System.out.print*ln("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
+				//"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
+				//+"\n "+this.endosome.getRabContent());
 				FissionStep.split(endosome);
-				System.out.println("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
-				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
-				+"\n "+this.endosome.getRabContent());
+				//System.out.print*ln("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
+				//"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
+				//+"\n "+this.endosome.getRabContent());
 				//		assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);
 		}

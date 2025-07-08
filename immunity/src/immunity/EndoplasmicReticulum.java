@@ -47,22 +47,22 @@ public class EndoplasmicReticulum {
 		
 		initialERProperties = modelProperties.getInitERProperties();
 		endoplasmicReticulumArea = initialERProperties.get("endoplasmicReticulumArea");// 
-//		System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ endoplasmicReticulumArea);
+//		//System.out.print*ln("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ endoplasmicReticulumArea);
 
 		endoplasmicReticulumVolume = initialERProperties.get("endoplasmicReticulumVolume");//
 
 		for (String met : modelProperties.getInitERmembraneRecycle().keySet()){
 		membraneRecycle.put(met, modelProperties.initERmembraneRecycle.get(met));
 		}
-//		System.out.println("ER membraneRecycle "+ membraneRecycle + endoplasmicReticulumArea);
+//		//System.out.print*ln("ER membraneRecycle "+ membraneRecycle + endoplasmicReticulumArea);
 		for (String met : modelProperties.initERsolubleRecycle.keySet() ){
 		solubleRecycle.put(met, modelProperties.initERsolubleRecycle.get(met));
 		}
-//		System.out.println("ER solubleRecycle "+ solubleRecycle);		
+//		//System.out.print*ln("ER solubleRecycle "+ solubleRecycle);		
 //		for (String met : modelProperties.solubleMet ){
 //		solubleRecycle.put(met,  0.0);
 //		}
-//		System.out.println("solubleRecycle "+solubleRecycle);		
+//		//System.out.print*ln("solubleRecycle "+solubleRecycle);		
 	}
 
 	@ScheduledMethod(start = 1, interval = 1)

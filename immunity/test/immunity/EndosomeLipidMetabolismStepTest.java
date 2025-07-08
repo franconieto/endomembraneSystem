@@ -52,9 +52,9 @@ public class EndosomeLipidMetabolismStepTest {
 		for (int i = 0; i<5; i++){
 			this.endosome.solubleContent.put("p1", i*500d);
 			this.endosome.membraneContent.put("p2", i*500d);
-			System.out.println("\nTEST   antes    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
+			//System.out.print*ln("\nTEST   antes    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
 			EndosomeCopasiStep.callLipidPresentation(this.endosome);
-			System.out.println("\nTEST   despues    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
+			//System.out.print*ln("\nTEST   despues    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
 
 		//assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);

@@ -35,7 +35,7 @@ public class EndosomeCopasiStep {
 			return;
 			}
 		if (!endosome.endosomeTimeSeries.containsKey(tick)) {
-//			System.out.println("Return without UPDATED");
+//			//System.out.print*ln("Return without UPDATED");
 			return;
 		}else {
 
@@ -84,13 +84,13 @@ public class EndosomeCopasiStep {
 //			At tick = 0, nothing is released (pastValues = presentValues)
 			else if (met.endsWith("Cy")){
 				 if (!Cell.getInstance().getSolubleCell().containsKey(met)){Cell.getInstance().getSolubleCell().put(met, 0.0);}
-//				 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
+//				 //System.out.print*ln("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
 //				 );
 				double delta =  presentValues.get(met) - pastValues.get(met);
 				double metValue = Cell.getInstance().getSolubleCell().get(met)
 						+ delta * endosome.volume/Cell.getInstance().getCellVolume();
 				Cell.getInstance().getSolubleCell().put(met, metValue);
-//			 System.out.println("SOLUBLE CELL " + Cell.getInstance().getSolubleCell()+ " MET " + met);
+//			 //System.out.print*ln("SOLUBLE CELL " + Cell.getInstance().getSolubleCell()+ " MET " + met);
 //				endosome.solubleContent.remove(met);
 			}
 //			Only a fraction of the metabolite in the plasma membrane participates
@@ -125,7 +125,7 @@ public class EndosomeCopasiStep {
 // to set the size of the compartments in copasi.  Soluble = volume ; membrane = area		
 		int iMax = (int) lipidMetabolism.getModel().getCompartments().size();
 //		lipidMetabolism.getModel().setModelType(20);
-//		System.out.println("Model type  " + lipidMetabolism.getModel().getModelType());
+//		//System.out.print*ln("Model type  " + lipidMetabolism.getModel().getModelType());
 		for (int i = 0;i < iMax;++i)
         {
 		if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("membrane"))
@@ -135,7 +135,7 @@ public class EndosomeCopasiStep {
 			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume);
 		else 
 			lipidMetabolism.getModel().getCompartment(i).setInitialValue(1);
-//		System.out.println("compartimiento volumen \t" + lipidMetabolism.getModel().getCompartment(i).getObjectName() + lipidMetabolism.getModel().getCompartment(i).getInitialValue());
+//		//System.out.print*ln("compartimiento volumen \t" + lipidMetabolism.getModel().getCompartment(i).getObjectName() + lipidMetabolism.getModel().getCompartment(i).getInitialValue());
         }
 
 		Set<String> metabolites = lipidMetabolism.getMetabolites();
@@ -147,7 +147,7 @@ public class EndosomeCopasiStep {
 			if (met.endsWith("En") && endosome.membraneContent.containsKey(met1)) {
 				double metValue = endosome.membraneContent.get(met1)/endosome.area;
 //				double a = sigFigs(metValue, 5);
-//				System.out.println(metValue +" REDONDEO "+ a);
+//				//System.out.print*ln(metValue +" REDONDEO "+ a);
 				lipidMetabolism.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, sigFigs(metValue,6));
 			} else if (met.endsWith("En") && endosome.solubleContent.containsKey(met1)) {
@@ -202,7 +202,7 @@ public class EndosomeCopasiStep {
 		double initpepMHC = 0d;
 		double finalpepMHC = 0d;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//		System.out.println("Serie de tiempo "+timeSeries.getRecordedSteps());
+//		//System.out.print*ln("Serie de tiempo "+timeSeries.getRecordedSteps());
 
 		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();

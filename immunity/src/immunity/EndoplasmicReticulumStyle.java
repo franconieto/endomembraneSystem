@@ -29,7 +29,7 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 		double initialAreaER = object.getInitialendoplasmicReticulumArea();
 		double areaER = object.getEndoplasmicReticulumArea();
 		double ratio = areaER/initialAreaER;
-	//	System.out.println(areaER + "areas ER  " + ratio);
+	//	//System.out.print*ln(areaER + "areas ER  " + ratio);
 		double shape = Math.random()*5 + 15;
 		VSpatial createRectangle = this.factory.createCircle((int) (0.4*750*ratio), (int) (shape));
 		return createRectangle;

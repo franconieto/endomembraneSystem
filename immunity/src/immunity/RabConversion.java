@@ -54,7 +54,7 @@ public class RabConversion {
 	}
 	
 	protected RabConversion(){
-		System.out.println("Instantiation Once");
+		//System.out.print*ln("Instantiation Once");
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -77,46 +77,46 @@ public class RabConversion {
         
         model = dataModel.getModel();
         assert model != null;
-        System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
+        //System.out.print*ln("Model statistics for model \"" + model.getObjectName() + "\".");
         
      // output number and names of all compartments
         int i, iMax = (int)model.getCompartments().size();
-        System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
-        System.out.println("Compartments: ");
+        //System.out.print*ln("Number of Compartments: " + (new Integer(iMax)).toString());
+        //System.out.print*ln("Compartments: ");
         for (i = 0;i < iMax;++i)
         {
             CCompartment compartment = model.getCompartment(i);
             assert compartment != null;
-            System.out.println("\t" + compartment.getObjectName());
+            //System.out.print*ln("\t" + compartment.getObjectName());
         }
 
         // output number and names of all metabolites
         iMax = (int)model.getMetabolites().size();
-        System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
-        System.out.println("Metabolites: ");
+        //System.out.print*ln("Number of Metabolites: " + (new Integer(iMax)).toString());
+        //System.out.print*ln("Metabolites: ");
         for (i = 0;i < iMax;++i)
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;
             nameMetabs.put(metab.getObjectName(), metab);
-            System.out.println(metab.getObjectName());
+            //System.out.print*ln(metab.getObjectName());
         }
 
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
-        	System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
+        	//System.out.print*ln("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
         }
 
         // output number and names of all reactions
         iMax = (int)model.getReactions().size();
-        System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
-        System.out.println("Reactions: ");
+        //System.out.print*ln("Number of Reactions: " + (new Integer(iMax)).toString());
+        //System.out.print*ln("Reactions: ");
         for (i = 0;i < iMax;++i)
         {
             CReaction reaction = model.getReaction(i);
             assert reaction != null;
-            System.out.println("\t" + reaction.getObjectName());
+            //System.out.print*ln("\t" + reaction.getObjectName());
         }
         
        setUpReport();
@@ -205,7 +205,7 @@ public class RabConversion {
 	
 	public void setInitialConcentration(String name, double value) {
 		if (!nameMetabs.containsKey(name)) {
-			System.out.println(name + "\t does not exist as a metab");
+			//System.out.print*ln(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			m.setInitialConcentration(value);
@@ -217,14 +217,14 @@ public class RabConversion {
 		// reapply the initial values
 		model.applyInitialValues();
 		
-/*        System.out.println("Starting ...");
+/*        //System.out.print*ln("Starting ...");
         
         for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;
             
-            System.out.println(metab.getObjectName() + " : " + metab.getConcentration());
+            //System.out.print*ln(metab.getObjectName() + " : " + metab.getConcentration());
         }*/
 		
 		boolean result=true;
@@ -233,7 +233,7 @@ public class RabConversion {
 		try
         {
             // now we run the actual trajectory
- //       	System.out.println("trajectoryTask.process RABS_CONVERSION"+ dataModel.getObjectDisplayName());
+ //       	//System.out.print*ln("trajectoryTask.process RABS_CONVERSION"+ dataModel.getObjectDisplayName());
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
@@ -241,8 +241,8 @@ public class RabConversion {
         catch (java.lang.Exception ex)
         {
             System.err.println( "Error. Running the time course simulation failed." );
-            System.out.println(processError);
-            System.out.println(processWarning);
+            //System.out.print*ln(processError);
+            //System.out.print*ln(processWarning);
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
@@ -254,8 +254,8 @@ public class RabConversion {
         if(result==false)
         {
             System.err.println( "An error occured while running the time course simulation." );
-            System.out.println(processError);
-            System.out.println(processWarning);
+            //System.out.print*ln(processError);
+            //System.out.print*ln(processWarning);
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
@@ -272,12 +272,12 @@ public class RabConversion {
 		double d = 0.0;
 		
 		if (!nameMetabs.containsKey(name)) {
-			System.out.println(name + "\t does not exist as a metab");
+			//System.out.print*ln(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		//System.out.println("FINAL ANTPR       "+ name + d);
+		////System.out.print*ln("FINAL ANTPR       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

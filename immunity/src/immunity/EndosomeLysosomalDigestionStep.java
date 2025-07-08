@@ -32,7 +32,7 @@ public class EndosomeLysosomalDigestionStep {
 			{			
 			squeezeOrganelle(endosome);
 			//Endosome.endosomeShape(endosome);
-//			System.out.println(so/vo+" INICIAL "+so*so*so/(vo*vo)/(36*Math.PI) +" FINAL"+so/endosome.volume+endosome);
+//			//System.out.print*ln(so/vo+" INICIAL "+so*so*so/(vo*vo)/(36*Math.PI) +" FINAL"+so/endosome.volume+endosome);
 			}
 
 	}
@@ -51,6 +51,10 @@ public class EndosomeLysosomalDigestionStep {
 			minV = minV + endosome.getSolubleContent().get("mvb")* IVvol;//minimal volume + volume of all internal vesicles
 		}
 //		if it has a bead, the volume must be enough to contain it
+		if (endosome.getSolubleContent().containsKey("bead")
+				&& endosome.getSolubleContent().get("bead")>0.9) {
+			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		}
 		if (endosome.getSolubleContent().containsKey("solubleMarker")
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
 			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
@@ -80,7 +84,7 @@ public class EndosomeLysosomalDigestionStep {
 //		RandomEngine engine = new DRand();
 //		Poisson poisson = new Poisson(2000, engine);
 //		int poissonObs = poisson.nextInt();
-//		System.out.println("                   POISSON DE 2000 "+poissonObs);
+//		//System.out.print*ln("                   POISSON DE 2000 "+poissonObs);
 //		double finalvATPase = 0d;
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
@@ -95,9 +99,10 @@ public class EndosomeLysosomalDigestionStep {
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		double digSol = ModelProperties.getInstance().getCellK().get("digSol");
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
-				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
-			}
+				if (!sol.equals("bead")) {
+					double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
+					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+			}}
 		if (endosome.solubleContent.containsKey("mvb"))
 			endosome.solubleContent.put("mvb", finalMvb);
 		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)

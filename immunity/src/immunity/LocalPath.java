@@ -36,29 +36,38 @@ import repast.simphony.engine.environment.RunEnvironment;
 	{
     try {
     	String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mm-SSS").format(new Date());
+    	String os = System.getProperty("os.name").toLowerCase();
 		if (RunEnvironment.getInstance().isBatch()) {
-			String os = System.getProperty("os.name").toLowerCase();
 	        if (os.contains("win")) {
 	        	// for input
 //	          FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
 //	          TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
 //	          SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
-	            mypath = "C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystemTf/immunity/";
-	            mypathOut=mypath+"/output/"+folderName+"-" + UUID.randomUUID().toString().substring(0, 3)+"/";        
+	            mypath = "C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/";
+	            mypathOut=mypath+"/output/"+folderName+"-" + UUID.randomUUID().toString().substring(0, 3)+"/";   
+	            System.out.println("1 " + mypathOut);
 	        } else {
 	            mypath = myDir.getCanonicalPath().replace('\\','/');
 	            mypathOut=mypath+"/";
+	            System.out.println("2 " + mypathOut);
 	        }
 	        }else {
 	        	mypath=myDir.getCanonicalPath().replace('\\','/');
+	        	if (os.contains("win")) {
+	        	
 	        	mypathOut=mypath+"/output/"+folderName+"/";
+	        	System.out.println("3 " + mypathOut);
+	        	}else{
+		            mypathOut=mypath+"/";
+		            System.out.println("4 " + mypathOut);
+		        }
 	        }
 		
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
       
       System.out.println("mypath = " + mypath);
-      System.out.println("mypath out= " + mypathOut);
+      //System.out.println("mypath out= " + mypathOut);
       
       //Path path = Paths.get(mypathOut);
       //Files.createDirectory(path);

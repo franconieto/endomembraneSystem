@@ -84,7 +84,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		
 //  introduce the agents in the space
 		
-//		System.out.println(" builder CellProperties cargado");
+//		//System.out.print*ln(" builder CellProperties cargado");
 //			context.add(ModelProperties);	
 //Cell cell = Cell.getInstance();
 //		Introduce
@@ -129,11 +129,11 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //		{
 //			EndoplasmicReticulum endoplasmicReticulum = new EndoplasmicReticulum(space, grid, null, null, null);
 //			endoplasmicReticulum.heading = 45 + 90 * i;
-//			System.out.println("heading   " + endoplasmicReticulum.heading);
+//			//System.out.print*ln("heading   " + endoplasmicReticulum.heading);
 //			endoplasmicReticulum.ycoor = 28 + 18*Math.cos(-endoplasmicReticulum.heading*Math.PI/180);
 //			endoplasmicReticulum.xcoor = 25 + 18*Math.sin(-endoplasmicReticulum.heading*Math.PI/180);
 //			ModelProperties modelProperties = ModelProperties.getInstance();
-////			System.out.println("Properties  " + modelProperties.getInitERProperties());
+////			//System.out.print*ln("Properties  " + modelProperties.getInitERProperties());
 ////			endoplasmicReticulum.area = modelProperties.getInitERProperties().get("endoplasmicReticulumAreaInit");// 
 //	//		initialendoplasmicReticulumArea = 1500*400/orgScale/orgScale;// modelProperties.getEndoplasmicReticulumProperties().get("endoplasmicReticulumArea");// 	
 ////			endoplasmicReticulum.volume = modelProperties.getInitERProperties().get("endoplasmicReticulumVolumeInit");;//
@@ -220,14 +220,14 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //						end.setName(kind+" "+Integer.toString(ite)) ;
 						context.add(end);
 						//Endosome.endosomeShape(end);
-						//System.out.println(end.getName()+ " " +membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);				
+						////System.out.print*ln(end.getName()+ " " +membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);				
 				}
 			}
 		}
 		else { //ORGANELLES LOADED FROM A CSV File. inputFrozenEndosomes.csv
 //			if endosomes are loadaed from a freezeDry csv file
 //			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
-//			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
+//			//System.out.print*ln("FREEZE DRY METHOD   "+diffOrganelles);
 			for (String kind : diffOrganelles){
 				if (kind.substring(0,2).equals("ki")) continue;
 				else if (kind.substring(0,2).equals("en")) {
@@ -235,7 +235,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-//				System.out.println(kind + membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+//				//System.out.print*ln(kind + membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 													solubleContent, initOrgProp);
 						context.add(end);
@@ -250,7 +250,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 //				HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 //				HashMap<String, Double> solubleRecycle = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-//				System.out.println(kind + membraneRecycle + " " + solubleRecycle + " " + initOrgProp);
+//				//System.out.print*ln(kind + membraneRecycle + " " + solubleRecycle + " " + initOrgProp);
 //						EndoplasmicReticulum ER = new EndoplasmicReticulum(space, grid, membraneRecycle,
 //													solubleRecycle, initOrgProp);
 //						context.add(ER);
@@ -306,7 +306,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			}
 			else if (obj instanceof Scale) {
 				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4)+7.5, 49.65);
-//				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);
+//				//System.out.print*ln ("SCALE SCALE "+Scale.getScale500nm()/2d);
 				grid.moveTo(obj, (int) (Scale.getScale500nm()/2d), (int) 49);
 			}
 			else if (obj instanceof MT) {
@@ -318,7 +318,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				double y = 25;// ((EndoplasmicReticulum) obj).getYcoor();
 				space.moveTo(obj, x, y);
 				grid.moveTo(obj, (int) x, (int) y);					
-//				System.out.println(((EndoplasmicReticulum) obj).area + "  " +
+//				//System.out.print*ln(((EndoplasmicReticulum) obj).area + "  " +
 //						((EndoplasmicReticulum) obj).getMembraneRecycle());
 			} 
 			
@@ -342,7 +342,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				RunEnvironment.getInstance().endAt(end);
 			}
 		} catch (NullPointerException e) {
-			System.out.println("No beakTick");
+			//System.out.print*ln("No beakTick");
 			e.printStackTrace();
 		}
 

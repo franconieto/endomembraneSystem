@@ -20,7 +20,7 @@ public class EndosomeMaturationStep {
 //		The third argument is the proportion of the total domain that matures.  Most for Rab5-Rab7 and the Golgi domains.  Only
 //		10% for Rab5-Rab22).5% for RabB-RabC
 		findingMaturationsKeys(endosome, ModelProperties.getInstance().getRabMaturation(), maxRab);
-			//System.out.println("NOMBRE "+this.getName()+" Relative RabA  "+relativeRabA+" Cuenta  "+this.getTickCount());
+			////System.out.print*ln("NOMBRE "+this.getName()+" Relative RabA  "+relativeRabA+" Cuenta  "+this.getTickCount());
 		}
 
     public static void findingMaturationsKeys(Endosome endosome, HashMap<String, Double> map, String prefix) {
@@ -29,7 +29,7 @@ public class EndosomeMaturationStep {
      // Only a maturation is allowed if more than one is possible, the first is selected.  
      // Shuffling prevents that the always the same maturation is selected
         Collections.shuffle(entries); 
-//		System.out.println("Maturation map " + entries);
+//		//System.out.print*ln("Maturation map " + entries);
     	for (Map.Entry<String, Double> entry : entries) {
             String key = entry.getKey();
             if (key.startsWith(prefix)) {
@@ -41,7 +41,7 @@ public class EndosomeMaturationStep {
         }
     }
 	public static void mature (Endosome endosome, String rabOldName, String rabNewName, double propMature) {
-//		System.out.println(rabOldName+ rabNewName + "  Madura inicial "+endosome.getRabContent());		
+//		//System.out.print*ln(rabOldName+ rabNewName + "  Madura inicial "+endosome.getRabContent());		
 //		The logic is that a percentage (propMature) of the major domain matures
 //		the rest is preserved. The remaining domain can prevent miss targeting of membrane cargoes
 //		The tickCount is reset but not to zero.
@@ -55,7 +55,7 @@ public class EndosomeMaturationStep {
 //		maturation of the major domain.  This prevent that a small area maturation will reset the
 //		tickCount to zero
 		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
-//		System.out.println("  MADURA "+endosome.getRabContent());
+//		//System.out.print*ln("  MADURA "+endosome.getRabContent());
 	}
 	
 }

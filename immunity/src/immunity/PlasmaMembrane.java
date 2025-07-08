@@ -53,7 +53,7 @@ public class PlasmaMembrane {
 		plasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
 		initialPlasmaMembraneArea = 1500*100*4/orgScale/orgScale;
 		//1500 y 400 es lado y el alto de la membrana considerada en escala original. 4 son cuatro lados.
-	//	System.out.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ initialPlasmaMembraneArea);		
+	//	//System.out.print*ln("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII "+ initialPlasmaMembraneArea);		
 		//400, 1500 y 1500 es el cubo en nm en escala original	
 		plasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 		initialPlasmaMembraneVolume = 1500*400*1500/orgScale/orgScale/orgScale;//ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
@@ -64,7 +64,7 @@ public class PlasmaMembrane {
 		for (String met : modelProperties.initPMmembraneRecycle.keySet() ){
 		membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met));
 		}
-//		System.out.println("PM membraneRecycle "+ membraneRecycle);
+//		//System.out.print*ln("PM membraneRecycle "+ membraneRecycle);
 		for (String met : modelProperties.initPMsolubleRecycle.keySet() ){
 		solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met));
 		}
@@ -88,12 +88,12 @@ public class PlasmaMembrane {
 		
 		if (membraneRecycle.containsKey("pepMHCIEn")) c1 = membraneRecycle.get("pepMHCIEn");
 		c1 = c1/plasmaMembraneArea;
-//		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
+//		//System.out.print*ln(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
 		if (c1>1) c1=1;
 		pmcolor = (int) (c1*255);
 		
 
-//		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
+//		//System.out.print*ln(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}
 	
 

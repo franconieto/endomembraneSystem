@@ -51,9 +51,9 @@ public class EndosomeRabConversionStepTest {
 
 		for (int i = 0; i<5; i++){
 			Cell.getInstance().rabCell.put("RabD", i*3000d);
-			System.out.println("\nTEST   antes    \n "+this.endosome.rabContent + Cell.getInstance().rabCell);
+			//System.out.print*ln("\nTEST   antes    \n "+this.endosome.rabContent + Cell.getInstance().rabCell);
 			EndosomeRabConversionStep.callRabConversion(this.endosome);
-			System.out.println("\nTEST   DESPUES    \n " + this.endosome.rabContent+ Cell.getInstance().rabCell);
+			//System.out.print*ln("\nTEST   DESPUES    \n " + this.endosome.rabContent+ Cell.getInstance().rabCell);
 		//assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);
 		}

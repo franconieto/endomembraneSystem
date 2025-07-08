@@ -101,7 +101,7 @@ public class UpdateParameters {
 	private void testEvent() {
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount() - 1.0;
 // the schedule goes from 1 to 101, 201.  To fit the event tick, I subtract "1"
-//		System.out.println(tick + " EVENTOS " + ModelProperties.getInstance().getEvents());
+//		//System.out.print*ln(tick + " EVENTOS " + ModelProperties.getInstance().getEvents());
 		if (ModelProperties.getInstance().getEvents().containsKey(tick)) {
 		File inputFile = new File(ModelProperties.getInstance().getEvents().get(tick));
 			File scannerfile = new File (".//data//"+inputFile);

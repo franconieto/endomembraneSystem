@@ -25,24 +25,24 @@ public class EndosomeRabConversionStep {
 		if (endosome.getRabTimeSeries().isEmpty()){			
 			callRabConversion(endosome);
 			timeSeriesLoadintoEndosome(endosome);
-//			System.out.println("RabConversion first time");
+//			//System.out.print*ln("RabConversion first time");
 			return;
 		} 
 		if (tick >= Collections.max(endosome.getRabTimeSeries().keySet())) {
-//			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
+//			//System.out.print*ln("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
 			timeSeriesLoadintoEndosome(endosome);
 			endosome.getRabTimeSeries().clear();
 			callRabConversion(endosome);
-//			System.out.println("RabConversion called after 50 time series");
-//			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
+//			//System.out.print*ln("RabConversion called after 50 time series");
+//			//System.out.print*ln("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
 			return;
 			}
 		if (!endosome.rabTimeSeries.containsKey(tick)) {
-//			System.out.println("Return without UPDATED");
+//			//System.out.print*ln("Return without UPDATED");
 			return;
 		}else {
 			timeSeriesLoadintoEndosome(endosome);
-//			System.out.println("Rabs UPDATED FROM TIME SERIES");
+//			//System.out.print*ln("Rabs UPDATED FROM TIME SERIES");
 			return;
 
 		}
@@ -75,7 +75,7 @@ public class EndosomeRabConversionStep {
 				String Rab = met.substring(0, 4);
 				double metValue = presentValues.get(met)*endosome.area;
 				endosome.rabContent.put(Rab, metValue);
-				// System.out.println("COPASI FINAL " + met +
+				// //System.out.print*ln("COPASI FINAL " + met +
 				// rabContent.get(Rab));
 			}
 //			metabolites in the Cell are expressed in concentration. I am using the area ratio between PM and Cell 
@@ -89,7 +89,7 @@ public class EndosomeRabConversionStep {
 /*			else if (met.endsWith("Cy")){
 				String Rab = met.substring(0, 4);
 				 if (!Cell.getInstance().getRabCell().containsKey(Rab)){Cell.getInstance().getRabCell().put(Rab, 0.0);}
-	//			 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
+	//			 //System.out.print*ln("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
 	//			 );
 				double delta =  presentValues.get(met) - pastValues.get(met);
 				double metValue = Cell.getInstance().getRabCell().get(Rab)
@@ -99,12 +99,12 @@ public class EndosomeRabConversionStep {
 			}*/
 		}
 
-//		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
+//		//System.out.print*ln("COPASI FINAL membrane " + endosome.rabContent + " soluble "
 //				+ Cell.getInstance().getRabCell());
 //		
-//	System.out.println("Rabs UPDATED");
+//	//System.out.print*ln("Rabs UPDATED");
 //	for (String met :presentValues.keySet()){
-//	System.out.println(met+ " "+presentValues.get(met));
+//	//System.out.print*ln(met+ " "+presentValues.get(met));
 //		}
 		
 		
@@ -123,11 +123,11 @@ public class EndosomeRabConversionStep {
 				if (endosome.rabContent.containsKey(Rab)) {
 					double metValue = endosome.rabContent.get(Rab) / endosome.area;
 					rabConversion.setInitialConcentration(met, Math.round(metValue*1E6d)/1E6d);
-//					System.out.println("COPASI INITIAL MEMBRANE " + met + " " + metValue);
+//					//System.out.print*ln("COPASI INITIAL MEMBRANE " + met + " " + metValue);
 
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
-					// System.out.println("COPASI INITIAL " + met + 0.0);
+					// //System.out.print*ln("COPASI INITIAL " + met + 0.0);
 				}
 			}
 
@@ -135,13 +135,13 @@ public class EndosomeRabConversionStep {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
 					double metValue = Cell.getInstance().getRabCell().get(Rab);
-//					System.out.println("COPASI INITIAL CYTOSOL " + Rab + " " + metValue +"  "+Cell.getInstance().getRabCell().get(Rab) );
+//					//System.out.print*ln("COPASI INITIAL CYTOSOL " + Rab + " " + metValue +"  "+Cell.getInstance().getRabCell().get(Rab) );
 					rabConversion.setInitialConcentration(met, Math.round(metValue*1E6d)/1E6d);
-//					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
+//					//System.out.print*ln("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
-					// System.out.println("COPASI INITIAL " + met + 0.0);
+					// //System.out.print*ln("COPASI INITIAL " + met + 0.0);
 
 				}
 			}
@@ -153,7 +153,7 @@ public class EndosomeRabConversionStep {
 					double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
 					double radius = Math.sqrt(endosome.getArea()/(4d * Math.PI));
 					rabConversion.setInitialConcentration(met, radius*radius/rcyl/rcyl);
-					//				System.out.println("RELATIVE RADIUS  "+ radius/rcyl); in a normal run, between 1 and 13
+					//				//System.out.print*ln("RELATIVE RADIUS  "+ radius/rcyl); in a normal run, between 1 and 13
 				}
 				else {				
 					rabConversion.setInitialConcentration(met, 1d);
@@ -163,7 +163,7 @@ public class EndosomeRabConversionStep {
 				rabConversion.setInitialConcentration(met, Rab0(endosome));
 		}
 
-//		System.out.println("COPASI INITIAL  membrane " + endosome.rabContent
+//		//System.out.print*ln("COPASI INITIAL  membrane " + endosome.rabContent
 //				+ " soluble " + Cell.getInstance().getRabCell());
 		
 		rabConversion.runTimeCourse();
@@ -180,14 +180,14 @@ public class EndosomeRabConversionStep {
 			endosome.getRabTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 		}
 		
-//		System.out.println("RAB time series "+ tick +" " +endosome.getRabTimeSeries());
+//		//System.out.print*ln("RAB time series "+ tick +" " +endosome.getRabTimeSeries());
 		
 //		for (String met : metabolites) {
 //			if (met.endsWith("m")) {
 //				String Rab = met.substring(0, 4);
 //				double metValue = rabConversion.getConcentration(met)*endosome.area;
 //				endosome.rabContent.put(Rab, metValue);
-//				// System.out.println("COPASI FINAL " + met +
+//				// //System.out.print*ln("COPASI FINAL " + met +
 //				// rabContent.get(Rab));
 //			}
 //			if (met.endsWith("c")) {
@@ -195,13 +195,13 @@ public class EndosomeRabConversionStep {
 //				double metValue = rabConversion.getConcentration(met);
 //				Cell.getInstance().getRabCell().put(Rab, metValue);
 //
-//				// System.out.println("COPASI FINAL " + met
+//				// //System.out.print*ln("COPASI FINAL " + met
 //				// + Cell.getInstance().getRabCell().get(Rab));
 //			}
 //
 //		}
 
-//		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
+//		//System.out.print*ln("COPASI FINAL membrane " + endosome.rabContent + " soluble "
 //				+ Cell.getInstance().getRabCell());
 
 	}

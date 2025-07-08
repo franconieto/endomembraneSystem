@@ -41,7 +41,7 @@ public class EndosomeFusionStepTest {
 	@Test
 	public void testFusion() {
 //		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
-//		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
+//		//System.out.print*ln("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
 		this.endosome.rabContent.clear();
 		this.endosome.rabContent.put("RabD", 50026.548);
@@ -58,11 +58,11 @@ public class EndosomeFusionStepTest {
 			this.endosome.heading = -90+5*i;
 			double yPosition = 49.999-i;
 			this.endosome.getGrid().moveTo(this.endosome, 25, (int)yPosition);
-			System.out.println("\nTEST   antes  "+this.endosome.solubleContent+"  "
-			+this.endosome.membraneContent+"  ");
+			//System.out.print*ln("\nTEST   antes  "+this.endosome.solubleContent+"  "
+			//+this.endosome.membraneContent+"  ");
 			FusionStep.fusion(endosome);
-			System.out.println("TEST   despues "+this.endosome.solubleContent+"  "
-					+this.endosome.membraneContent+"  ");
+			//System.out.print*ln("TEST   despues "+this.endosome.solubleContent+"  "
+			//		+this.endosome.membraneContent+"  ");
 //			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 
