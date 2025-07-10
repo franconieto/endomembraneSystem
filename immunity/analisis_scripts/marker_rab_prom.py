@@ -2,136 +2,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-import re
+from glob import glob
 import math
 
 # Configuración
-base_output_dir = r"C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\output_jobID_90453_2025-07-09"
-output_dir = os.path.join(base_output_dir, "analisis_output")
+base_dir = os.path.join(os.path.dirname(__file__), 'grupos')
+output_dir = os.path.join(os.path.dirname(base_dir), "output")
 os.makedirs(output_dir, exist_ok=True)
+grupos = ['tropism_1', 'tropism_0.1']
 rab_columns = ['RabA', 'RabB', 'RabC', 'RabD']
 
-def identificar_grupo(sim_path):
-    """Identifica el grupo experimental según el nombre del archivo de input."""
-    for f in os.listdir(sim_path):
-        if f.startswith('InputIntrTransport3.csv'):
-            return 'control'
-        m = re.match(r'InputIntrTransp.*?([a-zA-Z0-9\-\._]+)\.csv', f)
-        if m and 'maduration-0.1' in f:
-            return 'maduration-0.1'
-        elif m:
-            sufijo = m.group(1)
-            if sufijo != '3':
-                return sufijo
-    return None
-
-def recolectar_simulaciones(base_output_dir):
-    grupos = {}
-    for sim_dir in os.listdir(base_output_dir):
-        sim_path = os.path.join(base_output_dir, sim_dir)
-        if not os.path.isdir(sim_path):
-            continue
-        grupo = identificar_grupo(sim_path)
-        if grupo:
-            results_path = os.path.join(sim_path, 'ResultsMarker.csv')
-            if os.path.exists(results_path):
-                if grupo not in grupos:
-                    grupos[grupo] = []
-                grupos[grupo].append(results_path)
-    return grupos
-
-def graficar_simulacion_individual(df, sim_name, sim_dir, rab_columns):
-    # RabD
-    if 'RabD' in df.columns:
-        plt.figure()
-        plt.plot(df['tick'], df['RabD'])
-        plt.title(f"RabD - {sim_name}")
-        plt.xlabel("Tick")
-        plt.ylabel("RabD")
-        plt.tight_layout()
-        plt.savefig(os.path.join(sim_dir, "RabD.png"))
-        plt.close()
-    # Área
-    if 'area' in df.columns:
-        plt.figure()
-        plt.plot(df['tick'], df['area'])
-        plt.title(f"Área - {sim_name}")
-        plt.xlabel("Tick")
-        plt.ylabel("Área")
-        plt.tight_layout()
-        plt.savefig(os.path.join(sim_dir, "area.png"))
-        plt.close()
-    # Volumen
-    if 'volume' in df.columns:
-        plt.figure()
-        plt.plot(df['tick'], df['volume'])
-        plt.title(f"Volumen - {sim_name}")
-        plt.xlabel("Tick")
-        plt.ylabel("Volumen")
-        plt.tight_layout()
-        plt.savefig(os.path.join(sim_dir, "volume.png"))
-        plt.close()
-    # %RabD/area
-    if 'RabD' in df.columns and 'area' in df.columns:
-        plt.figure()
-        plt.plot(df['tick'], (df['RabD'] / df['area']) * 100)
-        plt.title(f"%RabD/Área - {sim_name}")
-        plt.xlabel("Tick")
-        plt.ylabel("%RabD/Área")
-        plt.tight_layout()
-        plt.savefig(os.path.join(sim_dir, "RabD_area_pct.png"))
-        plt.close()
-    # Distribución de Rabs
-    existing_rab_columns = [col for col in rab_columns if col in df.columns]
-    if existing_rab_columns:
-        df_melted = df.melt(id_vars='tick', value_vars=existing_rab_columns,
-                            var_name='Rab', value_name='Valor')
-        plt.figure(figsize=(12, 6))
-        sns.lineplot(data=df_melted, x='tick', y='Valor', hue='Rab', palette='tab10')
-        plt.title(f"Distribución de Rabs - {sim_name}")
-        plt.xlabel("Tick")
-        plt.ylabel("Valor asociado al Rab")
-        plt.legend(title="Rab")
-        plt.tight_layout()
-        plt.savefig(os.path.join(sim_dir, "rabs_distribucion.png"))
-        plt.close()
-
-def filtrar_y_graficar_excluidas(grupos_archivos, rab_columns, excluidas_dir):
-    os.makedirs(excluidas_dir, exist_ok=True)
-    excluidas_path = os.path.join(excluidas_dir, "excluidas.txt")
-    with open(excluidas_path, "w") as excluidas_file:
-        excluidas_file.write("Simulaciones excluidas por no superar 10% RabD/area en ningún tick:\n")
-    grupos_filtrados = {}
-    for grupo in list(grupos_archivos.keys()):
-        archivos_filtrados = []
-        for csv_file in grupos_archivos[grupo]:
-            df = pd.read_csv(csv_file)
-            sim_name = os.path.basename(os.path.dirname(csv_file))
-            sim_dir = os.path.join(excluidas_dir, f"{grupo}_{sim_name}")
-            if 'RabD' in df.columns and 'area' in df.columns:
-                df['RabD_area_pct'] = (df['RabD'] / df['area']) * 100
-                if (df['RabD_area_pct'] > 10).any():
-                    archivos_filtrados.append(csv_file)
-                else:
-                    with open(excluidas_path, "a") as excluidas_file:
-                        excluidas_file.write(f"{grupo}: {sim_name}\n")
-                    os.makedirs(sim_dir, exist_ok=True)
-                    graficar_simulacion_individual(df, sim_name, sim_dir, rab_columns)
-            else:
-                with open(excluidas_path, "a") as excluidas_file:
-                    excluidas_file.write(f"{grupo}: {sim_name} (faltan columnas RabD o area)\n")
-                os.makedirs(sim_dir, exist_ok=True)
-                graficar_simulacion_individual(df, sim_name, sim_dir, rab_columns)
-        if archivos_filtrados:
-            grupos_filtrados[grupo] = archivos_filtrados
-    return grupos_filtrados
-
-def get_sim_data_from_files(file_list, rab_columns):
+def get_sim_data(grupo_path, rab_columns):
+    """Lee todos los csv de un grupo y devuelve un dict con los datos relevantes por simulación."""
+    csv_files = glob(os.path.join(grupo_path, '*.csv'))
     sim_data = []
-    for csv_file in file_list:
+    for csv_file in csv_files:
         df = pd.read_csv(csv_file)
-        sim_name = os.path.basename(os.path.dirname(csv_file))
+        sim_name = os.path.splitext(os.path.basename(csv_file))[0]
         data = {'simulacion': sim_name, 'df': df}
+        # Melt para Rabs
         existing_rab_columns = [col for col in rab_columns if col in df.columns]
         if existing_rab_columns:
             data['df_rabs'] = df.melt(id_vars='tick', value_vars=existing_rab_columns,
@@ -142,6 +31,7 @@ def get_sim_data_from_files(file_list, rab_columns):
     return sim_data
 
 def plot_rab_distribuciones(sim_data, grupo_path):
+    """Genera y guarda los gráficos individuales de distribución de Rabs."""
     for data in sim_data:
         df_melted = data['df_rabs']
         if df_melted is not None:
@@ -157,6 +47,7 @@ def plot_rab_distribuciones(sim_data, grupo_path):
             plt.close()
 
 def plot_rab_promedio(sim_data, grupo, grupo_path):
+    """Genera y guarda el gráfico de promedios de Rabs por grupo."""
     dfs = [d['df_rabs'] for d in sim_data if d['df_rabs'] is not None]
     if dfs:
         df_concat = pd.concat(dfs)
@@ -174,6 +65,7 @@ def plot_rab_promedio(sim_data, grupo, grupo_path):
     return dfs
 
 def plot_metric_simulaciones(sim_data, grupo_path, col, ylabel, titulo, outname):
+    """Genera y guarda gráficos de una métrica (area, volume, RabD, etc) por simulación y promedio."""
     dfs = []
     for data in sim_data:
         df = data['df']
@@ -198,6 +90,7 @@ def plot_metric_simulaciones(sim_data, grupo_path, col, ylabel, titulo, outname)
     return dfs
 
 def plot_rabd_pct_area(sim_data, grupo_path):
+    """Genera y guarda el gráfico de %RabD respecto a area por simulación y promedio."""
     dfs = []
     for data in sim_data:
         df = data['df']
@@ -223,6 +116,7 @@ def plot_rabd_pct_area(sim_data, grupo_path):
     return dfs
 
 def get_metric_mean(sim_data, col, grupo):
+    """Devuelve un DataFrame con el promedio por tick de una métrica para un grupo."""
     dfs = []
     for data in sim_data:
         df = data['df']
@@ -237,6 +131,7 @@ def get_metric_mean(sim_data, col, grupo):
     return None
 
 def get_rabd_pct_area_mean(sim_data, grupo):
+    """Devuelve un DataFrame con el promedio por tick de %RabD/area para un grupo."""
     dfs = []
     for data in sim_data:
         df = data['df']
@@ -252,6 +147,7 @@ def get_rabd_pct_area_mean(sim_data, grupo):
     return None
 
 def plot_comparacion_metricas(means, col, ylabel, titulo, outname):
+    """Grafica la comparación entre grupos para una métrica."""
     if means:
         plt.figure(figsize=(12, 6))
         for df in means:
@@ -265,6 +161,7 @@ def plot_comparacion_metricas(means, col, ylabel, titulo, outname):
         plt.close()
 
 def plot_comparacion_rabd_pct_area(means, ylabel, titulo, outname):
+    """Grafica la comparación entre grupos para %RabD/area."""
     if means:
         plt.figure(figsize=(12, 6))
         for df in means:
@@ -278,6 +175,7 @@ def plot_comparacion_rabd_pct_area(means, ylabel, titulo, outname):
         plt.close()
 
 def agrupar_imagenes(imagenes, titulos, fig_title, out_path):
+    """Agrupa hasta 4 imágenes en un solo PNG con títulos individuales."""
     n = len(imagenes)
     fig, axs = plt.subplots(2, 2, figsize=(18, 12))
     fig.suptitle(fig_title, fontsize=18)
@@ -295,16 +193,18 @@ def agrupar_imagenes(imagenes, titulos, fig_title, out_path):
     plt.close()
 
 def agrupar_rab_distribuciones(grupo, grupo_path, output_dir):
+    """Agrupa los gráficos de distribución de Rabs de cada simulación en páginas de 4."""
     rab_files = sorted([f for f in os.listdir(grupo_path) if f.endswith('_plot.png')])
     n = len(rab_files)
     n_pages = math.ceil(n / 4)
     for page in range(n_pages):
         imgs = [os.path.join(grupo_path, rab_files[page*4 + i]) for i in range(4) if page*4 + i < n]
         titulos = [rab_files[page*4 + i].replace('_plot.png', '') for i in range(4) if page*4 + i < n]
-        out_img = os.path.join(grupo_path, f"{grupo}_distribucion_rabs_pagina_{page+1}.png")
+        out_img = os.path.join(output_dir, f"{grupo}_distribucion_rabs_pagina_{page+1}.png")
         agrupar_imagenes(imgs, titulos, f"Distribución de Rabs en fagosoma - {grupo} (página {page+1})", out_img)
 
-def agrupar_intra_grupo(grupo, grupo_path):
+def agrupar_intra_grupo(grupo, grupo_path, output_dir):
+    """Agrupa los gráficos de área, volumen, RabD y %RabD/area por simulación y promedio."""
     imgs = [
         os.path.join(grupo_path, "Area_por_simulacion.png"),
         os.path.join(grupo_path, "Volume_por_simulacion.png"),
@@ -317,49 +217,33 @@ def agrupar_intra_grupo(grupo, grupo_path):
         "RabD por simulación",
         "% RabD respecto a área por simulación"
     ]
-    out_img = os.path.join(grupo_path, f"{grupo}_comparaciones_intra_grupo.png")
+    out_img = os.path.join(output_dir, f"{grupo}_comparaciones_intra_grupo.png")
     agrupar_imagenes(imgs, titulos, f"Comparaciones intra-grupo - {grupo}", out_img)
 
-def agrupar_entre_grupos(output_dir):
-    parametros = [
-        ("comparacion_area.png", "Área promedio entre grupos"),
-        ("comparacion_volume.png", "Volumen promedio entre grupos"),
-        ("comparacion_rabD.png", "RabD promedio entre grupos"),
-        ("comparacion_rabD_pct_area.png", "% RabD respecto a área promedio entre grupos"),
+def agrupar_entre_grupos(base_dir, output_dir):
+    """Agrupa los gráficos comparativos entre grupos."""
+    imgs = [
+        os.path.join(base_dir, "comparacion_area.png"),
+        os.path.join(base_dir, "comparacion_volume.png"),
+        os.path.join(base_dir, "comparacion_rabD.png"),
+        os.path.join(base_dir, "comparacion_rabD_pct_area.png"),
     ]
-    fig, axs = plt.subplots(2, 2, figsize=(18, 12))
-    fig.suptitle("Comparaciones entre grupos", fontsize=18)
-    for i, (filename, titulo) in enumerate(parametros):
-        ax = axs[i // 2, i % 2]
-        img_path = os.path.join(output_dir, filename)
-        if os.path.exists(img_path):
-            img = plt.imread(img_path)
-            ax.imshow(img)
-            ax.set_title(titulo)
-            ax.axis('off')
-        else:
-            ax.axis('off')
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    titulos = [
+        "Área promedio entre grupos",
+        "Volumen promedio entre grupos",
+        "RabD promedio entre grupos",
+        "% RabD respecto a área promedio entre grupos"
+    ]
     out_img = os.path.join(output_dir, "comparaciones_entre_grupos.png")
-    plt.savefig(out_img)
-    plt.close()
+    agrupar_imagenes(imgs, titulos, "Comparaciones entre grupos", out_img)
 
 # --- PROCESAMIENTO PRINCIPAL ---
 
-# 1. Recolectar simulaciones por grupo
-grupos_archivos = recolectar_simulaciones(base_output_dir)
-
-# 2. Filtrar y graficar simulaciones excluidas
-excluidas_dir = os.path.join(output_dir, "excluidas")
-grupos_archivos = filtrar_y_graficar_excluidas(grupos_archivos, rab_columns, excluidas_dir)
-grupos = list(grupos_archivos.keys())
+# 1. Procesar cada grupo y guardar gráficos individuales y promedios
 all_sim_data = {}
-
-# 3. Procesar cada grupo y guardar gráficos individuales y promedios
 for grupo in grupos:
-    grupo_path = os.path.join(output_dir, grupo)
-    os.makedirs(grupo_path, exist_ok=True)
-    sim_data = get_sim_data_from_files(grupos_archivos[grupo], rab_columns)
+    grupo_path = os.path.join(base_dir, grupo)
+    sim_data = get_sim_data(grupo_path, rab_columns)
     all_sim_data[grupo] = sim_data
     plot_rab_distribuciones(sim_data, grupo_path)
     plot_rab_promedio(sim_data, grupo, grupo_path)
@@ -367,9 +251,8 @@ for grupo in grupos:
     plot_metric_simulaciones(sim_data, grupo_path, 'area', 'Área', "Área por simulación y promedio", "Area_por_simulacion.png")
     plot_metric_simulaciones(sim_data, grupo_path, 'volume', 'Volumen', "Volumen por simulación y promedio", "Volume_por_simulacion.png")
     plot_rabd_pct_area(sim_data, grupo_path)
-    agrupar_intra_grupo(grupo, grupo_path)
 
-# 4. Gráfico de promedios comparativo entre grupos para Rabs
+# 2. Gráfico de promedios comparativo entre grupos para Rabs
 mean_dfs = []
 for grupo in grupos:
     sim_data = all_sim_data[grupo]
@@ -396,11 +279,11 @@ if mean_dfs:
     plt.ylabel("Valor promedio asociado al Rab")
     plt.legend(title="Rab / Grupo", bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
-    out_path = os.path.join(output_dir, "comparacion_promedios_grupos.png")
+    out_path = os.path.join(base_dir, "comparacion_promedios_grupos.png")
     plt.savefig(out_path)
     plt.close()
 
-# 5. Gráficos comparativos de métricas entre grupos
+# 3. Gráficos comparativos de métricas entre grupos
 area_means = []
 volume_means = []
 rabd_means = []
@@ -420,14 +303,14 @@ for grupo in grupos:
     if rabd_pct_mean is not None:
         rabd_pct_means.append(rabd_pct_mean)
 
-plot_comparacion_metricas(area_means, 'area', "Área promedio", "Comparación de área promedio entre grupos", os.path.join(output_dir, "comparacion_area.png"))
-plot_comparacion_metricas(volume_means, 'volume', "Volumen promedio", "Comparación de volumen promedio entre grupos", os.path.join(output_dir, "comparacion_volume.png"))
-plot_comparacion_metricas(rabd_means, 'RabD', "RabD promedio", "Comparación de RabD promedio entre grupos", os.path.join(output_dir, "comparacion_rabD.png"))
-plot_comparacion_rabd_pct_area(rabd_pct_means, "% RabD / área promedio", "Comparación de % RabD respecto a área promedio entre grupos", os.path.join(output_dir, "comparacion_rabD_pct_area.png"))
+plot_comparacion_metricas(area_means, 'area', "Área promedio", "Comparación de área promedio entre grupos", os.path.join(base_dir, "comparacion_area.png"))
+plot_comparacion_metricas(volume_means, 'volume', "Volumen promedio", "Comparación de volumen promedio entre grupos", os.path.join(base_dir, "comparacion_volume.png"))
+plot_comparacion_metricas(rabd_means, 'RabD', "RabD promedio", "Comparación de RabD promedio entre grupos", os.path.join(base_dir, "comparacion_rabD.png"))
+plot_comparacion_rabd_pct_area(rabd_pct_means, "% RabD / área promedio", "Comparación de % RabD respecto a área promedio entre grupos", os.path.join(base_dir, "comparacion_rabD_pct_area.png"))
 
-# 6. Agrupar imágenes finales
+# 4. Agrupar imágenes finales
 for grupo in grupos:
-    grupo_path = os.path.join(output_dir, grupo)
+    grupo_path = os.path.join(base_dir, grupo)
     agrupar_rab_distribuciones(grupo, grupo_path, output_dir)
-agrupar_entre_grupos(output_dir)
-
+    agrupar_intra_grupo(grupo, grupo_path, output_dir)
+agrupar_entre_grupos(base_dir, output_dir)
