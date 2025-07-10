@@ -4,6 +4,7 @@ import seaborn as sns
 import os
 from glob import glob
 import math
+import numpy as np
 
 # Configuración
 base_dir = os.path.join(os.path.dirname(__file__), 'grupos')
@@ -11,6 +12,10 @@ output_dir = os.path.join(os.path.dirname(base_dir), "output")
 os.makedirs(output_dir, exist_ok=True)
 grupos = ['tropism_1', 'tropism_0.1']
 rab_columns = ['RabA', 'RabB', 'RabC', 'RabD']
+
+# Parámetros configurables
+porcentaje_maduracion = 50  # % RabD/area para considerar maduración
+n_bins_histograma = 20      # cantidad de bins del histograma
 
 def get_sim_data(grupo_path, rab_columns):
     """Lee todos los csv de un grupo y devuelve un dict con los datos relevantes por simulación."""
@@ -237,6 +242,76 @@ def agrupar_entre_grupos(base_dir, output_dir):
     out_img = os.path.join(output_dir, "comparaciones_entre_grupos.png")
     agrupar_imagenes(imgs, titulos, "Comparaciones entre grupos", out_img)
 
+def plot_histograma_maduracion(all_sim_data, excluidas_dir, rab_columns, output_dir, porcentaje=50, n_bins=20):
+    """
+    Histograma del tick en que cada simulación alcanza el porcentaje dado de RabD/area.
+    Las simulaciones que nunca lo alcanzan (incluidas las excluidas) van a un bin especial "no maduraron".
+    """
+    # 1. Recolectar ticks de maduración por grupo
+    ticks_mad = {}
+    # Simulaciones analizadas
+    for grupo, sim_data in all_sim_data.items():
+        ticks_mad[grupo] = []
+        for data in sim_data:
+            df = data['df']
+            if 'RabD' in df.columns and 'area' in df.columns:
+                df['RabD_area_pct'] = (df['RabD'] / df['area']) * 100
+                idx = df.index[df['RabD_area_pct'] >= porcentaje]
+                if len(idx) > 0:
+                    ticks_mad[grupo].append(df.loc[idx[0], 'tick'])
+                else:
+                    ticks_mad[grupo].append('no maduraron')
+            else:
+                ticks_mad[grupo].append('no maduraron')
+    # Simulaciones excluidas
+    excluidas_path = os.path.join(excluidas_dir, "excluidas.txt")
+    if os.path.exists(excluidas_path):
+        with open(excluidas_path, "r") as f:
+            for line in f:
+                if ":" in line and not line.startswith("Simulaciones"):
+                    grupo_ex, _ = line.strip().split(":", 1)
+                    grupo_ex = grupo_ex.strip()
+                    if grupo_ex not in ticks_mad:
+                        ticks_mad[grupo_ex] = []
+                    ticks_mad[grupo_ex].append('no maduraron')
+
+    # 2. Calcular rango de ticks para bins
+    todos_ticks = []
+    for vals in ticks_mad.values():
+        todos_ticks += [v for v in vals if v != 'no maduraron']
+    if todos_ticks:
+        min_tick = 0
+        max_tick = int(max(todos_ticks))
+    else:
+        min_tick = 0
+        max_tick = 60000  # valor por defecto si no hay maduraciones
+
+    bin_width = int((max_tick - min_tick) / n_bins) if n_bins > 0 else 1
+    bins = list(range(int(min_tick), int(max_tick) + bin_width, bin_width))
+    bin_labels = [f"{b}-{b+bin_width-1}" for b in bins[:-1]] + ["no maduraron"]
+
+    # 3. Graficar subplots
+    n_grupos = len(ticks_mad)
+    fig, axs = plt.subplots(1, n_grupos, figsize=(7*n_grupos, 6), sharey=True)
+    if n_grupos == 1:
+        axs = [axs]
+    for ax, (grupo, vals) in zip(axs, ticks_mad.items()):
+        madurados = [v for v in vals if v != 'no maduraron']
+        no_maduraron = vals.count('no maduraron')
+        # Histograma normal
+        counts, _ = np.histogram(madurados, bins=bins)
+        counts = list(counts) + [no_maduraron]
+        ax.bar(range(len(counts)), counts, tick_label=bin_labels, color='tab:blue')
+        ax.set_title(f"Grupo: {grupo}")
+        ax.set_xlabel(f"Tick de maduración (RabD/area ≥ {porcentaje}%)")
+        ax.set_ylabel("Cantidad de simulaciones")
+        ax.set_xticks(range(len(bin_labels)))
+        ax.set_xticklabels(bin_labels, rotation=90)
+    plt.tight_layout()
+    out_path = os.path.join(output_dir, "histograma_tiempo_maduracion.png")
+    plt.savefig(out_path)
+    plt.close()
+
 # --- PROCESAMIENTO PRINCIPAL ---
 
 # 1. Procesar cada grupo y guardar gráficos individuales y promedios
@@ -314,3 +389,8 @@ for grupo in grupos:
     agrupar_rab_distribuciones(grupo, grupo_path, output_dir)
     agrupar_intra_grupo(grupo, grupo_path, output_dir)
 agrupar_entre_grupos(base_dir, output_dir)
+
+# 5. Histograma de ticks de maduración
+excluidas_dir = os.path.join(output_dir, "excluidas")
+plot_histograma_maduracion(all_sim_data, excluidas_dir, rab_columns, output_dir,
+                           porcentaje=porcentaje_maduracion, n_bins=n_bins_histograma)
