@@ -134,7 +134,7 @@ public class Results {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 //	log();
@@ -183,22 +183,16 @@ public class Results {
 		orderTotalRabs.putAll(totalRabs);
 		TreeMap<String, Double> orderCisternsArea = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
 		orderCisternsArea.putAll(cisternsArea);
-//	
-		/*
-		 * //System.out.print*ln(orderContDist); //System.out.print*ln(orderTotalRabs);
-		 * //System.out.print*ln(orderCisternsArea);
-		 */
+
 		try {
 			writeToCsv(orderContDist);
 			writeToCsvTotalRabs(orderTotalRabs);
 			writeToCsvCisternsArea(orderCisternsArea);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -211,7 +205,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));		
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 	}
@@ -223,9 +216,7 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
@@ -238,12 +229,9 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		//CAMBIO
 		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
 		output.append(line);
 		output.close();	
-		// TODO Auto-generated method stub
 		
 	}
 	private void writeToCsvTotalRabs(TreeMap<String, Double> totalRabs2) throws IOException {
@@ -270,7 +258,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(TotalRabs, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
@@ -286,7 +273,6 @@ public class Results {
 			Writer output;
 			//CAMBIO
 			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 			output.append(line);
 			output.close();	
 			
@@ -299,7 +285,6 @@ public class Results {
 			Writer output;
 			//CAMBIO
 			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			output.close();
 		}
@@ -427,23 +412,29 @@ public class Results {
 //		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 		
-		if((endosome.getMembraneContent().containsKey("membraneMarker") && 
-				endosome.getMembraneContent().get("membraneMarker") > 0.9)
-				||
-			(endosome.getSolubleContent().containsKey("solubleMarker") && 
-				endosome.getSolubleContent().get("solubleMarker") > 0.9)
-			||
-			(endosome.getSolubleContent().containsKey("bead") && 
-					endosome.getSolubleContent().get("bead") > 0.9))
-		{
+		List<String> markers = new ArrayList<>();
 
-			try {
-				printEndosome(endosome);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (endosome.getMembraneContent().containsKey("membraneMarker") && endosome.getMembraneContent().get("membraneMarker") > 0.9) {
+		    markers.add("membraneMarker");
 		}
+		if (endosome.getSolubleContent().containsKey("solubleMarker") && endosome.getSolubleContent().get("solubleMarker") > 0.9) {
+		    markers.add("solubleMarker");
+		}
+		// Para beadX
+		for (String key : endosome.getSolubleContent().keySet()) {
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		        markers.add(key + "marker");
+		    }
+		}
+
+		for (String marker : markers) {
+		    try {
+		        printEndosome(endosome, marker);
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		}//
+		
 		}
 		totalRabs.put("xPM", PlasmaMembrane.getInstance().getPlasmaMembraneArea());
 		totalRabs.put("xER", EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea());
@@ -477,7 +468,22 @@ public class Results {
 
 	}
 // Send information about the endosome that contains a membrane or a soluble MARKER
-	private void printEndosome(Endosome endosome) throws IOException {
+	
+	private void writeHeaderIfNeeded(String markerFilePath, TreeMap<String, Double> headerMap) throws IOException {
+	    File file = new File(markerFilePath);
+	    if (!file.exists() || file.length() == 0) {
+	        String line = "";
+	        for (String key : headerMap.keySet()) {
+	            line = line + key + ",";
+	        }
+	        line = line + "\n";
+	        Writer output = new BufferedWriter(new FileWriter(markerFilePath, true));
+	        output.append(line);
+	        output.close();
+	    }
+	}
+	
+	private void printEndosome(Endosome endosome, String markerType) throws IOException {
 		singleEndosomeContent.put("area", endosome.getArea());
 		singleEndosomeContent.put("volume", endosome.getVolume());
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -511,6 +517,9 @@ public class Results {
 			}
 		}
 		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
+		String markerFilePath = mainpath.getMyPathOut() + "Results_" + markerType + ".csv";
+		// Escribe el header si es necesario
+	    writeHeaderIfNeeded(markerFilePath, orderSingleEndosome);
 		String line = "";
 		for (String key : orderSingleEndosome.keySet()) {
             line = line+ sigFigs(orderSingleEndosome.get(key),6) + ",";
@@ -518,14 +527,12 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", true));
+		
+	    output = new BufferedWriter(new FileWriter(markerFilePath, true));
 		output.append(line);
 		output.close();
 	}
 	
-
-
 	// generate the set of all combinations between contents 
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
 	public TreeMap<String, Double> content() {

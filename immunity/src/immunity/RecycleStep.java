@@ -24,8 +24,15 @@ public class RecycleStep {
         NdPoint myPoint = endosome.getSpace().getLocation(endosome);
         double x = myPoint.getX();
         double y = myPoint.getY();
+        boolean hasBead = false;
         
-        if (endosome.getSolubleContent().containsKey("bead") && endosome.getSolubleContent().get("bead")>0.9) {
+        for (String key : endosome.getSolubleContent().keySet()) {
+            if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+                hasBead = true;
+                break;
+            }
+        }
+        if (hasBead) {
         	
         }else {
         // Check if the endosome is near the PM

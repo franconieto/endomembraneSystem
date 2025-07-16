@@ -51,10 +51,13 @@ public class EndosomeLysosomalDigestionStep {
 			minV = minV + endosome.getSolubleContent().get("mvb")* IVvol;//minimal volume + volume of all internal vesicles
 		}
 //		if it has a bead, the volume must be enough to contain it
-		if (endosome.getSolubleContent().containsKey("bead")
-				&& endosome.getSolubleContent().get("bead")>0.9) {
-			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		for (String key : endosome.getSolubleContent().keySet()) {
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		        minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
+		        break;
+		    }
 		}
+		
 		if (endosome.getSolubleContent().containsKey("solubleMarker")
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
 			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties

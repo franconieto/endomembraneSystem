@@ -61,9 +61,12 @@ public class FissionStep {
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
 			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
 		}
-		if (endosome.getSolubleContent().containsKey("bead")
-				&& endosome.getSolubleContent().get("bead")>0.9) {
-			minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
+		
+		for (String key : endosome.getSolubleContent().keySet()) {
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		    	minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
+		        break;
+		    }
 		}
 		if (vo - minV < 2 * vminCyl) {
 			if (endosome.c>1500)	//System.out.print*ln(minV + " 1 NO CORTA endosome RabInTubeSelected " + vo );

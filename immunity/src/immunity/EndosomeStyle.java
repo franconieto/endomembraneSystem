@@ -208,10 +208,12 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		//String marker = object.getSolubleContent().get("solubleMarker").toString();
 		label = label + "S ";
 		}
-		if (object.getSolubleContent().containsKey("bead")
-				&& object.getSolubleContent().get("bead")> 0.9){
-		//String marker = object.getSolubleContent().get("solubleMarker").toString();
-		label = label + "B ";
+		
+		for (String key : object.getSolubleContent().keySet()) {
+		    if (key.startsWith("bead") && object.getSolubleContent().get(key) > 0.9) {
+		    	label = label + "B ";
+		        break;
+		    }
 		}
 		if (object.getMembraneContent().containsKey("membraneMarker")
 				&& object.getMembraneContent().get("membraneMarker")> 0.9){
