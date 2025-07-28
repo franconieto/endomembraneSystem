@@ -1,9 +1,9 @@
 tick 120001.0,,,,,,,,,,,,,,,,,,,
-endosome0Y,initOrgProp,area,7.1E+6,volume,5E+8,xcoor,20,ycoor,20,,,,,,,,,,
+endosome0Y,initOrgProp,area,4.1E+6,volume,5E+8,xcoor,20,ycoor,20,,,,,,,,,,
 endosome0Y,initRabContent,RabA,7.1E+6,,,,,,,,,,
 endosome0Y,initMembraneContent,exCxEn,0,R-TfaEn,0,oMHCIEn,0,membraneMarker,0,cMHCIEn,0,R-TfEn,0,pepMHCIEn,0,REn,13.64259759,imCxEn,0
 endosome0Y,initSolubleContent,ovaEn,0,protonEn,637.446231,TfaEn,0,solubleMarker,0,mvb,307,FeEn,0,TfEn,0,pepEn,0,bead1,1,
-endosome1j,initOrgProp,area,7.1E+6,volume,5E+8,xcoor,10,ycoor,10,,,,,,,,,,
+endosome1j,initOrgProp,area,3.5E+6,volume,5E+8,xcoor,10,ycoor,10,,,,,,,,,,
 endosome1j,initRabContent,RabB,7.1E+6,,,,,,,,,,,
 endosome1j,initMembraneContent,exCxEn,0,R-TfaEn,0,oMHCIEn,0,membraneMarker,0,cMHCIEn,0,R-TfEn,0,pepMHCIEn,0,imCxEn,0,,
 endosome1j,initSolubleContent,ovaEn,0,protonEn,1.404519089,TfaEn,0,solubleMarker,0,mvb,0,FeEn,0,TfEn,0,pepEn,0,bead2,1,
@@ -8633,7 +8633,7 @@ endosome2157D,initMembraneContent,exCxEn,0,R-TfaEn,0,oMHCIEn,0,membraneMarker,0,
 endosome2157D,initSolubleContent,ovaEn,0,protonEn,8.002264807,TfaEn,0,solubleMarker,0,mvb,0,FeEn,0,TfEn,0,pepEn,0,,
 plasmaMembrane,initOrgProp,area,6.10E+07,volume,2.40E+30,,,,,,,,,,,,,,
 plasmaMembrane,initMembraneContent,exCxEn,0,R-TfaEn,0,oMHCIEn,0,membraneMarker,0,cMHCIEn,0,R-TfEn,2051.674477,pepMHCIEn,0,REn,0,imCxEn,0
-plasmaMembrane,initSolubleContent,ovaEn,0,protonEn,767138.7014,TfaEn,0,solubleMarker,0,mvb,10717.88217,FeEn,0,TfEn,0,pepEn,0,,
+plasmaMembrane,initSolubleContent,ovaEn,0,protonEn,767138.7014,TfaEn,0,solubleMarker,0,mvb,10717.88217,FeEn,0,TfEn,0,pepEn,0,,,
 EReticulum,initOrgProp,area,6.00E+07,volume,2.40E+10,,,,,,,,,,,,,,
 EReticulum,initMembraneContent,exCxEn,0,R-TfaEn,0,oMHCIEn,0,membraneMarker,0,cMHCIEn,0,R-TfEn,0,pepMHCIEn,0,REn,17.38473071,imCxEn,0
 EReticulum,initSolubleContent,ovaEn,0,protonEn,11698.62415,TfaEn,0,solubleMarker,0,mvb,2.33E-22,FeEn,0,TfEn,0,pepEn,0,,

@@ -63,7 +63,7 @@ public class FissionStep {
 		}
 		
 		for (String key : endosome.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		    if (key.startsWith("bead") ) {
 		    	minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
 		        break;
 		    }
@@ -335,8 +335,7 @@ public class FissionStep {
 			if (endosome.getSolubleContent().containsKey("mvb")) {
 				minV = endosome.getSolubleContent().get("mvb")* 4/3 * PI * Cell.rIV * Cell.rIV * Cell.rIV;
 			}
-			if (endosome.getSolubleContent().containsKey("bead")
-					&& endosome.getSolubleContent().get("bead")>0.9) {
+			if (endosome.getSolubleContent().containsKey("bead")) {
 				minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume"); // 5E8 bead volume. Need to be introduced in Model Properties
 			}
 			if (endosome.getSolubleContent().containsKey("solubleMarker")

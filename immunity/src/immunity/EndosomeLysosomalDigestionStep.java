@@ -52,7 +52,7 @@ public class EndosomeLysosomalDigestionStep {
 		}
 //		if it has a bead, the volume must be enough to contain it
 		for (String key : endosome.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		    if (key.startsWith("bead")) {
 		        minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
 		        break;
 		    }
@@ -102,7 +102,7 @@ public class EndosomeLysosomalDigestionStep {
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		double digSol = ModelProperties.getInstance().getCellK().get("digSol");
 		for (String sol : endosome.solubleContent.keySet()) {
-				if (!sol.equals("bead")) {
+				if (!sol.startsWith("bead")) {
 					double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}}

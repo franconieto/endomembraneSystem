@@ -27,7 +27,7 @@ public class RecycleStep {
         boolean hasBead = false;
         
         for (String key : endosome.getSolubleContent().keySet()) {
-            if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+            if (key.startsWith("bead") ) {
                 hasBead = true;
                 break;
             }

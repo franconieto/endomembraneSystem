@@ -64,6 +64,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         Endosome.endosomeShape(object);
 		//System.out.print*ln("area "+ object.area +" volume "+object.volume);
         }
+        //if (Double.isNaN(a) || Double.isNaN(c) || a <= 0 || c <= 0 || a > 1000 || c > 1000) {
+        //	System.err.println("Endosome con a/c inválido. a=" + a + ", c=" + c + ", id=" + object.toString());
+//	return factory.createRectangle(10, 10);  // fallback shape
+        //}
         if (a<=c){
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
@@ -210,7 +214,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		}
 		
 		for (String key : object.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead") && object.getSolubleContent().get(key) > 0.9) {
+		    if (key.startsWith("bead") ) {
 		    	label = label + "B ";
 		        break;
 		    }

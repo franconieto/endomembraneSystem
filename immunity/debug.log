@@ -120,3 +120,340 @@ Caused by: java.lang.ClassNotFoundException: ShapeFactory2D
 	at org.java.plugin.standard.StandardPluginClassLoader.loadClass(Unknown Source)
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
 	... 29 more
+FATAL [Thread-2] 2025-07-18 16:33:19,643 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (15001.0)
+java.lang.ArrayIndexOutOfBoundsException: Index 752 out of bounds for length 7
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:86)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:184)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:355)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:343)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:330)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:76)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.createSpatial(StyledDisplayLayerOGL2D.java:146)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.processAdded(StyledDisplayLayerOGL2D.java:228)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:250)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:403)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:48)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [AWT-EventQueue-0] 2025-07-18 16:47:14,622 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-18 16:47:14,925 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-18 16:47:47,497 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost1599784070986036744.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1752868064801 ...
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-18 16:47:47,563 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-18 16:47:47,566 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0461
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-18 16:47:47,567 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1752868064801\fniet_localhost1599784070986036744.zip
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-18 16:47:48,270 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2025-07-18 16:48:00,247 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2025-07-18 16:48:00,248 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1752868064801/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2025-07-18 16:48:00,248 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2025-07-18 16:48:00,248 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2025-07-18 16:48:00,248 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2025-07-18 16:48:00,642 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2025-07-18-16-48-438-697/
+INFO  [Thread-0] 2025-07-18 16:48:00,642 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2025-07-18 16:48:00,709 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [pool-3-thread-1] 2025-07-18 16:48:48,297 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1752868064801 for DONE:  no
+INFO  [pool-3-thread-1] 2025-07-18 16:49:48,307 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1752868064801 for DONE:  no
+INFO  [pool-3-thread-1] 2025-07-18 16:50:48,314 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1752868064801 for DONE:  no
+INFO  [AWT-EventQueue-0] 2025-07-18 17:25:06,348 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-18 17:25:06,425 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+FATAL [AWT-EventQueue-0] 2025-07-24 15:07:46,357 repast.simphony.ui.RSUIPlugin - Fatal error starting Repast
+java.lang.NoClassDefFoundError: ShapeFactory2D
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.privateGetPublicMethods(Class.java:3191)
+	at java.base/java.lang.Class.getMethods(Class.java:1904)
+	at repast.simphony.engine.watcher.WatchAnnotationReader.findWatchAnnotation(WatchAnnotationReader.java:42)
+	at repast.simphony.engine.watcher.WatchAnnotationReader.processClass(WatchAnnotationReader.java:30)
+	at repast.simphony.engine.watcher.WatchAnnotationReader.processClasses(WatchAnnotationReader.java:36)
+	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:155)
+	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
+	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
+	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:216)
+	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
+	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
+	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
+	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
+	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:101)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: java.lang.ClassNotFoundException: ShapeFactory2D
+	at org.java.plugin.standard.StandardPluginClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 29 more
+FATAL [Thread-2] 2025-07-24 15:27:10,581 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:336)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	timeCourse cannot be resolved or is not a field
+
+	at immunity.EndosomeCopasi.setUpReport(EndosomeCopasi.java:135)
+	at immunity.EndosomeCopasi.<init>(EndosomeCopasi.java:124)
+	at immunity.EndosomeCopasi.getInstance(EndosomeCopasi.java:45)
+	at immunity.EndosomeCopasiStep.callLipidPresentation(EndosomeCopasiStep.java:124)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:25)
+	at immunity.Endosome.step(Endosome.java:169)
+	... 10 more
+FATAL [Thread-2] 2025-07-24 15:29:32,204 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:336)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	timeCourse cannot be resolved or is not a field
+
+	at immunity.EndosomeCopasi.setUpReport(EndosomeCopasi.java:135)
+	at immunity.EndosomeCopasi.<init>(EndosomeCopasi.java:124)
+	at immunity.EndosomeCopasi.getInstance(EndosomeCopasi.java:45)
+	at immunity.EndosomeCopasiStep.callLipidPresentation(EndosomeCopasiStep.java:124)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:25)
+	at immunity.Endosome.step(Endosome.java:169)
+	... 10 more
+FATAL [Thread-2] 2025-07-24 15:34:16,669 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (101.0)
+java.lang.ArrayIndexOutOfBoundsException: Index 752 out of bounds for length 7
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:86)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:184)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:355)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:343)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:330)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:76)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.createSpatial(StyledDisplayLayerOGL2D.java:146)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.processAdded(StyledDisplayLayerOGL2D.java:228)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:250)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:403)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:48)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [AWT-EventQueue-0] 2025-07-24 15:50:59,380 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-24 15:50:59,680 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:51:26,889 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost8195984778334079230.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1753383085111 ...
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:51:26,971 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:51:26,971 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0310
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:51:26,971 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1753383085111\fniet_localhost8195984778334079230.zip
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:51:27,413 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2025-07-24 15:51:39,158 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2025-07-24 15:51:39,158 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1753383085111/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2025-07-24 15:51:39,158 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2025-07-24 15:51:39,158 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2025-07-24 15:51:39,158 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2025-07-24 15:51:39,160 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2025-07-24 15:51:39,160 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1753383085111/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2025-07-24 15:51:39,160 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2025-07-24 15:51:39,160 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2025-07-24 15:51:39,160 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\data\inputIntrTransp3.csv inputIntrTransp3NH4.csv (El sistema no puede encontrar el archivo especificado)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.loadFromCsv(ModelProperties.java:182)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.getInstance(ModelProperties.java:43)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2025-07-24 15:51:39,215 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - ERROR [main] 15:51:39,215 repast.simphony.batch.InstanceRunner - Error while running model
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - java.lang.NullPointerException
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2025-07-24 15:51:39,225 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [pool-3-thread-1] 2025-07-24 15:52:27,424 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1753383085111 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:52:27,424 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0076
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:52:27,455 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\fniet\AppData\Local\Temp\simphony_model_1753383085111
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:52:27,462 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/output
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:52:27,463 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0007
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-24 15:52:27,463 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0394
+FATAL [Thread-2] 2025-07-27 20:03:36,235 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (201.0)
+java.lang.ArrayIndexOutOfBoundsException: Index 752 out of bounds for length 7
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:86)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:184)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:355)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:343)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:330)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:80)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.createSpatial(StyledDisplayLayerOGL2D.java:146)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.processAdded(StyledDisplayLayerOGL2D.java:228)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:250)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:403)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:48)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+FATAL [Thread-2] 2025-07-27 20:12:37,391 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (101.0)
+java.lang.ArrayIndexOutOfBoundsException: Index 752 out of bounds for length 7
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:86)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:184)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:355)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:343)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:330)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:80)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.createSpatial(StyledDisplayLayerOGL2D.java:146)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.processAdded(StyledDisplayLayerOGL2D.java:228)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:250)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:403)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:48)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [AWT-EventQueue-0] 2025-07-28 13:02:39,575 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-28 13:02:39,829 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:03:05,091 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost16779272647168386846.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1753718583350 ...
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:03:06,002 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:03:06,002 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0442
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:03:06,002 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1753718583350\fniet_localhost16779272647168386846.zip
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:03:06,367 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2025-07-28 13:03:17,127 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2025-07-28 13:03:17,128 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1753718583350/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2025-07-28 13:03:17,128 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2025-07-28 13:03:17,128 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2025-07-28 13:03:17,128 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2025-07-28 13:03:17,178 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\data\inputIntrTransp3.csv inputIntrTransp3NH4.csv (El sistema no puede encontrar el archivo especificado)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.loadFromCsv(ModelProperties.java:182)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.getInstance(ModelProperties.java:43)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2025-07-28 13:03:17,182 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - ERROR [main] 13:03:17,185 repast.simphony.batch.InstanceRunner - Error while running model
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - java.lang.NullPointerException
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2025-07-28 13:03:17,188 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2025-07-28 13:03:17,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2025-07-28 13:03:17,238 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2025-07-28 13:03:17,240 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1753718583350/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2025-07-28 13:03:17,240 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2025-07-28 13:03:17,240 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2025-07-28 13:03:17,240 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2025-07-28 13:04:06,378 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1753718583350 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:04:06,381 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0063
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:04:06,405 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\fniet\AppData\Local\Temp\simphony_model_1753718583350
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:04:06,410 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/output
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:04:06,413 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0005
+INFO  [SwingWorker-pool-2-thread-1] 2025-07-28 13:04:06,413 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0513
+INFO  [AWT-EventQueue-0] 2025-07-28 16:34:15,465 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-28 16:34:15,518 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [AWT-EventQueue-0] 2025-07-28 17:24:56,174 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2025-07-28 17:24:56,386 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
