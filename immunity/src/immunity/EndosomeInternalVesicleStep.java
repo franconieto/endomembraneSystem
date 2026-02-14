@@ -52,7 +52,7 @@ public class EndosomeInternalVesicleStep {
 //		if after the formation of a new vesicles it is a sphere (no extra membrane for the volume) stop
 			if (sp * sp * sp / (vp * vp) <= 36 * PI) return;
 //		Control if there is enough membrane to contain the already present internal vesicles 
-//		plus the new one. Control if there is a bead (soluble marker with a volume)
+//		plus the new one. Control if there is a bead (soluble marker with a volume) //
 		double minV = 0d;//		minimal volume = volume bead + volume mvb
 		double mvbVolume = 0d; // volume of the mvb
 		for (String key : endosome.getSolubleContent().keySet()) {

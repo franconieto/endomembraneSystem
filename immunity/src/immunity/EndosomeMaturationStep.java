@@ -44,7 +44,7 @@ public class EndosomeMaturationStep {
 //		//System.out.print*ln(rabOldName+ rabNewName + "  Madura inicial "+endosome.getRabContent());		
 //		The logic is that a percentage (propMature) of the major domain matures
 //		the rest is preserved. The remaining domain can prevent miss targeting of membrane cargoes
-//		The tickCount is reset but not to zero.
+//		The tickCount is reset but not to zero.//
 		double rabOld=endosome.getRabContent().get(rabOldName);
 		double rabNew = 0;
 		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;// checks if the organelle already has the new domain

@@ -202,7 +202,7 @@ public class Endosome {
 			end.a = radiusHeight[0];
 			end.c = radiusHeight[1];
 //		if (end.a <=0) //System.out.print*ln("FLAT FLAT  a    " + end.a +" c " + end.c);
-		}
+		}//
 		else 	
 		{
 			double[] radiusHeight = radiusHeightTubule(end.area, end.volume);

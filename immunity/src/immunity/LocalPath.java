@@ -83,7 +83,7 @@ import repast.simphony.engine.environment.RunEnvironment;
      }
 
 	}
-//	NOT USED BATCH
+//	NOT USED BATCH//
 	public String getPath(){ 
 		return this.mypath; 
 		} 

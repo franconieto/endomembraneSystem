@@ -23,7 +23,7 @@ import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
 
 //import smodel.Bacteria.State;
-
+//
 public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	ShapeFactory2D factory;

@@ -208,7 +208,7 @@ public class Results {
 		output.append(line);
 		output.close();	
 	}
-//		end of header
+//		end of header//
 		
 		String line = "";
 		for (String key : orderContDist.keySet()) {

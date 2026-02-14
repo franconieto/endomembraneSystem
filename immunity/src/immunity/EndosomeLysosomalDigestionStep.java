@@ -97,7 +97,7 @@ public class EndosomeLysosomalDigestionStep {
 			finalMvb = initialMvb - digMVB;					
 		}
 
-//		Soluble component are digested proportional to the RabD content, except the soluble marker
+//		Soluble component are digested proportional to the RabD content, except the soluble marker//
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		double digSol = ModelProperties.getInstance().getCellK().get("digSol");
