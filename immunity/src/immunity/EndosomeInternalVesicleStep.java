@@ -56,14 +56,14 @@ public class EndosomeInternalVesicleStep {
 		double minV = 0d;//		minimal volume = volume bead + volume mvb
 		double mvbVolume = 0d; // volume of the mvb
 		for (String key : endosome.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead") ) {
-		        minV = beadVolume;
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
+		        minV = minV + beadVolume;
 		        break;
 		    }
 		}
 		if (endosome.getSolubleContent().containsKey("solubleMarker")
 				&& endosome.getSolubleContent().get("solubleMarker")>0.9) {
-			minV = beadVolume; 
+			minV = minV + beadVolume; 
 		}
 		if (endosome.solubleContent.containsKey("mvb")) {
 			mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;

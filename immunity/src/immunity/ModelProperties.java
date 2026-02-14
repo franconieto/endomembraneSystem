@@ -534,7 +534,6 @@ public class ModelProperties {
 
 				}
 			}
-			scanner.close();
 //			//System.out.print*ln("  FREEZE DRY INITIAL ORGANELLES FOR UPTAKE " + InitialOrganelles.getInstance().initOrgProp);
 	}
 

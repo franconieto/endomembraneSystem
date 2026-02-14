@@ -49,16 +49,15 @@ public class EndosomeMaturationStep {
 		double rabNew = 0;
 		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;// checks if the organelle already has the new domain
 		else rabNew=endosome.getRabContent().get(rabNewName);
-		
 		//modulate the propMature with ph
-		if (rabNewName.equals("RabD") && rabOldName.equals("RabA")) {
-		double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");
-		double prop_min=ModelProperties.getInstance().getRabMaturation().get("minprob");		
-		double prop_max=propMature-prop_min;
-		double pH=endosome.getpH();
-		int k=10;
-		propMature=(prop_max / (1.0 + Math.exp(k * (pH - corte)))) + prop_min ;
-		}
+				if (rabNewName.equals("RabD") && rabOldName.equals("RabA")) {
+				double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");
+				double prop_min=ModelProperties.getInstance().getRabMaturation().get("minprob");		
+				double prop_max=propMature-prop_min;
+				double pH=endosome.getpH();
+				int k=10;
+				propMature=(prop_max / (1.0 + Math.exp(k * (pH - corte)))) + prop_min ;
+				}
 		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
 		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));
 //		The tickCount is reset to a certain value considering the the proportion of the 

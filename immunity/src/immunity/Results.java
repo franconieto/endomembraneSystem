@@ -422,7 +422,7 @@ public class Results {
 		}
 		// Para beadX
 		for (String key : endosome.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead") ) {
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
 		        markers.add(key + "marker");
 		    }
 		}

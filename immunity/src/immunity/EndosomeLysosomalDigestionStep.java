@@ -52,7 +52,7 @@ public class EndosomeLysosomalDigestionStep {
 		}
 //		if it has a bead, the volume must be enough to contain it
 		for (String key : endosome.getSolubleContent().keySet()) {
-		    if (key.startsWith("bead")) {
+		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
 		        minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
 		        break;
 		    }

@@ -7,7 +7,7 @@ import math
 import numpy as np
 
 # Configuración
-base_output_dir = r"C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\output_jobID_90647_2025-07-21"
+base_output_dir = r"C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\output_jobID_90453_2025-07-09"
 output_dir = os.path.join(base_output_dir, "analisis_output")
 os.makedirs(output_dir, exist_ok=True)
 rab_columns = ['RabA', 'RabB', 'RabC', 'RabD']
@@ -38,7 +38,7 @@ def recolectar_simulaciones(base_output_dir):
             continue
         grupo = identificar_grupo(sim_path)
         if grupo:
-            results_path = os.path.join(sim_path, 'Results_bead1marker.csv')
+            results_path = os.path.join(sim_path, 'ResultsMarker.csv')
             if os.path.exists(results_path):
                 if grupo not in grupos:
                     grupos[grupo] = []
@@ -499,7 +499,7 @@ def plot_histograma_maduracion(all_sim_data, excluidas_dir, rab_columns, output_
     plt.close()
 
 excluidas_dir = os.path.join(output_dir, "excluidas")
-#plot_histograma_maduracion(
-#    all_sim_data, excluidas_dir, rab_columns, output_dir,
-#    porcentaje=porcentaje_maduracion
-#)
+plot_histograma_maduracion(
+    all_sim_data, excluidas_dir, rab_columns, output_dir,
+    porcentaje=porcentaje_maduracion
+)
