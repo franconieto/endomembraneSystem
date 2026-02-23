@@ -100,7 +100,7 @@ public class EndosomeLysosomalDigestionStep {
 			digMVB = initialMvb * (1-digMVB) * rabDratio;// MVB digested
 			finalMvb = initialMvb - digMVB;					
 		}
-
+    
 //		Soluble component are digested proportional to the RabD content, except the soluble marker//
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
