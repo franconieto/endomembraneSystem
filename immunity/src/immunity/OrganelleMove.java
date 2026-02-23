@@ -171,6 +171,10 @@ public class OrganelleMove {
                 changeDirectionRnd(endosome);
                 return;
             }
+            
+            double width = space.getDimensions().getWidth();
+            double height = space.getDimensions().getHeight();
+
 
             double mth = mt.getMtheading();
             double yy = dist * Math.sin((mth + 90) * Math.PI / 180);
@@ -178,8 +182,10 @@ public class OrganelleMove {
             NdPoint pt = space.getLocation(endosome);
             double xpt = pt.getX() - xx;
             double ypt = pt.getY() - yy;
-            if (ypt >= 50 - cellLimit) ypt = 50 - cellLimit;
-            if (ypt <= 0 + cellLimit) ypt = cellLimit;
+            //if (ypt >= 50 - cellLimit) ypt = 50 - cellLimit;
+            //if (ypt <= 0 + cellLimit) ypt = cellLimit;
+            xpt = Math.max(cellLimit, Math.min(xpt, width - cellLimit));
+            ypt = Math.max(cellLimit, Math.min(ypt, height - cellLimit));
             space.moveTo(endosome, xpt, ypt);
             grid.moveTo(endosome, (int) xpt, (int) ypt);
             endosome.speed = 1d * Cell.orgScale / Cell.timeScale;

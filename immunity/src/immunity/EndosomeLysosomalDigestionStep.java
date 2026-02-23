@@ -84,6 +84,10 @@ public class EndosomeLysosomalDigestionStep {
 		double finalMvb = 0d;
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
+		double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");	
+		double pH=endosome.getpH();
+		int k=5;
+		double phFactor = 1.0 / (1.0 + Math.exp(k * (pH - corte)));
 //		RandomEngine engine = new DRand();
 //		Poisson poisson = new Poisson(2000, engine);
 //		int poissonObs = poisson.nextInt();
@@ -101,9 +105,11 @@ public class EndosomeLysosomalDigestionStep {
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		double digSol = ModelProperties.getInstance().getCellK().get("digSol");
+		
 		for (String sol : endosome.solubleContent.keySet()) {
 				if (!sol.startsWith("bead")) {
-					double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
+					//double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
+					double solDigested = endosome.solubleContent.get(sol)* digSol * rabDratio * phFactor;
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}}
 		if (endosome.solubleContent.containsKey("mvb"))
@@ -112,7 +118,9 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", 1d);
 		double digMem = ModelProperties.getInstance().getCellK().get("digMem");
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem)*(1-digMem)* rabDratio;
+				//double memDigested = endosome.membraneContent.get(mem)*(1-digMem)* rabDratio;
+			
+			double memDigested = endosome.membraneContent.get(mem)* digMem * rabDratio * phFactor;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){
