@@ -43,7 +43,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 //	          FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
 //	          TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
 //	          SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
-	            mypath = "C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/";
+	            mypath = "C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/";
 	            mypathOut=mypath+"/output/"+folderName+"-" + UUID.randomUUID().toString().substring(0, 3)+"/";   
 	            System.out.println("1 " + mypathOut);
 	        } else {

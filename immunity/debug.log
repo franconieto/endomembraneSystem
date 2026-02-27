@@ -1,288 +1,746 @@
-INFO  [pool-3-thread-1] 2026-02-22 19:05:59,586 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:06:59,592 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:07:59,597 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:08:59,607 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:09:59,618 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:10:59,625 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:11:59,626 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:12:59,637 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:13:59,648 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:14:59,655 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:15:59,659 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:16:59,671 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:17:59,698 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:18:59,737 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:19:59,774 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:20:59,813 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:21:59,848 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:22:59,894 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:23:59,917 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:24:59,922 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:25:59,929 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:26:59,939 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:26:59,948 repast.simphony.batch.ssh.SessionsDriver - Run Time: 31,0182
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:27:00,072 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\fniet\AppData\Local\Temp\simphony_model_1771797356800
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:27:00,100 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/output
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:27:00,100 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0025
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:27:00,100 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 31,0552
-INFO  [AWT-EventQueue-0] 2026-02-22 19:38:58,539 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
-INFO  [AWT-EventQueue-0] 2026-02-22 19:38:58,845 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
-	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
-	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:39:53,267 repast.simphony.batch.ssh.LocalSession - 
-	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost1872148625290737071.zip to 
-C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 ...
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:39:53,368 repast.simphony.batch.ssh.LocalSession - Copying Finished.
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:39:53,368 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0549
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:39:53,368 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071\fniet_localhost1872148625290737071.zip
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 19:39:54,157 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
-INFO  [Thread-0] 2026-02-22 19:40:14,183 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2026-02-22 19:40:14,183 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1771799990071/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2026-02-22 19:40:14,183 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2026-02-22 19:40:14,183 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2026-02-22 19:40:14,183 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2026-02-22 19:40:14,528 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2026-02-22 19:40:14,530 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1771799990071/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2026-02-22 19:40:14,530 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2026-02-22 19:40:14,530 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2026-02-22 19:40:14,530 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2026-02-22 19:40:14,652 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2026-02-22 19:40:14,653 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1771799990071/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2026-02-22 19:40:14,653 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2026-02-22 19:40:14,653 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2026-02-22 19:40:14,653 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2026-02-22 19:40:14,685 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2026-02-22 19:40:14,685 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1771799990071/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2026-02-22 19:40:14,685 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2026-02-22 19:40:14,685 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2026-02-22 19:40:14,685 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2026-02-22 19:40:14,880 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-02-22-19-40-456-685/
-INFO  [Thread-0] 2026-02-22 19:40:14,880 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
-INFO  [Thread-0] 2026-02-22 19:40:15,012 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
-INFO  [Thread-0] 2026-02-22 19:40:15,177 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
-INFO  [Thread-0] 2026-02-22 19:40:15,240 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-02-22-19-40-793-eae/
-INFO  [Thread-0] 2026-02-22 19:40:15,240 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
-INFO  [Thread-0] 2026-02-22 19:40:15,301 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
-INFO  [Thread-0] 2026-02-22 19:40:15,365 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-02-22-19-40-990-d35/
-INFO  [Thread-0] 2026-02-22 19:40:15,367 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
-INFO  [Thread-0] 2026-02-22 19:40:15,404 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-02-22-19-40-039-09c/
-INFO  [Thread-0] 2026-02-22 19:40:15,404 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
-INFO  [Thread-0] 2026-02-22 19:40:15,441 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
-INFO  [Thread-0] 2026-02-22 19:40:15,499 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
-INFO  [Thread-0] 2026-02-22 19:40:16,082 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
-INFO  [Thread-0] 2026-02-22 19:40:16,082 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
-INFO  [Thread-0] 2026-02-22 19:40:16,085 repast.simphony.batch.ssh.LocalSession - Compartments: 
-INFO  [Thread-0] 2026-02-22 19:40:16,087 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
-INFO  [Thread-0] 2026-02-22 19:40:16,087 repast.simphony.batch.ssh.LocalSession - Metabolites: 
-INFO  [Thread-0] 2026-02-22 19:40:16,089 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,089 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,089 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,090 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,092 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,102 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
-INFO  [Thread-0] 2026-02-22 19:40:16,102 repast.simphony.batch.ssh.LocalSession - Reactions: 
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	OVAout
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	pepImport
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	proteosome
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	FreeTf
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	FreeFe
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	NH3+H
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	NH3leak
-INFO  [Thread-0] 2026-02-22 19:40:16,106 repast.simphony.batch.ssh.LocalSession - 	NH4leak
-INFO  [Thread-0] 2026-02-22 19:40:16,245 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
-INFO  [Thread-0] 2026-02-22 19:40:16,369 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
-INFO  [Thread-0] 2026-02-22 19:40:16,435 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
-INFO  [Thread-0] 2026-02-22 19:40:16,695 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
-INFO  [Thread-0] 2026-02-22 19:40:16,695 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
-INFO  [Thread-0] 2026-02-22 19:40:16,695 repast.simphony.batch.ssh.LocalSession - Compartments: 
-INFO  [Thread-0] 2026-02-22 19:40:16,697 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
-INFO  [Thread-0] 2026-02-22 19:40:16,697 repast.simphony.batch.ssh.LocalSession - Metabolites: 
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - Reactions: 
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	OVAout
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	pepImport
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	proteosome
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	FreeTf
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	FreeFe
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH3+H
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH3leak
-INFO  [Thread-0] 2026-02-22 19:40:16,699 repast.simphony.batch.ssh.LocalSession - 	NH4leak
-INFO  [Thread-0] 2026-02-22 19:40:16,773 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
-INFO  [Thread-0] 2026-02-22 19:40:16,773 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
-INFO  [Thread-0] 2026-02-22 19:40:16,773 repast.simphony.batch.ssh.LocalSession - Compartments: 
-INFO  [Thread-0] 2026-02-22 19:40:16,773 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
-INFO  [Thread-0] 2026-02-22 19:40:16,773 repast.simphony.batch.ssh.LocalSession - Metabolites: 
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,776 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - Reactions: 
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	OVAout
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	pepImport
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	proteosome
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	FreeTf
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	FreeFe
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	NH3+H
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	NH3leak
-INFO  [Thread-0] 2026-02-22 19:40:16,778 repast.simphony.batch.ssh.LocalSession - 	NH4leak
-INFO  [Thread-0] 2026-02-22 19:40:16,828 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - Compartments: 
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - Metabolites: 
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,831 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,834 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
-INFO  [Thread-0] 2026-02-22 19:40:16,836 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
-INFO  [Thread-0] 2026-02-22 19:40:16,836 repast.simphony.batch.ssh.LocalSession - Reactions: 
-INFO  [Thread-0] 2026-02-22 19:40:16,836 repast.simphony.batch.ssh.LocalSession - 	OVAout
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	pepImport
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	proteosome
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	FreeTf
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	FreeFe
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	NH3+H
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	NH3leak
-INFO  [Thread-0] 2026-02-22 19:40:16,839 repast.simphony.batch.ssh.LocalSession - 	NH4leak
-INFO  [pool-3-thread-1] 2026-02-22 19:40:54,181 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:41:54,185 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:42:54,196 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:43:54,230 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:44:54,252 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:45:54,268 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:46:54,282 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:47:54,286 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:48:54,291 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:49:54,315 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:50:54,327 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:51:54,342 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:52:54,361 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:53:54,375 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:54:54,379 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:55:54,394 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:56:54,399 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:57:54,421 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:58:54,428 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 19:59:54,434 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:00:54,453 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:01:54,460 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:02:54,469 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:03:54,476 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:04:54,480 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:05:54,484 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:06:54,499 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:07:54,512 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:08:54,529 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:09:54,542 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:10:54,547 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:11:54,554 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:12:54,564 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:13:54,579 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:14:54,592 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:15:54,592 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  no
-INFO  [pool-3-thread-1] 2026-02-22 20:16:54,603 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 20:16:54,635 repast.simphony.batch.ssh.SessionsDriver - Run Time: 37,0210
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 20:16:54,731 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\fniet\AppData\Local\Temp\simphony_model_1771799990071
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 20:16:54,761 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/output
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 20:16:54,761 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0021
-INFO  [SwingWorker-pool-2-thread-1] 2026-02-22 20:16:54,763 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 37,0787
+INFO  [Thread-0] 2026-02-24 10:07:45,931 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771938443780/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 10:07:45,931 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 10:07:45,931 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 10:07:45,931 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 10:07:46,009 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 10:07:46,009 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771938443780/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 10:07:46,009 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 10:07:46,009 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 10:07:46,009 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 10:07:46,384 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-10-07-744-b87/
+INFO  [Thread-0] 2026-02-24 10:07:46,384 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 10:07:46,447 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 10:07:46,447 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771938443780/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 10:07:46,447 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 10:07:46,447 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 10:07:46,447 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 10:07:46,462 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 10:07:46,478 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-10-07-212-32f/
+INFO  [Thread-0] 2026-02-24 10:07:46,478 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 10:07:46,540 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 10:07:46,571 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 10:07:46,759 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 10:07:46,790 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-10-07-400-314/
+INFO  [Thread-0] 2026-02-24 10:07:46,790 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 10:07:46,931 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 10:07:47,103 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 10:07:47,118 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 10:07:47,196 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 10:07:47,212 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 10:07:47,212 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 10:07:47,212 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 10:07:47,212 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 10:07:47,212 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 10:07:47,243 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 10:07:47,634 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 10:07:47,696 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-10-07-071-1ff/
+INFO  [Thread-0] 2026-02-24 10:07:47,696 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 10:07:47,790 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 10:07:47,946 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 10:07:47,962 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 10:07:48,087 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 10:07:48,493 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 10:07:48,571 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,587 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,602 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 10:07:48,602 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,602 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,618 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 10:07:48,618 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 10:07:48,618 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 10:07:48,634 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 10:07:48,634 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 10:07:48,634 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 10:07:48,634 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 10:07:48,649 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,915 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 10:07:48,930 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [pool-3-thread-1] 2026-02-24 10:08:27,968 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:09:27,969 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:10:27,971 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:11:27,972 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:12:27,974 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:13:27,975 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:14:27,976 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:15:27,978 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:16:27,979 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:17:27,989 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:18:27,989 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:19:28,005 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:20:28,005 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:21:28,020 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:22:28,020 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:23:28,036 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:24:28,036 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:25:28,052 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:26:28,060 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:27:28,072 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:28:28,074 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:29:28,089 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:30:28,104 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:31:28,120 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:32:28,120 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:33:28,135 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:34:28,135 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:35:28,140 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:36:28,151 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:37:28,152 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:38:28,152 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:39:28,152 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:40:28,166 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:41:28,179 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:42:28,189 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:43:28,190 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:44:28,205 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:45:28,215 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:46:28,215 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:47:28,230 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:48:28,246 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:49:28,246 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:50:28,261 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:51:28,277 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:52:28,292 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:53:28,307 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:54:28,320 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:55:28,323 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:56:28,323 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:57:28,324 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:58:28,326 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 10:59:28,341 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:00:28,341 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:01:28,356 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:02:28,372 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:03:28,387 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:04:28,390 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:05:28,391 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:06:28,407 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:07:28,409 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:08:28,424 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:09:28,578 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:10:28,591 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:11:28,601 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:12:28,615 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:13:28,631 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:14:28,635 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:15:28,639 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:16:28,641 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:17:28,641 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:18:28,657 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:19:28,672 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:20:28,672 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:21:28,687 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:22:28,703 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:23:28,718 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:24:28,727 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:25:28,730 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:26:28,745 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:27:28,748 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:28:28,749 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:29:28,764 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:30:28,779 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:31:28,795 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:32:28,795 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:33:28,796 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 11:34:28,809 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 11:34:28,809 repast.simphony.batch.ssh.SessionsDriver - Run Time: 87,0260
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 11:34:28,813 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Luis\AppData\Local\Temp\simphony_model_1771938443780
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 11:34:28,823 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/output
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 11:34:28,823 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0002
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 11:34:28,823 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 87,0843
+INFO  [AWT-EventQueue-0] 2026-02-24 14:13:11,501 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\Luis\Documents\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2026-02-24 14:13:11,579 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\Luis\Documents\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\Luis\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 14:13:22,874 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Luis\AppData\Local\Temp\Luis_localhost6452033302380700309.zip to 
+C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 ...
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 14:13:22,921 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 14:13:22,921 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0471
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 14:13:22,921 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093\Luis_localhost6452033302380700309.zip
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 14:13:23,608 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2026-02-24 14:13:39,385 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:39,385 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:39,385 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:39,385 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:39,385 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:39,760 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-667-692/
+INFO  [Thread-0] 2026-02-24 14:13:39,760 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:39,823 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:39,917 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:40,010 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:40,010 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:40,010 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:40,010 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:40,010 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:40,229 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:40,245 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 14:13:40,354 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-229-b95/
+INFO  [Thread-0] 2026-02-24 14:13:40,354 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:40,416 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:40,823 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:40,823 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:40,823 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:40,823 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:40,823 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:41,182 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:41,385 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-229-64b/
+INFO  [Thread-0] 2026-02-24 14:13:41,385 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:41,510 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:41,588 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:41,588 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:41,588 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,604 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:41,619 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 14:13:41,635 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:41,635 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:41,635 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:41,635 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:41,635 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:41,744 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:41,744 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:41,744 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:41,744 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:41,744 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:41,775 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:42,088 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:42,088 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:42,088 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,104 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,119 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:42,166 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 14:13:42,275 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-02-24 14:13:42,275 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Luis/AppData/Local/Temp/simphony_model_1771953200093/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-02-24 14:13:42,275 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-02-24 14:13:42,275 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-02-24 14:13:42,275 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-02-24 14:13:42,353 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-994-868/
+INFO  [Thread-0] 2026-02-24 14:13:42,353 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:42,432 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:42,478 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-244-374/
+INFO  [Thread-0] 2026-02-24 14:13:42,478 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:42,791 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:42,978 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:43,369 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity//output/2026-02-24-14-13-791-d12/
+INFO  [Thread-0] 2026-02-24 14:13:43,369 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-02-24 14:13:43,572 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:43,650 repast.simphony.batch.ssh.LocalSession - Break tick: 120100.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:43,806 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:43,822 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:43,822 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:43,822 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 14:13:43,947 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:43,947 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:43,947 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:43,947 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:43,947 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:43,962 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [Thread-0] 2026-02-24 14:13:44,181 repast.simphony.batch.ssh.LocalSession - Instantiation Once .//data//XP+NH4.cps
+INFO  [Thread-0] 2026-02-24 14:13:44,494 repast.simphony.batch.ssh.LocalSession - Model statistics for model "AntigenPresentation".
+INFO  [Thread-0] 2026-02-24 14:13:44,494 repast.simphony.batch.ssh.LocalSession - Number of Compartments: 3
+INFO  [Thread-0] 2026-02-24 14:13:44,494 repast.simphony.batch.ssh.LocalSession - Compartments: 
+INFO  [Thread-0] 2026-02-24 14:13:44,494 repast.simphony.batch.ssh.LocalSession - Number of Metabolites: 21
+INFO  [Thread-0] 2026-02-24 14:13:44,494 repast.simphony.batch.ssh.LocalSession - Metabolites: 
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	ovaCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	NH3Cy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	protonEn	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	exCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	R-TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	pepCy	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	RabA	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	cMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	NH3En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	NH4En	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	imCxEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	ovaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	species	9.999999999999999E-16	2.8906280592E15
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	protonCy	9.999999999999996E-20	2.890628059199999E11
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	oMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	TfaEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	RabD	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	pepMHCIEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	R-TfEn	9.999999999999995E-16	1.4453140295999995E12
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	REn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	pepEn	0.0	0.0
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - Number of Reactions: 15
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - Reactions: 
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	OVAout
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	MHCI-loading
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabD
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	ProtonLeak
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	MHCIopening
+INFO  [Thread-0] 2026-02-24 14:13:44,509 repast.simphony.batch.ssh.LocalSession - 	MHCI-peptOpening
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	ProtonPumpRabA
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	MHCIclosing
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	pepImport
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	proteosome
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	FreeTf
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	FreeFe
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	NH3+H
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	NH3leak
+INFO  [Thread-0] 2026-02-24 14:13:44,525 repast.simphony.batch.ssh.LocalSession - 	NH4leak
+INFO  [pool-3-thread-1] 2026-02-24 14:14:23,609 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:15:23,611 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:16:23,618 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:17:23,620 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:18:23,621 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:19:23,632 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:20:23,638 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:21:23,640 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:22:23,641 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:23:23,642 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:24:23,644 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:25:23,645 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:26:23,647 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:27:23,648 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:28:23,650 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:29:23,651 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:30:23,652 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:31:23,654 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:32:23,655 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:33:23,657 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:34:23,658 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:35:23,659 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:36:23,661 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:37:23,661 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:38:23,662 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:39:23,664 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:40:23,665 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:41:23,667 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:42:23,668 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:43:23,669 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:44:23,671 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:45:23,702 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:46:23,703 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:47:23,706 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:48:23,714 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:49:23,730 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:50:23,730 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:51:23,741 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:52:23,752 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:53:23,767 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:54:23,783 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:55:23,793 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:56:23,798 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:57:23,805 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:58:23,806 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 14:59:23,808 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:00:23,808 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:01:23,821 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:02:23,832 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:03:23,832 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:04:23,848 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:05:23,848 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:06:23,849 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:07:23,849 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:08:23,849 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:09:23,849 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:10:23,865 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:11:23,880 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:12:23,887 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:13:23,888 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:14:23,900 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:15:23,902 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:16:23,907 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:17:23,907 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:18:23,922 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:19:23,938 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:20:23,944 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:21:23,944 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:22:23,952 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:23:23,952 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:24:23,968 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:25:23,983 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:26:23,983 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:27:23,993 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:28:23,995 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:29:23,995 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:30:23,996 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:31:24,001 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:32:24,011 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  no
+INFO  [pool-3-thread-1] 2026-02-24 15:33:24,013 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 15:33:24,017 repast.simphony.batch.ssh.SessionsDriver - Run Time: 80,0183
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 15:33:24,042 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Luis\AppData\Local\Temp\simphony_model_1771953200093
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 15:33:24,058 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/output
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 15:33:24,058 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0007
+INFO  [SwingWorker-pool-2-thread-1] 2026-02-24 15:33:24,058 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 80,0664

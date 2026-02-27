@@ -84,11 +84,11 @@ public class EndosomeLysosomalDigestionStep {
 		double finalMvb = 0d;
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
-		double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");	
+		//double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");	
 		double pH=endosome.getpH();
-		int k=5;
-		double phFactor = 1.0 / (1.0 + Math.exp(k * (pH - corte)));
-//		RandomEngine engine = new DRand();
+		int k=4;
+		double phFactor = 1.0 / (1.0 + Math.exp(k * (pH - 5)))+0.1;
+		//		RandomEngine engine = new DRand();
 //		Poisson poisson = new Poisson(2000, engine);
 //		int poissonObs = poisson.nextInt();
 //		//System.out.print*ln("                   POISSON DE 2000 "+poissonObs);
