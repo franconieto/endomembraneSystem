@@ -33,6 +33,8 @@ import repast.simphony.ui.table.SpreadsheetUtils;
 import repast.simphony.ui.table.TablePanel;
 import repast.simphony.util.FileUtils;
 
+import java.util.HashSet;
+
 public class Results {
 	/*	
 	 * This class is used to generate the results of the simulation.  It generates
@@ -48,7 +50,7 @@ public class Results {
 	*/
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
-
+	static Set<String> digestedKeys = new HashSet<>();
 
 	ModelProperties cellProperties = ModelProperties.getInstance();
 
@@ -68,15 +70,19 @@ public class Results {
 	public HashMap<String, Double> singleEndosomeContent = new HashMap<String, Double>();
 	
 	
-	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
+	static Results	instance;
 	LocalPath mainpath=LocalPath.getInstance(); 
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 	String TotalRabs = mainpath.getPathTotalRabs();
 	String cisternsAreaPath = mainpath.getPathCisternsArea();
 	String mypathTable = mainpath.getMyPathOut();// agregado para que el output del excel no creara nuevos folders
-//	
+	String digestedPath = mainpath.getPathDigested();
+	
 	public static Results getInstance() {
+		if (instance == null) {
+			throw new IllegalStateException("Results is not initialized yet. Build context first.");
+		}
 		return instance;
 	}
 	
@@ -85,6 +91,7 @@ public class Results {
 	{
 		this.space = sp;
 		this.grid = gr;
+		instance = this;
 		// Generate a file with the header of the variables that are going to be followed
 		//along the simulation.  Up to now= content distribution according to rabs contents.
 		Parameters parm = RunEnvironment.getInstance().getParameters();
@@ -174,52 +181,78 @@ public class Results {
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-		contentDistribution(totalRabs, initialTotalRabs, cisternsArea); 
-		// Gets an hash map with all the 
-		//possible combinations of contents and Rabs
-		// a new line is added each 100 ticks
-		TreeMap<String, Double> orderContDist = new TreeMap<String, Double>(contentDist);
-		TreeMap<String, Double> orderTotalRabs = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
-		orderTotalRabs.putAll(totalRabs);
-		TreeMap<String, Double> orderCisternsArea = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
-		orderCisternsArea.putAll(cisternsArea);
 
-		try {
-			writeToCsv(orderContDist);
-			writeToCsvTotalRabs(orderTotalRabs);
-			writeToCsvCisternsArea(orderCisternsArea);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+
+	    contentDistribution(totalRabs, initialTotalRabs, cisternsArea); 
+
+	    TreeMap<String, Double> orderContDist = new TreeMap<>(contentDist);
+	    TreeMap<String, Double> orderTotalRabs = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+	    orderTotalRabs.putAll(totalRabs);
+	    TreeMap<String, Double> orderCisternsArea = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+	    orderCisternsArea.putAll(cisternsArea);
+
+	    // DIGESTED GLOBAL: prefijo indica el mapa de origen
+	    // mvb_ -> EndosomeInternalVesicleStep.digestedMvb
+	    // sol_ -> EndosomeLysosomalDigestionStep.digestedSol
+	    // mem_ -> EndosomeLysosomalDigestionStep.digestedMem
+	    for (String k : EndosomeInternalVesicleStep.digestedMvb.keySet())        digestedKeys.add("mvb_" + k);
+	    for (String k : EndosomeLysosomalDigestionStep.digestedSol.keySet())     digestedKeys.add("sol_" + k);
+	    for (String k : EndosomeLysosomalDigestionStep.digestedMem.keySet())     digestedKeys.add("mem_" + k);
+
+	    TreeMap<String, Double> orderDigested = new TreeMap<>();
+	    for (String key : digestedKeys) {
+	        if (key.startsWith("mvb_")) {
+	            orderDigested.put(key, EndosomeInternalVesicleStep.digestedMvb.getOrDefault(key.substring(4), 0.0));
+	        } else if (key.startsWith("sol_")) {
+	            orderDigested.put(key, EndosomeLysosomalDigestionStep.digestedSol.getOrDefault(key.substring(4), 0.0));
+	        } else if (key.startsWith("mem_")) {
+	            orderDigested.put(key, EndosomeLysosomalDigestionStep.digestedMem.getOrDefault(key.substring(4), 0.0));
+	        }
+	    }
+
+	    try {
+	        writeGenericCsv(orderContDist, ITResultsPath, true, tick);
+	        writeGenericCsv(orderTotalRabs, TotalRabs, true, tick);
+	        writeGenericCsv(orderCisternsArea, cisternsAreaPath, true, tick);
+	        writeGenericCsv(orderDigested, digestedPath, true, tick); //  NUEVO CSV
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 	
-	// to load the file
-	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
-		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (tick <10){// HEADER
-		String line = "";
-		for (String key : orderContDist.keySet()) {
-            line = line+ key + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		//CAMBIO
-		output = new BufferedWriter(new FileWriter(ITResultsPath, true));		
-		output.append(line);
-		output.close();	
+	private void writeGenericCsv(TreeMap<String, Double> data, String path, boolean writeHeader, double tick) throws IOException {
+	    if (data.isEmpty()) return; // nada que escribir; evita crear header vacío
+	    File file = new File(path);
+	    boolean shouldWriteHeader = writeHeader && (!file.exists() || file.length() == 0);
+
+	    // HEADER
+	    if (shouldWriteHeader) {
+	        StringBuilder line = new StringBuilder("tick,");
+	        for (String key : data.keySet()) {
+	            line.append(key).append(",");
+	        }
+	        line.append("\n");
+
+	        Writer output = new BufferedWriter(new FileWriter(path, false));
+	        output.append(line.toString());
+	        output.close();
+	    }
+
+	    // DATA
+	    StringBuilder line = new StringBuilder();
+	    line.append(tick).append(",");
+	    for (String key : data.keySet()) {
+	        line.append(sigFigs(data.get(key), 4)).append(",");
+	    }
+	    line.append("\n");
+
+	    Writer output = new BufferedWriter(new FileWriter(path, true));
+	    output.append(line.toString());
+	    output.close();
 	}
-//		end of header//
-		
-		String line = "";
-		for (String key : orderContDist.keySet()) {
-            line = line+ sigFigs(orderContDist.get(key),4) + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
-		output.append(line);
-		output.close();
-	}
+	
+	
 
 	private void writeToCsvHeadSingleEndosomeHeader (TreeMap<String, Double> orderSingleEndHead) throws IOException {
 		
@@ -234,61 +267,6 @@ public class Results {
 		output.close();	
 		
 	}
-	private void writeToCsvTotalRabs(TreeMap<String, Double> totalRabs2) throws IOException {
-	double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-	if (tick <10){// HEADER
-		String line = "";
-		for (String key : totalRabs2.keySet()) {
-            line = line+ key + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		//CAMBIO
-		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
-		output.append(line);
-		output.close();	
-		
-	}
-		String line = "";
-		for (String key : totalRabs2.keySet()) {
-            line = line+ sigFigs(totalRabs2.get(key),4) + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		//CAMBIO
-		output = new BufferedWriter(new FileWriter(TotalRabs, true));
-		output.append(line);
-		output.close();
-	}
-	
-	private void writeToCsvCisternsArea(TreeMap<String, Double> orderCisternsArea) throws IOException {
-		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (tick <10){// HEADER
-			String line = "";
-			for (String key : orderCisternsArea.keySet()) {
-	            line = line+ key + ",";
-			}
-			line = line + "\n";
-			Writer output;
-			//CAMBIO
-			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
-			output.append(line);
-			output.close();	
-			
-		}
-			String line = "";
-			for (String key : orderCisternsArea.keySet()) {
-	            line = line+ sigFigs(orderCisternsArea.get(key),4) + ",";
-			}
-			line = line + "\n";
-			Writer output;
-			//CAMBIO
-			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
-			output.append(line);
-			output.close();
-		}
-
 	
 	
 	
@@ -363,6 +341,10 @@ public class Results {
 		for (Endosome endosome : allEndosomes) {
 			Double area = endosome.area;
 			Double volume = endosome.volume;
+			if (area == null || area <= 1E-12) {
+				continue;
+			}
+			double safeVolume = volume == null ? 0d : volume;
 			HashMap<String, Double> rabContent = endosome.getRabContent();
 			HashMap<String, Double> membraneContent = endosome
 					.getMembraneContent();
@@ -374,7 +356,7 @@ public class Results {
 				for (String sol : solubleContent.keySet()) {
 //					//System.out.print*ln(" soluble "+ sol + " Rab " +rab);
 //					//System.out.print*ln(" FALTA " + contentDist.get(sol + rab));
-					double value = contentDist.get(sol + rab)
+					double value = contentDist.getOrDefault(sol + rab, 0d)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area;
 					contentDist.put(sol + rab, value);
@@ -382,7 +364,7 @@ public class Results {
 				}
 				for (String mem : membraneContent.keySet()) {
 //				//System.out.print*ln(" membrane "+mem + " Rab " +rab);
-					double value = contentDist.get(mem + rab)
+					double value = contentDist.getOrDefault(mem + rab, 0d)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area;
 					contentDist.put(mem + rab, value);
@@ -404,7 +386,7 @@ public class Results {
 //			//System.out.print*ln("INDIVIDUAL ENTROPY " + totalIndividualEntropy);
 // Sum all the organelle volume surrounded by a rab domain
 		for (String rab : rabContent.keySet()){
-			double sum = totalVolumeRabs.get(rab)+ volume*rabContent.get(rab)/area;
+			double sum = totalVolumeRabs.get(rab)+ safeVolume*rabContent.get(rab)/area;
 			totalVolumeRabs.put(rab, sum);
 		}
 //
@@ -601,7 +583,14 @@ public class Results {
 		return totalVolumeRabs;
 	}
 	public static double sigFigs(double n, int sig) {
-	    double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
-	    return Math.round(n * mult) / mult;
+		if (Double.isNaN(n) || Double.isInfinite(n)) {
+			return n;
+		}
+		if (n == 0d) {
+			return 0d;
+		}
+		double abs = Math.abs(n);
+		double mult = Math.pow(10, sig - Math.floor(Math.log10(abs)) - 1);
+		return Math.round(n * mult) / mult;
 	}
 }

@@ -20,7 +20,8 @@ public class EndosomeInternalVesicleStep {
 	static double PI = Math.PI;
 	static double rcyl = ModelProperties.getInstance().cellK.get("rcyl");
 	static double beadVolume = ModelProperties.getInstance().getCellK().get("beadVolume");
-
+	public static HashMap<String, Double> digestedMvb = new HashMap<String, Double>();
+	
 	public static void internalVesicle(Endosome endosome) {
 		// if it is a sphere do not for  internal vesicles. Not enough membrane
 		double so = endosome.area;
@@ -106,27 +107,29 @@ public class EndosomeInternalVesicleStep {
 
 			}
 			else if (rabTropism.get(content).contains("mvb")){				
-// if "mvb" tropism, the cargo is incorporated into internal vesicles and digested
+				// if "mvb" tropism, the cargo is incorporated into internal vesicles and digested
 				double mem = endosome.membraneContent.get(content) - nroVesicles * sIV;
-
 				if (mem <= 0) mem = 0d;
 				endosome.membraneContent.put(content, mem);
+				
+				double prev = digestedMvb.getOrDefault(content, 0.0);
+				digestedMvb.put(content, prev + mem);
 			} 
 			else if (rabTropism.get(content).contains("noMvb")){				
-// if "noMvb" tropism, the cargo is excluded from the internal vesicles
+				// if "noMvb" tropism, the cargo is excluded from the internal vesicles
 				double mem = endosome.membraneContent.get(content);
-
-		//		if (mem > endosome.area) mem = endosome.area;
 				endosome.membraneContent.put(content, mem);
-//If not special tropism, the membrane content is incorporated 
-//into the internal vesicle proportional to the surface and degraded
+			
 			} 
 			else 
 			{
-
-				double mem = endosome.membraneContent.get(content) * (so - nroVesicles * sIV)
-						/ so;
+				//If not special tropism, the membrane content is incorporated 
+				//into the internal vesicle proportional to the surface and degraded
+				double mem = endosome.membraneContent.get(content) * (so - nroVesicles * sIV) / so;
 				endosome.membraneContent.put(content, mem);
+				
+				double prev = digestedMvb.getOrDefault(content, 0.0);
+				digestedMvb.put(content, prev + mem);
 			}
 		}
 

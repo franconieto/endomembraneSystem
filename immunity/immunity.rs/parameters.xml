@@ -10,15 +10,15 @@
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 											/>
-				<parameter name="repeat" displayName="repeat" type="int" 
+				<parameter name="phcutMat" displayName="phcutMat" type="double" 
 						defaultValue="1" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 											/>
-				<parameter name="prueba" displayName="prueba" type="java.lang.String" 
+				<parameter name="phcutDig" displayName="phcutDig" type="double" 
 						defaultValue="1" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 											/>
 		</parameters>
 

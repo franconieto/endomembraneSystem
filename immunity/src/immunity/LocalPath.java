@@ -20,6 +20,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 	private String mypath4;
 	private String mypath5;
 	private String mypath6;
+	private String mypath7;
 	private String mypathOut;
 	private static LocalPath instance;
 	public static LocalPath getInstance() {
@@ -128,5 +129,12 @@ import repast.simphony.engine.environment.RunEnvironment;
 //			mypath6 = mypath+"/cisternsArea.csv";			
 			mypath6 = mypathOut+"/cisternsArea.csv";//batch
 			return this.mypath6; 
+		}
+		
+		public String getPathDigested() {
+			
+//			mypath6 = mypath+"/cisternsArea.csv";			
+			mypath7 = mypathOut+"/digested.csv";//batch
+			return this.mypath7; 
 		}
 	}

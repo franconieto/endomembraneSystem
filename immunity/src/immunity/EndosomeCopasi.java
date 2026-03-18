@@ -282,29 +282,45 @@ public class EndosomeCopasi {
         }
         catch (java.lang.Exception ex)
         {
-            System.err.println( "Error. Running the time course simulation failed." );
-            //System.out.print*ln(processError);
-            //System.out.print*ln(processWarning);
+        	//System.err.println( "Error. Running the time course simulation failed." );
+            System.out.println(processError);
+            System.out.println(processWarning);
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
                 // print the messages in chronological order
-                System.err.println(CCopasiMessage.getAllMessageText(true));
+            	System.err.println(CCopasiMessage.getAllMessageText(true));
             }
-            System.exit(1);
+            //System.exit(1);
         }
         if(result==false)
         {
-            System.err.println( "An error occured while running the time course simulation." );
-            //System.out.print*ln(processError);
-            //System.out.print*ln(processWarning);
+        	//System.err.println( "An error occured while running the time course simulation." );
+            System.out.println(processError);
+            System.out.println(processWarning);
+            
+          //para depurar el error 
+            CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
+            int recorded = (int) timeSeries.getRecordedSteps();
+            System.out.println("Recorded steps = " + recorded);
+
+            if (recorded > 0) {
+                int last = recorded - 1;
+                for (int j = Math.max(0, last - 5); j <= last; j++) {
+                    System.out.println("Time = " + timeSeries.getData(j, 0));
+                    for (int i = 0; i < timeSeries.getNumVariables(); i++) {
+                        System.out.println(timeSeries.getTitle(i) + " = " + timeSeries.getConcentrationData(j, i));
+                    }
+                    System.out.println("-------------------");
+                }
+            }
             // check if there are additional error messages
             if (CCopasiMessage.size() > 0)
             {
                 // print the messages in chronological order
                 System.err.println(CCopasiMessage.getAllMessageText(true));
             }
-            System.exit(1);
+            //System.exit(1);
         }
  //       problem.setStepNumber(50)
         // look at the timeseries
@@ -319,8 +335,8 @@ public class EndosomeCopasi {
         
         int iMax = (int)timeSeries.getNumVariables();
         int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
-        for (int i = 0; i < iMax; ++i)
-        {
+        //for (int i = 0; i < iMax; ++i)
+        //{
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
@@ -329,7 +345,8 @@ public class EndosomeCopasi {
 //        	
 //            //System.out.print*(timeSeries.getConcentrationData(j, i)+ " ");
 //        	}
-        }
+        //}
+        
         
 //        //System.out.print*ln("Ending ...");
         

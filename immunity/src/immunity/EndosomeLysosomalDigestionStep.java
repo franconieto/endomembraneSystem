@@ -1,8 +1,12 @@
 package immunity;
 
+import java.util.HashMap;
+
 import cern.jet.random.Poisson;
 import cern.jet.random.engine.DRand;
 import cern.jet.random.engine.RandomEngine;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 
 public class EndosomeLysosomalDigestionStep {
 	/*	
@@ -13,7 +17,8 @@ public class EndosomeLysosomalDigestionStep {
 		*/
 	static double PI = Math.PI;
 	static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
-	
+	public static HashMap<String, Double> digestedSol = new HashMap<String, Double>();// the digested contents come here
+	public static HashMap<String, Double> digestedMem = new HashMap<String, Double>();
 	
 	public static void lysosomalDigestion(Endosome endosome) {
 		double so = endosome.area;
@@ -84,10 +89,29 @@ public class EndosomeLysosomalDigestionStep {
 		double finalMvb = 0d;
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
-		//double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");	
 		double pH=endosome.getpH();
 		int k=4;
-		double phFactor = 1.0 / (1.0 + Math.exp(k * (pH - 5)))+0.1;
+		
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		double phcutDigDefault = ModelProperties.getInstance().getCellK().get("phcutDig");; // tu valor por defecto
+		double phcutDig = phcutDigDefault;
+
+		if (parm != null && parm.getSchema().contains("phcutDig")) {
+		    Object value = parm.getValue("phcutDig");
+
+		    if (value instanceof Number) {
+		        phcutDig = ((Number) value).doubleValue();
+		    }
+		}
+		
+		double phFactor;
+		if (phcutDig==0){
+			//no influence of ph in maturation
+			phFactor=1;
+		}else {
+			//modulate the propMature with ph
+			phFactor = 1.0 / (1.0 + Math.exp(k * (pH - phcutDig)))+0.1; //after cut the digestion is lower
+		}
 		//		RandomEngine engine = new DRand();
 //		Poisson poisson = new Poisson(2000, engine);
 //		int poissonObs = poisson.nextInt();
@@ -97,7 +121,7 @@ public class EndosomeLysosomalDigestionStep {
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
 			double digMVB = ModelProperties.getInstance().getCellK().get("digMVB");
-			digMVB = initialMvb * (1-digMVB) * rabDratio;// MVB digested
+			digMVB = initialMvb * (1-digMVB) * rabDratio* phFactor;// MVB digested
 			finalMvb = initialMvb - digMVB;					
 		}
     
@@ -111,17 +135,24 @@ public class EndosomeLysosomalDigestionStep {
 					//double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
 					double solDigested = endosome.solubleContent.get(sol)* digSol * rabDratio * phFactor;
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+					
+					double prev = digestedSol.getOrDefault(sol, 0.0);
+					digestedSol.put(sol, prev + solDigested);
 			}}
+		
 		if (endosome.solubleContent.containsKey("mvb"))
 			endosome.solubleContent.put("mvb", finalMvb);
 		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)
 			endosome.solubleContent.put("solubleMarker", 1d);
+		
 		double digMem = ModelProperties.getInstance().getCellK().get("digMem");
 		for (String mem : endosome.membraneContent.keySet()) {
 				//double memDigested = endosome.membraneContent.get(mem)*(1-digMem)* rabDratio;
-			
-			double memDigested = endosome.membraneContent.get(mem)* digMem * rabDratio * phFactor;
+				double memDigested = endosome.membraneContent.get(mem)* digMem * rabDratio * phFactor;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
+				
+				double prev = digestedMem.getOrDefault(mem, 0.0);
+				digestedMem.put(mem, prev + memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){
 			endosome.membraneContent.put("membraneMarker", 1d);}

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 
 /*
  * this class is responsible for the maturation of endosomes.
@@ -49,14 +51,34 @@ public class EndosomeMaturationStep {
 		double rabNew = 0;
 		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;// checks if the organelle already has the new domain
 		else rabNew=endosome.getRabContent().get(rabNewName);
-		//modulate the propMature with ph
-				if (rabNewName.equals("RabD") && rabOldName.equals("RabA")) {
-				double corte=ModelProperties.getInstance().getRabMaturation().get("phcutAD");
-				double prop_min=ModelProperties.getInstance().getRabMaturation().get("minprob");		
-				double prop_max=propMature-prop_min;
-				double pH=endosome.getpH();
-				int k=10;
-				propMature=(prop_max / (1.0 + Math.exp(k * (pH - corte)))) + prop_min ;
+		
+		if (rabNewName.equals("RabD") && rabOldName.equals("RabA")) {
+								
+				Parameters parm = RunEnvironment.getInstance().getParameters();
+
+				double phcutMatDefault = ModelProperties.getInstance().getRabMaturation().get("phcutAD");; // tu valor por defecto
+				double phcutMat = phcutMatDefault;
+
+				if (parm != null && parm.getSchema().contains("phcutMat")) {
+				    Object value = parm.getValue("phcutMat");
+
+				    if (value instanceof Number) {
+				        phcutMat = ((Number) value).doubleValue();
+				    }
+				}
+				
+				
+				if (phcutMat==0){
+					//no influence of ph in maturation
+				}else {
+					//modulate the propMature with ph
+				
+					double prop_min=ModelProperties.getInstance().getRabMaturation().get("minprob");
+					double prop_max=propMature-prop_min;
+					double pH=endosome.getpH();
+					int k=10;
+					
+					propMature=(prop_max / (1.0 + Math.exp(k * (pH - phcutMat)))) + prop_min ;
 				}
 		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
 		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));
@@ -65,6 +87,7 @@ public class EndosomeMaturationStep {
 //		tickCount to zero
 		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
 //		//System.out.print*ln("  MADURA "+endosome.getRabContent());
+	}
 	}
 	
 }

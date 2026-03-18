@@ -31,6 +31,8 @@ public class ModelProperties {
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		String inputFile =(String) parm.getValue("inputFile");
 		File file = new File (".//data//"+inputFile);
+		
+		
 
 		//		"inputIntrTransp3.csv"));
 		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO QUE SE GENERA AL CORRER EN BATCH 
