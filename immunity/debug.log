@@ -481,3 +481,98 @@ INFO  [Thread-0] 2026-03-18 15:49:54,394 repast.simphony.batch.ssh.LocalSession 
 INFO  [Thread-0] 2026-03-18 15:49:54,394 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
 INFO  [Thread-0] 2026-03-18 15:49:54,394 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
 INFO  [Thread-0] 2026-03-18 15:49:54,394 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [AWT-EventQueue-0] 2026-03-18 17:08:17,220 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2026-03-18 17:08:18,487 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2026-03-18 17:08:41,728 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost8019354762031267654.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1773864519584 ...
+INFO  [SwingWorker-pool-2-thread-1] 2026-03-18 17:08:42,091 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2026-03-18 17:08:42,099 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0418
+INFO  [SwingWorker-pool-2-thread-1] 2026-03-18 17:08:42,099 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1773864519584\fniet_localhost8019354762031267654.zip
+INFO  [SwingWorker-pool-2-thread-1] 2026-03-18 17:08:42,863 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2026-03-18 17:08:58,813 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-03-18 17:08:58,813 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1773864519584/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1773864519584/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-03-18 17:08:58,819 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\data\InputIntrTranspNH4.csv (El sistema no puede encontrar el archivo especificado)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\data\InputIntrTranspNH4.csv (El sistema no puede encontrar el archivo especificado)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.loadFromCsv(ModelProperties.java:184)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.getInstance(ModelProperties.java:45)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2026-03-18 17:08:58,988 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.loadFromCsv(ModelProperties.java:184)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at immunity.ModelProperties.getInstance(ModelProperties.java:45)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2026-03-18 17:08:58,995 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2026-03-18 17:08:58,997 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - ERROR [main] 17:08:58,998 repast.simphony.batch.InstanceRunner - Error while running model
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - ERROR [main] 17:08:58,998 repast.simphony.batch.InstanceRunner - Error while running model
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - java.lang.NullPointerException
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - java.lang.NullPointerException
+INFO  [Thread-0] 2026-03-18 17:08:59,002 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:50)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2026-03-18 17:08:59,004 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2026-03-18 17:08:59,006 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)

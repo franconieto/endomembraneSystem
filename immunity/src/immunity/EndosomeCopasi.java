@@ -228,10 +228,18 @@ public class EndosomeCopasi {
         // set some parameters for the LSODA method through the method
         CTrajectoryMethod method = (CTrajectoryMethod)trajectoryTask.getMethod();
 
+        // Absolute tolerance: 1e-9 is a good balance for biological models with amol-scale quantities.
+        // 1e-12 is unnecessarily strict and can cause integrator failures or slow performance.
         CCopasiParameter parameter = method.getParameter("Absolute Tolerance");
         assert parameter != null;
         assert parameter.getType() == CCopasiParameter.DOUBLE;
-        parameter.setDblValue(1.0e-12);
+        parameter.setDblValue(1.0e-9);
+
+        // Relative tolerance: COPASI GUI default is 1e-6, sufficient for most biological systems.
+        CCopasiParameter relParameter = method.getParameter("Relative Tolerance");
+        if (relParameter != null && relParameter.getType() == CCopasiParameter.DOUBLE) {
+            relParameter.setDblValue(1.0e-6);
+        }
 	}
 	
 	public void setInitialConcentration(String name, double value) {
