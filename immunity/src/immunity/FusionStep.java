@@ -64,10 +64,20 @@ public class FusionStep {
 
         List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
         List<Endosome> endosomesToDelete = new ArrayList<>();
+        
+        boolean hasBead1 = hasBead(endosome);
 
         for (GridCell<Endosome> gr : cellList) {
             for (Endosome end : gr.items()) {
-                if (end != endosome && end.volume <= endosome.volume && EndosomeAssessCompatibility.compatibles(endosome, end)) {
+
+                if (hasBead1 && hasBead(end)) {
+                    continue;
+                }
+
+                if (end != endosome &&
+                    end.volume <= endosome.volume &&
+                    EndosomeAssessCompatibility.compatibles(endosome, end)) {
+
                     endosomesToDelete.add(end);
                 }
             }
@@ -83,7 +93,9 @@ public class FusionStep {
 
         List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
         List<Endosome> endosomesToDelete = new ArrayList<>();
-
+        
+        
+        
         for (GridCell<Endosome> gr : cellList) {
             for (Endosome end : gr.items()) {
                 if (end.equals(endosome)) continue;
@@ -145,4 +157,15 @@ public class FusionStep {
                 .sum();
         return areaGolgi / endosome.area >= 0.5;
     }
+    
+    public static boolean hasBead(Endosome endosome) {
+        for (String key : endosome.getSolubleContent().keySet()) {
+            if (key.startsWith("bead") &&
+                endosome.getSolubleContent().get(key) > 0.9) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
@@ -92,11 +92,27 @@ public class OrganelleMove {
         double nucleusSize = 5;
         double nucleusCenterX = 25;
         double nucleusCenterY = 21;
-
+        boolean maxRabIsRabD=false;
+        
+        String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+        if (maxRab.equals("RabD")) maxRabIsRabD=true;
+        boolean hasBead = FusionStep.hasBead(endosome);
+        
         // If near the border, change heading randomly and stop move with 10% probability
         if (!isPointInSquare(x, y, cellCenterX, cellCenterY, cellSize - 5 * cellLimit)) {
-            endosome.heading = Math.random() * 360;
-            changeDirectionRnd(endosome);
+        	boolean beadRabD = hasBead && maxRabIsRabD;
+        	boolean attached = false;
+ 
+        	    if (beadRabD) {
+        	    	
+        	        attached=changeDirectionMt(endosome);
+        	        if (!attached) {
+        	            moveTowardCenterRnd(endosome);
+        	        }    
+        	    } else {
+        	    	if (Math.random() < 0.05) endosome.heading = Math.random() * 360;
+		            changeDirectionRnd(endosome);
+        	    }
         } else if (isPointInCircle(x, y, nucleusCenterX, nucleusCenterY, nucleusSize)) {
             // If near the nucleus, change heading randomly and stop move with 10% probability
             if (Math.random() < 0.05) endosome.heading = Math.random() * 360;
@@ -138,10 +154,11 @@ public class OrganelleMove {
         }
         // The speed is random between 0 and a value inversely proportional to the endosome size
         endosome.speed = 20d / endosome.size * Math.random() * Cell.orgScale / Cell.timeScale;
+        return;
     }
 
     // Method to change the direction based on the closest MT
-    public static void changeDirectionMt(Endosome endosome) {
+    public static boolean changeDirectionMt(Endosome endosome) {
         if (mts == null) {
             mts = associateMt();
         }
@@ -169,7 +186,7 @@ public class OrganelleMove {
                 mtDir = Math.signum(mtDir) >= 0 ? 0 : 1;
             } else {
                 changeDirectionRnd(endosome);
-                return;
+                return false;
             }
             
             double width = space.getDimensions().getWidth();
@@ -190,8 +207,10 @@ public class OrganelleMove {
             grid.moveTo(endosome, (int) xpt, (int) ypt);
             endosome.speed = 1d * Cell.orgScale / Cell.timeScale;
             endosome.heading = -(mtDir * 180f + mt.getMtheading() + 270f);
+            return true;
         } else {
             changeDirectionRnd(endosome);
+            return false;
         }
     }
 
@@ -296,5 +315,23 @@ public class OrganelleMove {
         NdPoint myPoint = space.getLocation(endosome);
         endosome.setXcoor(myPoint.getX());
         endosome.setYcoor(myPoint.getY());
+    }
+    
+    public static void moveTowardCenterRnd(Endosome endosome) {
+
+        NdPoint pt = space.getLocation(endosome);
+
+        double dx = 25 - pt.getX();
+        double dy = 25 - pt.getY();
+
+        double angle =
+            Math.atan2(dy, dx) * 180 / Math.PI;
+
+        angle += RandomHelper.nextDoubleFromTo(-30, 30);
+
+        endosome.heading = angle;
+
+        endosome.speed =
+            0.5d * Cell.orgScale / Cell.timeScale;
     }
 }

@@ -50,7 +50,7 @@ public class EndosomeCopasi {
 	
 	protected EndosomeCopasi() {
 
-		System.out.println("Instantiation Once " + ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi"));
+		//System.out.println("Instantiation Once " + ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi"));
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -73,52 +73,41 @@ public class EndosomeCopasi {
         
         model = dataModel.getModel();
         assert model != null;
-        System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
+        //System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
         
      // output number and names of all compartments
         int i, iMax = (int)model.getCompartments().size();
-        System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
-        System.out.println("Compartments: ");
+        //System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
+        //System.out.println("Compartments: ");
         for (i = 0;i < iMax;++i)
         {
             CCompartment compartment = model.getCompartment(i);
             assert compartment != null;
-            //System.out.print*ln("\t" + compartment.getObjectName()+ compartment.getInitialValue());
+            //System.out.println("\t" + compartment.getObjectName()+ compartment.getInitialValue());
         }
 
         // output number and names of all metabolites
         iMax = (int)model.getMetabolites().size();
-        System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
-        System.out.println("Metabolites: ");
+        //System.out.println("Number of Metabolites: " + (new Integer(iMax)).toString());
+        //System.out.println("Metabolites: ");
         for (i = 0;i < iMax;++i)
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;
             nameMetabs.put(metab.getObjectName(), metab);
-            //System.out.print*ln(metab.getObjectName());
+            //System.out.println(metab.getObjectName());
         }
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        //Endosome endosome = Endosome.getEndosome();
-        //setInitialConcentration("RabA", 0);//
-        //setInitialConcentration("RabB", 0);
-        
-        for (String s : nameMetabs.keySet()) {
-        	CMetab metab = nameMetabs.get(s);
-        	System.out.println("\t" + metab.getObjectName() + "\t" + metab.getInitialConcentration() + "\t" + metab.getInitialValue());
-        }
+     
 
         // output number and names of all reactions
         iMax = (int)model.getReactions().size();
-        System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
-        System.out.println("Reactions: ");
+        //System.out.println("Number of Reactions: " + (new Integer(iMax)).toString());
+        //System.out.println("Reactions: ");
         for (i = 0;i < iMax;++i)
         {
             CReaction reaction = model.getReaction(i);
             assert reaction != null;
-            System.out.println("\t" + reaction.getObjectName());
+            //System.out.println("\t" + reaction.getObjectName());
         }
         
         setUpReport();
@@ -244,7 +233,7 @@ public class EndosomeCopasi {
 	
 	public void setInitialConcentration(String name, double value) {
 		if (!nameMetabs.containsKey(name)) {
-//			//System.out.print*ln(name + "\t does not exist as a metab");
+			System.out.println(name + "\t does not exist as a metab");
 		} else {
 			CMetab m = nameMetabs.get(name);
 			m.setInitialConcentration(value);
@@ -253,7 +242,7 @@ public class EndosomeCopasi {
 		}
 	}
 		
-	public void runTimeCourse() {
+	public void runTimeCourse(Endosome endosome) {
 		
 //        int ii, iiMax = (int)model.getCompartments().size();
 //        //System.out.print*ln("CompartmentsEndosome: ");
@@ -291,6 +280,7 @@ public class EndosomeCopasi {
         catch (java.lang.Exception ex)
         {
         	//System.err.println( "Error. Running the time course simulation failed." );
+        	System.out.println("Error en endosoma ID "+ endosome.getId());
             System.out.println(processError);
             System.out.println(processWarning);
             // check if there are additional error messages
@@ -299,12 +289,13 @@ public class EndosomeCopasi {
                 // print the messages in chronological order
             	System.err.println(CCopasiMessage.getAllMessageText(true));
             }
-            //System.exit(1);
+            System.exit(1);
         }
         if(result==false)
         {
         	//System.err.println( "An error occured while running the time course simulation." );
-            System.out.println(processError);
+        	System.out.println("Error en endosoma ID "+ endosome.getId());
+        	System.out.println(processError);
             System.out.println(processWarning);
             
           //para depurar el error 
@@ -328,7 +319,7 @@ public class EndosomeCopasi {
                 // print the messages in chronological order
                 System.err.println(CCopasiMessage.getAllMessageText(true));
             }
-            //System.exit(1);
+            System.exit(1);
         }
  //       problem.setStepNumber(50)
         // look at the timeseries

@@ -31,6 +31,7 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.ui.table.AgentTableFactory;
 import repast.simphony.ui.table.SpreadsheetUtils;
 import repast.simphony.ui.table.TablePanel;
+import repast.simphony.util.ContextUtils;
 import repast.simphony.util.FileUtils;
 
 import java.util.HashSet;
@@ -121,7 +122,27 @@ public class Results {
 			e.printStackTrace();
 		}
 	    }
+	
+	{
+	
+    try
+    {
+    	String modelFileName = ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+    	File source = new File(modelFileName);
+    	File dest = new File(LocalPath.getInstance().getMyPathOut(),
+                source.getName());
+    	System.out.println(source.toString()+"\n" + dest.toString());
+    	FileUtils.copyFile(source, dest);
+    	
+    }
+    catch (java.lang.Exception ex)
+    {
+        System.err.println("No endosomeCopasi found "+ex);
+    }}
+    
 	}
+	
+	
 	
 	@ScheduledMethod(start = 1)
 	public void header(){
@@ -142,7 +163,7 @@ public class Results {
 		}
 	}
 	
-	@ScheduledMethod(start = 1, interval = 5000)
+	@ScheduledMethod(start = 1, interval = 10000)
 	public void stepTable() {
 //	log();
 //		freeze endosome set
@@ -157,6 +178,7 @@ public class Results {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public void log(){
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();

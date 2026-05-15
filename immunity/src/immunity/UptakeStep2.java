@@ -128,6 +128,7 @@ public class UptakeStep2 {
             if (EndoplasmicReticulum.getInstance().getMembraneRecycle().containsKey(mem)) {
                 double valueER = EndoplasmicReticulum.getInstance().getMembraneRecycle().get(mem);
                 double secreted = valueER * ModelProperties.getInstance().getSecretionRate().get(mem) * area / EndoplasmicReticulum.getInstance().getEndoplasmicReticulumArea();
+                
                 secreted = Math.min(secreted, area);
                 membraneContent.put(mem, secreted);
                 EndoplasmicReticulum.getInstance().getMembraneRecycle().put(mem, valueER - secreted);
@@ -165,6 +166,7 @@ public class UptakeStep2 {
 //		The new ERGIC can be anywhere in the cell
         double x = Math.random() * (50 - 8 * cellLimit);
         double y = Math.random() * (50 - 8 * cellLimit);
+        //System.out.println("uptake ");
 
         space.moveTo(bud, x, y);
         grid.moveTo(bud, (int) x, (int) y);

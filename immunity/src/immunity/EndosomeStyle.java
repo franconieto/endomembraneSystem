@@ -1,6 +1,7 @@
 package immunity;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -21,7 +22,8 @@ import repast.simphony.visualizationOGL2D.StyleOGL2D;
 import saf.v3d.ShapeFactory2D;
 import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
-
+import repast.simphony.util.ContextUtils;
+import repast.simphony.context.Context;
 //import smodel.Bacteria.State;
 //
 public class EndosomeStyle implements StyleOGL2D<Endosome> {
@@ -55,6 +57,9 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 // a 1500nm x 1500nm cellular space at orgScale = 1.  
 // To convert from cell units (in nm) to repast space = nm/2
 // the orgScale is taking into account in the scale of the shape (see below);
+        
+        
+        
         Endosome.endosomeShape(object);
         double a=object.getA();
         double c=object.getC();
@@ -69,14 +74,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         shape = this.factory.createShape(ellypse);
         }
         else{
-//        	object.heading = -90;
+        	object.heading = -90;
 //  		//System.out.print*ln(object.toString()+ "a  "+a+"  c  "+ c);
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
-//        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
-        shape = this.factory.createShape(rec);
+       // arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
+        
+   //     
+        	 shape = this.factory.createShape(rec); 
+         
+         
 		}
 
-		return shape;//createRectangle;
+		return shape;
 	}
 
 	@Override
@@ -251,6 +260,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public Color getLabelColor(Endosome object) {
 		return new Color(100);
 	}
+	
+	
 
 }
 

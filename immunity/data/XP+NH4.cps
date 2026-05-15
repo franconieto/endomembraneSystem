@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.44 (Build 295) (http://www.copasi.org) at 2026-03-18T19:52:13Z -->
+<!-- generated with COPASI 4.44 (Build 295) (http://www.copasi.org) at 2026-05-08T18:43:28Z -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="44" versionDevel="295" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -19,20 +19,16 @@
     </Function>
     <Function key="Function_13" name="Mass action (irreversible)" type="MassAction" reversible="false">
       <MiriamAnnotation>
-<rdf:RDF
-   xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_13">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-27T17:06:19Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
-    <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041"/>
+    <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041" />
   </rdf:Description>
 </rdf:RDF>
-
       </MiriamAnnotation>
       <Comment>
         <body xmlns="http://www.w3.org/1999/xhtml">
@@ -553,6 +549,22 @@ import y export no dependen de pH como antes
           if(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[NH3Cy],Reference=Concentration> == 0,&lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value>,0)
         </Expression>
       </ModelValue>
+      <ModelValue key="ModelValue_9" name="unboundph" simulationType="fixed" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="#ModelValue_9">
+</rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_10" name="loadingph" simulationType="fixed" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="#ModelValue_10">
+</rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </ModelValue>
     </ListOfModelValues>
     <ListOfReactions>
       <Reaction key="Reaction_0" name="OVAout" reversible="false" fast="false" addNoise="false">
@@ -579,7 +591,7 @@ import y export no dependen de pH como antes
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5506" name="k1" value="10000"/>
+          <Constant key="Parameter_5506" name="k1" value="100000"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
@@ -595,7 +607,9 @@ import y export no dependen de pH como antes
       </Reaction>
       <Reaction key="Reaction_1" name="MHCI-loading" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -604,6 +618,7 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
@@ -614,9 +629,9 @@ import y export no dependen de pH como antes
         </ListOfProducts>
         <ListOfConstants>
           <Constant key="Parameter_5509" name="k" value="6e+06"/>
-          <Constant key="Parameter_4675" name="pH" value="7"/>
-          <Constant key="Parameter_4676" name="pHlimit" value="6.5"/>
-          <Constant key="Parameter_4679" name="enhancer" value="6.4"/>
+          <Constant key="Parameter_4675" name="pHlimit" value="6.80219"/>
+          <Constant key="Parameter_4676" name="pH" value="7"/>
+          <Constant key="Parameter_4679" name="enhancer" value="6.4038"/>
         </ListOfConstants>
         <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
@@ -636,7 +651,7 @@ import y export no dependen de pH como antes
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_276">
-              <SourceParameter reference="ModelValue_6"/>
+              <SourceParameter reference="Parameter_4675"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -669,9 +684,7 @@ import y export no dependen de pH como antes
       </Reaction>
       <Reaction key="Reaction_3" name="ProtonLeak" reversible="true" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_3">
     <dcterms:created>
       <rdf:Description>
@@ -680,7 +693,6 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
@@ -711,7 +723,9 @@ import y export no dependen de pH como antes
       </Reaction>
       <Reaction key="Reaction_4" name="MHCIopening" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_4">
     <dcterms:created>
       <rdf:Description>
@@ -720,6 +734,7 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_8" stoichiometry="1"/>
@@ -729,9 +744,9 @@ import y export no dependen de pH como antes
         </ListOfProducts>
         <ListOfConstants>
           <Constant key="Parameter_6923" name="k" value="6000"/>
-          <Constant key="Parameter_6924" name="pH" value="7"/>
-          <Constant key="Parameter_6927" name="pHlimit" value="5.4"/>
-          <Constant key="Parameter_6922" name="enhancer" value="-9.2"/>
+          <Constant key="Parameter_6924" name="pHlimit" value="6.805"/>
+          <Constant key="Parameter_6927" name="pH" value="7"/>
+          <Constant key="Parameter_6922" name="enhancer" value="-6.004"/>
         </ListOfConstants>
         <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane]">
           <ListOfCallParameters>
@@ -748,14 +763,16 @@ import y export no dependen de pH como antes
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_278">
-              <SourceParameter reference="ModelValue_3"/>
+              <SourceParameter reference="Parameter_6924"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_5" name="MHCI-peptOpening" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_5">
     <dcterms:created>
       <rdf:Description>
@@ -764,6 +781,7 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
@@ -774,9 +792,9 @@ import y export no dependen de pH como antes
         </ListOfProducts>
         <ListOfConstants>
           <Constant key="Parameter_6926" name="k" value="6000"/>
-          <Constant key="Parameter_6925" name="pH" value="7"/>
-          <Constant key="Parameter_4647" name="pHlimit" value="5.4"/>
-          <Constant key="Parameter_4648" name="enhancer" value="-9.2"/>
+          <Constant key="Parameter_6925" name="pHlimit" value="6.09403"/>
+          <Constant key="Parameter_4647" name="pH" value="7"/>
+          <Constant key="Parameter_4648" name="enhancer" value="-6.004"/>
         </ListOfConstants>
         <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
@@ -793,16 +811,14 @@ import y export no dependen de pH como antes
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_278">
-              <SourceParameter reference="ModelValue_3"/>
+              <SourceParameter reference="Parameter_6925"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_6" name="ProtonPumpRabA" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_6">
     <dcterms:created>
       <rdf:Description>
@@ -811,7 +827,6 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_6" stoichiometry="1"/>
@@ -829,7 +844,9 @@ import y export no dependen de pH como antes
       </Reaction>
       <Reaction key="Reaction_7" name="MHCIclosing" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_7">
     <dcterms:created>
       <rdf:Description>
@@ -838,6 +855,7 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
@@ -847,9 +865,9 @@ import y export no dependen de pH como antes
         </ListOfProducts>
         <ListOfConstants>
           <Constant key="Parameter_4646" name="k" value="6000"/>
-          <Constant key="Parameter_4653" name="pHlimit" value="6.5"/>
+          <Constant key="Parameter_4653" name="pHlimit" value="6.805"/>
           <Constant key="Parameter_4652" name="pH" value="7"/>
-          <Constant key="Parameter_4650" name="enhancer" value="6.4"/>
+          <Constant key="Parameter_4651" name="enhancer" value="6.4038"/>
         </ListOfConstants>
         <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane]">
           <ListOfCallParameters>
@@ -866,16 +884,14 @@ import y export no dependen de pH como antes
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_278">
-              <SourceParameter reference="ModelValue_6"/>
+              <SourceParameter reference="Parameter_4653"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_8" name="pepImport" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_8">
     <dcterms:created>
       <rdf:Description>
@@ -884,7 +900,6 @@ import y export no dependen de pH como antes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
@@ -895,12 +910,12 @@ import y export no dependen de pH como antes
           <Product metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4651" name="k1" value="100000"/>
+          <Constant key="Parameter_4650" name="k1" value="1e+06"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_4651"/>
+              <SourceParameter reference="Parameter_4650"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_9"/>
@@ -931,7 +946,7 @@ import y export no dependen de pH como antes
           <Product metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4649" name="k1" value="0.01"/>
+          <Constant key="Parameter_4649" name="k1" value="0.05"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
@@ -981,6 +996,12 @@ import y export no dependen de pH como antes
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_11" name="NH3leak" reversible="true" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="#Reaction_11">
+</rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_16" stoichiometry="1"/>
         </ListOfSubstrates>
@@ -1009,6 +1030,12 @@ import y export no dependen de pH como antes
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_12" name="NH4leak" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="#Reaction_12">
+</rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_14" stoichiometry="1"/>
         </ListOfSubstrates>
@@ -1027,6 +1054,12 @@ import y export no dependen de pH como antes
         </KineticLaw>
       </Reaction>
       <Reaction key="Reaction_13" name="OVAavailable" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="#Reaction_13">
+</rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfSubstrates>
@@ -1034,7 +1067,7 @@ import y export no dependen de pH como antes
           <Product metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_7509" name="k1" value="0.0001"/>
+          <Constant key="Parameter_7509" name="k1" value="0.01"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble]">
           <ListOfCallParameters>
@@ -1073,12 +1106,12 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[ovaEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[exCxEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[ovaCy]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[pepEn]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[pepEn]" value="2890628059200000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn]" value="2890628059200" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[pepMHCIEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[protonEn]" value="289062805919.99988" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[protonCy]" value="289062805919.99988" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn]" value="1445314029600" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[pepCy]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[imCxEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[imaginario],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
@@ -1087,36 +1120,34 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[NH4En]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[species]" value="2890628059200000" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[NH3Cy]" value="0" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[povaEn]" value="2890628059200000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[povaEn]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="7" type="ModelValue" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[kpH]" value="0.00020000000000000001" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[enhancer]" value="6.4000000000000004" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[enhancer]" value="6.4037993069999999" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[acidpH]" value="5.4000000000000004" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[RabDpump]" value="0" type="ModelValue" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[RabApump]" value="0" type="ModelValue" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[alkpH]" value="6.5" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[enhancerNegative]" value="-9.1999999999999993" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[enhancerNegative]" value="-6.0039999999999996" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pHNH3]" value="7" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[unboundph]" value="6.5" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[loadingph]" value="7" type="ModelValue" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAout]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAout],ParameterGroup=Parameters,Parameter=k1" value="10000" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAout],ParameterGroup=Parameters,Parameter=k1" value="100000" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=k" value="6000000" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=pHlimit" value="6.8021900000000004" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=pHlimit" value="6.5" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[alkpH],Reference=InitialValue>
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=enhancer" value="6.4000000000000004" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=enhancer" value="6.4037993069999999" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[enhancer],Reference=InitialValue>
               </InitialExpression>
@@ -1135,17 +1166,13 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=k" value="6000" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=pHlimit" value="6.8049999999999997" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=pHlimit" value="5.4000000000000004" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=enhancer" value="-9.1999999999999993" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=enhancer" value="-6.0039999999999996" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[enhancerNegative],Reference=InitialValue>
               </InitialExpression>
@@ -1153,17 +1180,13 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=k" value="6000" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=pHlimit" value="6.0940300000000001" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=pHlimit" value="5.4000000000000004" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=enhancer" value="-9.1999999999999993" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=enhancer" value="-6.0039999999999996" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[enhancerNegative],Reference=InitialValue>
               </InitialExpression>
@@ -1178,27 +1201,23 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=k" value="6000" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=pHlimit" value="6.5" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[alkpH],Reference=InitialValue>
-              </InitialExpression>
-            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=pHlimit" value="6.8049999999999997" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=enhancer" value="6.4000000000000004" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=enhancer" value="6.4037993069999999" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[enhancer],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[pepImport]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[pepImport],ParameterGroup=Parameters,Parameter=k1" value="100000" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[pepImport],ParameterGroup=Parameters,Parameter=k1" value="1000000" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[proteosome]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[proteosome],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[proteosome],ParameterGroup=Parameters,Parameter=k1" value="0.050000000000000003" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NH3+H]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NH3+H],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="fixed"/>
@@ -1212,7 +1231,7 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NH4leak],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAavailable]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAavailable],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAavailable],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -1761,9 +1780,11 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <StateTemplateVariable objectReference="ModelValue_3"/>
       <StateTemplateVariable objectReference="ModelValue_6"/>
       <StateTemplateVariable objectReference="ModelValue_7"/>
+      <StateTemplateVariable objectReference="ModelValue_9"/>
+      <StateTemplateVariable objectReference="ModelValue_10"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 289062805919.99988 0 0 0 0 0 0 0 0 2890628059200000 0 7 0 0 7 289062805919.99988 0 2890628059200000 0 0 0 0 4800000000 2400000 1 0.00020000000000000001 6.4000000000000004 5.4000000000000004 6.5 -9.1999999999999993 
+      0 289062805919.99988 2890628059200 0 0 0 2890628059200000 0 0 0 0 1445314029600 7 0 0 7 289062805919.99988 0 2890628059200000 0 0 0 0 4800000000 2400000 1 0.00020000000000000001 6.4037993069999999 5.4000000000000004 6.5 -6.0039999999999996 6.5 7 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -1790,9 +1811,9 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <Report reference="Report_11" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
-        <Parameter name="StepNumber" type="unsignedInteger" value="1200"/>
-        <Parameter name="StepSize" type="float" value="0.10000000000000001"/>
-        <Parameter name="Duration" type="float" value="120"/>
+        <Parameter name="StepNumber" type="unsignedInteger" value="4"/>
+        <Parameter name="StepSize" type="float" value="0.00050000000000000001"/>
+        <Parameter name="Duration" type="float" value="0.002"/>
         <Parameter name="TimeSeriesRequested" type="bool" value="0"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
@@ -1814,21 +1835,21 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
         <Parameter name="Subtask" type="unsignedInteger" value="1"/>
         <ParameterGroup name="ScanItems">
           <ParameterGroup name="ScanItem">
-            <Parameter name="Maximum" type="float" value="1"/>
+            <Parameter name="Maximum" type="float" value="2"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[imaginario],Vector=Metabolites[RabD],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
             <Parameter name="Use Values" type="bool" value="0"/>
             <Parameter name="Values" type="string" value=""/>
           </ParameterGroup>
           <ParameterGroup name="ScanItem">
-            <Parameter name="Number of steps" type="unsignedInteger" value="1"/>
+            <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[NH3Cy],Reference=InitialConcentration"/>
-            <Parameter name="Minimum" type="float" value="0"/>
-            <Parameter name="Maximum" type="float" value="0.46400000000000002"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn],Reference=InitialConcentration"/>
+            <Parameter name="Minimum" type="float" value="0.5"/>
+            <Parameter name="Maximum" type="float" value="2"/>
             <Parameter name="log" type="bool" value="0"/>
             <Parameter name="Values" type="string" value=""/>
             <Parameter name="Use Values" type="bool" value="0"/>
@@ -2192,48 +2213,6 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     </Report>
   </ListOfReports>
   <ListOfPlots>
-    <PlotSpecification name="plot" type="Plot2D" active="1" taskTypes="">
-      <Parameter name="log X" type="bool" value="0"/>
-      <Parameter name="log Y" type="bool" value="0"/>
-      <ListOfPlotItems>
-        <PlotItem name="[R-TfEn]|Values[pH]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="2"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[R-TfEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[R-TfaEn]|Values[pH]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="2"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[R-TfaEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[TfaEn]|Values[pH]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="2"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[TfaEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-      </ListOfPlotItems>
-    </PlotSpecification>
     <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values" type="Plot2D" active="1" taskTypes="">
       <Parameter name="log X" type="bool" value="0"/>
       <Parameter name="log Y" type="bool" value="0"/>
@@ -2398,54 +2377,6 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
             <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[imaginario],Vector=Metabolites[RabA],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[R-TfaEn]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[R-TfaEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[REn]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[REn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[TfaEn]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[TfaEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[R-TfEn]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[R-TfEn],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
         <PlotItem name="Values[pH]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
@@ -2520,6 +2451,74 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
         </PlotItem>
       </ListOfPlotItems>
     </PlotSpecification>
+    <PlotSpecification name="MHCI" type="Plot2D" active="1" taskTypes="">
+      <Parameter name="log X" type="bool" value="0"/>
+      <Parameter name="log Y" type="bool" value="0"/>
+      <Parameter name="x axis" type="string" value=""/>
+      <Parameter name="y axis" type="string" value=""/>
+      <Parameter name="z axis" type="string" value=""/>
+      <Parameter name="plot engine" type="string" value="QWT"/>
+      <ListOfPlotItems>
+        <PlotItem name="[cMHCIEn]|Values[pH]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1.2"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[oMHCIEn]|Values[pH]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1.2"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[pepMHCIEn]|Values[pH]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1.2"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[pepMHCIEn],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[pepEn]|Values[pH]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1.2"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[pepEn],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+      </ListOfPlotItems>
+    </PlotSpecification>
+    <PlotSpecification name="plot" type="Plot2D" active="0" taskTypes="">
+      <Parameter name="log X" type="bool" value="0"/>
+      <Parameter name="log Y" type="bool" value="0"/>
+      <Parameter name="x axis" type="string" value=""/>
+      <Parameter name="y axis" type="string" value=""/>
+      <Parameter name="z axis" type="string" value=""/>
+      <Parameter name="plot engine" type="string" value="QWT"/>
+      <ListOfPlotItems>
+      </ListOfPlotItems>
+    </PlotSpecification>
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
@@ -2527,10 +2526,10 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <Slider key="Slider_1" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[soluble],Vector=Metabolites[protonEn],Reference=InitialConcentration" objectType="float" objectValue="0.0001" minValue="0.0001" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_2" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_3" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_6" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[imaginario],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1.8" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_7" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAout],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="1e+06" minValue="1e+06" maxValue="1e+11" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[cMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[membrane],Vector=Metabolites[oMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="2" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[imaginario],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="0" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_18" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAout],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="10000" minValue="10000" maxValue="1e+11" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>

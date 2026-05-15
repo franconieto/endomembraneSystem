@@ -60,7 +60,8 @@ tick.  This class also restores the endosomes reading the inputFrozenEndosomes.c
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
-//			//System.out.print*ln("AQUI PARA b  "+b[0]);
+			//System.out.println("AQUI PARA b  "+b[0]);
+			
 			String subString = b[0].substring(0,2);
 			switch (subString) {
 

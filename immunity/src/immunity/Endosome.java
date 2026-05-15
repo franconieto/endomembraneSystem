@@ -66,6 +66,10 @@ public class Endosome {
 	
 	public double xcoor = 0d;
 	public double ycoor = 0d;
+	public double recentAreaLoss = 0d;
+	
+	private static int NEXT_ID = 0;
+	private int id;
 	
 	// Endosomal
 	ModelProperties cellProperties = ModelProperties.getInstance();
@@ -105,6 +109,7 @@ public class Endosome {
 	{
 
 		this.tickCount=0; //FRANCO
+		this.recentAreaLoss=0; //FRANCO
 		this.space = sp;
 		this.grid = gr;
 		this.rabContent = rabContent;
@@ -116,12 +121,13 @@ public class Endosome {
 		this.initOrgProp = initOrgProp;
 		this.pH = this.getpH();
 		area = initOrgProp.get("area");
-//		//System.out.print*ln("area" + area + " "+initOrgProp);
 		volume = initOrgProp.get("volume");
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d - 180; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
+		this.id = NEXT_ID++;
+		
 	}
 //    @ProbeID
 	public final double getXcoor() {
@@ -145,30 +151,61 @@ public class Endosome {
 		space = value;
 	}
 
-	public final double getpH() {
-		if (this.solubleContent.containsKey("protonEn"))
-		{
-			return (-Math.log10((this.solubleContent.get("protonEn")+1)/this.volume * 1E-3));// concentration in mM
-// entiendo que el +1 es solo para evitar división por cero		
+	public final double getpH() { 
+		if (this.solubleContent.containsKey("protonEn")) { 
+			return (-Math.log10((this.solubleContent.get("protonEn")+1)/this.volume * 1E-3)); 
+			
 		}
-		else return 10;
+		else return 10; }
+	
+	//@ScheduledMethod(start = 1, interval = 1)
+	public void checkRemoval() {
+
+	    double EPS = 1e-12;
+
+	    if (this.volume < EPS || this.area < EPS ||
+	        Double.isNaN(this.volume) || Double.isNaN(this.area)) {
+
+	        Context<Object> context = ContextUtils.getContext(this);
+
+	        System.out.println("Removing Endosome ID=" + this.getId() +
+	            " volume=" + this.volume + " area=" + this.area);
+
+	        context.remove(this);
+	    }
 	}
+	
+	
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		this.tickCount=this.tickCount + 1;
 //		ACTIONS PERFORMED BY EACH ORGANELLE
+		
+		
+		debugCheck("inicial");
 		OrganelleMove.moveTowards(this);
+		debugCheck("move");
 		ModelProperties modelProperties = ModelProperties.getInstance();
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeTetherStep"))EndosomeTetherStep.tether(this);
+		debugCheck("thether");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeInternalVesicleStep"))EndosomeInternalVesicleStep.internalVesicle(this);
+		debugCheck("InternalVesicleStep");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_FusionStep"))FusionStep.fusion(this);
+		debugCheck("Fusion");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_FissionStep"))FissionStep.split(this);
+		debugCheck("Fision");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeLysosomalDigestionStep"))EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+		debugCheck("Lysosomal");
 		String name =  modelProperties .getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
+		debugCheck("Copasi");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeRecycleStep"))RecycleStep.recycle(this);
+		debugCheck("Recycle");
 		if (Math.random()<modelProperties .getActionProbabilities().get("p_EndosomeMaturationStep"))EndosomeMaturationStep.matureCheck(this); //	
+		debugCheck("Maturation");
+		
+		this.recentAreaLoss *= 0.95;
 	}
 
 	public static void endosomeShape(Endosome end) {
@@ -504,7 +541,45 @@ public class Endosome {
 	public void setRabTimeSeries(TreeMap<Integer, HashMap<String, Double>> rabTimeSeries) {
 		this.rabTimeSeries = rabTimeSeries;
 	}
-
+	public int getId() {
+	    return id;
+	}
+	
+	public double getRatio() {
+		double ratio = Math.pow(area, 3) / Math.pow(volume, 2);
+	    return ratio;
+	}
+	
+	
+	public void debugCheck(String action) {
+		String error="";
+		boolean print=false;
+	    if (volume < 1e-12 || Double.isNaN(volume)
+	    	|| area < 1e-12 || Double.isNaN(area)) {
+	    	error+=" volumen o area critica ";
+	    	print=true;
+	    }
+	    
+	    double ratio = this.getRatio();
+	    double MIN_RATIO = 100;   // ~113
+		double MAX_RATIO = 10000;    
+		if (ratio < MIN_RATIO || ratio > MAX_RATIO) {
+			error+=" relacion de volumen/area critica ";
+			//print=true;
+		}
+		
+		if(print) {
+			System.out.println("Accion previa "+action+" error "+error);
+            System.out.println("ID: " + this.getId());
+            System.out.println("Volume: " + this.volume);
+            System.out.println("Area: " + this.area);
+            System.out.println("Ratio : " + ratio);
+            System.out.println("pH: " + this.getpH());
+            System.out.println("Soluble: " + this.solubleContent);
+            System.out.println("Membrane: " + this.membraneContent);
+            System.out.println("Rab: " + this.rabContent);
+		}
+	}
 	
 }
 	

@@ -10,13 +10,28 @@
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 											/>
-				<parameter name="phcutMat" displayName="phcutMat" type="double" 
-						defaultValue="1" 
+				<parameter name="alkpH" displayName="pH loading MHCI" type="double" 
+						defaultValue="6.5" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 											/>
-				<parameter name="phcutDig" displayName="phcutDig" type="double" 
-						defaultValue="1" 
+				<parameter name="NH3Cy" displayName="NH3Cy Concentration" type="double" 
+						defaultValue="0.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+											/>
+				<parameter name="phcutMat" displayName="pH cut Maturation" type="double" 
+						defaultValue="6.7" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+											/>
+				<parameter name="phcutDig" displayName="pH cut Digestion" type="double" 
+						defaultValue="5.2" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+											/>
+				<parameter name="acidpH" displayName="pH open MHCI" type="double" 
+						defaultValue="5.4" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 											/>

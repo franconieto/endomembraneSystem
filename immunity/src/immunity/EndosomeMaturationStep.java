@@ -56,7 +56,7 @@ public class EndosomeMaturationStep {
 								
 				Parameters parm = RunEnvironment.getInstance().getParameters();
 
-				double phcutMatDefault = ModelProperties.getInstance().getRabMaturation().get("phcutAD");; // tu valor por defecto
+				double phcutMatDefault = ModelProperties.getInstance().getRabMaturation().get("phcutAD"); // tu valor por defecto
 				double phcutMat = phcutMatDefault;
 
 				if (parm != null && parm.getSchema().contains("phcutMat")) {
@@ -67,18 +67,22 @@ public class EndosomeMaturationStep {
 				    }
 				}
 				
-				
 				if (phcutMat==0){
 					//no influence of ph in maturation
+					//System.out.println("---------------------maduracion NOph "+phcutMat+" "+propMature);
 				}else {
 					//modulate the propMature with ph
 				
 					double prop_min=ModelProperties.getInstance().getRabMaturation().get("minprob");
 					double prop_max=propMature-prop_min;
 					double pH=endosome.getpH();
-					int k=10;
+					double k=ModelProperties.getInstance().getRabMaturation().get("k");
 					
-					propMature=(prop_max / (1.0 + Math.exp(k * (pH - phcutMat)))) + prop_min ;
+					//propMature=(prop_max / (1.0 + Math.exp(k * (pH - phcutMat)))) + prop_min ;
+					
+					double exponent = Math.exp(k * (pH - phcutMat));
+					propMature=(prop_max / (1.0 + exponent)) + prop_min ;
+					//System.out.println("---------------------maduracion "+phcutMat+" "+propMature);
 				}
 		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
 		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));
@@ -87,6 +91,10 @@ public class EndosomeMaturationStep {
 //		tickCount to zero
 		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
 //		//System.out.print*ln("  MADURA "+endosome.getRabContent());
+	}else {
+		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
+		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));
+		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
 	}
 	}
 	

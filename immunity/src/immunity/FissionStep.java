@@ -47,7 +47,7 @@ public class FissionStep {
 	public static void split(Endosome endosome) {	
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
-
+		
 		
 		String rabInTube = null;
 		double vo = endosome.volume;
@@ -65,6 +65,7 @@ public class FissionStep {
 		for (String key : endosome.getSolubleContent().keySet()) {
 		    if (key.startsWith("bead") && endosome.getSolubleContent().get(key) > 0.9) {
 		    	minV = minV + ModelProperties.getInstance().getCellK().get("beadVolume");
+		    	
 		        break;
 		    }
 		}
@@ -208,6 +209,10 @@ public class FissionStep {
 			newSolubleContent.put(content, copySoluble.get(content)
 					- endosome.solubleContent.get(content));
 		}
+		
+		double areaLost = scylinder;
+		endosome.recentAreaLoss += areaLost;
+		
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(endosome);
@@ -248,7 +253,7 @@ public class FissionStep {
 //		To avoid too long tubules, the split is repeated
 		if (endosome.c > 150/Cell.orgScale) {
 //			//System.out.print*ln(endosome.c+"  ccccccccccccccccccccccccccccccccccorta de nuevo  " );
-			split(endosome);
+			//split(endosome);
 		}
 	}
 	

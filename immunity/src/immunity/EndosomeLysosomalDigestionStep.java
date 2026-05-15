@@ -20,9 +20,11 @@ public class EndosomeLysosomalDigestionStep {
 	public static HashMap<String, Double> digestedSol = new HashMap<String, Double>();// the digested contents come here
 	public static HashMap<String, Double> digestedMem = new HashMap<String, Double>();
 	
+	
 	public static void lysosomalDigestion(Endosome endosome) {
 		double so = endosome.area;
 		double vo = endosome.volume;
+		
 		// if high percentage of the membrane is RabD (LateEndosome) digest lysosome
 		if (endosome.rabContent.containsKey("RabD")
 				&& Math.random() < endosome.rabContent.get("RabD") / endosome.area//)
@@ -90,10 +92,10 @@ public class EndosomeLysosomalDigestionStep {
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
 		double pH=endosome.getpH();
-		int k=4;
+		double k=ModelProperties.getInstance().getCellK().get("kDig");
 		
 		Parameters parm = RunEnvironment.getInstance().getParameters();
-		double phcutDigDefault = ModelProperties.getInstance().getCellK().get("phcutDig");; // tu valor por defecto
+		double phcutDigDefault = ModelProperties.getInstance().getCellK().get("phcutDig"); // tu valor por defecto
 		double phcutDig = phcutDigDefault;
 
 		if (parm != null && parm.getSchema().contains("phcutDig")) {
@@ -110,8 +112,12 @@ public class EndosomeLysosomalDigestionStep {
 			phFactor=1;
 		}else {
 			//modulate the propMature with ph
-			phFactor = 1.0 / (1.0 + Math.exp(k * (pH - phcutDig)))+0.1; //after cut the digestion is lower
+			//phFactor = 0.9 / (1.0 + Math.exp(k * (pH - phcutDig)))+0.1; //after cut the digestion is lower
+			double exponent = Math.exp(k * (pH - phcutDig));
+			phFactor = 0.9 / (1.0 + exponent) + 0.1;	
 		}
+		//System.out.println("rabDratio "+rabDratio);
+		//System.out.println("digestion phfactor "+phFactor+" pH "+pH);
 		//		RandomEngine engine = new DRand();
 //		Poisson poisson = new Poisson(2000, engine);
 //		int poissonObs = poisson.nextInt();
@@ -124,6 +130,8 @@ public class EndosomeLysosomalDigestionStep {
 			digMVB = initialMvb * (1-digMVB) * rabDratio* phFactor;// MVB digested
 			finalMvb = initialMvb - digMVB;					
 		}
+		if (endosome.solubleContent.containsKey("mvb"))
+			endosome.solubleContent.put("mvb", finalMvb);
     
 //		Soluble component are digested proportional to the RabD content, except the soluble marker//
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
@@ -133,22 +141,22 @@ public class EndosomeLysosomalDigestionStep {
 		for (String sol : endosome.solubleContent.keySet()) {
 				if (!sol.startsWith("bead")) {
 					//double solDigested = endosome.solubleContent.get(sol) * (1- digSol) * rabDratio;
-					double solDigested = endosome.solubleContent.get(sol)* digSol * rabDratio * phFactor;
+					double solDigested = endosome.solubleContent.get(sol)* (1-digSol) * rabDratio * phFactor;
 					endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
+					
+					//System.out.println("metabolito degradado "+sol);
 					
 					double prev = digestedSol.getOrDefault(sol, 0.0);
 					digestedSol.put(sol, prev + solDigested);
 			}}
 		
-		if (endosome.solubleContent.containsKey("mvb"))
-			endosome.solubleContent.put("mvb", finalMvb);
 		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)
 			endosome.solubleContent.put("solubleMarker", 1d);
 		
 		double digMem = ModelProperties.getInstance().getCellK().get("digMem");
 		for (String mem : endosome.membraneContent.keySet()) {
 				//double memDigested = endosome.membraneContent.get(mem)*(1-digMem)* rabDratio;
-				double memDigested = endosome.membraneContent.get(mem)* digMem * rabDratio * phFactor;
+				double memDigested = endosome.membraneContent.get(mem)* (1-digMem) * rabDratio * phFactor;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 				
 				double prev = digestedMem.getOrDefault(mem, 0.0);

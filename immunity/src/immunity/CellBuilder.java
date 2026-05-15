@@ -27,6 +27,8 @@ import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
 import repast.simphony.util.collections.IndexedIterable;
+import java.util.List;
+import java.util.ArrayList;
 
 public class CellBuilder implements ContextBuilder<Object> { // contextbuilder es una interfaz, debe tener una clase context que se sobrescribe mas abajo
 // This is the main class for Repast where the model is built.  It creates the context and the space
@@ -49,6 +51,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		context.setId("immunity");
 		int spaceWidth = ModelProperties.getInstance().getCellK().get("spaceWidth").intValue();
 		int spaceLength = ModelProperties.getInstance().getCellK().get("spaceLength").intValue();
+		
 
 		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
 											"infection network", context, true);
@@ -146,6 +149,13 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		Set<String> diffOrganelles = initialOrganelles.getDiffOrganelles();
 		String name;
 		int ite=0;
+		
+		//double d=ModelProperties.getInstance().getCellK().get("beadVolume");
+		double maxX = spaceWidth;
+		double maxY = spaceLength;
+		double d = 2.0; // distancia al borde (ajustar)
+		List<double[]> beadPositions = new ArrayList<>();
+		
 		if (modelProperties.getCellK().get("freezeDry").equals(0d)) {
 //			freezeDry = 0d; // if the organelles are generated from scratch.  Parameter from the input file
 //			I prefer to load the organelles from the input file inputFrozenEndosomes.csv
@@ -228,6 +238,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			if endosomes are loadaed from a freezeDry csv file
 //			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
 //			//System.out.print*ln("FREEZE DRY METHOD   "+diffOrganelles);
+			
 			for (String kind : diffOrganelles){
 				if (kind.substring(0,2).equals("ki")) continue;
 				else if (kind.substring(0,2).equals("en")) {
@@ -239,10 +250,47 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 													solubleContent, initOrgProp);
 						context.add(end);
-						double x = initOrgProp.get("xcoor");
-						double y = initOrgProp.get("ycoor");
+						
+						double x, y; 
+						boolean has_bead = false;
+						
+						boolean randomPosition = modelProperties.getCellK().get("beadRandomPosition").equals(1d);
+						
+						if (randomPosition) {
+							for (String sol : end.solubleContent.keySet()) {
+							    if (sol.startsWith("bead") && end.solubleContent.get(sol) > 0.0) {
+							        has_bead = true;
+							        break;
+							    }
+							}
+						}
+						
+
+						if (has_bead) {
+
+						    double minDist = 3 * d;
+						    int attempts = 0;
+						    int maxAttempts = 50;
+
+						    do {
+						        double[] pos = randomBorderPosition(spaceWidth, spaceLength, d);
+						        x = pos[0];
+						        y = pos[1];
+						        attempts++;
+						    } while (!isFarEnough(x, y, beadPositions, minDist) && attempts < maxAttempts);
+
+						    beadPositions.add(new double[]{x, y});
+
+						} else {
+						    x = initOrgProp.get("xcoor");
+						    y = initOrgProp.get("ycoor");
+						}
+
+						// mover
 						space.moveTo(end, x, y);
-						grid.moveTo(end, (int) x, (int) y);	
+						grid.moveTo(end, (int) x, (int) y);
+						
+						
 						//Endosome.endosomeShape(end);
 
 			}
@@ -354,6 +402,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 	
 //	Check if the domains in the organelle are mostly Golgi
 	
+	
 	private static boolean isGolgi(HashMap<String, Double> rabContent) {
 		double areaGolgi = 0d;
 		for (String rab : rabContent.keySet()){
@@ -366,8 +415,44 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		}
 		return isGolgi;
 	}	
-	
+	public static double[] randomBorderPosition(double maxX, double maxY, double d) {
 
+	    double x, y;
+	    int side = RandomHelper.nextIntFromTo(0, 3);
+	    int minDist = 5;
+	    maxX=maxX-minDist;
+	    maxY=maxY-minDist;
+	    switch (side) {
+	        case 0: // abajo
+	            x = RandomHelper.nextDoubleFromTo(minDist, maxX);
+	            y = RandomHelper.nextDoubleFromTo(minDist, minDist+d);
+	            break;
+	        case 1: // arriba
+	            x = RandomHelper.nextDoubleFromTo(minDist, maxX);
+	            y = RandomHelper.nextDoubleFromTo(maxY - d, maxY);
+	            break;
+	        case 2: // izquierda
+	            x = RandomHelper.nextDoubleFromTo(minDist, d+minDist);
+	            y = RandomHelper.nextDoubleFromTo(minDist, maxY);
+	            break;
+	        default: // derecha
+	            x = RandomHelper.nextDoubleFromTo(maxX - d, maxX);
+	            y = RandomHelper.nextDoubleFromTo(minDist, maxY);
+	            break;
+	    }
+
+	    return new double[]{x, y};
+	}
+	public static boolean isFarEnough(double x, double y, List<double[]> others, double minDist) {
+	    for (double[] p : others) {
+	        double dx = x - p[0];
+	        double dy = y - p[1];
+	        double dist = Math.sqrt(dx*dx + dy*dy);
+
+	        if (dist < minDist) return false;
+	    }
+	    return true;
+	}
 
 
 
