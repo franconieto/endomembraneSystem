@@ -346,3 +346,121 @@ INFO  [Thread-0] 2026-05-15 16:01:47,337 repast.simphony.batch.ssh.LocalSession 
 INFO  [Thread-0] 2026-05-15 16:01:47,337 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
 INFO  [Thread-0] 2026-05-15 16:01:47,337 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
 INFO  [Thread-0] 2026-05-15 16:01:47,337 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [AWT-EventQueue-0] 2026-05-17 20:43:01,809 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2026-05-17 20:43:02,054 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [AWT-EventQueue-0] 2026-05-17 20:43:48,018 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2026-05-17 20:43:48,051 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 20:44:01,519 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost10990589999323593148.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1779061439664 ...
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 20:44:01,582 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 20:44:01,582 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0320
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 20:44:01,582 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1779061439664\fniet_localhost10990589999323593148.zip
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 20:44:01,968 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779061439664/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779061439664/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 20:44:13,605 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 20:44:13,752 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 20:44:13,752 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779061439664/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 20:44:13,752 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 20:44:13,752 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 20:44:13,752 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 20:44:13,849 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 20:44:13,849 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779061439664/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 20:44:13,849 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 20:44:13,849 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 20:44:13,849 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 20:44:14,075 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-20-44-839-cd6/
+INFO  [Thread-0] 2026-05-17 20:44:14,075 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 20:44:14,081 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,081 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-20-44-839-cd6\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,081 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-20-44-839-3ec/
+INFO  [Thread-0] 2026-05-17 20:44:14,081 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 20:44:14,087 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,087 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-20-44-839-3ec\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,107 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 20:44:14,107 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 20:44:14,154 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 20:44:14,168 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 20:44:14,213 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-20-44-952-75c/
+INFO  [Thread-0] 2026-05-17 20:44:14,213 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 20:44:14,225 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,225 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-20-44-952-75c\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,228 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 20:44:14,293 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 20:44:14,341 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-20-44-017-804/
+INFO  [Thread-0] 2026-05-17 20:44:14,341 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 20:44:14,347 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,349 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-20-44-017-804\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 20:44:14,351 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 20:44:14,419 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [pool-3-thread-1] 2026-05-17 20:45:01,981 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1779061439664 for DONE:  no
+INFO  [pool-3-thread-1] 2026-05-17 20:46:01,994 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1779061439664 for DONE:  no
+INFO  [pool-3-thread-1] 2026-05-17 20:47:01,998 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1779061439664 for DONE:  no
+INFO  [AWT-EventQueue-0] 2026-05-17 21:02:29,081 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\config.props
+INFO  [AWT-EventQueue-0] 2026-05-17 21:02:29,129 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\batch\batch_params.xml to
+	C:\Users\fniet\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 21:02:40,416 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\fniet\AppData\Local\Temp\fniet_localhost17479215456571333231.zip to 
+C:\Users\fniet\AppData\Local\Temp\simphony_model_1779062558294 ...
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 21:02:40,465 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 21:02:40,467 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0362
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 21:02:40,467 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\fniet\AppData\Local\Temp\simphony_model_1779062558294\fniet_localhost17479215456571333231.zip
+INFO  [SwingWorker-pool-2-thread-1] 2026-05-17 21:02:40,978 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2026-05-17 21:02:56,909 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 21:02:56,909 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779062558294/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 21:02:56,909 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 21:02:56,909 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 21:02:56,911 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 21:02:57,124 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 21:02:57,124 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779062558294/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 21:02:57,124 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 21:02:57,124 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 21:02:57,124 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 21:02:57,358 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 21:02:57,358 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779062558294/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 21:02:57,358 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 21:02:57,358 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 21:02:57,358 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 21:02:57,430 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2026-05-17 21:02:57,430 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/fniet/AppData/Local/Temp/simphony_model_1779062558294/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2026-05-17 21:02:57,430 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2026-05-17 21:02:57,430 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2026-05-17 21:02:57,430 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2026-05-17 21:02:57,643 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-21-02-148-0ef/
+INFO  [Thread-0] 2026-05-17 21:02:57,643 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 21:02:57,650 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:57,650 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-21-02-148-0ef\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:57,698 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 21:02:57,758 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 21:02:57,799 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-21-02-374-dd8/
+INFO  [Thread-0] 2026-05-17 21:02:57,799 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 21:02:57,808 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:57,808 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-21-02-374-dd8\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:57,812 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 21:02:57,867 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 21:02:58,053 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-21-02-598-e0d/
+INFO  [Thread-0] 2026-05-17 21:02:58,053 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 21:02:58,063 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:58,063 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-21-02-598-e0d\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:58,067 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 21:02:58,118 repast.simphony.batch.ssh.LocalSession - 1 C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity//output/2026-05-17-21-02-677-5a7/
+INFO  [Thread-0] 2026-05-17 21:02:58,118 repast.simphony.batch.ssh.LocalSession - mypath = C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/
+INFO  [Thread-0] 2026-05-17 21:02:58,124 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [Thread-0] 2026-05-17 21:02:58,130 repast.simphony.batch.ssh.LocalSession - .\data\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:58,130 repast.simphony.batch.ssh.LocalSession - C:\Users\fniet\OneDrive\Documentos\GitHub\endomembraneSystem\immunity\output\2026-05-17-21-02-677-5a7\XP+NH4.cps
+INFO  [Thread-0] 2026-05-17 21:02:58,134 repast.simphony.batch.ssh.LocalSession - Saved parameters for run 0
+INFO  [Thread-0] 2026-05-17 21:02:58,202 repast.simphony.batch.ssh.LocalSession - Break tick: 60100.0
+INFO  [pool-3-thread-1] 2026-05-17 21:03:40,985 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\fniet\AppData\Local\Temp\simphony_model_1779062558294 for DONE:  no

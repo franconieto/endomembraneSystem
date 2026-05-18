@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 
 	public class LocalPath {
 		
@@ -21,6 +22,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 	private String mypath5;
 	private String mypath6;
 	private String mypath7;
+	private String mypath8;
 	private String mypathOut;
 	private static LocalPath instance;
 	public static LocalPath getInstance() {
@@ -44,9 +46,11 @@ import repast.simphony.engine.environment.RunEnvironment;
 //	          FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
 //	          TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
 //	          SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
-	            mypath = "C:/Users/Luis/Documents/GitHub/endomembraneSystem/immunity/";
+	            mypath = "C:/Users/fniet/OneDrive/Documentos/GitHub/endomembraneSystem/immunity/";
 	            mypathOut=mypath+"/output/"+folderName+"-" + UUID.randomUUID().toString().substring(0, 3)+"/";   
 	            System.out.println("1 " + mypathOut);
+	            
+	            
 	        } else {
 	            mypath = myDir.getCanonicalPath().replace('\\','/');
 	            mypathOut=mypath+"/";
@@ -137,4 +141,12 @@ import repast.simphony.engine.environment.RunEnvironment;
 			mypath7 = mypathOut+"/digested.csv";//batch
 			return this.mypath7; 
 		}
+		
+		public String getPathLocalParamFile() {
+					
+			mypath8 = mypathOut+"/localParamFile.txt";//batch
+			return this.mypath8; 
+		}
+		
+		
 	}

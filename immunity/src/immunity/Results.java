@@ -139,6 +139,17 @@ public class Results {
     {
         System.err.println("No endosomeCopasi found "+ex);
     }}
+	
+	{
+		
+	    try
+	    {
+	    	saveParametersToFile();
+	    }
+	    catch (java.lang.Exception ex)
+	    {
+	        System.err.println("Error creating local param file "+ex);
+	    }}
     
 	}
 	
@@ -615,4 +626,57 @@ public class Results {
 		double mult = Math.pow(10, sig - Math.floor(Math.log10(abs)) - 1);
 		return Math.round(n * mult) / mult;
 	}
+	
+	public void saveParametersToFile() {
+
+        Parameters params = RunEnvironment.getInstance().getParameters();
+        // Nombre del archivo
+        
+        // Número de corrida
+        int runNumber = 0;
+        
+        String filename = mainpath.getPathLocalParamFile();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+
+           StringBuilder line = new StringBuilder();
+
+           line.append(runNumber);
+           
+           boolean first = true;
+
+           for (String paramName : params.getSchema().parameterNames()) {
+        	   
+        	   if (paramName.equals("randomSeed") ||
+                       paramName.contains("BatchConstants")) {
+
+                       continue;
+                   }
+        	   
+        	   if (!first) {
+                   line.append(",");
+               }
+        	   
+               Object value = params.getValue(paramName);
+
+               line
+                   .append(paramName)
+                   .append("\t")
+                   .append(value);
+               
+               first = false;
+           }
+           
+
+           writer.write(line.toString());
+           writer.newLine();
+
+           System.out.println(
+                   "Saved parameters for run " + runNumber);
+
+       } catch (IOException e) {
+
+           e.printStackTrace();
+       }
+    }
 }
